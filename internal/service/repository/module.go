@@ -27,7 +27,9 @@ type UserRepository interface {
 	CreateUser(user *domain.User) error
 	//UpdateUser()error
 	//DeleteUser(userId int) error
-	GetUserByID(userId int) (domain.User, error)
+	//GetUserByID(userId int) (domain.User, error)
+	//CheckUserByEmail(email string) (bool, error)
+	GetUserByEmail(email string) (*domain.User, error)
 }
 
 //type PostRepository interface {
