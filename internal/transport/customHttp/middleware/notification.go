@@ -4,20 +4,21 @@ import (
 	"net/http"
 )
 
-func HomePageRoleDispatcher(next http.Handler) http.Handler {
+func NotificationRoleDispatcher(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 
 		role := r.Context().Value("Role").(string)
 
 		switch role {
 		case "Admin":
-			//Admin homepage handler
+			//Admin notification webpage handler
 		case "Moderator":
-			// Moderator homepage handler
+			// Moderator notification webpage handler
 		case "User":
-			// User homepage handler
+			// User notification webpage handler
 		default:
-			// Guest homepage handler
+
+			// UnAuthorized error
 		}
 	})
 }
