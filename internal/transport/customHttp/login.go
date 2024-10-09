@@ -39,7 +39,7 @@ func (handler *HandlerHttp) logIn(w http.ResponseWriter, r *http.Request) {
 		//}
 
 		// Think about auth based on token here
-		tokenSignature, err := handler.Service.LogIn(email, password)
+		tokenSignature, role, err := handler.Service.LogIn(email, password)
 
 		if err != nil {
 			if errors.Is(err, domain.ErrUserNotFound) {
@@ -52,6 +52,7 @@ func (handler *HandlerHttp) logIn(w http.ResponseWriter, r *http.Request) {
 
 		// Cookies
 		auth.SetTokenToCookie(w, tokenSignature)
+		// Depending on the role, you have to return the appropriate webpage
 
 	}
 

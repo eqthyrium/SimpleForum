@@ -11,6 +11,7 @@ func HomePageRoleDispatcher(next http.Handler) http.Handler {
 
 		switch role {
 		case "Admin":
+			AdminHomePage(w, r)
 			//Admin homepage handler
 		case "Moderator":
 			// Moderator homepage handler

@@ -64,7 +64,11 @@ func LoggingMiddleware(next http.Handler) http.Handler {
 func RoleAdjusterMiddleware(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		tokenString, err := auth.GetTokenFromCookie(r)
-		if err != nil || tokenString == "" {
+		if err != nil {
+			// InternalServer Error
+			return
+		}
+		if tokenString == "" {
 			ctx := context.WithValue(r.Context(), "Role", "Guest")
 			next.ServeHTTP(w, r.WithContext(ctx))
 			return
@@ -72,14 +76,23 @@ func RoleAdjusterMiddleware(next http.Handler) http.Handler {
 
 		verification, err := auth.VerifyToken(tokenString)
 
-		if err != nil || !verification {
+		if err != nil {
+			// InternalServer Error
+			return
+		}
+
+		if !verification {
 			ctx := context.WithValue(r.Context(), "Role", "Guest")
 			next.ServeHTTP(w, r.WithContext(ctx))
 			return
 		}
 
 		extractedToken, err := auth.ExtractDataFromToken(tokenString)
-		if err != nil || auth.MapUUID[extractedToken.UserId] != extractedToken.UUID {
+		if err != nil {
+			// InternalServer Error
+			return
+		}
+		if auth.MapUUID[extractedToken.UserId] != extractedToken.UUID {
 			ctx := context.WithValue(r.Context(), "Role", "Guest")
 			next.ServeHTTP(w, r.WithContext(ctx))
 			return

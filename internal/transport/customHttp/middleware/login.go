@@ -13,7 +13,7 @@ func LogInRoleDispatcher(next http.Handler) http.Handler {
 		case "Guest":
 			// LogIn webpage
 		default:
-			// UnAuthorized error
+			// UnAuthorized error webpage
 		}
 	})
 }
