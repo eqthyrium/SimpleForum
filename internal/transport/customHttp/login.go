@@ -2,12 +2,13 @@ package customHttp
 
 import (
 	"SimpleForum/internal/domain"
+	"SimpleForum/internal/service/auth"
 	"errors"
 	"fmt"
 	"net/http"
 )
 
-func (handler *Handler) logIn(w http.ResponseWriter, r *http.Request) {
+func (handler *HandlerHttp) logIn(w http.ResponseWriter, r *http.Request) {
 	if r.URL.Path != "/login" {
 		// Think about error handling, and logging it properly
 		handler.notFound(w)
@@ -31,8 +32,15 @@ func (handler *Handler) logIn(w http.ResponseWriter, r *http.Request) {
 
 		email := r.FormValue("email")
 		password := r.FormValue("password")
+		//flag := r.FormValue("flag")
+		//
+		//if flag {
+		//	authentication()
+		//}
 
-		err = handler.Service.LogIn(email, password)
+		// Think about auth based on token here
+		tokenSignature, err := handler.Service.LogIn(email, password)
+
 		if err != nil {
 			if errors.Is(err, domain.ErrUserNotFound) {
 				// Here must be webpage of error input for LogIning.
@@ -42,7 +50,9 @@ func (handler *Handler) logIn(w http.ResponseWriter, r *http.Request) {
 			}
 		}
 
-		// Think about session based on token here
+		// Cookies
+		auth.SetTokenToCookie(w, tokenSignature)
+
 	}
 
 }

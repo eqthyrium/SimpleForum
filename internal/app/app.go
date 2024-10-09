@@ -16,7 +16,7 @@ import (
 func RunApplication() {
 
 	conf := config.NewConfiguration()
-	LoggerObjectHttp := logger.NewLogger().GetLoggerObject("../logging/info.log", "../logging/error.log", "HTTP")
+	LoggerObjectHttp := logger.NewLogger().GetLoggerObject("../../logging/info.log", "../../logging/error.log", "Middleware")
 
 	db, err := openDb(*conf.Dsn)
 	if err != nil {
@@ -28,7 +28,7 @@ func RunApplication() {
 		ServiceDB: repository.NewServiceRepository(sqllite.NewRepository(db)),
 	}
 
-	handlerObject := &customHttp.Handler{
+	handlerObject := &customHttp.HandlerHttp{
 		Service:  customHttp.NewTransportHttpHandler(serviceObject),
 		ErrorLog: LoggerObjectHttp.ErrorLogger,
 		InfoLog:  LoggerObjectHttp.InfoLogger,

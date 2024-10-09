@@ -28,19 +28,16 @@ func (app *Application) SignUp(nickname, email, password string) error {
 	// check is there exist such email
 	_, err := app.ServiceDB.GetUserByEmail(email)
 
-	if errors.Is(err, domain.ErrUserNotFound) {
+	if !errors.Is(err, domain.ErrUserNotFound) {
+		return fmt.Errorf("UseCase-SignUp: %w", domain.ErrInvalidCredential)
+	}
 
-		hashedPassword, err := hashPassword(password)
-		if err != nil {
-			return fmt.Errorf("UseCase-SignUp: %w", err)
-		}
-		user := &domain.User{Nickname: nickname, Email: email, Password: hashedPassword, Role: "User"}
-		err = app.ServiceDB.CreateUser(user)
-		if err != nil {
-			return fmt.Errorf("UseCase-SignUp: %w", err)
-		}
-	} else {
-		// Think about error of existing such user already
+	hashedPassword, err := hashPassword(password)
+	if err != nil {
+		return fmt.Errorf("UseCase-SignUp: %w", err)
+	}
+	err = app.ServiceDB.CreateUser(nickname, email, hashedPassword, "User")
+	if err != nil {
 		return fmt.Errorf("UseCase-SignUp: %w", err)
 	}
 

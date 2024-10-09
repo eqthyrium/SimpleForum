@@ -7,7 +7,7 @@ import (
 	"net/http"
 )
 
-func (handler *Handler) signUp(w http.ResponseWriter, r *http.Request) {
+func (handler *HandlerHttp) signUp(w http.ResponseWriter, r *http.Request) {
 
 	if r.URL.Path != "/signup" {
 		// Think about error handling, and logging it properly
@@ -45,6 +45,6 @@ func (handler *Handler) signUp(w http.ResponseWriter, r *http.Request) {
 			}
 		}
 
-		// Here i have to give to the client the logIn website.
+		// Here we have to redirect to the client the logIn website.
 	}
 }

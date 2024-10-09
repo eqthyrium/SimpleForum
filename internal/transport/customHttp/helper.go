@@ -6,18 +6,18 @@ import (
 	"runtime/debug"
 )
 
-func (handler *Handler) serverError(w http.ResponseWriter, err error) {
+func (handler *HandlerHttp) serverError(w http.ResponseWriter, err error) {
 
 	ErrorMessage := fmt.Sprintf("%s\n%s", err.Error(), debug.Stack())
 	handler.ErrorLog.Print(ErrorMessage)
 	http.Error(w, http.StatusText(http.StatusInternalServerError), http.StatusInternalServerError)
 }
 
-func (handler *Handler) clientError(w http.ResponseWriter, statusCode int) {
+func (handler *HandlerHttp) clientError(w http.ResponseWriter, statusCode int) {
 	handler.ErrorLog.Print(http.StatusText(statusCode))
 	http.Error(w, http.StatusText(statusCode), statusCode)
 }
 
-func (handler *Handler) notFound(w http.ResponseWriter) {
+func (handler *HandlerHttp) notFound(w http.ResponseWriter) {
 	handler.clientError(w, http.StatusNotFound)
 }

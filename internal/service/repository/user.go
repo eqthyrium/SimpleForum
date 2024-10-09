@@ -5,7 +5,10 @@ import (
 	"fmt"
 )
 
-func (serviceRepo *ServiceRepository) CreateUser(user *domain.User) error {
+func (serviceRepo *ServiceRepository) CreateUser(nickname, email, hashedPassword, role string) error {
+
+	user := &domain.User{Nickname: nickname, Email: email, Password: hashedPassword, Role: role}
+
 	err := serviceRepo.Repo.CreateUser(user)
 	if err != nil {
 		return fmt.Errorf("Service-CreateUser: %w", err)
