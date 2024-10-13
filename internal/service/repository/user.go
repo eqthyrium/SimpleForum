@@ -5,9 +5,9 @@ import (
 	"fmt"
 )
 
-func (serviceRepo *ServiceRepository) CreateUser(nickname, email, hashedPassword, role string) error {
+func (serviceRepo *ServiceRepository) CreateUser(nickname, memberIdentity, hashedPassword, role string) error {
 
-	user := &domain.User{Nickname: nickname, Email: email, Password: hashedPassword, Role: role}
+	user := &domain.User{Nickname: nickname, MemberIdentity: memberIdentity, Password: hashedPassword, Role: role}
 
 	err := serviceRepo.Repo.CreateUser(user)
 	if err != nil {
@@ -28,10 +28,10 @@ func (serviceRepo *ServiceRepository) GetUserByID(id int64) (*domain.User, error
 	return nil, nil
 }
 
-// func (serviceRepo *ServiceRepository) GetUserByEmail(email string) (*domain.User, error) {}
+// func (serviceRepo *ServiceRepository) GetUserByEmail(memberIdentity string) (*domain.User, error) {}
 
-//func (serviceRepo *ServiceRepository) CheckUserByEmail(email string) (bool, error) {
-//	isThereSuchEmail, err := serviceRepo.Repo.CheckUserByEmail(email)
+//func (serviceRepo *ServiceRepository) CheckUserByEmail(memberIdentity string) (bool, error) {
+//	isThereSuchEmail, err := serviceRepo.Repo.CheckUserByEmail(memberIdentity)
 //	if err != nil {
 //		// Think about err Handling
 //		return false, err
@@ -40,9 +40,9 @@ func (serviceRepo *ServiceRepository) GetUserByID(id int64) (*domain.User, error
 //
 //}
 
-func (serviceRepo *ServiceRepository) GetUserByEmail(email string) (*domain.User, error) {
+func (serviceRepo *ServiceRepository) GetUserByEmail(memberIdentity string) (*domain.User, error) {
 
-	user, err := serviceRepo.Repo.GetUserByEmail(email)
+	user, err := serviceRepo.Repo.GetUserByEmail(memberIdentity)
 	if err != nil {
 		return nil, fmt.Errorf("Service-GetUserByEmail: %w", err)
 	}

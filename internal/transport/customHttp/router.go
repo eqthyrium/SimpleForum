@@ -6,16 +6,18 @@ import (
 )
 
 func (handler *HandlerHttp) Routering() http.Handler {
-	homePagePath := middleware.LoggingMiddleware(middleware.SecurityMiddleware(middleware.RoleAdjusterMiddleware(middleware.HomePageRoleDispatcher(nil))))
-	logInPath := middleware.LoggingMiddleware(middleware.SecurityMiddleware(middleware.RoleAdjusterMiddleware(middleware.LogInRoleDispatcher(nil))))
-	signUpPath := middleware.LoggingMiddleware(middleware.SecurityMiddleware(middleware.RoleAdjusterMiddleware(middleware.SignUpRoleDispatcher(nil))))
-	postPagePath := middleware.LoggingMiddleware(middleware.SecurityMiddleware(middleware.RoleAdjusterMiddleware(middleware.PostRoleDispatcher(nil))))
+
+	defaultPostMiddleware := func(next func(w http.ResponseWriter, r *http.Request)) http.Handler {
+		return middleware.LoggingMiddleware(middleware.SecurityMiddleware(middleware.CSRFPostMiddleware(middleware.RoleAdjusterMiddleware(http.HandlerFunc(next)))))
+	}
+	defaultMiddleware := func(next func(w http.ResponseWriter, r *http.Request)) http.Handler {
+		return middleware.LoggingMiddleware(middleware.SecurityMiddleware(middleware.RoleAdjusterMiddleware(http.HandlerFunc(next))))
+	}
 
 	mux := http.NewServeMux()
-	mux.Handle("/", homePagePath)
-	mux.Handle("/post", postPagePath)
-	mux.Handle("/login", logInPath)
-	mux.Handle("/signup", signUpPath)
-
+	mux.Handle("/", defaultMiddleware(handler.homePage))
+	mux.Handle("/login", defaultPostMiddleware(handler.logIn))
+	mux.Handle("/signup", defaultPostMiddleware(handler.signUp))
+	//mux.Handle("/post", postPagePath)
 	return http.HandlerFunc(mux.ServeHTTP)
 }

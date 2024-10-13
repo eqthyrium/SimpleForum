@@ -37,8 +37,9 @@ Check presence of token in cookie from client request
 │   │   └── False
 │   │       ├── Send guest webpage (failed token verification)
 └── False
+├── Send guest webpage
 
-	├── Send guest webpage
+4) I have to implement CSRF checking middleware
 */
 var customLogger *logger.Logger = logger.NewLogger().GetLoggerObject("../../../../logging/info.log", "../../../../logging/error.log", "Middleware")
 
@@ -61,9 +62,37 @@ func LoggingMiddleware(next http.Handler) http.Handler {
 	})
 }
 
+func CSRFPostMiddleware(next http.Handler) http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		if r.Method == http.MethodPost {
+			// Get the CSRF token from the form
+			formCSRFToken := r.FormValue("csrf_token")
+
+			// Get the CSRF token from the cookie
+			cookieCSRFToken, err := auth.GetTokenFromCookie(r, "csrf_token")
+			if err != nil {
+				// Here should be error handling webpage
+				http.Error(w, "Invalid CSRF token", http.StatusForbidden)
+				return
+			}
+
+			// Validate the CSRF token
+			if formCSRFToken != cookieCSRFToken {
+				// Here should be error handling webpage
+				http.Error(w, "CSRF token mismatch", http.StatusForbidden)
+				return
+			}
+
+		} else {
+			// Here should be Error handling webpage
+			http.Error(w, "Invalid CSRF token", http.StatusForbidden)
+		}
+	})
+}
+
 func RoleAdjusterMiddleware(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		tokenString, err := auth.GetTokenFromCookie(r)
+		tokenString, err := auth.GetTokenFromCookie(r, "auth_token")
 		if err != nil {
 			// InternalServer Error
 			return

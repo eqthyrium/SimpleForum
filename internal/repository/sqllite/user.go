@@ -9,7 +9,7 @@ import (
 
 func (rp *Repository) CreateUser(user *domain.User) error {
 	statement := `INSERT INTO User (Nickname, Email, Password, Role) VALUES(?,?,?,?)`
-	_, err := rp.DB.Exec(statement, user.Nickname, user.Email, user.Password, user.Role)
+	_, err := rp.DB.Exec(statement, user.Nickname, user.MemberIdentity, user.Password, user.Role)
 	if err != nil {
 		return fmt.Errorf("Repository-CreateUser: %w", err)
 	}
@@ -48,15 +48,15 @@ func (rp *Repository) GetUserByID(userId int) (domain.User, error) {
 //	return true, nil
 //}
 
-func (rp *Repository) GetUserByEmail(email string) (*domain.User, error) {
+func (rp *Repository) GetUserByEmail(memberIdentity string) (*domain.User, error) {
 
-	statement := "SELECT User_Id,Email,Password, Role FROM Users WHERE Email = ?"
+	statement := "SELECT User_Id,Email,Password, Role FROM Users WHERE MemberIdentity = ?"
 
-	row := rp.DB.QueryRow(statement, email)
+	row := rp.DB.QueryRow(statement, memberIdentity)
 
 	user := &domain.User{}
 
-	err := row.Scan(&user.UserId, &user.Email, &user.Password, &user.Role)
+	err := row.Scan(&user.UserId, &user.MemberIdentity, &user.Password, &user.Role)
 
 	if err != nil {
 		if errors.Is(err, sql.ErrNoRows) {

@@ -3,11 +3,11 @@ package domain
 import "time"
 
 type User struct {
-	UserId   int    `json:"user_id"`
-	Nickname string `json:"nickname"`
-	Email    string `json:"email"`
-	Password string `json:"password"`
-	Role     string `json:"role"`
+	UserId         int    `json:"user_id"`
+	Nickname       string `json:"nickname"`
+	MemberIdentity string `json:"member_identity"`
+	Password       string `json:"password"`
+	Role           string `json:"role"`
 }
 
 type Post struct {

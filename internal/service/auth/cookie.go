@@ -15,10 +15,20 @@ func SetTokenToCookie(w http.ResponseWriter, token string) {
 	http.SetCookie(w, cookie)
 }
 
-func GetTokenFromCookie(r *http.Request) (string, error) {
-	cookie, err := r.Cookie("auth_token")
-	if err != nil {
-		return "", err
+func GetTokenFromCookie(r *http.Request, name string) (string, error) {
+
+	if name == "auth_token" {
+		cookie, err := r.Cookie("auth_token")
+		if err != nil {
+			return "", err
+		}
+		return cookie.Value, nil
+	} else if name == "csrf_token" {
+		cookie, err := r.Cookie("auth_token")
+		if err != nil {
+			return "", err
+		}
+		return cookie.Value, nil
 	}
-	return cookie.Value, nil
+	return "", nil
 }
