@@ -32,7 +32,7 @@ func RunApplication() {
 	router := httpTransport.Routering()
 	message := fmt.Sprintf("The server is running at: http://localhost%s/\n", *conf.Addr)
 	log.Print(message)
-	httpTransport.InfoLog.Println(message)
+	httpTransport.InfoLog.Print(message)
 	log.Fatalln(http.ListenAndServe(*conf.Addr, router))
 }
 

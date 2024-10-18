@@ -56,7 +56,6 @@ func LoggingMiddleware(next http.Handler) http.Handler {
 		next.ServeHTTP(w, r)
 		duration := time.Since(startTime)
 		// Here must be reponse's status code
-		customLogger.InfoLogger.Println()
 		customLogger.InfoLogger.Print(fmt.Sprintf("The End of the client request, and its Duration:%v\n", duration))
 	})
 }
@@ -130,7 +129,6 @@ func RoleAdjusterMiddleware(next http.Handler) http.Handler {
 			customLogger.InfoLogger.Println("There is not current token for the client")
 			session.DeleteSessionCookie(w, "auth_token")
 			delete(CSRFMap, session.MapUUID[extractedToken.UserId])
-			delete(session.MapUUID, extractedToken.UserId)
 			http.Redirect(w, r, "/auth/login", http.StatusSeeOther)
 			return
 		}

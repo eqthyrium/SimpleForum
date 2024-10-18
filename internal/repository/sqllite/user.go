@@ -2,16 +2,16 @@ package sqllite
 
 import (
 	"SimpleForum/internal/domain"
+	"SimpleForum/pkg/logger"
 	"database/sql"
 	"errors"
-	"fmt"
 )
 
 func (rp *Repository) CreateUser(user *domain.User) error {
 	statement := `INSERT INTO Users (Nickname, MemberIdentity, Password, Role) VALUES(?,?,?,?)`
 	_, err := rp.DB.Exec(statement, user.Nickname, user.MemberIdentity, user.Password, user.Role)
 	if err != nil {
-		return fmt.Errorf("Repository-CreateUser: %w", err)
+		return logger.ErrorWrapper("Repository", "CreateUser", "The problem within the process of creation of the user in db", err)
 	}
 	return nil
 }
@@ -60,9 +60,9 @@ func (rp *Repository) GetUserByEmail(memberIdentity string) (*domain.User, error
 
 	if err != nil {
 		if errors.Is(err, sql.ErrNoRows) {
-			return nil, fmt.Errorf("Repository-GetUserByEmail: %w", domain.ErrUserNotFound)
+			return nil, logger.ErrorWrapper("Repository", "GetUserByEmail", "There is no such  user in the db", domain.ErrUserNotFound)
 		} else {
-			return nil, fmt.Errorf("Repository-GetUserByEmail: %w", err)
+			return nil, logger.ErrorWrapper("Repository", "GetUserByEmail", "The problem within the process of getting of the user by its MemberIdentity(email) in db", err)
 		}
 	}
 
