@@ -2,32 +2,62 @@ package customHttp
 
 import (
 	"SimpleForum/internal/domain"
+	"SimpleForum/pkg/logger"
 	"errors"
-	"fmt"
+	"html/template"
 	"net/http"
 )
 
 func (handler *HandlerHttp) signUp(w http.ResponseWriter, r *http.Request) {
 
-	if r.URL.Path != "/signup" {
+	customLogger.DebugLogger.Println("The signup handler is activated")
+	if r.URL.Path != "/auth/signup" {
 		// Think about error handling, and logging it properly
-		handler.notFound(w)
+		handler.InfoLog.Println("incorrect request's endpoint")
+		clientError(w, nil, http.StatusNotFound, nil)
 		return
 	}
 	if !(r.Method == http.MethodGet || r.Method == http.MethodPost) {
-		// Think about error handling, and logging it properly
-		handler.clientError(w, http.StatusMethodNotAllowed)
+		handler.InfoLog.Println("incorrect request's method")
+		clientError(w, nil, http.StatusMethodNotAllowed, nil)
 		return
 	}
 
-	if r.Method == http.MethodGet { // pass the singup webpage
+	role := r.Context().Value("Role").(string)
+	if role != "Guest" {
+		handler.InfoLog.Println("The Non-guest client attempts to use the signUp resource")
+		clientError(w, nil, http.StatusForbidden, nil)
+		return
+	}
 
+	if r.Method == http.MethodGet {
+		customLogger.DebugLogger.Println("The signup handler's GET request handler is activated")
+		files := []string{
+			"../ui/html/signup.tmpl.html",
+		}
+
+		tmpl, err := template.ParseFiles(files...)
+		if err != nil {
+			customLogger.ErrorLogger.Print(logger.ErrorWrapper("Transport", "signUp", "There is a problem in the process of parsing the html files with template", err))
+			serverError(w)
+			return
+		}
+
+		err = tmpl.ExecuteTemplate(w, "signup", nil)
+		if err != nil {
+			customLogger.ErrorLogger.Print(logger.ErrorWrapper("Transport", "signUp", "There is a problem in the process of execution of the template", err))
+			serverError(w)
+			return
+		}
 	}
 
 	if r.Method == http.MethodPost {
+		customLogger.DebugLogger.Println("The signup handler's POST request handler is activated")
+
 		err := r.ParseForm()
 		if err != nil {
-			handler.serverError(w, err)
+			customLogger.ErrorLogger.Print(logger.ErrorWrapper("Transport", "signUp", "There is a problem in the process of parsing the Form of html", err))
+			serverError(w)
 			return
 		}
 
@@ -38,13 +68,16 @@ func (handler *HandlerHttp) signUp(w http.ResponseWriter, r *http.Request) {
 		err = handler.Service.SignUp(nickname, email, password)
 		if err != nil {
 			if errors.Is(err, domain.ErrInvalidCredential) {
-				// Here we have to create an error webpage for a client
+				handler.DebugLog.Println("There is invalid entered Credentials")
+				clientError(w, []string{"../ui/html/signup.tmpl.html"}, http.StatusBadRequest, err)
 			} else {
-				handler.serverError(w, fmt.Errorf("Http-signUP: %w", err))
-				return
+				customLogger.ErrorLogger.Print(logger.ErrorWrapper("Transport", "signUp", "Failed  Sign up operation", err))
+				serverError(w)
 			}
+			return
 		}
 
-		// Here we have to redirect to the client the logIn website.
+		http.Redirect(w, r, "/auth/login", http.StatusSeeOther)
+
 	}
 }

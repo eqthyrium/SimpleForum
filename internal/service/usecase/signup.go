@@ -2,8 +2,8 @@ package usecase
 
 import (
 	"SimpleForum/internal/domain"
+	"SimpleForum/pkg/logger"
 	"errors"
-	"fmt"
 	"golang.org/x/crypto/bcrypt"
 	"regexp"
 	"strings"
@@ -20,8 +20,7 @@ func (app *Application) SignUp(nickname, email, password string) error {
 	//checking whether the input data is correct
 	correctnessData := app.isItCorrect(nickname, email, password)
 	if !correctnessData {
-		// Handle Error about not correctness of the data
-		return fmt.Errorf("UseCase-SignUP: %w", domain.ErrInvalidCredential)
+		return logger.ErrorWrapper("UseCase", "SignUp", "There is an invalid entered credentials of the client to be signed up", domain.ErrInvalidCredential)
 	}
 	nickname, email = makeItLower(nickname, email)
 
@@ -29,16 +28,22 @@ func (app *Application) SignUp(nickname, email, password string) error {
 	_, err := app.ServiceDB.GetUserByEmail(email)
 
 	if !errors.Is(err, domain.ErrUserNotFound) {
-		return fmt.Errorf("UseCase-SignUp: %w", domain.ErrInvalidCredential)
+		return logger.ErrorWrapper("UseCase", "SignUp", "The client entered such credential which is already in the data base", domain.ErrInvalidCredential)
 	}
 
 	hashedPassword, err := hashPassword(password)
 	if err != nil {
-		return fmt.Errorf("UseCase-SignUp: %w", err)
+		return logger.ErrorWrapper("UseCase", "SignUp", "Failed to hash password", err)
 	}
-	err = app.ServiceDB.CreateUser(nickname, email, hashedPassword, "User")
+	user := &domain.User{
+		Nickname:       nickname,
+		MemberIdentity: email,
+		Password:       hashedPassword,
+		Role:           "User",
+	}
+	err = app.ServiceDB.CreateUser(user)
 	if err != nil {
-		return fmt.Errorf("UseCase-SignUp: %w", err)
+		return logger.ErrorWrapper("UseCase", "SignUp", "Failed to create user", err)
 	}
 
 	return nil

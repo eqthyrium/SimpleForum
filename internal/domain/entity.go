@@ -18,6 +18,7 @@ type Post struct {
 	DislikeCount int       `json:"dislike_count"`
 	CreatedAt    time.Time `json:"created_at"`
 	UserId       int       `json:"user_id"`
+	Image        string    `json:"image"`
 }
 type Comment struct {
 	CommentId int    `json:"comment_id"`

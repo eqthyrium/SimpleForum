@@ -2,10 +2,13 @@ package customHttp
 
 import (
 	"SimpleForum/internal/domain"
-	"SimpleForum/internal/service/auth"
+	"SimpleForum/pkg/logger"
 	"errors"
 	"fmt"
+	"html/template"
 	"net/http"
+
+	"SimpleForum/internal/service/session"
 )
 
 /*
@@ -21,53 +24,84 @@ Otherwise the server must send back to the client error page 403 Forbidden
 3) Then it has to be embedded  into html, as hidden mark.
 */
 func (handler *HandlerHttp) logIn(w http.ResponseWriter, r *http.Request) {
-	if r.URL.Path != "/login" {
-		// Think about error handling, and logging it properly
-		handler.notFound(w)
+	customLogger.DebugLogger.Println("The logIn handler is activated")
+
+	if r.URL.Path != "/auth/login" {
+		handler.InfoLog.Println(errors.New("incorrect request's endpoint"))
+		clientError(w, nil, http.StatusNotFound, nil)
 		return
 	}
-	if !(r.Method != http.MethodPost || r.Method != http.MethodGet) {
-		w.WriteHeader(http.StatusMethodNotAllowed)
+
+	if !(r.Method == http.MethodPost || r.Method == http.MethodGet) {
+		handler.InfoLog.Println(errors.New("incorrect request's method"))
+		clientError(w, nil, http.StatusMethodNotAllowed, nil)
+		return
+	}
+
+	role := r.Context().Value("Role").(string)
+	if role != "Guest" {
+		handler.InfoLog.Println(errors.New("incorrect request's role"))
+		clientError(w, nil, http.StatusForbidden, nil)
 		return
 	}
 
 	if r.Method == http.MethodGet {
-		// Here I have to send to the client's side against CSRF resolved  webpage
+		customLogger.DebugLogger.Println("logIn's handler of GET request is activated")
+		files := []string{
+			"../ui/html/login.tmpl.html",
+		}
+
+		tmpl, err := template.ParseFiles(files...)
+		if err != nil {
+			customLogger.ErrorLogger.Print(logger.ErrorWrapper("Transport", "logIn", "There is a problem in the process of parsing the html files with template", err))
+			serverError(w)
+			return
+		}
+
+		err = tmpl.ExecuteTemplate(w, "login", nil)
+		if err != nil {
+			customLogger.ErrorLogger.Print(logger.ErrorWrapper("Transport", "logIn", "There is a problem in the process of execution of parsed the html files", err))
+			serverError(w)
+			return
+		}
 
 	}
 
 	if r.Method == http.MethodPost {
+		customLogger.DebugLogger.Println("logIn's handler of POST request is activated")
 
 		err := r.ParseForm()
 		if err != nil {
-			handler.serverError(w, err)
+			customLogger.ErrorLogger.Print(logger.ErrorWrapper("Transport", "logIn", "Failed the parsing the Form of html", err))
+			serverError(w)
 			return
 		}
 
 		email := r.FormValue("email")
 		password := r.FormValue("password")
+
 		//flag := r.FormValue("flag")
 		//
 		//if flag {
 		//	authentication()
 		//}
 
-		// Think about auth based on token here
-		tokenSignature, _, err := handler.Service.LogIn(email, password)
-
+		// Think about session based on token here
+		tokenSignature, err := handler.Service.LogIn(email, password)
 		if err != nil {
 			if errors.Is(err, domain.ErrUserNotFound) {
-				// Here must be webpage of error input for LogIning.
+				handler.DebugLog.Println(fmt.Errorf("Function \"logIn\": %w", err))
+				clientError(w, []string{"../ui/html/login.tmpl.html"}, http.StatusBadRequest, domain.ErrUserNotFound)
 			} else {
-				handler.serverError(w, fmt.Errorf("Http-logIn: %w", err))
-				return
+				customLogger.ErrorLogger.Print(logger.ErrorWrapper("Transport", "logIn", "There is a problem in the process of giving the tokenSignature", err))
+				serverError(w)
 			}
+			return
 		}
 
-		// Cookies
-		auth.SetTokenToCookie(w, tokenSignature)
-		// Depending on the role, you have to return the appropriate webpage
+		//Cookies
+		session.SetTokenToCookie(w, "auth_token", tokenSignature)
+		http.Redirect(w, r, "/", http.StatusSeeOther)
 
 	}
-
 }

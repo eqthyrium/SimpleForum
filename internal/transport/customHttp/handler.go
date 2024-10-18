@@ -1,20 +1,25 @@
 package customHttp
 
-import "log"
-
-type httpModule interface {
-	SignUp(nickname, email, password string) error
-	LogIn(email, password string) (string, string, error)
-	//Login(email, password string) (err error)
-	// Here we write what kind of services can be used in the http handler
-}
+import (
+	"SimpleForum/internal/service"
+	"SimpleForum/pkg/logger"
+	"log"
+)
 
 type HandlerHttp struct {
-	Service  httpModule
+	Service  service.HttpModule
 	ErrorLog *log.Logger
 	InfoLog  *log.Logger
+	DebugLog *log.Logger
 }
 
-func NewTransportHttpHandler(Service httpModule) httpModule {
-	return Service
+func NewTransportHttpHandler(ServiceObject service.HttpModule, logger *logger.CustomLogger) *HandlerHttp {
+	handlerObject := &HandlerHttp{
+		Service:  ServiceObject,
+		ErrorLog: logger.ErrorLogger,
+		InfoLog:  logger.InfoLogger,
+		DebugLog: logger.DebugLogger,
+	}
+
+	return handlerObject
 }

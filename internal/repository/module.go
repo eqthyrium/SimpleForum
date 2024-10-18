@@ -4,8 +4,8 @@ import (
 	"SimpleForum/internal/domain"
 )
 
-type dbModule interface {
-	UserRepository
+type DbModule interface {
+	userRepository
 	//PostRepository
 	//CommentRepository
 	//CategoryRepository
@@ -15,15 +15,7 @@ type dbModule interface {
 
 }
 
-type ServiceRepository struct {
-	Repo dbModule
-}
-
-func NewServiceRepository(repoObject dbModule) *ServiceRepository {
-	return &ServiceRepository{Repo: repoObject}
-}
-
-type UserRepository interface {
+type userRepository interface {
 	CreateUser(user *domain.User) error
 	//UpdateUser()error
 	//DeleteUser(userId int) error
