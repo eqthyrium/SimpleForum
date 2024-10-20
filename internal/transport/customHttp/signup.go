@@ -3,6 +3,7 @@ package customHttp
 import (
 	"SimpleForum/internal/domain"
 	"SimpleForum/pkg/logger"
+	"bytes"
 	"errors"
 	"html/template"
 	"net/http"
@@ -42,10 +43,18 @@ func (handler *HandlerHttp) signUp(w http.ResponseWriter, r *http.Request) {
 			serverError(w)
 			return
 		}
-
-		err = tmpl.ExecuteTemplate(w, "signup", nil)
+		var buf bytes.Buffer
+		err = tmpl.ExecuteTemplate(&buf, "signup", nil)
 		if err != nil {
 			customLogger.ErrorLogger.Print(logger.ErrorWrapper("Transport", "signUp", "There is a problem in the process of execution of the template", err))
+			serverError(w)
+			return
+		}
+
+		w.WriteHeader(http.StatusOK)
+		_, err = buf.WriteTo(w)
+		if err != nil {
+			customLogger.ErrorLogger.Print(logger.ErrorWrapper("Transport", "signUp", "There is a problem in the process of converting data from buffer to the http.ResponseWriter", err))
 			serverError(w)
 			return
 		}

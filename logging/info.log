@@ -1,17 +1,30 @@
-INFO: 2024/10/19 01:57:30 /home/student/Adlet/Project/SimpleForum/internal/app/app.go:35: The server is running at: http://localhost:8888/
-INFO: 2024/10/19 01:57:36 /home/student/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:55: Method:[POST], URL_Path: /logout, Remote_Address: 127.0.0.1:56064
-INFO: 2024/10/19 01:57:36 /home/student/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:129: There is not current token for the client
-INFO: 2024/10/19 01:57:36 /home/student/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:59: The End of the client request, and its Duration:148.933µs
-INFO: 2024/10/19 01:57:36 /home/student/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:55: Method:[GET], URL_Path: /auth/login, Remote_Address: 127.0.0.1:56064
-INFO: 2024/10/19 01:57:36 /home/student/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:82: There is no cookie in the request of the client
-INFO: 2024/10/19 01:57:36 /home/student/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:59: The End of the client request, and its Duration:519.85µs
-INFO: 2024/10/19 01:57:39 /home/student/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:55: Method:[POST], URL_Path: /auth/login, Remote_Address: 127.0.0.1:56064
-INFO: 2024/10/19 01:57:39 /home/student/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:82: There is no cookie in the request of the client
-INFO: 2024/10/19 01:57:39 /home/student/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:59: The End of the client request, and its Duration:57.332743ms
-INFO: 2024/10/19 01:57:39 /home/student/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:55: Method:[GET], URL_Path: /, Remote_Address: 127.0.0.1:56064
-INFO: 2024/10/19 01:57:39 /home/student/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:59: The End of the client request, and its Duration:183.311µs
-INFO: 2024/10/19 01:58:17 /home/student/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:55: Method:[POST], URL_Path: /logout, Remote_Address: 127.0.0.1:56064
-INFO: 2024/10/19 01:58:17 /home/student/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:59: The End of the client request, and its Duration:105.906µs
-INFO: 2024/10/19 01:58:17 /home/student/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:55: Method:[GET], URL_Path: /, Remote_Address: 127.0.0.1:56064
-INFO: 2024/10/19 01:58:17 /home/student/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:82: There is no cookie in the request of the client
-INFO: 2024/10/19 01:58:17 /home/student/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:59: The End of the client request, and its Duration:78.257µs
+INFO: 2024/10/20 08:00:55 /home/student/Adlet/Project/SimpleForum/internal/app/app.go:35: The server is running at: http://localhost:8888/
+INFO: 2024/10/20 08:00:56 /home/student/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:56: Method:[GET], URL_Path: /, Remote_Address: 127.0.0.1:52550
+INFO: 2024/10/20 08:00:56 /home/student/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:130: There is not current token for the client
+INFO: 2024/10/20 08:00:56 /home/student/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:60: The End of the client request, and its Duration:180.324µs
+INFO: 2024/10/20 08:00:56 /home/student/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:56: Method:[GET], URL_Path: /auth/login, Remote_Address: 127.0.0.1:52550
+INFO: 2024/10/20 08:00:56 /home/student/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:83: There is no cookie in the request of the client
+INFO: 2024/10/20 08:00:56 /home/student/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:60: The End of the client request, and its Duration:269.372µs
+INFO: 2024/10/20 08:00:58 /home/student/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:56: Method:[POST], URL_Path: /auth/login, Remote_Address: 127.0.0.1:52550
+INFO: 2024/10/20 08:00:58 /home/student/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:83: There is no cookie in the request of the client
+INFO: 2024/10/20 08:00:59 /home/student/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:60: The End of the client request, and its Duration:60.641826ms
+INFO: 2024/10/20 08:00:59 /home/student/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:56: Method:[GET], URL_Path: /, Remote_Address: 127.0.0.1:52550
+INFO: 2024/10/20 08:00:59 /home/student/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:60: The End of the client request, and its Duration:236.661µs
+INFO: 2024/10/20 08:01:03 /home/student/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:56: Method:[POST], URL_Path: /logout, Remote_Address: 127.0.0.1:52550
+INFO: 2024/10/20 08:01:03 /home/student/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:60: The End of the client request, and its Duration:171.544µs
+INFO: 2024/10/20 08:01:03 /home/student/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:56: Method:[GET], URL_Path: /, Remote_Address: 127.0.0.1:52550
+INFO: 2024/10/20 08:01:03 /home/student/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:83: There is no cookie in the request of the client
+INFO: 2024/10/20 08:01:03 /home/student/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:60: The End of the client request, and its Duration:99.837µs
+INFO: 2024/10/20 08:01:08 /home/student/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:56: Method:[GET], URL_Path: /auth/login, Remote_Address: 127.0.0.1:52550
+INFO: 2024/10/20 08:01:08 /home/student/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:83: There is no cookie in the request of the client
+INFO: 2024/10/20 08:01:08 /home/student/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:60: The End of the client request, and its Duration:221.642µs
+INFO: 2024/10/20 08:01:10 /home/student/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:56: Method:[POST], URL_Path: /auth/login, Remote_Address: 127.0.0.1:52550
+INFO: 2024/10/20 08:01:10 /home/student/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:83: There is no cookie in the request of the client
+INFO: 2024/10/20 08:01:10 /home/student/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:60: The End of the client request, and its Duration:61.581776ms
+INFO: 2024/10/20 08:01:10 /home/student/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:56: Method:[GET], URL_Path: /, Remote_Address: 127.0.0.1:52550
+INFO: 2024/10/20 08:01:10 /home/student/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:60: The End of the client request, and its Duration:289.623µs
+INFO: 2024/10/20 08:01:11 /home/student/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:56: Method:[POST], URL_Path: /logout, Remote_Address: 127.0.0.1:52550
+INFO: 2024/10/20 08:01:11 /home/student/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:60: The End of the client request, and its Duration:156.94µs
+INFO: 2024/10/20 08:01:11 /home/student/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:56: Method:[GET], URL_Path: /, Remote_Address: 127.0.0.1:52550
+INFO: 2024/10/20 08:01:11 /home/student/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:83: There is no cookie in the request of the client
+INFO: 2024/10/20 08:01:11 /home/student/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:60: The End of the client request, and its Duration:116.171µs

@@ -8,6 +8,7 @@ import (
 	"errors"
 	"fmt"
 	"net/http"
+	"runtime/debug"
 	"time"
 )
 
@@ -167,6 +168,7 @@ func CSRFMiddleware(next http.Handler) http.Handler {
 		role := r.Context().Value("Role").(string)
 
 		if role != "Guest" && r.Method == http.MethodPost {
+			customLogger.DebugLogger.Println("inside of the CSRFMiddleware's Post method checking part ")
 
 			formCSRFText := r.FormValue("csrf_text")
 			userId := r.Context().Value("UserId").(int)
@@ -181,6 +183,8 @@ func CSRFMiddleware(next http.Handler) http.Handler {
 				http.Redirect(w, r, "/auth/login", http.StatusSeeOther)
 				return
 			}
+			customLogger.DebugLogger.Println("The CSRF checking part was good")
+
 		}
 
 		next.ServeHTTP(w, r)
@@ -188,7 +192,14 @@ func CSRFMiddleware(next http.Handler) http.Handler {
 }
 
 func PanicMiddleware(next http.Handler) http.Handler {
-	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		defer func() {
+			if err := recover(); err != nil {
+				customLogger.ErrorLogger.Println("Panic:\n", err, debug.Stack())
+				serverError(w)
+			}
+		}()
+		next.ServeHTTP(w, r)
 	})
 }

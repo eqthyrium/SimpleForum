@@ -7,7 +7,7 @@ import (
 func (handler *HandlerHttp) Routering() http.Handler {
 
 	Middleware := func(next func(w http.ResponseWriter, r *http.Request)) http.Handler {
-		return LoggingMiddleware(SecurityMiddleware(RoleAdjusterMiddleware(CSRFMiddleware((http.HandlerFunc(next))))))
+		return LoggingMiddleware(SecurityMiddleware(PanicMiddleware(RoleAdjusterMiddleware(CSRFMiddleware((http.HandlerFunc(next)))))))
 	}
 
 	mux := http.NewServeMux()

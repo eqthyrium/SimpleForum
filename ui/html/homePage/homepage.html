@@ -1,3 +1,4 @@
+{{define "homepage"}}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -39,7 +40,7 @@
 <body>
 
 <div class="container">
-    <h1>Welcome, User!</h1>
+    <h1>Welcome, {{block "user".}} {{end}} {{block "admin" .}} {{end}}  {{block "moderator" .}} {{end}} </h1>
     <p>Click below to logout.</p>
     <form action="/logout" method="POST">
         <input type="hidden" name="csrf_text" value="{{.CSRFText}}">
@@ -50,3 +51,4 @@
 
 </body>
 </html>
+{{end}}

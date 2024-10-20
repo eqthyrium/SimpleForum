@@ -1,24 +1,52 @@
-DEBUG: 2024/10/19 01:57:36 /home/student/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:75: The RoleAdjusterMiddleware is started
-DEBUG: 2024/10/19 01:57:36 /home/student/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:128: Entered into error handling of the check up of MappUUID
-DEBUG: 2024/10/19 01:57:36 /home/student/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:75: The RoleAdjusterMiddleware is started
-DEBUG: 2024/10/19 01:57:36 /home/student/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:80: There is an error about getting the token from the cookie!!!
-DEBUG: 2024/10/19 01:57:36 /home/student/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:165: The CSRFMiddleware is started
-DEBUG: 2024/10/19 01:57:36 /home/student/Adlet/Project/SimpleForum/internal/transport/customHttp/login.go:27: The logIn handler is activated
-DEBUG: 2024/10/19 01:57:36 /home/student/Adlet/Project/SimpleForum/internal/transport/customHttp/login.go:49: logIn's handler of GET request is activated
-DEBUG: 2024/10/19 01:57:39 /home/student/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:75: The RoleAdjusterMiddleware is started
-DEBUG: 2024/10/19 01:57:39 /home/student/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:80: There is an error about getting the token from the cookie!!!
-DEBUG: 2024/10/19 01:57:39 /home/student/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:165: The CSRFMiddleware is started
-DEBUG: 2024/10/19 01:57:39 /home/student/Adlet/Project/SimpleForum/internal/transport/customHttp/login.go:27: The logIn handler is activated
-DEBUG: 2024/10/19 01:57:39 /home/student/Adlet/Project/SimpleForum/internal/transport/customHttp/login.go:71: logIn's handler of POST request is activated
-DEBUG: 2024/10/19 01:57:39 /home/student/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:75: The RoleAdjusterMiddleware is started
-DEBUG: 2024/10/19 01:57:39 /home/student/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:135: Checking part of token's time
-DEBUG: 2024/10/19 01:57:39 /home/student/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:165: The CSRFMiddleware is started
-DEBUG: 2024/10/19 01:57:39 /home/student/Adlet/Project/SimpleForum/internal/transport/customHttp/homepage.go:12: homePage handler is activated
-DEBUG: 2024/10/19 01:58:17 /home/student/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:75: The RoleAdjusterMiddleware is started
-DEBUG: 2024/10/19 01:58:17 /home/student/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:135: Checking part of token's time
-DEBUG: 2024/10/19 01:58:17 /home/student/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:165: The CSRFMiddleware is started
-DEBUG: 2024/10/19 01:58:17 /home/student/Adlet/Project/SimpleForum/internal/transport/customHttp/logout.go:9: the logOut handler is activated
-DEBUG: 2024/10/19 01:58:17 /home/student/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:75: The RoleAdjusterMiddleware is started
-DEBUG: 2024/10/19 01:58:17 /home/student/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:80: There is an error about getting the token from the cookie!!!
-DEBUG: 2024/10/19 01:58:17 /home/student/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:165: The CSRFMiddleware is started
-DEBUG: 2024/10/19 01:58:17 /home/student/Adlet/Project/SimpleForum/internal/transport/customHttp/homepage.go:12: homePage handler is activated
+DEBUG: 2024/10/20 08:00:56 /home/student/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:76: The RoleAdjusterMiddleware is started
+DEBUG: 2024/10/20 08:00:56 /home/student/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:129: Entered into error handling of the check up of MappUUID
+DEBUG: 2024/10/20 08:00:56 /home/student/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:76: The RoleAdjusterMiddleware is started
+DEBUG: 2024/10/20 08:00:56 /home/student/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:81: There is an error about getting the token from the cookie!!!
+DEBUG: 2024/10/20 08:00:56 /home/student/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:166: The CSRFMiddleware is started
+DEBUG: 2024/10/20 08:00:56 /home/student/Adlet/Project/SimpleForum/internal/transport/customHttp/login.go:28: The logIn handler is activated
+DEBUG: 2024/10/20 08:00:56 /home/student/Adlet/Project/SimpleForum/internal/transport/customHttp/login.go:50: logIn's handler of GET request is activated
+DEBUG: 2024/10/20 08:00:58 /home/student/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:76: The RoleAdjusterMiddleware is started
+DEBUG: 2024/10/20 08:00:58 /home/student/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:81: There is an error about getting the token from the cookie!!!
+DEBUG: 2024/10/20 08:00:58 /home/student/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:166: The CSRFMiddleware is started
+DEBUG: 2024/10/20 08:00:58 /home/student/Adlet/Project/SimpleForum/internal/transport/customHttp/login.go:28: The logIn handler is activated
+DEBUG: 2024/10/20 08:00:58 /home/student/Adlet/Project/SimpleForum/internal/transport/customHttp/login.go:80: logIn's handler of POST request is activated
+DEBUG: 2024/10/20 08:00:59 /home/student/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:76: The RoleAdjusterMiddleware is started
+DEBUG: 2024/10/20 08:00:59 /home/student/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:136: Checking part of token's time
+DEBUG: 2024/10/20 08:00:59 /home/student/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:166: The CSRFMiddleware is started
+DEBUG: 2024/10/20 08:00:59 /home/student/Adlet/Project/SimpleForum/internal/transport/customHttp/homepage.go:13: homePage handler is activated
+DEBUG: 2024/10/20 08:01:03 /home/student/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:76: The RoleAdjusterMiddleware is started
+DEBUG: 2024/10/20 08:01:03 /home/student/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:136: Checking part of token's time
+DEBUG: 2024/10/20 08:01:03 /home/student/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:166: The CSRFMiddleware is started
+DEBUG: 2024/10/20 08:01:03 /home/student/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:171: inside of the CSRFMiddleware's Post method checking part 
+DEBUG: 2024/10/20 08:01:03 /home/student/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:186: The CSRF checking part was good
+DEBUG: 2024/10/20 08:01:03 /home/student/Adlet/Project/SimpleForum/internal/transport/customHttp/logout.go:9: the logOut handler is activated
+DEBUG: 2024/10/20 08:01:03 /home/student/Adlet/Project/SimpleForum/internal/transport/customHttp/logout.go:31: The cookie is deleted because of the logout operation
+DEBUG: 2024/10/20 08:01:03 /home/student/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:76: The RoleAdjusterMiddleware is started
+DEBUG: 2024/10/20 08:01:03 /home/student/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:81: There is an error about getting the token from the cookie!!!
+DEBUG: 2024/10/20 08:01:03 /home/student/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:166: The CSRFMiddleware is started
+DEBUG: 2024/10/20 08:01:03 /home/student/Adlet/Project/SimpleForum/internal/transport/customHttp/homepage.go:13: homePage handler is activated
+DEBUG: 2024/10/20 08:01:08 /home/student/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:76: The RoleAdjusterMiddleware is started
+DEBUG: 2024/10/20 08:01:08 /home/student/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:81: There is an error about getting the token from the cookie!!!
+DEBUG: 2024/10/20 08:01:08 /home/student/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:166: The CSRFMiddleware is started
+DEBUG: 2024/10/20 08:01:08 /home/student/Adlet/Project/SimpleForum/internal/transport/customHttp/login.go:28: The logIn handler is activated
+DEBUG: 2024/10/20 08:01:08 /home/student/Adlet/Project/SimpleForum/internal/transport/customHttp/login.go:50: logIn's handler of GET request is activated
+DEBUG: 2024/10/20 08:01:10 /home/student/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:76: The RoleAdjusterMiddleware is started
+DEBUG: 2024/10/20 08:01:10 /home/student/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:81: There is an error about getting the token from the cookie!!!
+DEBUG: 2024/10/20 08:01:10 /home/student/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:166: The CSRFMiddleware is started
+DEBUG: 2024/10/20 08:01:10 /home/student/Adlet/Project/SimpleForum/internal/transport/customHttp/login.go:28: The logIn handler is activated
+DEBUG: 2024/10/20 08:01:10 /home/student/Adlet/Project/SimpleForum/internal/transport/customHttp/login.go:80: logIn's handler of POST request is activated
+DEBUG: 2024/10/20 08:01:10 /home/student/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:76: The RoleAdjusterMiddleware is started
+DEBUG: 2024/10/20 08:01:10 /home/student/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:136: Checking part of token's time
+DEBUG: 2024/10/20 08:01:10 /home/student/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:166: The CSRFMiddleware is started
+DEBUG: 2024/10/20 08:01:10 /home/student/Adlet/Project/SimpleForum/internal/transport/customHttp/homepage.go:13: homePage handler is activated
+DEBUG: 2024/10/20 08:01:11 /home/student/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:76: The RoleAdjusterMiddleware is started
+DEBUG: 2024/10/20 08:01:11 /home/student/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:136: Checking part of token's time
+DEBUG: 2024/10/20 08:01:11 /home/student/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:166: The CSRFMiddleware is started
+DEBUG: 2024/10/20 08:01:11 /home/student/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:171: inside of the CSRFMiddleware's Post method checking part 
+DEBUG: 2024/10/20 08:01:11 /home/student/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:186: The CSRF checking part was good
+DEBUG: 2024/10/20 08:01:11 /home/student/Adlet/Project/SimpleForum/internal/transport/customHttp/logout.go:9: the logOut handler is activated
+DEBUG: 2024/10/20 08:01:11 /home/student/Adlet/Project/SimpleForum/internal/transport/customHttp/logout.go:31: The cookie is deleted because of the logout operation
+DEBUG: 2024/10/20 08:01:11 /home/student/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:76: The RoleAdjusterMiddleware is started
+DEBUG: 2024/10/20 08:01:11 /home/student/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:81: There is an error about getting the token from the cookie!!!
+DEBUG: 2024/10/20 08:01:11 /home/student/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:166: The CSRFMiddleware is started
+DEBUG: 2024/10/20 08:01:11 /home/student/Adlet/Project/SimpleForum/internal/transport/customHttp/homepage.go:13: homePage handler is activated
