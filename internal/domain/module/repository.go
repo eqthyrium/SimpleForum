@@ -1,7 +1,7 @@
-package repository
+package module
 
 import (
-	"SimpleForum/internal/domain"
+	"SimpleForum/internal/domain/entity"
 )
 
 type DbModule interface {
@@ -16,12 +16,12 @@ type DbModule interface {
 }
 
 type userRepository interface {
-	CreateUser(user *domain.User) error
+	CreateUser(user *entity.User) error
 	//UpdateUser()error
 	//DeleteUser(userId int) error
-	//GetUserByID(userId int) (domain.User, error)
+	//GetUserByID(userId int) (entity.User, error)
 	//CheckUserByEmail(email string) (bool, error)
-	GetUserByEmail(email string) (*domain.User, error)
+	GetUserByEmail(email string) (*entity.User, error)
 }
 
 //type PostRepository interface {

@@ -1,14 +1,14 @@
 package usecase
 
 import (
-	"SimpleForum/internal/repository"
+	"SimpleForum/internal/domain/module"
 )
 
 type Application struct {
-	ServiceDB repository.DbModule
+	ServiceDB module.DbModule
 }
 
-func NewUseCase(repoObject repository.DbModule) *Application {
+func NewUseCase(repoObject module.DbModule) *Application {
 	return &Application{
 		ServiceDB: repoObject,
 	}

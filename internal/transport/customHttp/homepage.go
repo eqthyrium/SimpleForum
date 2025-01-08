@@ -10,15 +10,16 @@ import (
 )
 
 func (handler *HandlerHttp) homePage(w http.ResponseWriter, r *http.Request) {
-	handler.DebugLog.Println("homePage handler is activated")
+
+	customLogger.DebugLogger.Println("homePage handler is activated")
 
 	if r.URL.Path != "/" {
 		clientError(w, nil, http.StatusNotFound, nil)
-		handler.InfoLog.Println("incorrect request's endpoint")
+		customLogger.InfoLogger.Println("incorrect request's endpoint")
 		return
 	}
 	if r.Method != http.MethodPost && r.Method != http.MethodGet {
-		handler.InfoLog.Println("incorrect request's method")
+		customLogger.InfoLogger.Println("incorrect request's method")
 		clientError(w, nil, http.StatusMethodNotAllowed, nil)
 		return
 	}
@@ -37,7 +38,6 @@ func (handler *HandlerHttp) homePage(w http.ResponseWriter, r *http.Request) {
 		case "User":
 			homePageGet(w, userId, []string{"../ui/html/homePage/homepage.html", "../ui/html/homePage/homePageUser.tmpl.html"})
 		case "Guest":
-
 			fmt.Fprintf(w, "<html><body><h1>Welcome to the Guest Page!!!!!</h1></body></html>")
 		}
 	}

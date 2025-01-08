@@ -20,7 +20,7 @@ func (handler *HandlerHttp) logOut(w http.ResponseWriter, r *http.Request) {
 
 	role := r.Context().Value("Role").(string)
 	if role == "Guest" {
-		handler.DebugLog.Println("The guest is trying to log out")
+		customLogger.DebugLogger.Println("The guest is trying to log out")
 		http.Redirect(w, r, "/", http.StatusSeeOther)
 		return
 	}

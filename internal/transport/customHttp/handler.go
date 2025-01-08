@@ -1,24 +1,19 @@
 package customHttp
 
 import (
-	"SimpleForum/internal/service"
+	"SimpleForum/internal/domain/module"
 	"SimpleForum/pkg/logger"
-	"log"
 )
 
 type HandlerHttp struct {
-	Service  service.HttpModule
-	ErrorLog *log.Logger
-	InfoLog  *log.Logger
-	DebugLog *log.Logger
+	Service module.HttpModule
 }
 
-func NewTransportHttpHandler(ServiceObject service.HttpModule, logger *logger.CustomLogger) *HandlerHttp {
+var customLogger = logger.NewLogger().GetLoggerObject("../logging/info.log", "../logging/error.log", "../logging/debug.log")
+
+func NewTransportHttpHandler(ServiceObject module.HttpModule) *HandlerHttp {
 	handlerObject := &HandlerHttp{
-		Service:  ServiceObject,
-		ErrorLog: logger.ErrorLogger,
-		InfoLog:  logger.InfoLogger,
-		DebugLog: logger.DebugLogger,
+		Service: ServiceObject,
 	}
 
 	return handlerObject

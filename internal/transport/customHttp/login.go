@@ -28,20 +28,20 @@ func (handler *HandlerHttp) logIn(w http.ResponseWriter, r *http.Request) {
 	customLogger.DebugLogger.Println("The logIn handler is activated")
 
 	if r.URL.Path != "/auth/login" {
-		handler.InfoLog.Println(errors.New("incorrect request's endpoint"))
+		customLogger.InfoLogger.Println(errors.New("incorrect request's endpoint"))
 		clientError(w, nil, http.StatusNotFound, nil)
 		return
 	}
 
 	if !(r.Method == http.MethodPost || r.Method == http.MethodGet) {
-		handler.InfoLog.Println(errors.New("incorrect request's method"))
+		customLogger.InfoLogger.Println(errors.New("incorrect request's method"))
 		clientError(w, nil, http.StatusMethodNotAllowed, nil)
 		return
 	}
 
 	role := r.Context().Value("Role").(string)
 	if role != "Guest" {
-		handler.InfoLog.Println(errors.New("incorrect request's role"))
+		customLogger.InfoLogger.Println(errors.New("incorrect request's role"))
 		clientError(w, nil, http.StatusForbidden, nil)
 		return
 	}
@@ -99,7 +99,7 @@ func (handler *HandlerHttp) logIn(w http.ResponseWriter, r *http.Request) {
 		tokenSignature, err := handler.Service.LogIn(email, password)
 		if err != nil {
 			if errors.Is(err, domain.ErrUserNotFound) {
-				handler.DebugLog.Println(fmt.Errorf("Function \"logIn\": %w", err))
+				customLogger.DebugLogger.Println(fmt.Errorf("Function \"logIn\": %w", err))
 				clientError(w, []string{"../ui/html/login.tmpl.html"}, http.StatusBadRequest, domain.ErrUserNotFound)
 			} else {
 				customLogger.ErrorLogger.Print(logger.ErrorWrapper("Transport", "logIn", "There is a problem in the process of giving the tokenSignature", err))

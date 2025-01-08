@@ -1,4 +1,4 @@
-package service
+package module
 
 type HttpModule interface {
 	SignUp(nickname, email, password string) error

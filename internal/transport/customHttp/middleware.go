@@ -47,7 +47,6 @@ Check presence of token in cookie from client request
 5) Panic middleware
 */
 
-var customLogger *logger.CustomLogger = logger.NewLogger().GetLoggerObject("../logging/info.log", "../logging/error.log", "../logging/debug.log", "Middleware")
 var CSRFMap map[string]string = make(map[string]string)
 
 func LoggingMiddleware(next http.Handler) http.Handler {

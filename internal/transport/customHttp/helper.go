@@ -9,7 +9,7 @@ import (
 )
 
 // Remind: After calling this kind of function, you have to return in handler immediately
-var customLoggerError *logger.CustomLogger = logger.NewLogger().GetLoggerObject("../logging/info.log", "../logging/error.log", "../logging/debug.log", "ErrorHandling")
+//var customLoggerError *logger.CustomLogger = logger.NewLogger().GetLoggerObject("../logging/info.log", "../logging/error.log", "../logging/debug.log", "ErrorHandling")
 
 func errorWebpage(w http.ResponseWriter, paths []string, status int, err error) {
 
@@ -38,7 +38,7 @@ func errorWebpage(w http.ResponseWriter, paths []string, status int, err error) 
 
 	tmpl, err := template.ParseFiles(paths...)
 	if err != nil {
-		customLoggerError.ErrorLogger.Print(logger.ErrorWrapper("Transport", "ErrorWebpage", "There is a problem in parsing the html files with template function", err))
+		customLogger.ErrorLogger.Print(logger.ErrorWrapper("Transport", "ErrorWebpage", "There is a problem in parsing the html files with template function", err))
 		http.Error(w, http.StatusText(http.StatusInternalServerError), http.StatusInternalServerError)
 		return
 	}
@@ -54,7 +54,7 @@ func errorWebpage(w http.ResponseWriter, paths []string, status int, err error) 
 	if base == "" {
 		err = tmpl.Execute(w, data)
 		if err != nil {
-			customLoggerError.ErrorLogger.Print(logger.ErrorWrapper("Transport", "ErrorWebpage", "There is a problem in execution the html files with template function", err))
+			customLogger.ErrorLogger.Print(logger.ErrorWrapper("Transport", "ErrorWebpage", "There is a problem in execution the html files with template function", err))
 			http.Error(w, http.StatusText(http.StatusInternalServerError), http.StatusInternalServerError)
 		}
 		return
@@ -62,7 +62,7 @@ func errorWebpage(w http.ResponseWriter, paths []string, status int, err error) 
 
 	err = tmpl.ExecuteTemplate(w, base, nil)
 	if err != nil {
-		customLoggerError.ErrorLogger.Print(logger.ErrorWrapper("Transport", "ErrorWebpage", "There is a problem in execution the html files with template function", err))
+		customLogger.ErrorLogger.Print(logger.ErrorWrapper("Transport", "ErrorWebpage", "There is a problem in execution the html files with template function", err))
 		http.Error(w, http.StatusText(http.StatusInternalServerError), http.StatusInternalServerError)
 
 	}

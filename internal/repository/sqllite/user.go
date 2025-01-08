@@ -2,12 +2,13 @@ package sqllite
 
 import (
 	"SimpleForum/internal/domain"
+	"SimpleForum/internal/domain/entity"
 	"SimpleForum/pkg/logger"
 	"database/sql"
 	"errors"
 )
 
-func (rp *Repository) CreateUser(user *domain.User) error {
+func (rp *Repository) CreateUser(user *entity.User) error {
 	statement := `INSERT INTO Users (Nickname, MemberIdentity, Password, Role) VALUES(?,?,?,?)`
 	_, err := rp.DB.Exec(statement, user.Nickname, user.MemberIdentity, user.Password, user.Role)
 	if err != nil {
@@ -16,16 +17,16 @@ func (rp *Repository) CreateUser(user *domain.User) error {
 	return nil
 }
 
-func (rp *Repository) UpdateUser(user *domain.User) error {
+func (rp *Repository) UpdateUser(user *entity.User) error {
 	return nil
 }
 
-func (rp *Repository) DeleteUser(user *domain.User) error {
+func (rp *Repository) DeleteUser(user *entity.User) error {
 	return nil
 }
 
-func (rp *Repository) GetUserByID(userId int) (domain.User, error) {
-	return domain.User{}, nil
+func (rp *Repository) GetUserByID(userId int) (entity.User, error) {
+	return entity.User{}, nil
 }
 
 //func (rp *Repository) CheckUserByEmail(email string) (bool, error) {
@@ -48,13 +49,13 @@ func (rp *Repository) GetUserByID(userId int) (domain.User, error) {
 //	return true, nil
 //}
 
-func (rp *Repository) GetUserByEmail(memberIdentity string) (*domain.User, error) {
+func (rp *Repository) GetUserByEmail(memberIdentity string) (*entity.User, error) {
 
 	statement := "SELECT UserId,MemberIdentity,Password, Role FROM Users WHERE MemberIdentity = ?"
 
 	row := rp.DB.QueryRow(statement, memberIdentity)
 
-	user := &domain.User{}
+	user := &entity.User{}
 
 	err := row.Scan(&user.UserId, &user.MemberIdentity, &user.Password, &user.Role)
 

@@ -14,19 +14,19 @@ func (handler *HandlerHttp) signUp(w http.ResponseWriter, r *http.Request) {
 	customLogger.DebugLogger.Println("The signup handler is activated")
 	if r.URL.Path != "/auth/signup" {
 		// Think about error handling, and logging it properly
-		handler.InfoLog.Println("incorrect request's endpoint")
+		customLogger.InfoLogger.Println("incorrect request's endpoint")
 		clientError(w, nil, http.StatusNotFound, nil)
 		return
 	}
 	if !(r.Method == http.MethodGet || r.Method == http.MethodPost) {
-		handler.InfoLog.Println("incorrect request's method")
+		customLogger.InfoLogger.Println("incorrect request's method")
 		clientError(w, nil, http.StatusMethodNotAllowed, nil)
 		return
 	}
 
 	role := r.Context().Value("Role").(string)
 	if role != "Guest" {
-		handler.InfoLog.Println("The Non-guest client attempts to use the signUp resource")
+		customLogger.InfoLogger.Println("The Non-guest client attempts to use the signUp resource")
 		clientError(w, nil, http.StatusForbidden, nil)
 		return
 	}
@@ -77,7 +77,7 @@ func (handler *HandlerHttp) signUp(w http.ResponseWriter, r *http.Request) {
 		err = handler.Service.SignUp(nickname, email, password)
 		if err != nil {
 			if errors.Is(err, domain.ErrInvalidCredential) {
-				handler.DebugLog.Println("There is invalid entered Credentials")
+				customLogger.DebugLogger.Println("There is invalid entered Credentials")
 				clientError(w, []string{"../ui/html/signup.tmpl.html"}, http.StatusBadRequest, err)
 			} else {
 				customLogger.ErrorLogger.Print(logger.ErrorWrapper("Transport", "signUp", "Failed  Sign up operation", err))

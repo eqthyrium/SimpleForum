@@ -17,14 +17,10 @@ func NewLogger() *CustomLogger {
 	return &CustomLogger{}
 }
 
-func (LoggerObject *CustomLogger) GetLoggerObject(infoFilePath, errorFilePath, debugFilePath, part string) *CustomLogger {
+func (LoggerObject *CustomLogger) GetLoggerObject(infoFilePath, errorFilePath, debugFilePath string) *CustomLogger {
 
-	var option int
-	if part == "HTTP" {
-		option = os.O_CREATE | os.O_RDWR | os.O_APPEND | os.O_TRUNC
-	} else {
-		option = os.O_CREATE | os.O_RDWR | os.O_APPEND
-	}
+	option := os.O_CREATE | os.O_TRUNC | os.O_RDWR | os.O_APPEND
+
 	file, err := os.OpenFile(infoFilePath, option, 0666)
 	if err != nil {
 		log.Fatalln("Error opening info log file: ", err)
