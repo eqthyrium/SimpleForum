@@ -7,9 +7,12 @@ import (
 	"SimpleForum/internal/transport/customHttp"
 	"database/sql"
 	"fmt"
-	_ "github.com/mattn/go-sqlite3"
+	"io"
 	"log"
 	"net/http"
+	"os"
+
+	_ "github.com/mattn/go-sqlite3"
 )
 
 func main() {
@@ -21,6 +24,10 @@ func main() {
 	}
 	defer db.Close()
 
+	if runMigration(db); err != nil {
+		log.Fatal(err)
+	}
+	log.Println("Migration applied succesfully")
 	repositoryObject := sqllite.NewRepository(db)
 	serviceObject := usecase.NewUseCase(repositoryObject)
 	httpTransport := customHttp.NewTransportHttpHandler(serviceObject)
@@ -30,6 +37,22 @@ func main() {
 	log.Print(message)
 	log.Fatalln(http.ListenAndServe(*conf.Addr, router))
 
+}
+
+func runMigration(db *sql.DB) error {
+	sqlFil, err := os.Open("../migration/mydatabase.sql")
+	if err != nil {
+		return fmt.Errorf("Error opening mifration file: %v", err)
+	}
+	content, err := io.ReadAll(sqlFil)
+	if err != nil {
+		return fmt.Errorf("Error reading megration file:%v", err)
+	}
+	_, err = db.Exec(string(content))
+	if err != nil {
+		return fmt.Errorf("Error exec data in db: %v", err)
+	}
+	return nil
 }
 
 func openDb(dsn string) (*sql.DB, error) {

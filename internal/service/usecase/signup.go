@@ -5,9 +5,10 @@ import (
 	"SimpleForum/internal/domain/entity"
 	"SimpleForum/pkg/logger"
 	"errors"
-	"golang.org/x/crypto/bcrypt"
 	"regexp"
 	"strings"
+
+	"golang.org/x/crypto/bcrypt"
 )
 
 // ToDo for SignUp:
@@ -37,10 +38,10 @@ func (app *Application) SignUp(nickname, email, password string) error {
 		return logger.ErrorWrapper("UseCase", "SignUp", "Failed to hash password", err)
 	}
 	user := &entity.User{
-		Nickname:       nickname,
-		MemberIdentity: email,
-		Password:       hashedPassword,
-		Role:           "User",
+		Nickname: nickname,
+		Email:    email,
+		Password: hashedPassword,
+		Role:     "User",
 	}
 	err = app.ServiceDB.CreateUser(user)
 	if err != nil {

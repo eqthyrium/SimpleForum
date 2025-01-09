@@ -10,7 +10,7 @@ import (
 
 func (rp *Repository) CreateUser(user *entity.User) error {
 	statement := `INSERT INTO Users (Nickname, MemberIdentity, Password, Role) VALUES(?,?,?,?)`
-	_, err := rp.DB.Exec(statement, user.Nickname, user.MemberIdentity, user.Password, user.Role)
+	_, err := rp.DB.Exec(statement, user.Nickname, user.Email, user.Password, user.Role)
 	if err != nil {
 		return logger.ErrorWrapper("Repository", "CreateUser", "The problem within the process of creation of the user in db", err)
 	}
@@ -57,7 +57,7 @@ func (rp *Repository) GetUserByEmail(memberIdentity string) (*entity.User, error
 
 	user := &entity.User{}
 
-	err := row.Scan(&user.UserId, &user.MemberIdentity, &user.Password, &user.Role)
+	err := row.Scan(&user.UserId, &user.Email, &user.Password, &user.Role)
 
 	if err != nil {
 		if errors.Is(err, sql.ErrNoRows) {
