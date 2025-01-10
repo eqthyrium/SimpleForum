@@ -9,11 +9,15 @@ import (
 )
 
 func (rp *Repository) CreateUser(user *entity.User) error {
-	statement := `INSERT INTO Users (Nickname, MemberIdentity, Password, Role) VALUES(?,?,?,?)`
+	statement := `INSERT INTO "user" (nickname, email, password, role) VALUES(?,?,?,?)`
 	_, err := rp.DB.Exec(statement, user.Nickname, user.Email, user.Password, user.Role)
 	if err != nil {
 		return logger.ErrorWrapper("Repository", "CreateUser", "The problem within the process of creation of the user in db", err)
 	}
+	// id, err := result.LastInsertId()
+	// if err != nil {
+	// 	return logger.ErrorWrapper("Repository", "CreateUser", "The problem within the process of getting of the user_id in db", err)
+	// }
 	return nil
 }
 
@@ -49,11 +53,11 @@ func (rp *Repository) GetUserByID(userId int) (entity.User, error) {
 //	return true, nil
 //}
 
-func (rp *Repository) GetUserByEmail(memberIdentity string) (*entity.User, error) {
+func (rp *Repository) GetUserByEmail(email string) (*entity.User, error) {
 
-	statement := "SELECT UserId,MemberIdentity,Password, Role FROM Users WHERE MemberIdentity = ?"
+	statement := "SELECT user_id, email,password, role FROM user WHERE email = ?"
 
-	row := rp.DB.QueryRow(statement, memberIdentity)
+	row := rp.DB.QueryRow(statement, email)
 
 	user := &entity.User{}
 

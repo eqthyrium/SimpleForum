@@ -17,17 +17,17 @@ import (
 // 3. Hash the password
 // 4. Insert into db (email, nickname, password(hashed), role(by default user))
 
-func (app *Application) SignUp(nickname, email, password string) error {
+func (usecase *UsecaseRepo) SignUp(nickname, email, password string) error {
 
 	//checking whether the input data is correct
-	correctnessData := app.isItCorrect(nickname, email, password)
+	correctnessData := usecase.isItCorrect(nickname, email, password)
 	if !correctnessData {
 		return logger.ErrorWrapper("UseCase", "SignUp", "There is an invalid entered credentials of the client to be signed up", domain.ErrInvalidCredential)
 	}
 	nickname, email = makeItLower(nickname, email)
 
 	// check is there exist such email
-	_, err := app.ServiceDB.GetUserByEmail(email)
+	_, err := usecase.ServiceDB.GetUserByEmail(email)
 
 	if !errors.Is(err, domain.ErrUserNotFound) {
 		return logger.ErrorWrapper("UseCase", "SignUp", "The client entered such credential which is already in the data base", domain.ErrInvalidCredential)
@@ -43,7 +43,7 @@ func (app *Application) SignUp(nickname, email, password string) error {
 		Password: hashedPassword,
 		Role:     "User",
 	}
-	err = app.ServiceDB.CreateUser(user)
+	err = usecase.ServiceDB.CreateUser(user)
 	if err != nil {
 		return logger.ErrorWrapper("UseCase", "SignUp", "Failed to create user", err)
 	}
@@ -51,7 +51,7 @@ func (app *Application) SignUp(nickname, email, password string) error {
 	return nil
 }
 
-func (app *Application) isItCorrect(nickname, email, password string) bool {
+func (usecase *UsecaseRepo) isItCorrect(nickname, email, password string) bool {
 
 	answerNickname := nicknameCheck(nickname)
 	answerEmail := emailCheck(email)

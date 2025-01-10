@@ -51,9 +51,9 @@ CREATE TABLE IF NOT EXISTS post_category(
     FOREIGN KEY (post_id) REFERENCES post(post_id) on delete CASCADE
 );
 
-CREATE TABLE IF NOT EXISTS user_notification(
+CREATE TABLE IF NOT EXISTS report(
     user_id integer not null,
-    resaver_user_id integer primary key,
-    content TEXT,
-    created_at text not null default (datetime('now'))
+    post_id integer not null,
+    FOREIGN KEY (post_id) REFERENCES post(post_id) on delete CASCADE,
+    FOREIGN KEY (user_id)REFERENCES user(user_id) on delete CASCADE
 );

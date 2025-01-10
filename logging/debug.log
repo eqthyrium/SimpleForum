@@ -1,0 +1,37 @@
+DEBUG: 2025/01/11 01:24:38 /Users/asemospanova/Documents/Adlet/SimpleForum/internal/transport/customHttp/middleware.go:75: The RoleAdjusterMiddleware is started
+DEBUG: 2025/01/11 01:24:38 /Users/asemospanova/Documents/Adlet/SimpleForum/internal/transport/customHttp/middleware.go:80: There is an error about getting the token from the cookie!!!
+DEBUG: 2025/01/11 01:24:38 /Users/asemospanova/Documents/Adlet/SimpleForum/internal/transport/customHttp/middleware.go:165: The CSRFMiddleware is started
+DEBUG: 2025/01/11 01:24:38 /Users/asemospanova/Documents/Adlet/SimpleForum/internal/transport/customHttp/homepage.go:14: homePage handler is activated
+DEBUG: 2025/01/11 01:24:41 /Users/asemospanova/Documents/Adlet/SimpleForum/internal/transport/customHttp/middleware.go:75: The RoleAdjusterMiddleware is started
+DEBUG: 2025/01/11 01:24:41 /Users/asemospanova/Documents/Adlet/SimpleForum/internal/transport/customHttp/middleware.go:80: There is an error about getting the token from the cookie!!!
+DEBUG: 2025/01/11 01:24:41 /Users/asemospanova/Documents/Adlet/SimpleForum/internal/transport/customHttp/middleware.go:165: The CSRFMiddleware is started
+DEBUG: 2025/01/11 01:24:41 /Users/asemospanova/Documents/Adlet/SimpleForum/internal/transport/customHttp/login.go:28: The logIn handler is activated
+DEBUG: 2025/01/11 01:24:41 /Users/asemospanova/Documents/Adlet/SimpleForum/internal/transport/customHttp/login.go:50: logIn's handler of GET request is activated
+DEBUG: 2025/01/11 01:24:44 /Users/asemospanova/Documents/Adlet/SimpleForum/internal/transport/customHttp/middleware.go:75: The RoleAdjusterMiddleware is started
+DEBUG: 2025/01/11 01:24:44 /Users/asemospanova/Documents/Adlet/SimpleForum/internal/transport/customHttp/middleware.go:80: There is an error about getting the token from the cookie!!!
+DEBUG: 2025/01/11 01:24:44 /Users/asemospanova/Documents/Adlet/SimpleForum/internal/transport/customHttp/middleware.go:165: The CSRFMiddleware is started
+DEBUG: 2025/01/11 01:24:44 /Users/asemospanova/Documents/Adlet/SimpleForum/internal/transport/customHttp/signup.go:14: The signup handler is activated
+DEBUG: 2025/01/11 01:24:44 /Users/asemospanova/Documents/Adlet/SimpleForum/internal/transport/customHttp/signup.go:35: The signup handler's GET request handler is activated
+DEBUG: 2025/01/11 01:25:13 /Users/asemospanova/Documents/Adlet/SimpleForum/internal/transport/customHttp/middleware.go:75: The RoleAdjusterMiddleware is started
+DEBUG: 2025/01/11 01:25:13 /Users/asemospanova/Documents/Adlet/SimpleForum/internal/transport/customHttp/middleware.go:80: There is an error about getting the token from the cookie!!!
+DEBUG: 2025/01/11 01:25:13 /Users/asemospanova/Documents/Adlet/SimpleForum/internal/transport/customHttp/middleware.go:165: The CSRFMiddleware is started
+DEBUG: 2025/01/11 01:25:13 /Users/asemospanova/Documents/Adlet/SimpleForum/internal/transport/customHttp/homepage.go:14: homePage handler is activated
+DEBUG: 2025/01/11 01:25:30 /Users/asemospanova/Documents/Adlet/SimpleForum/internal/transport/customHttp/middleware.go:75: The RoleAdjusterMiddleware is started
+DEBUG: 2025/01/11 01:25:30 /Users/asemospanova/Documents/Adlet/SimpleForum/internal/transport/customHttp/middleware.go:80: There is an error about getting the token from the cookie!!!
+DEBUG: 2025/01/11 01:25:30 /Users/asemospanova/Documents/Adlet/SimpleForum/internal/transport/customHttp/middleware.go:165: The CSRFMiddleware is started
+DEBUG: 2025/01/11 01:25:30 /Users/asemospanova/Documents/Adlet/SimpleForum/internal/transport/customHttp/signup.go:14: The signup handler is activated
+DEBUG: 2025/01/11 01:25:30 /Users/asemospanova/Documents/Adlet/SimpleForum/internal/transport/customHttp/signup.go:64: The signup handler's POST request handler is activated
+DEBUG: 2025/01/11 01:25:30 /Users/asemospanova/Documents/Adlet/SimpleForum/internal/transport/customHttp/middleware.go:75: The RoleAdjusterMiddleware is started
+DEBUG: 2025/01/11 01:25:30 /Users/asemospanova/Documents/Adlet/SimpleForum/internal/transport/customHttp/middleware.go:80: There is an error about getting the token from the cookie!!!
+DEBUG: 2025/01/11 01:25:30 /Users/asemospanova/Documents/Adlet/SimpleForum/internal/transport/customHttp/middleware.go:165: The CSRFMiddleware is started
+DEBUG: 2025/01/11 01:25:30 /Users/asemospanova/Documents/Adlet/SimpleForum/internal/transport/customHttp/login.go:28: The logIn handler is activated
+DEBUG: 2025/01/11 01:25:30 /Users/asemospanova/Documents/Adlet/SimpleForum/internal/transport/customHttp/login.go:50: logIn's handler of GET request is activated
+DEBUG: 2025/01/11 01:25:43 /Users/asemospanova/Documents/Adlet/SimpleForum/internal/transport/customHttp/middleware.go:75: The RoleAdjusterMiddleware is started
+DEBUG: 2025/01/11 01:25:43 /Users/asemospanova/Documents/Adlet/SimpleForum/internal/transport/customHttp/middleware.go:80: There is an error about getting the token from the cookie!!!
+DEBUG: 2025/01/11 01:25:43 /Users/asemospanova/Documents/Adlet/SimpleForum/internal/transport/customHttp/middleware.go:165: The CSRFMiddleware is started
+DEBUG: 2025/01/11 01:25:43 /Users/asemospanova/Documents/Adlet/SimpleForum/internal/transport/customHttp/login.go:28: The logIn handler is activated
+DEBUG: 2025/01/11 01:25:43 /Users/asemospanova/Documents/Adlet/SimpleForum/internal/transport/customHttp/login.go:80: logIn's handler of POST request is activated
+DEBUG: 2025/01/11 01:25:43 /Users/asemospanova/Documents/Adlet/SimpleForum/internal/transport/customHttp/middleware.go:75: The RoleAdjusterMiddleware is started
+DEBUG: 2025/01/11 01:25:43 /Users/asemospanova/Documents/Adlet/SimpleForum/internal/transport/customHttp/middleware.go:135: Checking part of token's time
+DEBUG: 2025/01/11 01:25:43 /Users/asemospanova/Documents/Adlet/SimpleForum/internal/transport/customHttp/middleware.go:165: The CSRFMiddleware is started
+DEBUG: 2025/01/11 01:25:43 /Users/asemospanova/Documents/Adlet/SimpleForum/internal/transport/customHttp/homepage.go:14: homePage handler is activated

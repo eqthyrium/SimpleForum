@@ -1,0 +1,23 @@
+INFO: 2025/01/11 01:24:38 /Users/asemospanova/Documents/Adlet/SimpleForum/internal/transport/customHttp/middleware.go:55: Method:[GET], URL_Path: /, Remote_Address: [::1]:52654
+INFO: 2025/01/11 01:24:38 /Users/asemospanova/Documents/Adlet/SimpleForum/internal/transport/customHttp/middleware.go:82: There is no cookie in the request of the client
+INFO: 2025/01/11 01:24:38 /Users/asemospanova/Documents/Adlet/SimpleForum/internal/transport/customHttp/middleware.go:59: The End of the client request, and its Duration:475.74µs
+INFO: 2025/01/11 01:24:41 /Users/asemospanova/Documents/Adlet/SimpleForum/internal/transport/customHttp/middleware.go:55: Method:[GET], URL_Path: /auth/login, Remote_Address: [::1]:52654
+INFO: 2025/01/11 01:24:41 /Users/asemospanova/Documents/Adlet/SimpleForum/internal/transport/customHttp/middleware.go:82: There is no cookie in the request of the client
+INFO: 2025/01/11 01:24:41 /Users/asemospanova/Documents/Adlet/SimpleForum/internal/transport/customHttp/middleware.go:59: The End of the client request, and its Duration:5.909389ms
+INFO: 2025/01/11 01:24:44 /Users/asemospanova/Documents/Adlet/SimpleForum/internal/transport/customHttp/middleware.go:55: Method:[GET], URL_Path: /auth/signup, Remote_Address: [::1]:52654
+INFO: 2025/01/11 01:24:44 /Users/asemospanova/Documents/Adlet/SimpleForum/internal/transport/customHttp/middleware.go:82: There is no cookie in the request of the client
+INFO: 2025/01/11 01:24:44 /Users/asemospanova/Documents/Adlet/SimpleForum/internal/transport/customHttp/middleware.go:59: The End of the client request, and its Duration:1.776198ms
+INFO: 2025/01/11 01:25:13 /Users/asemospanova/Documents/Adlet/SimpleForum/internal/transport/customHttp/middleware.go:55: Method:[GET], URL_Path: /, Remote_Address: [::1]:52654
+INFO: 2025/01/11 01:25:13 /Users/asemospanova/Documents/Adlet/SimpleForum/internal/transport/customHttp/middleware.go:82: There is no cookie in the request of the client
+INFO: 2025/01/11 01:25:13 /Users/asemospanova/Documents/Adlet/SimpleForum/internal/transport/customHttp/middleware.go:59: The End of the client request, and its Duration:165.109µs
+INFO: 2025/01/11 01:25:30 /Users/asemospanova/Documents/Adlet/SimpleForum/internal/transport/customHttp/middleware.go:55: Method:[POST], URL_Path: /auth/signup, Remote_Address: [::1]:52654
+INFO: 2025/01/11 01:25:30 /Users/asemospanova/Documents/Adlet/SimpleForum/internal/transport/customHttp/middleware.go:82: There is no cookie in the request of the client
+INFO: 2025/01/11 01:25:30 /Users/asemospanova/Documents/Adlet/SimpleForum/internal/transport/customHttp/middleware.go:59: The End of the client request, and its Duration:109.088429ms
+INFO: 2025/01/11 01:25:30 /Users/asemospanova/Documents/Adlet/SimpleForum/internal/transport/customHttp/middleware.go:55: Method:[GET], URL_Path: /auth/login, Remote_Address: [::1]:52654
+INFO: 2025/01/11 01:25:30 /Users/asemospanova/Documents/Adlet/SimpleForum/internal/transport/customHttp/middleware.go:82: There is no cookie in the request of the client
+INFO: 2025/01/11 01:25:30 /Users/asemospanova/Documents/Adlet/SimpleForum/internal/transport/customHttp/middleware.go:59: The End of the client request, and its Duration:1.235737ms
+INFO: 2025/01/11 01:25:43 /Users/asemospanova/Documents/Adlet/SimpleForum/internal/transport/customHttp/middleware.go:55: Method:[POST], URL_Path: /auth/login, Remote_Address: [::1]:52654
+INFO: 2025/01/11 01:25:43 /Users/asemospanova/Documents/Adlet/SimpleForum/internal/transport/customHttp/middleware.go:82: There is no cookie in the request of the client
+INFO: 2025/01/11 01:25:43 /Users/asemospanova/Documents/Adlet/SimpleForum/internal/transport/customHttp/middleware.go:59: The End of the client request, and its Duration:103.60752ms
+INFO: 2025/01/11 01:25:43 /Users/asemospanova/Documents/Adlet/SimpleForum/internal/transport/customHttp/middleware.go:55: Method:[GET], URL_Path: /, Remote_Address: [::1]:52654
+INFO: 2025/01/11 01:25:43 /Users/asemospanova/Documents/Adlet/SimpleForum/internal/transport/customHttp/middleware.go:59: The End of the client request, and its Duration:1.054979ms

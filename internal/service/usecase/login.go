@@ -11,9 +11,9 @@ import (
 // 1. Check whether the client exists
 // 2. Making token to that client
 
-func (app *Application) LogIn(memberIdentity, password string) (string, error) {
+func (app *UsecaseRepo) LogIn(mail, password string) (string, error) {
 
-	receivedUser, err := app.ServiceDB.GetUserByEmail(memberIdentity) // The handler side must check whether its error is ErrUserNotFound error, in order to be adjusted in giving back webpage
+	receivedUser, err := app.ServiceDB.GetUserByEmail(mail) // The handler side must check whether its error is ErrUserNotFound error, in order to be adjusted in giving back webpage
 	if err != nil {
 		return "", logger.ErrorWrapper("UseCase", "LogIn", "Failure in the getting the user by sending by email", err)
 	}

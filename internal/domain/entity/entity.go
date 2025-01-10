@@ -40,9 +40,15 @@ type PostCategory struct {
 	PostId     int `json:"post_id"`
 }
 
-type Notification struct {
-	UserId        int    `json:"user_id"`
-	ResaverUserId int    `json:"resaver_user_id"`
-	Content       string `json:"content"`
-	CreatedAt     int    `json:"created_at"`
+type Reaction struct {
+	UserId    int       `json:"user_id"`
+	PostId    int       `json:"post_id"`
+	CommentId int       `json:"comment_id"`
+	Content   string    `json:"content"`
+	CreatedAt time.Time `json:"created_at"`
+}
+
+type Report struct {
+	UserId int `json:"user_id"`
+	PostId int `json:"post_id"`
 }
