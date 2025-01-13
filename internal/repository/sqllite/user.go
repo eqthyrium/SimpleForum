@@ -9,7 +9,15 @@ import (
 )
 
 func (rp *Repository) CreateUser(user *entity.User) error {
-	statement := `INSERT INTO "user" (nickname, email, password, role) VALUES(?,?,?,?)`
+	statement := `
+	INSERT INTO "user" (
+		nickname, 
+		email, 
+		password, 
+		role
+	) 
+	VALUES(?,?,?,?)
+	`
 	_, err := rp.DB.Exec(statement, user.Nickname, user.Email, user.Password, user.Role)
 	if err != nil {
 		return logger.ErrorWrapper("Repository", "CreateUser", "The problem within the process of creation of the user in db", err)
@@ -22,6 +30,15 @@ func (rp *Repository) CreateUser(user *entity.User) error {
 }
 
 func (rp *Repository) UpdateUser(user *entity.User) error {
+	statement := `
+	UPDATE "user"
+	SET role = ?
+	WHERE user_id = ?
+	`
+	_, err := rp.DB.Exec(statement, user.Role, user.UserId)
+	if err != nil {
+		return logger.ErrorWrapper("Repository", "UpdateUser", "The problem in the process of Update user", err)
+	}
 	return nil
 }
 
