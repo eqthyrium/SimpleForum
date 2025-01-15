@@ -74,7 +74,7 @@ func (handler *HandlerHttp) signUp(w http.ResponseWriter, r *http.Request) {
 		email := r.FormValue("email")
 		password := r.FormValue("password")
 
-		err = handler.Service.SignUp(nickname, email, password)
+		err = handler.Service.SignUp(nickname, email, password, "direct")
 		if err != nil {
 			if errors.Is(err, domain.ErrInvalidCredential) {
 				customLogger.DebugLogger.Println("There is invalid entered Credentials")

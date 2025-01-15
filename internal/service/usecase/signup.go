@@ -5,10 +5,9 @@ import (
 	"SimpleForum/internal/domain/entity"
 	"SimpleForum/pkg/logger"
 	"errors"
+	"golang.org/x/crypto/bcrypt"
 	"regexp"
 	"strings"
-
-	"golang.org/x/crypto/bcrypt"
 )
 
 // ToDo for SignUp:
@@ -17,33 +16,70 @@ import (
 // 3. Hash the password
 // 4. Insert into db (email, nickname, password(hashed), role(by default user))
 
-func (usecase *UsecaseRepo) SignUp(nickname, email, password string) error {
+func (app *Application) SignUp(nickname, email, password, oauth string) error {
+	var user *entity.User = &entity.User{}
 
-	//checking whether the input data is correct
-	correctnessData := usecase.isItCorrect(nickname, email, password)
-	if !correctnessData {
-		return logger.ErrorWrapper("UseCase", "SignUp", "There is an invalid entered credentials of the client to be signed up", domain.ErrInvalidCredential)
-	}
-	nickname, email = makeItLower(nickname, email)
+	if oauth == "direct" {
+		//checking whether the input data is correct
+		correctnessData := app.isItCorrect(nickname, email, password)
+		if !correctnessData {
+			return logger.ErrorWrapper("UseCase", "SignUp", "There is an invalid entered credentials of the client to be signed up", domain.ErrInvalidCredential)
+		}
+		nickname, email = makeItLower(nickname, email)
 
-	// check is there exist such email
-	_, err := usecase.ServiceDB.GetUserByEmail(email)
+		// check is there exist such email
+		recievedUser, err := app.ServiceDB.GetUserByEmail(email)
+		if errors.Is(err, domain.ErrUserNotFound) {
 
-	if !errors.Is(err, domain.ErrUserNotFound) {
-		return logger.ErrorWrapper("UseCase", "SignUp", "The client entered such credential which is already in the data base", domain.ErrInvalidCredential)
+			user.Nickname = nickname
+			user.Email = email
+			user.Password, err = hashPassword(password)
+			if err != nil {
+				return logger.ErrorWrapper("UseCase", "SignUp", "Failed to hash password", err)
+			}
+			user.Role = "User"
+
+		} else {
+			if err == nil {
+				if recievedUser.Password != "" {
+					return logger.ErrorWrapper("UseCase", "SignUp", "The client entered such credential which is already in the data base", domain.ErrInvalidCredential)
+				}
+
+				recievedUser.Password, err = hashPassword(password) // Here we have to write the Update sql query into db
+				if err != nil {
+					return logger.ErrorWrapper("UseCase", "SignUp", "Failed to hash password", err)
+				}
+
+				err := app.ServiceDB.UpdateUserPassword(recievedUser)
+				if err != nil {
+					return logger.ErrorWrapper("UseCase", "SignUp", "Failed to update user password", err)
+				}
+
+				return nil
+
+			} else {
+				return logger.ErrorWrapper("UseCase", "SignUp", "Failed to find user by email", err)
+			}
+		}
+
+	} else {
+
+		_, err := app.ServiceDB.GetUserByEmail(email)
+		if !errors.Is(err, domain.ErrUserNotFound) {
+			if err != nil {
+				return logger.ErrorWrapper("UseCase", "SignUp", "Failed to find user by email", err)
+			}
+			return logger.ErrorWrapper("UseCase", "SignUp", "The client entered such credential which is already in the data base", domain.ErrInvalidCredential)
+		}
+
+		user.Nickname = truncatedNickname(email)
+		user.Email = email
+		user.Password = ""
+		user.Role = "User"
+
 	}
 
-	hashedPassword, err := hashPassword(password)
-	if err != nil {
-		return logger.ErrorWrapper("UseCase", "SignUp", "Failed to hash password", err)
-	}
-	user := &entity.User{
-		Nickname: nickname,
-		Email:    email,
-		Password: hashedPassword,
-		Role:     "User",
-	}
-	err = usecase.ServiceDB.CreateUser(user)
+	err := app.ServiceDB.CreateUser(user)
 	if err != nil {
 		return logger.ErrorWrapper("UseCase", "SignUp", "Failed to create user", err)
 	}
@@ -51,7 +87,7 @@ func (usecase *UsecaseRepo) SignUp(nickname, email, password string) error {
 	return nil
 }
 
-func (usecase *UsecaseRepo) isItCorrect(nickname, email, password string) bool {
+func (app *Application) isItCorrect(nickname, email, password string) bool {
 
 	answerNickname := nicknameCheck(nickname)
 	answerEmail := emailCheck(email)
@@ -82,12 +118,12 @@ func passwordCheck(password string) bool {
 	}
 
 	for i := 0; i < len(password); i++ {
-		if (password[i] >= 'A' && password[i] <= 'Z') || (password[i] >= 'a' && password[i] <= 'z') {
-			return true
+		if !(password[i] >= 32 && password[i] <= 126) {
+			return false
 		}
 	}
 
-	return false
+	return true
 }
 
 func makeItLower(nickname, email string) (string, string) {
@@ -100,4 +136,13 @@ func hashPassword(password string) (string, error) {
 		return "", err
 	}
 	return string(hashedBytes), nil
+}
+
+func truncatedNickname(email string) string {
+	for i := 0; i < len(email); i++ {
+		if email[i] == '@' {
+			return email[:i]
+		}
+	}
+	return ""
 }

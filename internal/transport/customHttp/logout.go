@@ -1,7 +1,7 @@
 package customHttp
 
 import (
-	"SimpleForum/internal/service/session"
+	session2 "SimpleForum/internal/transport/session"
 	"net/http"
 )
 
@@ -26,8 +26,8 @@ func (handler *HandlerHttp) logOut(w http.ResponseWriter, r *http.Request) {
 	}
 
 	userId := r.Context().Value("UserId").(int)
-	delete(session.MapUUID, userId)
-	session.DeleteSessionCookie(w, "auth_token")
+	delete(session2.MapUUID, userId)
+	session2.DeleteSessionCookie(w, "auth_token")
 	customLogger.DebugLogger.Println("The cookie is deleted because of the logout operation")
 	http.Redirect(w, r, "/", http.StatusSeeOther)
 

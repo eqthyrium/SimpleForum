@@ -9,25 +9,55 @@
     <style>
         input[type="text"],
         input[type="email"],
-        input[type="password"]{
-            width: 100%;  /* Make the input take up the full width of its container */
-            padding: 12px 20px;  /* Add padding inside the input */
-            margin: 8px 0;  /* Add some margin around the input */
-            display: inline-block;  /* Ensure the input is inline but treated as a block-level element */
-            border: 2px solid #ccc;  /* Set a border with a light color */
-            border-radius: 4px;  /* Add rounded corners */
-            box-sizing: border-box;  /* Ensure padding and border are included in the element’s width */
-            background-color: #f4f4f4;  /* Light background color */
-            font-size: 16px;  /* Increase the font size */
-            font-family: Arial, sans-serif;  /* Use the same font-family */
+        input[type="password"] {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 2px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            background-color: #f4f4f4;
+            font-size: 16px;
+            font-family: Arial, sans-serif;
             transition: border-color 0.3s ease-in-out, background-color 0.3s ease-in-out;
         }
-        input[type="text"],
-        input[type="email"],
-        input[type="password"]{
-            border-color: #0043ff;  /* Change border color on focus */
-            background-color: #fff;  /* Change background color on focus */
-            outline: none;  /* Remove the default focus outline */
+
+        input:focus {
+            border-color: #0043ff;
+            background-color: #fff;
+            outline: none;
+        }
+
+        .google-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            padding: 12px;
+            margin-top: 16px;
+            background-color: #4285F4;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            font-family: Arial, sans-serif;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        .google-button:hover {
+            background-color: #357AE8;
+        }
+
+        .google-button img {
+            width: 20px;
+            margin-right: 10px;
+        }
+
+        .signup-form {
+            margin-bottom: 16px;
         }
     </style>
 </head>
@@ -45,7 +75,6 @@
         <label for="nickname">Nickname:</label>
         <input type="text" id="nickname" name="nickname" placeholder="Enter your nickname" required>
 
-
         <label for="email">Email:</label>
         <input type="email" id="email" name="email" placeholder="e.g., name@example.com" required>
 
@@ -55,12 +84,33 @@
         <button type="submit" class="signup-button" aria-label="Sign Up">Sign Up</button>
     </form>
 
+    <form action="/oauth2/google" method="POST">
+        <input type="hidden" name="intent" value="signup">
+        <button type="submit" class="google-button">
+            Sign Up with Google
+        </button>
+    </form>
+
+    <form action="/oauth2/github" method="POST">
+        <input type="hidden" name="intent" value="signup">
+        <button type="submit" class="google-button">
+            Sign Up with Github
+        </button>
+    </form>
+
+
     <div class="extra-info">
         <p>Already have an account? <a href="/auth/login">Log in here</a>.</p>
     </div>
-
 </div>
 
 </body>
 </html>
 {{end}}
+
+
+
+
+
+
+

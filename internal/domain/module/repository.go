@@ -17,7 +17,7 @@ type DbModule interface {
 
 type userRepository interface {
 	CreateUser(user *entity.User) error
-	//UpdateUser()error
+	UpdateUserPassword(user *entity.User) error
 	//DeleteUser(userId int) error
 	//GetUserByID(userId int) (entity.User, error)
 	//CheckUserByEmail(email string) (bool, error)

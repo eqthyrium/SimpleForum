@@ -1,7 +1,7 @@
 package customHttp
 
 import (
-	"SimpleForum/internal/service/session"
+	"SimpleForum/internal/transport/session"
 	"SimpleForum/pkg/logger"
 	"bytes"
 	"fmt"
@@ -15,7 +15,7 @@ func (handler *HandlerHttp) homePage(w http.ResponseWriter, r *http.Request) {
 
 	if r.URL.Path != "/" {
 		clientError(w, nil, http.StatusNotFound, nil)
-		customLogger.InfoLogger.Println("incorrect request's endpoint")
+		customLogger.InfoLogger.Println("incorrect request's endpoint, it's requested endpoint is:", r.URL.Path)
 		return
 	}
 	if r.Method != http.MethodPost && r.Method != http.MethodGet {

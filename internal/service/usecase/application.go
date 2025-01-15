@@ -4,12 +4,12 @@ import (
 	"SimpleForum/internal/domain/module"
 )
 
-type UsecaseRepo struct {
+type Application struct {
 	ServiceDB module.DbModule
 }
 
-func NewUseCase(repoObject module.DbModule) *UsecaseRepo {
-	return &UsecaseRepo{
+func NewUseCase(repoObject module.DbModule) *Application {
+	return &Application{
 		ServiceDB: repoObject,
 	}
 }

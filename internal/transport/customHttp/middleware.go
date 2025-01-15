@@ -2,7 +2,7 @@ package customHttp
 
 import (
 	"SimpleForum/internal/domain"
-	"SimpleForum/internal/service/session"
+	session2 "SimpleForum/internal/transport/session"
 	"SimpleForum/pkg/logger"
 	"context"
 	"errors"
@@ -74,7 +74,7 @@ func RoleAdjusterMiddleware(next http.Handler) http.Handler {
 
 		customLogger.DebugLogger.Println("The RoleAdjusterMiddleware is started")
 
-		tokenString, err := session.GetTokenFromCookie(r, "auth_token")
+		tokenString, err := session2.GetTokenFromCookie(r, "auth_token")
 
 		if err != nil {
 			customLogger.DebugLogger.Println("There is an error about getting the token from the cookie!!!")
@@ -85,7 +85,7 @@ func RoleAdjusterMiddleware(next http.Handler) http.Handler {
 			} else {
 				customLogger.InfoLogger.Println("There is a problem in the process of Extraction token from cookie")
 				customLogger.ErrorLogger.Print(logger.ErrorWrapper("Transport", "RoleAdjusterMiddleware", "There is a problem in the process of Extraction token from cookie", err))
-				session.DeleteSessionCookie(w, "auth_token")
+				session2.DeleteSessionCookie(w, "auth_token")
 				serverError(w)
 			}
 			return
@@ -94,16 +94,16 @@ func RoleAdjusterMiddleware(next http.Handler) http.Handler {
 		if tokenString == "" {
 			customLogger.DebugLogger.Println("Entered into the absence of the token in the cookie")
 			customLogger.InfoLogger.Println("There is cookie, but there is no token")
-			session.DeleteSessionCookie(w, "auth_token")
+			session2.DeleteSessionCookie(w, "auth_token")
 			ctx := context.WithValue(r.Context(), "Role", "Guest")
 			next.ServeHTTP(w, r.WithContext(ctx))
 			return
 		}
 
-		err = session.VerifyToken(tokenString)
+		err = session2.VerifyToken(tokenString)
 		if err != nil {
 			customLogger.DebugLogger.Println("Entered into error handling of verification of the token")
-			session.DeleteSessionCookie(w, "auth_token")
+			session2.DeleteSessionCookie(w, "auth_token")
 
 			if errors.Is(err, domain.ErrInvalidToken) {
 				customLogger.InfoLogger.Println("There is an invalid token")
@@ -115,42 +115,42 @@ func RoleAdjusterMiddleware(next http.Handler) http.Handler {
 			return
 		}
 
-		extractedToken, err := session.ExtractDataFromToken(tokenString)
+		extractedToken, err := session2.ExtractDataFromToken(tokenString)
 		if err != nil {
 			customLogger.DebugLogger.Println("Entered into error handling of extraction token")
 			customLogger.ErrorLogger.Print(logger.ErrorWrapper("Transport", "RoleAdjusterMiddleware", "There is a problem in the process of extraction of the token", err))
-			session.DeleteSessionCookie(w, "auth_token")
+			session2.DeleteSessionCookie(w, "auth_token")
 			serverError(w)
 			return
 		}
 
-		if session.MapUUID[extractedToken.UserId] != extractedToken.UUID {
+		if session2.MapUUID[extractedToken.UserId] != extractedToken.UUID {
 			customLogger.DebugLogger.Println("Entered into error handling of the check up of MappUUID")
 			customLogger.InfoLogger.Println("There is not current token for the client")
-			session.DeleteSessionCookie(w, "auth_token")
-			delete(CSRFMap, session.MapUUID[extractedToken.UserId])
+			session2.DeleteSessionCookie(w, "auth_token")
+			delete(CSRFMap, session2.MapUUID[extractedToken.UserId])
 			http.Redirect(w, r, "/auth/login", http.StatusSeeOther)
 			return
 		}
 		customLogger.DebugLogger.Println("Checking part of token's time")
-		switch session.CheckTokenTime(extractedToken) {
+		switch session2.CheckTokenTime(extractedToken) {
 		case "Expired-Token":
 			customLogger.InfoLogger.Println("There is an expired token")
-			session.DeleteSessionCookie(w, "auth_token")
-			delete(CSRFMap, session.MapUUID[extractedToken.UserId])
-			delete(session.MapUUID, extractedToken.UserId)
+			session2.DeleteSessionCookie(w, "auth_token")
+			delete(CSRFMap, session2.MapUUID[extractedToken.UserId])
+			delete(session2.MapUUID, extractedToken.UserId)
 			http.Redirect(w, r, "/auth/login", http.StatusSeeOther)
 			return
 		case "Extend-Token":
-			extendedToken, err := session.ExtendTokenExistence(extractedToken)
+			extendedToken, err := session2.ExtendTokenExistence(extractedToken)
 			if err != nil {
 				customLogger.ErrorLogger.Print(logger.ErrorWrapper("Transport", "RoleAdjusterMiddleware", "There is a problem in the process of extension of time of the token", err))
-				session.DeleteSessionCookie(w, "auth_token")
+				session2.DeleteSessionCookie(w, "auth_token")
 				serverError(w)
 				return
 			}
 			customLogger.InfoLogger.Println("The member with userId:", extractedToken.UserId, "and its role:", extractedToken.Role, ", its expireTime is refreshed by adding 45 min to previous left time.")
-			session.SetTokenToCookie(w, "auth_token", extendedToken)
+			session2.SetTokenToCookie(w, "auth_token", extendedToken)
 		}
 
 		ctx := context.WithValue(r.Context(), "Role", extractedToken.Role)
@@ -172,13 +172,13 @@ func CSRFMiddleware(next http.Handler) http.Handler {
 			formCSRFText := r.FormValue("csrf_text")
 			userId := r.Context().Value("UserId").(int)
 
-			if formCSRFText != CSRFMap[session.MapUUID[userId]] {
+			if formCSRFText != CSRFMap[session2.MapUUID[userId]] {
 				customLogger.InfoLogger.Println("The CSRF attack is detected, its IP is:", r.RemoteAddr)
-				if _, ok := CSRFMap[session.MapUUID[userId]]; ok {
-					delete(CSRFMap, session.MapUUID[userId])
+				if _, ok := CSRFMap[session2.MapUUID[userId]]; ok {
+					delete(CSRFMap, session2.MapUUID[userId])
 				}
-				delete(session.MapUUID, userId)
-				session.DeleteSessionCookie(w, "auth_token")
+				delete(session2.MapUUID, userId)
+				session2.DeleteSessionCookie(w, "auth_token")
 				http.Redirect(w, r, "/auth/login", http.StatusSeeOther)
 				return
 			}
@@ -195,7 +195,7 @@ func PanicMiddleware(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		defer func() {
 			if err := recover(); err != nil {
-				customLogger.ErrorLogger.Println("Panic:\n", err, debug.Stack())
+				customLogger.ErrorLogger.Println("Panic:\n", err, string(debug.Stack()))
 				serverError(w)
 			}
 		}()

@@ -7,52 +7,30 @@ import (
 	"SimpleForum/internal/transport/customHttp"
 	"database/sql"
 	"fmt"
-	"io"
+	_ "github.com/mattn/go-sqlite3"
 	"log"
 	"net/http"
-	"os"
-
-	_ "github.com/mattn/go-sqlite3"
 )
 
 func main() {
-	conf := config.NewConfiguration()
 
-	db, err := openDb(*conf.Dsn)
+	config.Config = config.NewConfiguration()
+
+	db, err := openDb(*config.Config.Dsn)
 	if err != nil {
 		log.Fatalln(err)
 	}
 	defer db.Close()
 
-	if runMigration(db); err != nil {
-		log.Fatal(err)
-	}
-	log.Println("Migration applied succesfully")
 	repositoryObject := sqllite.NewRepository(db)
 	serviceObject := usecase.NewUseCase(repositoryObject)
 	httpTransport := customHttp.NewTransportHttpHandler(serviceObject)
 
 	router := httpTransport.Routering()
-	message := fmt.Sprintf("The server is running at: http://localhost%s/\n", *conf.Addr)
+	message := fmt.Sprintf("The server is running at: http://localhost%s/\n", *config.Config.Addr)
 	log.Print(message)
-	log.Fatalln(http.ListenAndServe(*conf.Addr, router))
+	log.Fatalln(http.ListenAndServe(*config.Config.Addr, router))
 
-}
-
-func runMigration(db *sql.DB) error {
-	sqlFil, err := os.Open("../migration/mydatabase.sql")
-	if err != nil {
-		return fmt.Errorf("Error opening mifration file: %v", err)
-	}
-	content, err := io.ReadAll(sqlFil)
-	if err != nil {
-		return fmt.Errorf("Error reading megration file:%v", err)
-	}
-	_, err = db.Exec(string(content))
-	if err != nil {
-		return fmt.Errorf("Error exec data in db: %v", err)
-	}
-	return nil
 }
 
 func openDb(dsn string) (*sql.DB, error) {

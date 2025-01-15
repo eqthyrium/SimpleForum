@@ -2,14 +2,13 @@ package customHttp
 
 import (
 	"SimpleForum/internal/domain"
+	"SimpleForum/internal/transport/session"
 	"SimpleForum/pkg/logger"
 	"bytes"
 	"errors"
 	"fmt"
 	"html/template"
 	"net/http"
-
-	"SimpleForum/internal/service/session"
 )
 
 /*
@@ -89,14 +88,8 @@ func (handler *HandlerHttp) logIn(w http.ResponseWriter, r *http.Request) {
 		email := r.FormValue("email")
 		password := r.FormValue("password")
 
-		//flag := r.FormValue("flag")
-		//
-		//if flag {
-		//	authentication()
-		//}
-
 		// Think about session based on token here
-		tokenSignature, err := handler.Service.LogIn(email, password)
+		tokenSignature, err := handler.Service.LogIn(email, password, "direct")
 		if err != nil {
 			if errors.Is(err, domain.ErrUserNotFound) {
 				customLogger.DebugLogger.Println(fmt.Errorf("Function \"logIn\": %w", err))

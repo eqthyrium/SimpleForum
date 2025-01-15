@@ -17,7 +17,10 @@ func (handler *HandlerHttp) Routering() http.Handler {
 	mux.Handle("/auth/login", Middleware(handler.logIn))
 	mux.Handle("/auth/signup", Middleware(handler.signUp))
 	mux.Handle("/logout", Middleware(handler.logOut))
-	// Example of serving static files
+	mux.Handle("/oauth2/google", Middleware(handler.googleAuthentication))
+	mux.Handle("/oauth2/google/callback", Middleware(handler.googleCallback))
+	mux.Handle("/oauth2/github", Middleware(handler.githubAuthentication))
+	mux.Handle("/oauth2/github/callback", Middleware(handler.githubCallback))
 
 	//mux.Handle("/post", postPagePath)
 	return http.HandlerFunc(mux.ServeHTTP)

@@ -2,7 +2,7 @@ package usecase
 
 import (
 	"SimpleForum/internal/domain"
-	"SimpleForum/internal/service/session"
+	"SimpleForum/internal/transport/session"
 	"SimpleForum/pkg/logger"
 	"golang.org/x/crypto/bcrypt"
 )
@@ -11,16 +11,19 @@ import (
 // 1. Check whether the client exists
 // 2. Making token to that client
 
-func (app *UsecaseRepo) LogIn(mail, password string) (string, error) {
+func (app *Application) LogIn(email, password, oauth string) (string, error) {
 
-	receivedUser, err := app.ServiceDB.GetUserByEmail(mail) // The handler side must check whether its error is ErrUserNotFound error, in order to be adjusted in giving back webpage
+	receivedUser, err := app.ServiceDB.GetUserByEmail(email) // The handler side must check whether its error is ErrUserNotFound error, in order to be adjusted in giving back webpage
 	if err != nil {
 		return "", logger.ErrorWrapper("UseCase", "LogIn", "Failure in the getting the user by sending by email", err)
 	}
 
-	isTheSame := CheckPassword(receivedUser.Password, password)
-	if !isTheSame {
-		return "", domain.ErrUserNotFound
+	if oauth == "direct" {
+		isTheSame := CheckPassword(receivedUser.Password, password)
+		if !isTheSame {
+			return "", domain.ErrUserNotFound
+
+		}
 
 	}
 
