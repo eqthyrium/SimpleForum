@@ -20,7 +20,7 @@ func (rp *Repository) GetAllPosts() ([]entity.Post, error) {
 
 	var posts []entity.Post
 	for rows.Next() {
-		var post entity.Post
+		var post entity.Postgti 
 		err := rows.Scan(&post.PostId, &post.Title, &post.Content, &post.CreatedAt)
 		if err != nil {
 			logger.ErrorWrapper("Repository", "GetAllPosts", "", err)

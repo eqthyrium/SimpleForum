@@ -11,7 +11,19 @@ import (
 // MemberIdentity is the Email!!!!!!!
 
 func (rp *Repository) CreateUser(user *entity.User) error {
+<<<<<<< HEAD
 	statement := `INSERT INTO Users (Nickname, Email, Password, Role) VALUES(?,?,?,?)`
+=======
+	statement := `
+	INSERT INTO "user" (
+		nickname, 
+		email, 
+		password, 
+		role
+	) 
+	VALUES(?,?,?,?)
+	`
+>>>>>>> 4b447443e2c202f7fd81126d1feb345e0481d725
 	_, err := rp.DB.Exec(statement, user.Nickname, user.Email, user.Password, user.Role)
 	if err != nil {
 		return logger.ErrorWrapper("Repository", "CreateUser", "The problem within the process of creation of the user in db", err)
@@ -19,11 +31,23 @@ func (rp *Repository) CreateUser(user *entity.User) error {
 	return nil
 }
 
+<<<<<<< HEAD
 func (rp *Repository) UpdateUserPassword(user *entity.User) error {
 	statement := `UPDATE Users SET Password = ? WHERE Email = ?`
 	_, err := rp.DB.Exec(statement, user.Password, user.Email)
 	if err != nil {
 		return logger.ErrorWrapper("Repository", "UpdateUserPassword", "The problem within the process of updating the password of the user in db", err)
+=======
+func (rp *Repository) UpdateUser(user *entity.User) error {
+	statement := `
+	UPDATE "user"
+	SET role = ?
+	WHERE user_id = ?
+	`
+	_, err := rp.DB.Exec(statement, user.Role, user.UserId)
+	if err != nil {
+		return logger.ErrorWrapper("Repository", "UpdateUser", "The problem in the process of Update user", err)
+>>>>>>> 4b447443e2c202f7fd81126d1feb345e0481d725
 	}
 	return nil
 }
