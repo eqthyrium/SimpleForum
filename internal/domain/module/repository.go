@@ -6,9 +6,9 @@ import (
 
 type DbModule interface {
 	userRepository
-	//PostRepository
-	//CommentRepository
-	//CategoryRepository
+	postRepository
+	commentRepository
+	categoryRepository
 	//PostCategoryRepository
 	//ReactionRepository
 	//NotificationRepository
@@ -16,23 +16,25 @@ type DbModule interface {
 }
 
 type userRepository interface {
-	CreateUser(user *entity.User) error
-	UpdateUserPassword(user *entity.User) error
+	CreateUser(user *entity.Users) error
+	UpdateUserPassword(user *entity.Users) error
 	//DeleteUser(userId int) error
 	//GetUserByID(userId int) (entity.User, error)
 	//CheckUserByEmail(email string) (bool, error)
-	GetUserByEmail(email string) (*entity.User, error)
+	GetUserByEmail(email string) (*entity.Users, error)
 }
 
-//type PostRepository interface {
-//}
-//
-//type CommentRepository interface {
-//}
-//
-//type CategoryRepository interface {
-//}
-//
+type postRepository interface {
+	GetLatestAllPosts(categories []string) ([]entity.Posts, error)
+}
+
+type commentRepository interface {
+}
+
+type categoryRepository interface {
+	GetAllCategories() ([]entity.Categories, error)
+}
+
 //type PostCategoryRepository interface {
 //}
 //

@@ -10,7 +10,7 @@ import (
 
 // MemberIdentity is the Email!!!!!!!
 
-func (rp *Repository) CreateUser(user *entity.User) error {
+func (rp *Repository) CreateUser(user *entity.Users) error {
 	statement := `INSERT INTO Users (Nickname, Email, Password, Role) VALUES(?,?,?,?)`
 	_, err := rp.DB.Exec(statement, user.Nickname, user.Email, user.Password, user.Role)
 	if err != nil {
@@ -19,7 +19,7 @@ func (rp *Repository) CreateUser(user *entity.User) error {
 	return nil
 }
 
-func (rp *Repository) UpdateUserPassword(user *entity.User) error {
+func (rp *Repository) UpdateUserPassword(user *entity.Users) error {
 	statement := `UPDATE Users SET Password = ? WHERE Email = ?`
 	_, err := rp.DB.Exec(statement, user.Password, user.Email)
 	if err != nil {
@@ -60,13 +60,13 @@ func (rp *Repository) UpdateUserPassword(user *entity.User) error {
 ////	return true, nil
 ////}
 
-func (rp *Repository) GetUserByEmail(email string) (*entity.User, error) {
+func (rp *Repository) GetUserByEmail(email string) (*entity.Users, error) {
 
 	statement := "SELECT UserId,Email,Password, Role FROM Users WHERE Email = ?"
 
 	row := rp.DB.QueryRow(statement, email)
 
-	user := &entity.User{}
+	user := &entity.Users{}
 
 	err := row.Scan(&user.UserId, &user.Email, &user.Password, &user.Role)
 

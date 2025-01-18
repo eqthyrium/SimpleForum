@@ -21,6 +21,7 @@ func (handler *HandlerHttp) Routering() http.Handler {
 	mux.Handle("/oauth2/google/callback", Middleware(handler.googleCallback))
 	mux.Handle("/oauth2/github", Middleware(handler.githubAuthentication))
 	mux.Handle("/oauth2/github/callback", Middleware(handler.githubCallback))
+	mux.Handle("/results", Middleware(handler.results))
 
 	//mux.Handle("/post", postPagePath)
 	return http.HandlerFunc(mux.ServeHTTP)

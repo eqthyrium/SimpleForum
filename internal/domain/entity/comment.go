@@ -1,6 +1,6 @@
 package entity
 
-type Comment struct {
+type Commentaries struct {
 	CommentId int    `json:"comment_id"`
 	PostId    int    `json:"post_id"`
 	UserId    int    `json:"user_id"`

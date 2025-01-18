@@ -1,0 +1,13 @@
+DEBUG: 2025/01/18 04:10:28 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:75: The RoleAdjusterMiddleware is started
+DEBUG: 2025/01/18 04:10:28 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:80: There is an error about getting the token from the cookie!!!
+DEBUG: 2025/01/18 04:10:28 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:165: The CSRFMiddleware is started
+DEBUG: 2025/01/18 04:10:28 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/homepage.go:16: homePage handler is activated
+DEBUG: 2025/01/18 04:10:37 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:75: The RoleAdjusterMiddleware is started
+DEBUG: 2025/01/18 04:10:37 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:80: There is an error about getting the token from the cookie!!!
+DEBUG: 2025/01/18 04:10:37 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:165: The CSRFMiddleware is started
+DEBUG: 2025/01/18 04:10:37 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/homepage.go:16: homePage handler is activated
+DEBUG: 2025/01/18 04:10:37 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/helper.go:16: errorWebpage handler is activated
+DEBUG: 2025/01/18 04:10:38 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:75: The RoleAdjusterMiddleware is started
+DEBUG: 2025/01/18 04:10:38 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:80: There is an error about getting the token from the cookie!!!
+DEBUG: 2025/01/18 04:10:38 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:165: The CSRFMiddleware is started
+DEBUG: 2025/01/18 04:10:38 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/homepage.go:16: homePage handler is activated

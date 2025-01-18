@@ -17,7 +17,7 @@ import (
 // 4. Insert into db (email, nickname, password(hashed), role(by default user))
 
 func (app *Application) SignUp(nickname, email, password, oauth string) error {
-	var user *entity.User = &entity.User{}
+	var user *entity.Users = &entity.Users{}
 
 	if oauth == "direct" {
 		//checking whether the input data is correct

@@ -1,0 +1,3 @@
+ERROR: 2025/01/18 04:10:37 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/homepage.go:105: [Layer:Transport,Function: homePageGet,Context: There is a problem in the process of getting latest posts]---> [Layer:UseCase,Function: GetLatestPosts,Context: There is problem with getting all the recent posts from the db]---> [Layer:Repository,Function: GetLatestAllPosts,Context: Failed to execute query for posts]---> sql: converting argument $1 type: unsupported type []int, a slice of int
+
+

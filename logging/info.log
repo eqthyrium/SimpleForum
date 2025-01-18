@@ -1,0 +1,9 @@
+INFO: 2025/01/18 04:10:28 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:55: Method:[GET], URL_Path: /, Remote_Address: [::1]:56448
+INFO: 2025/01/18 04:10:28 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:82: There is no cookie in the request of the client
+INFO: 2025/01/18 04:10:28 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:59: The End of the client request, and its Duration:1.52027ms
+INFO: 2025/01/18 04:10:37 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:55: Method:[GET], URL_Path: /, Remote_Address: [::1]:56448
+INFO: 2025/01/18 04:10:37 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:82: There is no cookie in the request of the client
+INFO: 2025/01/18 04:10:37 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:59: The End of the client request, and its Duration:486.368µs
+INFO: 2025/01/18 04:10:38 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:55: Method:[GET], URL_Path: /, Remote_Address: [::1]:56448
+INFO: 2025/01/18 04:10:38 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:82: There is no cookie in the request of the client
+INFO: 2025/01/18 04:10:38 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:59: The End of the client request, and its Duration:812.817µs

@@ -1,6 +1,6 @@
 package entity
 
-type User struct {
+type Users struct {
 	UserId   int    `json:"user_id"`
 	Nickname string `json:"nickname"`
 	Email    string `json:"email"`
