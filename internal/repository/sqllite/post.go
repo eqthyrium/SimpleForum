@@ -53,3 +53,32 @@ func (rp *Repository) GetLatestAllPosts(categories []string) ([]entity.Posts, er
 
 	return posts, nil
 }
+
+func (rp *Repository) CreatePost(post *entity.Posts) error {
+	statement := `
+	INSERT INTO Posts
+	UserId,
+	Title,
+	Content,
+	Image
+	VALUES (?, ?, ?, ?)
+	`
+	_, err := rp.DB.Exec(statement, post.UserId, post.Title, post.Content, post.Image)
+	if err != nil {
+		return logger.ErrorWrapper("Repository", "CreatePost", "The problem within the process of creation of the post in db", err)
+	}
+	return nil
+}
+
+func (rp *Repository) DeletePost(PostId int) error {
+	statement := `
+	DELETE  
+	FROM Posts
+	WHERE PostId = ?
+	`
+	_, err := rp.DB.Exec(statement, PostId)
+	if err != nil {
+		return logger.ErrorWrapper("Repository", "DeletePost", "The problem within the process of delete the post in db", err)
+	}
+	return nil
+}
