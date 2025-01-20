@@ -82,3 +82,62 @@ func (rp *Repository) DeletePost(PostId int) error {
 	}
 	return nil
 }
+
+func (rp *Repository) LikePost(UserID, PostID int) error {
+	statement := `
+	UPDATE Posts
+		SET LikeCount = LikeCount + 1
+		WHERE PostId = ?
+		AND NOT EXISTS (
+    		SELECT 1
+    		FROM Reactions
+    		WHERE UserId = ? 
+    		AND Action = 'L'
+    		AND PostId = ?
+			)
+	`
+	_, err := rp.DB.Exec(statement, PostID, UserID, PostID)
+	if err != nil {
+		return logger.ErrorWrapper("Repository", "LikePost", "The problem in the LikePost function (query in Posts table)", err)
+	}
+	statement = `
+	UPDATE Reactions
+		SET Action = 'L'
+		WHERE UserId = ? and PostId = ?
+	`
+	_, err = rp.DB.Exec(statement, UserID, PostID)
+	if err != nil {
+		return logger.ErrorWrapper("Repository", "LikePost", "The problem in the LikePost function (query in the Reactions table)", err)
+	}
+	return nil
+}
+
+// так тут стоит немного поменять логику, так как еще есть один вариант
+func (rp *Repository) DislikePost(UserID, PostID int) error {
+	statement := `
+	UPDATE Posts
+		SET LikeCount = LikeCount + 1
+		WHERE PostId = ?
+		AND NOT EXISTS (
+    		SELECT 1
+    		FROM Reactions
+    		WHERE UserId = ? 
+    		AND Action = 'L'
+    		AND PostId = ?
+			)
+	`
+	_, err := rp.DB.Exec(statement, PostID, UserID, PostID)
+	if err != nil {
+		return logger.ErrorWrapper("Repository", "LikePost", "The problem in the LikePost function (query in Posts table)", err)
+	}
+	statement = `
+	UPDATE Reactions
+		SET Action = 'L'
+		WHERE UserId = ? and PostId = ?
+	`
+	_, err = rp.DB.Exec(statement, UserID, PostID)
+	if err != nil {
+		return logger.ErrorWrapper("Repository", "LikePost", "The problem in the LikePost function (query in the Reactions table)", err)
+	}
+	return nil
+}
