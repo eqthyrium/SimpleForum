@@ -84,60 +84,127 @@ func (rp *Repository) DeletePost(PostId int) error {
 }
 
 func (rp *Repository) LikePost(UserID, PostID int) error {
-	statement := `
-	UPDATE Posts
-		SET LikeCount = LikeCount + 1
-		WHERE PostId = ?
-		AND NOT EXISTS (
-    		SELECT 1
-    		FROM Reactions
-    		WHERE UserId = ? 
-    		AND Action = 'L'
-    		AND PostId = ?
-			)
-	`
-	_, err := rp.DB.Exec(statement, PostID, UserID, PostID)
-	if err != nil {
-		return logger.ErrorWrapper("Repository", "LikePost", "The problem in the LikePost function (query in Posts table)", err)
-	}
-	statement = `
-	UPDATE Reactions
-		SET Action = 'L'
-		WHERE UserId = ? and PostId = ?
-	`
-	_, err = rp.DB.Exec(statement, UserID, PostID)
-	if err != nil {
-		return logger.ErrorWrapper("Repository", "LikePost", "The problem in the LikePost function (query in the Reactions table)", err)
+	if rp.IsLiked(UserID, PostID) {
+		return nil
+	} else if rp.IsDisliked(UserID, PostID) {
+		query := `
+		UPDATE Posts
+			SET DislikeCount = DislikeCount - 1
+			WHERE PostId = ? and UserId = ?
+		`
+		_, err := rp.DB.Exec(query, PostID, UserID)
+		if err != nil {
+			return logger.ErrorWrapper("Repository", "LikePost", "The problem in the LikePost function (query in Posts table)", err)
+		}
+		query = `
+		DELETE FROM Reactions
+		WHERE UserId = ? and PostId = ? and Action = 'D'
+		`
+		_, err = rp.DB.Exec(query, UserID, PostID)
+		if err != nil {
+			return logger.ErrorWrapper("Reposotpry", "LikePost", "The problem in the LikePost function (query in Reaction table)", err)
+		}
+		return nil
+	} else if !rp.IsDisliked(UserID, PostID) && !rp.IsLiked(UserID, PostID) {
+		query := `
+		INSERT INTO Posts 
+			PostId = ?,
+			UserId = ?,
+			LikeCount = LikeCount + 1 
+			VALUES (?, ?) 
+		`
+		_, err := rp.DB.Exec(query, PostID, UserID)
+		if err != nil {
+			return logger.ErrorWrapper("Repository", "LikePost", "The problem is to insert like into posts tables", err)
+		}
+		query = `
+		INSERT INTO Reactions
+			PostId = ?,
+			UserId = ?
+			Action = 'L'
+		`
+		_, err = rp.DB.Exec(query, PostID, UserID)
+		if err != nil {
+			return logger.ErrorWrapper("Repository", "LikePost", "The problem is to insert into reation tables", err)
+		}
 	}
 	return nil
 }
 
-// так тут стоит немного поменять логику, так как еще есть один вариант
 func (rp *Repository) DislikePost(UserID, PostID int) error {
-	statement := `
-	UPDATE Posts
-		SET LikeCount = LikeCount + 1
-		WHERE PostId = ?
-		AND NOT EXISTS (
-    		SELECT 1
-    		FROM Reactions
-    		WHERE UserId = ? 
-    		AND Action = 'L'
-    		AND PostId = ?
-			)
-	`
-	_, err := rp.DB.Exec(statement, PostID, UserID, PostID)
-	if err != nil {
-		return logger.ErrorWrapper("Repository", "LikePost", "The problem in the LikePost function (query in Posts table)", err)
-	}
-	statement = `
-	UPDATE Reactions
-		SET Action = 'L'
+	if rp.IsLiked(UserID, PostID) {
+		query := `
+		UPDATE Posts
+		LikeCount = LikeCount - 1
 		WHERE UserId = ? and PostId = ?
-	`
-	_, err = rp.DB.Exec(statement, UserID, PostID)
-	if err != nil {
-		return logger.ErrorWrapper("Repository", "LikePost", "The problem in the LikePost function (query in the Reactions table)", err)
+		`
+		_, err := rp.DB.Exec(query, UserID, PostID)
+		if err != nil {
+			return logger.ErrorWrapper("Repository", "DisLikePost", "The problem is to update post", err)
+		}
+		query = `
+		DELETE FROM Reactions
+		WHERE UserId = ? and PostId = ? and Action = 'L'
+		`
+		_, err = rp.DB.Exec(query, UserID, PostID)
+		if err != nil {
+			return logger.ErrorWrapper("Repository", "DisLikePost", "The problem is delete post reactions", err)
+		}
+		return nil
+	} else if rp.IsDisliked(UserID, PostID) {
+		return nil
+	} else if !rp.IsLiked(UserID, PostID) && !rp.IsDisliked(UserID, PostID) {
+		query := `
+		INSERT INTO Posts
+		UserId = ?
+		PostId = ?
+		DislikeCount = DislikeCount + 1
+		`
+		_, err := rp.DB.Exec(query, UserID, PostID)
+		if err != nil {
+			return logger.ErrorWrapper("Repository", "DisLikePost", "The problem is insert into Posts tables", err)
+		}
+		query = `
+		INSERT INTO Reactions
+		UserId = ?,
+		PostId = ?
+		Action = 'D'
+		VALUES = (?, ?)
+		`
+		_, err = rp.DB.Exec(query, UserID, PostID)
+		if err != nil {
+			return logger.ErrorWrapper("Repository", "DisLikePost", "The problem is insert into Reactions tables", err)
+		}
 	}
 	return nil
+}
+
+func (rp *Repository) IsLiked(UserID int, PostID int) bool {
+	var answer bool
+	query := `
+	EXIST (SELECT *
+			FROM Reactions
+			WHERE UserId = ? and PostId = ? and Actions = 'L')
+	`
+	err := rp.DB.QueryRow(query, UserID, PostID).Scan(&answer)
+	if err != nil {
+		logger.ErrorWrapper("Repository", "Isliked", "The problem in the IsLiked function", err)
+		return answer
+	}
+	return answer
+}
+
+func (rp *Repository) IsDisliked(UserID int, PostID int) bool {
+	var answer bool
+	query := `
+	EXIST (SELECT *
+			FROM Reactions
+			WHERE UserId = ? and PostId = ? and Actions = 'D')
+	`
+	err := rp.DB.QueryRow(query, UserID, PostID).Scan(&answer)
+	if err != nil {
+		logger.ErrorWrapper("Repository", "Isliked", "The problem in the IsLiked function", err)
+		return answer
+	}
+	return answer
 }
