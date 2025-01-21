@@ -241,3 +241,38 @@ func (rp *Repository) GetPostsByCertainUser(UserId int) ([]entity.Posts, error) 
 	}
 	return posts, nil
 }
+
+func (rp *Repository) GetReactedPostsByCertainUser(UserId int) ([]entity.Posts, error) {
+	var posts []entity.Posts
+	query := `
+    WITH Tb1 AS (
+        SELECT PostId
+        FROM Reactions
+        WHERE UserId = ? AND Action IN ('L')
+    )
+    SELECT * 
+    FROM Posts
+    WHERE PostId IN (SELECT PostId FROM Tb1)
+    ORDER BY CreatedAt DESC
+    `
+	rows, err := rp.DB.Query(query, UserId)
+	if err != nil {
+		return nil, logger.ErrorWrapper("Repository", "GetReactedPostsByCertainUser", "The problem is get posts by user", err)
+	}
+	defer rows.Close()
+
+	for rows.Next() {
+		post := entity.Posts{}
+		err := rows.Scan(&post.PostId, &post.UserId, &post.Title, &post.Content, &post.Image, &post.LikeCount, &post.DislikeCount, &post.CreatedAt)
+		if err != nil {
+			return nil, logger.ErrorWrapper("Repository", "GetReactedPostsByCertainUser", "Failed to scan post row", err)
+		}
+		posts = append(posts, post)
+	}
+
+	if err := rows.Err(); err != nil {
+		return nil, logger.ErrorWrapper("Repository", "GetReactedPostsByCertainUser", "Error occurred during rows iteration", err)
+	}
+
+	return posts, nil
+}
