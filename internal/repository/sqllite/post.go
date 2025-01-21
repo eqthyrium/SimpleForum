@@ -227,18 +227,19 @@ func (rp *Repository) IsPostDisliked(UserID int, PostID int) bool {
 }
 
 func (rp *Repository) GetPostsByCertainUser(UserId int) ([]entity.Posts, error) {
+	var posts []entity.Posts
 	query := `
 	SELECT * 
 	FROM Posts
 	WHERE UserId = ? 
 	ORDER BY CreatedAt DESC
 	`
-	rows, err := rp.DB.Query(query)
+	rows, err := rp.DB.Query(query, UserId)
 	if err != nil {
 		return nil, logger.ErrorWrapper("Repository", "GetPostsByCertainUser", "The problem is get posts by user", err)
 	}
 	defer rows.Close()
-	var posts []entity.Posts
+
 	for rows.Next() {
 		post := entity.Posts{}
 		err := rows.Scan(&post.PostId, &post.UserId, &post.Title, &post.Content, &post.Image, &post.LikeCount, &post.DislikeCount, &post.CreatedAt)
@@ -247,5 +248,5 @@ func (rp *Repository) GetPostsByCertainUser(UserId int) ([]entity.Posts, error) 
 		}
 		posts = append(posts, post)
 	}
-	return nil, nil
+	return posts, nil
 }
