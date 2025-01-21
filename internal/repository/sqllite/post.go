@@ -84,9 +84,9 @@ func (rp *Repository) DeletePost(PostId int) error {
 }
 
 func (rp *Repository) LikePost(UserID, PostID int) error {
-	if rp.IsLiked(UserID, PostID) {
+	if rp.IsPostLiked(UserID, PostID) {
 		return nil
-	} else if rp.IsDisliked(UserID, PostID) {
+	} else if rp.IsPostDisliked(UserID, PostID) {
 		query := `
 		UPDATE Posts
 			SET DislikeCount = DislikeCount - 1
@@ -105,7 +105,7 @@ func (rp *Repository) LikePost(UserID, PostID int) error {
 			return logger.ErrorWrapper("Reposotpry", "LikePost", "The problem in the LikePost function (query in Reaction table)", err)
 		}
 		return nil
-	} else if !rp.IsDisliked(UserID, PostID) && !rp.IsLiked(UserID, PostID) {
+	} else if !rp.IsPostDisliked(UserID, PostID) && !rp.IsPostLiked(UserID, PostID) {
 		query := `
 		INSERT INTO Posts 
 			PostId = ?,
@@ -132,7 +132,7 @@ func (rp *Repository) LikePost(UserID, PostID int) error {
 }
 
 func (rp *Repository) DislikePost(UserID, PostID int) error {
-	if rp.IsLiked(UserID, PostID) {
+	if rp.IsPostLiked(UserID, PostID) {
 		query := `
 		UPDATE Posts
 		LikeCount = LikeCount - 1
@@ -151,9 +151,9 @@ func (rp *Repository) DislikePost(UserID, PostID int) error {
 			return logger.ErrorWrapper("Repository", "DisLikePost", "The problem is delete post reactions", err)
 		}
 		return nil
-	} else if rp.IsDisliked(UserID, PostID) {
+	} else if rp.IsPostDisliked(UserID, PostID) {
 		return nil
-	} else if !rp.IsLiked(UserID, PostID) && !rp.IsDisliked(UserID, PostID) {
+	} else if !rp.IsPostLiked(UserID, PostID) && !rp.IsPostDisliked(UserID, PostID) {
 		query := `
 		INSERT INTO Posts
 		UserId = ?
@@ -179,7 +179,7 @@ func (rp *Repository) DislikePost(UserID, PostID int) error {
 	return nil
 }
 
-func (rp *Repository) IsLiked(UserID int, PostID int) bool {
+func (rp *Repository) IsPostLiked(UserID int, PostID int) bool {
 	var answer bool
 	query := `
 	EXIST (SELECT *
@@ -194,7 +194,7 @@ func (rp *Repository) IsLiked(UserID int, PostID int) bool {
 	return answer
 }
 
-func (rp *Repository) IsDisliked(UserID int, PostID int) bool {
+func (rp *Repository) IsPostDisliked(UserID int, PostID int) bool {
 	var answer bool
 	query := `
 	EXIST (SELECT *
