@@ -14,3 +14,13 @@ func (app *Application) GetLatestPosts(requestedCategories []string) ([]entity.P
 
 	return posts, nil
 }
+
+func (app *Application) GetMyPosts(userId int) ([]entity.Posts, error) {
+	//
+	//posts, err := app.ServiceDB.GetLatestAllPosts(requestedCategories)
+	//if err != nil {
+	//	return nil, logger.ErrorWrapper("UseCase", "GetLatestPosts", "There is problem with getting all the recent posts from the db", err)
+	//}
+
+	return nil, nil
+}

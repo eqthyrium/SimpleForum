@@ -7,7 +7,7 @@ import (
 type DbModule interface {
 	userRepository
 	postRepository
-	commentRepository
+	//commentRepository
 	categoryRepository
 	//PostCategoryRepository
 	//ReactionRepository
@@ -26,20 +26,24 @@ type userRepository interface {
 
 type postRepository interface {
 	GetLatestAllPosts(categories []string) ([]entity.Posts, error)
+	GetPostsByCertainUser(userId int) ([]entity.Posts, error)
 }
 
-type commentRepository interface {
-}
+//type commentRepository interface {
+//}
 
 type categoryRepository interface {
 	GetAllCategories() ([]entity.Categories, error)
 }
 
+//
 //type PostCategoryRepository interface {
 //}
-//
-//type ReactionRepository interface {
-//}
+
+type ReactionRepository interface {
+	GetReactedPostsByCertainUser(userId int, reaction string) ([]entity.Posts, error)
+}
+
 //
 //type NotificationRepository interface {
 //}
