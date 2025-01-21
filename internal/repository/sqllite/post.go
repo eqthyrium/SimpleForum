@@ -85,6 +85,23 @@ func (rp *Repository) DeletePost(PostId int) error {
 
 func (rp *Repository) LikePost(UserID, PostID int) error {
 	if rp.IsPostLiked(UserID, PostID) {
+		query := `
+		UPDATE Posts
+			SET LikeCount = LikeCount - 1 
+			WHERE PostId = ? and UserId = ?
+		`
+		_, err := rp.DB.Exec(query, PostID, UserID)
+		if err != nil {
+			return logger.ErrorWrapper("Repository", "LikePost", "The problem in the LikePost function (query in Posts table)", err)
+		}
+		query = `
+		DELETE FROM Reactions
+		WHERE UserId = ? and PosrId = ? and Action = 'L'
+		`
+		_, err = rp.DB.Exec(query, UserID, PosrId)
+		if err != nil {
+			return logger.ErrorWrapper("Repository", "LikePost", "The problem in the LikePost function (query in Reaction table)", err)
+		}
 		return nil
 	} else if rp.IsPostDisliked(UserID, PostID) {
 		query := `
