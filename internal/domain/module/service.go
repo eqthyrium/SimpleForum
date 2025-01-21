@@ -3,11 +3,25 @@ package module
 import "SimpleForum/internal/domain/entity"
 
 type HttpModule interface {
+	Authentication
+	Posts
+	Commentaries
+	Categories
+}
+
+type Authentication interface {
 	SignUp(nickname, email, password, oauth string) error
 	LogIn(email, password, oauth string) (string, error)
-	GetAllCategories() ([]entity.Categories, error)
+}
+
+type Posts interface {
 	GetLatestPosts(requestedCategories []string) ([]entity.Posts, error)
+}
+
+type Commentaries interface {
 	GetLatestCommentaries(postId int) ([]entity.Commentaries, error)
-	//Login(email, password string) (err error)
-	// Here we write what kind of services can be used in the http handler
+}
+
+type Categories interface {
+	GetAllCategories() ([]entity.Categories, error)
 }

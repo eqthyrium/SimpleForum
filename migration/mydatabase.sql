@@ -67,7 +67,7 @@ CREATE TABLE Reactions (
     PRIMARY KEY (UserId, PostId, CommentId)
 );
 
-CREATE TABLE Reports (
+CREATE TABLE   Reports (
                            UserId INTEGER NOT NULL,
                            PostId INTEGER NOT NULL,
                            FOREIGN KEY (UserId) REFERENCES Users(UserId) ON DELETE CASCADE,

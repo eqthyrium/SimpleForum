@@ -1,13 +1,109 @@
-DEBUG: 2025/01/18 04:10:28 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:75: The RoleAdjusterMiddleware is started
-DEBUG: 2025/01/18 04:10:28 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:80: There is an error about getting the token from the cookie!!!
-DEBUG: 2025/01/18 04:10:28 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:165: The CSRFMiddleware is started
-DEBUG: 2025/01/18 04:10:28 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/homepage.go:16: homePage handler is activated
-DEBUG: 2025/01/18 04:10:37 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:75: The RoleAdjusterMiddleware is started
-DEBUG: 2025/01/18 04:10:37 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:80: There is an error about getting the token from the cookie!!!
-DEBUG: 2025/01/18 04:10:37 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:165: The CSRFMiddleware is started
-DEBUG: 2025/01/18 04:10:37 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/homepage.go:16: homePage handler is activated
-DEBUG: 2025/01/18 04:10:37 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/helper.go:16: errorWebpage handler is activated
-DEBUG: 2025/01/18 04:10:38 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:75: The RoleAdjusterMiddleware is started
-DEBUG: 2025/01/18 04:10:38 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:80: There is an error about getting the token from the cookie!!!
-DEBUG: 2025/01/18 04:10:38 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:165: The CSRFMiddleware is started
-DEBUG: 2025/01/18 04:10:38 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/homepage.go:16: homePage handler is activated
+DEBUG: 2025/01/21 15:02:25 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:75: The RoleAdjusterMiddleware is started
+DEBUG: 2025/01/21 15:02:25 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:80: There is an error about getting the token from the cookie!!!
+DEBUG: 2025/01/21 15:02:25 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:165: The CSRFMiddleware is started
+DEBUG: 2025/01/21 15:02:25 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/homepage.go:15: homePage handler is activated
+DEBUG: 2025/01/21 15:02:25 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:75: The RoleAdjusterMiddleware is started
+DEBUG: 2025/01/21 15:02:25 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:80: There is an error about getting the token from the cookie!!!
+DEBUG: 2025/01/21 15:02:25 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:165: The CSRFMiddleware is started
+DEBUG: 2025/01/21 15:02:25 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/homepage.go:15: homePage handler is activated
+DEBUG: 2025/01/21 15:02:25 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/helper.go:16: errorWebpage handler is activated
+DEBUG: 2025/01/21 15:02:42 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:75: The RoleAdjusterMiddleware is started
+DEBUG: 2025/01/21 15:02:42 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:80: There is an error about getting the token from the cookie!!!
+DEBUG: 2025/01/21 15:02:42 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:165: The CSRFMiddleware is started
+DEBUG: 2025/01/21 15:02:42 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/login.go:27: The logIn handler is activated
+DEBUG: 2025/01/21 15:02:42 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/login.go:49: logIn's handler of GET request is activated
+DEBUG: 2025/01/21 15:02:45 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:75: The RoleAdjusterMiddleware is started
+DEBUG: 2025/01/21 15:02:45 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:80: There is an error about getting the token from the cookie!!!
+DEBUG: 2025/01/21 15:02:45 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:165: The CSRFMiddleware is started
+DEBUG: 2025/01/21 15:02:45 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/googleoauth.go:23: googleAuthentication handler is activated
+DEBUG: 2025/01/21 15:02:45 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:75: The RoleAdjusterMiddleware is started
+DEBUG: 2025/01/21 15:02:45 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:80: There is an error about getting the token from the cookie!!!
+DEBUG: 2025/01/21 15:02:45 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:165: The CSRFMiddleware is started
+DEBUG: 2025/01/21 15:02:45 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/googleoauth.go:64: googleCallback  handler is activated
+DEBUG: 2025/01/21 15:02:47 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:75: The RoleAdjusterMiddleware is started
+DEBUG: 2025/01/21 15:02:47 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:135: Checking part of token's time
+DEBUG: 2025/01/21 15:02:47 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:165: The CSRFMiddleware is started
+DEBUG: 2025/01/21 15:02:47 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/homepage.go:15: homePage handler is activated
+DEBUG: 2025/01/21 15:02:55 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:75: The RoleAdjusterMiddleware is started
+DEBUG: 2025/01/21 15:02:55 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:135: Checking part of token's time
+DEBUG: 2025/01/21 15:02:55 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:165: The CSRFMiddleware is started
+DEBUG: 2025/01/21 15:02:55 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:170: inside of the CSRFMiddleware's Post method checking part 
+DEBUG: 2025/01/21 15:02:55 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:75: The RoleAdjusterMiddleware is started
+DEBUG: 2025/01/21 15:02:55 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:80: There is an error about getting the token from the cookie!!!
+DEBUG: 2025/01/21 15:02:55 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:165: The CSRFMiddleware is started
+DEBUG: 2025/01/21 15:02:55 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/login.go:27: The logIn handler is activated
+DEBUG: 2025/01/21 15:02:55 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/login.go:49: logIn's handler of GET request is activated
+DEBUG: 2025/01/21 15:03:05 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:75: The RoleAdjusterMiddleware is started
+DEBUG: 2025/01/21 15:03:05 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:80: There is an error about getting the token from the cookie!!!
+DEBUG: 2025/01/21 15:03:05 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:165: The CSRFMiddleware is started
+DEBUG: 2025/01/21 15:03:05 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/githuboauth.go:18: githubAuthentication handler is activated
+DEBUG: 2025/01/21 15:03:19 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:75: The RoleAdjusterMiddleware is started
+DEBUG: 2025/01/21 15:03:19 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:80: There is an error about getting the token from the cookie!!!
+DEBUG: 2025/01/21 15:03:19 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:165: The CSRFMiddleware is started
+DEBUG: 2025/01/21 15:03:19 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/githuboauth.go:18: githubAuthentication handler is activated
+DEBUG: 2025/01/21 15:03:30 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:75: The RoleAdjusterMiddleware is started
+DEBUG: 2025/01/21 15:03:30 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:80: There is an error about getting the token from the cookie!!!
+DEBUG: 2025/01/21 15:03:30 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:165: The CSRFMiddleware is started
+DEBUG: 2025/01/21 15:03:30 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/signup.go:14: The signup handler is activated
+DEBUG: 2025/01/21 15:03:30 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/signup.go:35: The signup handler's GET request handler is activated
+DEBUG: 2025/01/21 15:03:32 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:75: The RoleAdjusterMiddleware is started
+DEBUG: 2025/01/21 15:03:32 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:80: There is an error about getting the token from the cookie!!!
+DEBUG: 2025/01/21 15:03:32 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:165: The CSRFMiddleware is started
+DEBUG: 2025/01/21 15:03:32 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/googleoauth.go:23: googleAuthentication handler is activated
+DEBUG: 2025/01/21 15:03:33 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:75: The RoleAdjusterMiddleware is started
+DEBUG: 2025/01/21 15:03:33 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:80: There is an error about getting the token from the cookie!!!
+DEBUG: 2025/01/21 15:03:33 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:165: The CSRFMiddleware is started
+DEBUG: 2025/01/21 15:03:33 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/googleoauth.go:64: googleCallback  handler is activated
+DEBUG: 2025/01/21 15:03:33 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/googleoauth.go:149: There is invalid entered Credentials
+DEBUG: 2025/01/21 15:03:33 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/helper.go:16: errorWebpage handler is activated
+DEBUG: 2025/01/21 15:03:33 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/helper.go:23: Bad Requested error handling part is opened
+DEBUG: 2025/01/21 15:03:33 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/helper.go:31: ErrInvalidCredential in the errorWebpage
+DEBUG: 2025/01/21 15:03:36 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:75: The RoleAdjusterMiddleware is started
+DEBUG: 2025/01/21 15:03:36 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:80: There is an error about getting the token from the cookie!!!
+DEBUG: 2025/01/21 15:03:36 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:165: The CSRFMiddleware is started
+DEBUG: 2025/01/21 15:03:36 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/login.go:27: The logIn handler is activated
+DEBUG: 2025/01/21 15:03:36 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/login.go:49: logIn's handler of GET request is activated
+DEBUG: 2025/01/21 15:03:38 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:75: The RoleAdjusterMiddleware is started
+DEBUG: 2025/01/21 15:03:38 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:80: There is an error about getting the token from the cookie!!!
+DEBUG: 2025/01/21 15:03:38 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:165: The CSRFMiddleware is started
+DEBUG: 2025/01/21 15:03:38 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/googleoauth.go:23: googleAuthentication handler is activated
+DEBUG: 2025/01/21 15:03:38 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:75: The RoleAdjusterMiddleware is started
+DEBUG: 2025/01/21 15:03:38 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:80: There is an error about getting the token from the cookie!!!
+DEBUG: 2025/01/21 15:03:38 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:165: The CSRFMiddleware is started
+DEBUG: 2025/01/21 15:03:38 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/googleoauth.go:64: googleCallback  handler is activated
+DEBUG: 2025/01/21 15:03:39 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:75: The RoleAdjusterMiddleware is started
+DEBUG: 2025/01/21 15:03:39 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:135: Checking part of token's time
+DEBUG: 2025/01/21 15:03:39 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:165: The CSRFMiddleware is started
+DEBUG: 2025/01/21 15:03:39 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/homepage.go:15: homePage handler is activated
+DEBUG: 2025/01/21 15:05:27 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:75: The RoleAdjusterMiddleware is started
+DEBUG: 2025/01/21 15:05:27 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:135: Checking part of token's time
+DEBUG: 2025/01/21 15:05:27 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:165: The CSRFMiddleware is started
+DEBUG: 2025/01/21 15:05:27 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/homepage.go:15: homePage handler is activated
+DEBUG: 2025/01/21 15:05:32 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:75: The RoleAdjusterMiddleware is started
+DEBUG: 2025/01/21 15:05:32 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:135: Checking part of token's time
+DEBUG: 2025/01/21 15:05:32 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:165: The CSRFMiddleware is started
+DEBUG: 2025/01/21 15:05:32 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/homepage.go:15: homePage handler is activated
+DEBUG: 2025/01/21 15:05:35 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:75: The RoleAdjusterMiddleware is started
+DEBUG: 2025/01/21 15:05:35 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:135: Checking part of token's time
+DEBUG: 2025/01/21 15:05:35 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:165: The CSRFMiddleware is started
+DEBUG: 2025/01/21 15:05:35 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/homepage.go:15: homePage handler is activated
+DEBUG: 2025/01/21 15:05:40 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:75: The RoleAdjusterMiddleware is started
+DEBUG: 2025/01/21 15:05:40 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:135: Checking part of token's time
+DEBUG: 2025/01/21 15:05:40 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:165: The CSRFMiddleware is started
+DEBUG: 2025/01/21 15:05:40 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/homepage.go:15: homePage handler is activated
+DEBUG: 2025/01/21 15:05:43 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:75: The RoleAdjusterMiddleware is started
+DEBUG: 2025/01/21 15:05:43 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:135: Checking part of token's time
+DEBUG: 2025/01/21 15:05:43 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:165: The CSRFMiddleware is started
+DEBUG: 2025/01/21 15:05:43 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/homepage.go:15: homePage handler is activated
+DEBUG: 2025/01/21 15:06:00 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:75: The RoleAdjusterMiddleware is started
+DEBUG: 2025/01/21 15:06:00 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:135: Checking part of token's time
+DEBUG: 2025/01/21 15:06:00 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:165: The CSRFMiddleware is started
+DEBUG: 2025/01/21 15:06:00 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/homepage.go:15: homePage handler is activated
+DEBUG: 2025/01/21 15:06:11 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:75: The RoleAdjusterMiddleware is started
+DEBUG: 2025/01/21 15:06:11 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:135: Checking part of token's time
+DEBUG: 2025/01/21 15:06:11 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:165: The CSRFMiddleware is started
+DEBUG: 2025/01/21 15:06:11 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/homepage.go:15: homePage handler is activated
+DEBUG: 2025/01/21 15:06:16 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:75: The RoleAdjusterMiddleware is started
+DEBUG: 2025/01/21 15:06:16 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:135: Checking part of token's time
+DEBUG: 2025/01/21 15:06:16 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:165: The CSRFMiddleware is started
+DEBUG: 2025/01/21 15:06:16 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/homepage.go:15: homePage handler is activated

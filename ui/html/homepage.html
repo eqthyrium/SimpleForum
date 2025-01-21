@@ -1,0 +1,255 @@
+{{define "homepage"}}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Select Categories</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .header-left {
+            display: flex;
+            align-items: center;
+        }
+        .header-title {
+            margin: 0 auto;
+            font-size: 24px;
+        }
+        .header-title a {
+            color: white;
+            text-decoration: none;
+        }
+        .header-title a:hover {
+            text-decoration: underline;
+        }
+        .user-role {
+            margin-left: 15px;
+            font-size: 14px;
+            color: white;
+        }
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        .dropdown button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .dropdown button:hover {
+            background-color: #45a049;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            right: 0;
+            background-color: white;
+            min-width: 200px;
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+            border-radius: 5px;
+            z-index: 1;
+        }
+        .dropdown-content a {
+            color: black;
+            padding: 10px 15px;
+            text-decoration: none;
+            display: block;
+        }
+        .dropdown-content a:hover {
+            background-color: #ddd;
+        }
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2 {
+            color: #333;
+        }
+        .categories {
+            margin-bottom: 20px;
+        }
+        .categories label {
+            margin-right: 15px;
+        }
+        .posts {
+            margin-top: 30px;
+        }
+        .post {
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            background-color: #f9f9f9;
+        }
+        .post h3 {
+            margin: 0 0 10px;
+        }
+        .post h3 a {
+            color: #4CAF50;
+            text-decoration: none;
+        }
+        .post h3 a:hover {
+            text-decoration: underline;
+        }
+        .reactions {
+            margin-top: 10px;
+        }
+        .reactions form {
+            display: inline;
+        }
+        .reactions button {
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <div class="header-left">
+        {{if ne $.Role "Guest"}}
+        <form action="/logout" method="POST" class="inline-form">
+            <button type="submit">Log Out</button>
+        </form>
+        {{end}}
+        {{if eq $.Role "Guest"}}
+        <form action="/auth/login" method="GET" class="inline-form">
+            <button type="submit">Log In</button>
+        </form>
+        <form action="/auth/signup" method="GET" class="inline-form">
+            <button type="submit">Sign Up</button>
+        </form>
+
+        {{end}}
+
+        <span class="user-role">Role: {{.Role}}</span>
+    </div>
+
+    <h1 class="header-title"><a href="/">Forum</a></h1>
+
+    {{if ne $.Role "Guest"}}
+
+    <div class="dropdown">
+        <button>Menu</button>
+        <div class="dropdown-content">
+            <a href="/?myposts=true">My Created Posts</a>
+            <a href="/?mylikedposts=true">My Liked Posts</a>
+            <a href="/activity">My Activity</a>
+            <a href="/notification">Notifications</a>
+            {{if eq $.Role "User"}}
+            <a href="/requestmoderation">To be Moderator</a>
+            {{end}}
+            {{if eq $.Role "Admin"}}
+            <a href="/moderationlist">Manage moderators</a>
+            <a href="/categorylist">Manage categories</a>
+            {{end}}
+        </div>
+    </div>
+    {{end}}
+
+
+</header>
+
+<div class="container">
+
+
+    <h1>Select Categories</h1>
+
+    {{if .Categories}}
+
+    <form action="/" method="GET">
+        <div class="categories">
+            {{range .Categories}}
+            <input type="checkbox" id="category{{.CategoryId}}" name="categories" value="{{.CategoryId}}">
+            <label for="category{{.CategoryId}}">{{.CategoryName}}</label>
+            <br>
+            {{end}}
+        </div>
+        <button type="submit">Find Posts</button>
+    </form>
+    {{else}}
+    <p>No categories available for the selection.</p>
+    {{end}}
+
+
+    <div class="posts">
+        <h2>Posts</h2>
+
+        {{if .Posts}}
+        {{range .Posts}}
+        <div class="post">
+            <h3><a href="http://localhost:8888/post/{{.PostId}}">{{.Title}}</a></h3>
+            <p>{{.Content}}</p>
+
+            <div class="reactions">
+                <form action="http://localhost:8888/reaction" method="POST">
+                    <input type="hidden" name="postId" value="{{.PostId}}">
+                    <input type="hidden" name="like" value="true">
+                    <button type="submit">Like ({{.LikeCount}})</button>
+                </form>
+                <form action="http://localhost:8888/reaction" method="POST">
+                    <input type="hidden" name="postId" value="{{.PostId}}">
+                    <input type="hidden" name="dislike" value="true">
+                    <button type="submit">Dislike ({{.DislikeCount}})</button>
+                </form>
+            </div>
+
+            {{if eq .UserId $.UserIdentification}}
+            <form action="http://localhost:8888/{{.PostId}}" method="POST" class="inline-form">
+                <input type="hidden" name="postId" value="{{.PostId}}">
+                <input type="hidden" name="delete" value="true">
+                <button type="submit">Delete</button>
+            </form>
+            <form action="http://localhost:8888/{{.PostId}}" method="POST" class="inline-form">
+                <input type="hidden" name="postId" value="{{.PostId}}">
+                <input type="hidden" name="edit" value="true">
+                <button type="submit">Edit</button>
+            </form>
+            {{else if eq $.Role "Admin"}}
+            <form action="http://localhost:8888/{{.PostId}}" method="POST" class="inline-form">
+                <input type="hidden" name="postId" value="{{.PostId}}">
+                <input type="hidden" name="delete" value="true">
+                <button type="submit">Delete</button>
+            </form>
+            {{else if eq $.Role "Moderator"}}
+            <form action="http://localhost:8888/{{.PostId}}" method="POST" class="inline-form">
+                <input type="hidden" name="postId" value="{{.PostId}}">
+                <input type="hidden" name="delete" value="true">
+                <button type="submit">Delete</button>
+            </form>
+            <form action="http://localhost:8888/{{.PostId}}" method="POST" class="inline-form">
+                <input type="hidden" name="postId" value="{{.PostId}}">
+                <input type="hidden" name="report" value="true">
+                <button type="submit">Report</button>
+            </form>
+            {{end}}
+        </div>
+        {{end}}
+        {{else}}
+        <p>No posts available for the selected categories.</p>
+        {{end}}
+    </div>
+</div>
+</body>
+</html>
+{{end}}
