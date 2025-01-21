@@ -90,7 +90,7 @@ func (rp *Repository) LikePost(UserID, PostID int) error {
 		DELETE FROM Reactions
 		WHERE UserId = ? and PosrId = ? and Action = 'L'
 		`
-		_, err = rp.DB.Exec(query, UserID, PosrId)
+		_, err = rp.DB.Exec(query, UserID, PostID)
 		if err != nil {
 			return logger.ErrorWrapper("Repository", "LikePost", "The problem in the LikePost function (query in Reaction table)", err)
 		}
@@ -216,4 +216,28 @@ func (rp *Repository) IsPostDisliked(UserID int, PostID int) bool {
 		return answer
 	}
 	return answer
+}
+func (rp *Repository) GetPostsByCertainUser(UserId int) ([]entity.Posts, error) {
+	var posts []entity.Posts
+	query := `
+	SELECT * 
+	FROM Posts
+	WHERE UserId = ? 
+	ORDER BY CreatedAt DESC
+	`
+	rows, err := rp.DB.Query(query, UserId)
+	if err != nil {
+		return nil, logger.ErrorWrapper("Repository", "GetPostsByCertainUser", "The problem is get posts by user", err)
+	}
+	defer rows.Close()
+
+	for rows.Next() {
+		post := entity.Posts{}
+		err := rows.Scan(&post.PostId, &post.UserId, &post.Title, &post.Content, &post.Image, &post.LikeCount, &post.DislikeCount, &post.CreatedAt)
+		if err != nil {
+			return nil, logger.ErrorWrapper("Repository", "GetLatestAllPosts", "Failed to scan post row", err)
+		}
+		posts = append(posts, post)
+	}
+	return posts, nil
 }
