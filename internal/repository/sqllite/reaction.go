@@ -4,3 +4,5 @@ package sqllite
 //func (rp *Repository) GetReactedPostsByCertainUser(userId int, reaction string) ([]entity.Posts, error) {
 //
 //}
+
+
