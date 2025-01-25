@@ -1,19 +1,20 @@
 package main
 
 import (
+	"database/sql"
+	"fmt"
+	"log"
+	"net/http"
+
 	"SimpleForum/internal/config"
 	"SimpleForum/internal/repository/sqllite"
 	"SimpleForum/internal/service/usecase"
 	"SimpleForum/internal/transport/customHttp"
-	"database/sql"
-	"fmt"
+
 	_ "github.com/mattn/go-sqlite3"
-	"log"
-	"net/http"
 )
 
 func main() {
-
 	config.Config = config.NewConfiguration()
 
 	db, err := openDb(*config.Config.Dsn)
@@ -27,10 +28,11 @@ func main() {
 	httpTransport := customHttp.NewTransportHttpHandler(serviceObject)
 
 	router := httpTransport.Routering()
-	message := fmt.Sprintf("The server is running at: http://localhost%s/\n", *config.Config.Addr)
+	message := fmt.Sprintf("The server is running at: https://localhost%s/\n", *config.Config.Addr)
 	log.Print(message)
-	log.Fatalln(http.ListenAndServe(*config.Config.Addr, router))
 
+	err = http.ListenAndServeTLS(*config.Config.Addr, "../tls/cert.pem", "../tls/key.pem", router)
+	log.Fatal(err)
 }
 
 func openDb(dsn string) (*sql.DB, error) {
