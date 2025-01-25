@@ -1,12 +1,28 @@
 package sqllite
 
 import (
+	"SimpleForum/internal/domain"
 	"SimpleForum/internal/domain/entity"
 	"SimpleForum/pkg/logger"
 	"database/sql"
+	"errors"
 	"fmt"
 	"strings"
 )
+
+func (rp *Repository) CreatePost(userId int, title, content string) (int, error) {
+
+	statement := `INSERT INTO Posts (UserId, Title, Content) VALUES(?,?,?)`
+	index, err := rp.DB.Exec(statement, userId, title, content)
+	if err != nil {
+		return -1, logger.ErrorWrapper("Repository", "CreatePost", "The problem within the process of creation of the user in db", err)
+	}
+	postId, err := index.LastInsertId()
+	if err != nil {
+		return -1, logger.ErrorWrapper("Repository", "CreatePost", "The problem within the process of getting the last ID of Posts table  in db", err)
+	}
+	return int(postId), nil
+}
 
 func (rp *Repository) GetLatestAllPosts(categories []string) ([]entity.Posts, error) {
 	var statement string
@@ -19,7 +35,6 @@ func (rp *Repository) GetLatestAllPosts(categories []string) ([]entity.Posts, er
 		rows, err = rp.DB.Query(statement)
 	} else {
 		categoriesString := strings.Join(categories, ",")
-		fmt.Println("Layer:Repository", "the list of selected categories from the client side:", categoriesString)
 		statement = fmt.Sprintf("SELECT * FROM Posts WHERE PostId IN ( SELECT PostId FROM PostCategories WHERE CategoryId IN (%s) GROUP BY PostId) ORDER BY CreatedAt DESC", categoriesString)
 		rows, err = rp.DB.Query(statement)
 	}
@@ -46,223 +61,17 @@ func (rp *Repository) GetLatestAllPosts(categories []string) ([]entity.Posts, er
 	return posts, nil
 }
 
-func (rp *Repository) CreatePost(post *entity.Posts) error {
-	statement := `
-	INSERT INTO Posts
-	UserId,
-	Title,
-	Content,
-	Image
-	VALUES (?, ?, ?, ?)
-	`
-	_, err := rp.DB.Exec(statement, post.UserId, post.Title, post.Content, post.Image)
-	if err != nil {
-		return logger.ErrorWrapper("Repository", "CreatePost", "The problem within the process of creation of the post in db", err)
-	}
-	return nil
-}
-
-func (rp *Repository) UpdatePost(post *entity.Posts) error {
-	query := `
-	UPDATE Posts 
-	SET Title = ?
-		Content = ?
-	WHERE PostId = ?
-	`
-	_, err := rp.DB.Exec(query, post.Title, post.Content, post.PostId)
-	if err != nil {
-		return logger.ErrorWrapper("Repository", "UpdatePost", "The problem within the process of update post in db", err)
-	}
-
-	return nil
-}
-
-func (rp *Repository) DeletePost(PostId int) error {
-	statement := `
-	DELETE  
-	FROM Posts
-	WHERE PostId = ?
-	`
-	_, err := rp.DB.Exec(statement, PostId)
-	if err != nil {
-		return logger.ErrorWrapper("Repository", "DeletePost", "The problem within the process of delete the post in db", err)
-	}
-	return nil
-}
-
-func (rp *Repository) LikePost(UserID, PostID int) error {
-	if rp.IsPostLiked(UserID, PostID) {
-		query := `
-		UPDATE Posts
-			SET LikeCount = LikeCount - 1 
-			WHERE PostId = ? and UserId = ?
-		`
-		_, err := rp.DB.Exec(query, PostID, UserID)
-		if err != nil {
-			return logger.ErrorWrapper("Repository", "LikePost", "The problem in the LikePost function (query in Posts table)", err)
-		}
-		query = `
-		DELETE FROM Reactions
-		WHERE UserId = ? and PostId = ? and Action = 'L'
-		`
-		_, err = rp.DB.Exec(query, UserID, PostID)
-		if err != nil {
-			return logger.ErrorWrapper("Repository", "LikePost", "The problem in the LikePost function (query in Reaction table)", err)
-		}
-		return nil
-	} else if rp.IsPostDisliked(UserID, PostID) {
-		query := `
-		UPDATE Posts
-			SET DislikeCount = DislikeCount - 1
-			WHERE PostId = ? and UserId = ?
-		`
-		_, err := rp.DB.Exec(query, PostID, UserID)
-		if err != nil {
-			return logger.ErrorWrapper("Repository", "LikePost", "The problem in the LikePost function (query in Posts table)", err)
-		}
-		query = `
-		DELETE FROM Reactions
-		WHERE UserId = ? and PostId = ? and Action = 'D'
-		`
-		_, err = rp.DB.Exec(query, UserID, PostID)
-		if err != nil {
-			return logger.ErrorWrapper("Reposotpry", "LikePost", "The problem in the LikePost function (query in Reaction table)", err)
-		}
-		return nil
-	} else if !rp.IsPostDisliked(UserID, PostID) && !rp.IsPostLiked(UserID, PostID) {
-		query := `
-		INSERT INTO Posts 
-		(PostId,
-		UserId,
-		LikeCount) 
-		VALUES (?, ?, 1) 
-		`
-		_, err := rp.DB.Exec(query, PostID, UserID)
-		if err != nil {
-			return logger.ErrorWrapper("Repository", "LikePost", "The problem is to insert like into posts tables", err)
-		}
-		query = `
-		INSERT INTO Reactions
-		(PostId,
-		UserId,
-		Action)
-		VALUES (?, ?, 'L')
-		`
-		_, err = rp.DB.Exec(query, PostID, UserID)
-		if err != nil {
-			return logger.ErrorWrapper("Repository", "LikePost", "The problem is to insert into reation tables", err)
-		}
-	}
-	return nil
-}
-
-func (rp *Repository) DislikePost(UserID, PostID int) error {
-	if rp.IsPostLiked(UserID, PostID) {
-		query := `
-		UPDATE Posts
-		SET
-		LikeCount = LikeCount - 1
-		WHERE UserId = ? and PostId = ?
-		`
-		_, err := rp.DB.Exec(query, UserID, PostID)
-		if err != nil {
-			return logger.ErrorWrapper("Repository", "DisLikePost", "The problem is to update post", err)
-		}
-		query = `
-		DELETE FROM Reactions
-		WHERE UserId = ? and PostId = ? and Action = 'L'
-		`
-		_, err = rp.DB.Exec(query, UserID, PostID)
-		if err != nil {
-			return logger.ErrorWrapper("Repository", "DisLikePost", "The problem is delete post reactions", err)
-		}
-		return nil
-	} else if rp.IsPostDisliked(UserID, PostID) {
-		query := `
-		UPDATE Posts
-			SET DislikeCount = DislikeCount - 1 
-			WHERE PostId = ? and UserId = ?
-		`
-		_, err := rp.DB.Exec(query, PostID, UserID)
-		if err != nil {
-			return logger.ErrorWrapper("Repository", "LikePost", "The problem in the LikePost function (query in Posts table)", err)
-		}
-		query = `
-		DELETE FROM Reactions
-		WHERE UserId = ? and PosеId = ? and Action = 'D'
-		`
-		_, err = rp.DB.Exec(query, UserID, PostID)
-		if err != nil {
-			return logger.ErrorWrapper("Repository", "LikePost", "The problem in the LikePost function (query in Reaction table)", err)
-		}
-		return nil
-	} else if !rp.IsPostLiked(UserID, PostID) && !rp.IsPostDisliked(UserID, PostID) {
-		query := `
-		INSERT INTO Posts
-		(UserId,
-		PostId,
-		DislikeCount)
-		VALUES (?, ?, 1)
-		`
-		_, err := rp.DB.Exec(query, UserID, PostID)
-		if err != nil {
-			return logger.ErrorWrapper("Repository", "DisLikePost", "The problem is insert into Posts tables", err)
-		}
-		query = `
-		INSERT INTO Reactions
-		(UserId,
-		PostId,
-		Action)
-		VALUES (?, ?, 'D')
-		`
-		_, err = rp.DB.Exec(query, UserID, PostID)
-		if err != nil {
-			return logger.ErrorWrapper("Repository", "DisLikePost", "The problem is insert into Reactions tables", err)
-		}
-	}
-	return nil
-}
-
-func (rp *Repository) IsPostLiked(UserID int, PostID int) bool {
-	var answer bool
-	query := `
-	EXISTS (SELECT *
-			FROM Reactions
-			WHERE UserId = ? and PostId = ? and Actions = 'L')
-	`
-	err := rp.DB.QueryRow(query, UserID, PostID).Scan(&answer)
-	if err != nil {
-		logger.ErrorWrapper("Repository", "IsPostLiked", "The problem in the IsPostLiked function", err)
-		return answer
-	}
-	return answer
-}
-
-func (rp *Repository) IsPostDisliked(UserID int, PostID int) bool {
-	var answer bool
-	query := `
-	EXISTS (SELECT *
-			FROM Reactions
-			WHERE UserId = ? and PostId = ? and Actions = 'D')
-	`
-	err := rp.DB.QueryRow(query, UserID, PostID).Scan(&answer)
-	if err != nil {
-		logger.ErrorWrapper("Repository", "IsPostDisliked", "The problem in the IsPostDisliked function", err)
-		return answer
-	}
-	return answer
-}
-func (rp *Repository) GetPostsByCertainUser(UserId int) ([]entity.Posts, error) {
+// Here we have to return all related posts to the certain User
+func (rp *Repository) GetPostsByCertainUser(userId int) ([]entity.Posts, error) {
 	var posts []entity.Posts
-	query := `
-	SELECT * 
-	FROM Posts
-	WHERE UserId = ? 
-	ORDER BY CreatedAt DESC
+	statement := `
+	SELECT *  FROM Posts 	
+	          WHERE UserId = ? 
+			ORDER BY CreatedAt DESC
 	`
-	rows, err := rp.DB.Query(query, UserId)
+	rows, err := rp.DB.Query(statement, userId)
 	if err != nil {
-		return nil, logger.ErrorWrapper("Repository", "GetPostsByCertainUser", "The problem is get posts by user", err)
+		return nil, logger.ErrorWrapper("Repository", "GetPostsByCertainUser", "The problem  in the getting  posts by certain user", err)
 	}
 	defer rows.Close()
 
@@ -270,44 +79,61 @@ func (rp *Repository) GetPostsByCertainUser(UserId int) ([]entity.Posts, error) 
 		post := entity.Posts{}
 		err := rows.Scan(&post.PostId, &post.UserId, &post.Title, &post.Content, &post.Image, &post.LikeCount, &post.DislikeCount, &post.CreatedAt)
 		if err != nil {
-			return nil, logger.ErrorWrapper("Repository", "GetLatestAllPosts", "Failed to scan post row", err)
+			return nil, logger.ErrorWrapper("Repository", "GetPostsByCertainUser", "Failed to scan post row", err)
 		}
 		posts = append(posts, post)
 	}
 	return posts, nil
 }
 
-func (rp *Repository) GetReactedPostsByCertainUser(UserId int) ([]entity.Posts, error) {
-	var posts []entity.Posts
-	query := `
-    WITH Tb1 AS (
-        SELECT PostId
-        FROM Reactions
-        WHERE UserId = ? AND Action IN ('L')
-    )
-    SELECT * 
-    FROM Posts
-    WHERE PostId IN (SELECT PostId FROM Tb1)
-    ORDER BY CreatedAt DESC
-    `
-	rows, err := rp.DB.Query(query, UserId)
+func (rp *Repository) GetCertainPostInfo(postId int) (*entity.Posts, error) {
+
+	var statement string = `Select * FROM Posts WHERE PostId = ?`
+
+	row := rp.DB.QueryRow(statement, postId)
+
+	post := &entity.Posts{}
+
+	err := row.Scan(&post.PostId, &post.UserId, &post.Title, &post.Content, &post.Image, &post.LikeCount, &post.DislikeCount, &post.CreatedAt)
+
 	if err != nil {
-		return nil, logger.ErrorWrapper("Repository", "GetReactedPostsByCertainUser", "The problem is get posts by user", err)
-	}
-	defer rows.Close()
-
-	for rows.Next() {
-		post := entity.Posts{}
-		err := rows.Scan(&post.PostId, &post.UserId, &post.Title, &post.Content, &post.Image, &post.LikeCount, &post.DislikeCount, &post.CreatedAt)
-		if err != nil {
-			return nil, logger.ErrorWrapper("Repository", "GetReactedPostsByCertainUser", "Failed to scan post row", err)
+		if errors.Is(err, sql.ErrNoRows) {
+			return nil, logger.ErrorWrapper("Repository", "GetCertainPostInfo", "There is no such  post in the db", domain.ErrPostNotFound)
+		} else {
+			return nil, logger.ErrorWrapper("Repository", "GetCertainPostInfo", "The problem within the process of getting of the particular post by its postId in db", err)
 		}
-		posts = append(posts, post)
 	}
 
-	if err := rows.Err(); err != nil {
-		return nil, logger.ErrorWrapper("Repository", "GetReactedPostsByCertainUser", "Error occurred during rows iteration", err)
+	return post, nil
+}
+
+func (rp *Repository) UpdateReactionOfPost(postId int, reaction, operation string) error {
+
+	var statement string
+
+	if reaction == "like" {
+		if operation == "increment" {
+			statement = `UPDATE Posts SET LikeCount = LikeCount + 1 WHERE PostId = ?`
+		} else if operation == "decrement" {
+			statement = `UPDATE Posts SET LikeCount = LikeCount - 1 WHERE PostId = ? and LikeCount > 0`
+		}
+	} else if reaction == "dislike" {
+		if operation == "increment" {
+			statement = `UPDATE Posts SET DislikeCount = DislikeCount + 1 WHERE PostId = ?`
+		} else if operation == "decrement" {
+			statement = `UPDATE Posts SET DislikeCount = DislikeCount - 1 WHERE PostId = ? and DislikeCount > 0`
+		}
 	}
 
-	return posts, nil
+	_, err := rp.DB.Exec(statement, postId)
+	if err != nil {
+		return logger.ErrorWrapper(
+			"Repository",
+			"UpdateReactionOfPost",
+			"Failed to increment/decrement reaction counter for the post in the database",
+			err,
+		)
+	}
+
+	return nil
 }

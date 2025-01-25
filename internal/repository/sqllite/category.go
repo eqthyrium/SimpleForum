@@ -1,7 +1,6 @@
 package sqllite
 
 import (
-	"SimpleForum/internal/domain"
 	"SimpleForum/internal/domain/entity"
 	"SimpleForum/pkg/logger"
 )
@@ -30,11 +29,6 @@ func (rp *Repository) GetAllCategories() ([]entity.Categories, error) {
 	// Check for errors during iteration
 	if err := rows.Err(); err != nil {
 		return nil, logger.ErrorWrapper("Repository", "GetAllCategories", "Error occurred during rows iteration", err)
-	}
-
-	// If no categories found, return an appropriate error
-	if len(categories) == 0 {
-		return nil, logger.ErrorWrapper("Repository", "GetAllCategories", "No categories found in the database", domain.ErrCategoryNotFound)
 	}
 
 	return categories, nil

@@ -1,0 +1,150 @@
+INFO: 2025/01/26 01:15:52 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:55: Method:[GET], URL_Path: /, Remote_Address: [::1]:33322
+DEBUG: 2025/01/26 01:15:52 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:75: The RoleAdjusterMiddleware is started
+DEBUG: 2025/01/26 01:15:52 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:80: There is an error about getting the token from the cookie!!!
+INFO: 2025/01/26 01:15:52 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:82: There is no cookie in the request of the client
+DEBUG: 2025/01/26 01:15:52 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:165: The CSRFMiddleware is started
+DEBUG: 2025/01/26 01:15:52 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/homepage.go:14: homePage handler is activated
+INFO: 2025/01/26 01:15:52 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:59: The End of the client request, and its Duration:2.037207ms
+INFO: 2025/01/26 01:15:54 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:55: Method:[GET], URL_Path: /auth/login, Remote_Address: [::1]:33322
+DEBUG: 2025/01/26 01:15:54 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:75: The RoleAdjusterMiddleware is started
+DEBUG: 2025/01/26 01:15:54 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:80: There is an error about getting the token from the cookie!!!
+INFO: 2025/01/26 01:15:54 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:82: There is no cookie in the request of the client
+DEBUG: 2025/01/26 01:15:54 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:165: The CSRFMiddleware is started
+DEBUG: 2025/01/26 01:15:54 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/login.go:27: The logIn handler is activated
+DEBUG: 2025/01/26 01:15:54 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/login.go:49: logIn's handler of GET request is activated
+INFO: 2025/01/26 01:15:54 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:59: The End of the client request, and its Duration:405.282µs
+INFO: 2025/01/26 01:15:59 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:55: Method:[POST], URL_Path: /auth/login, Remote_Address: [::1]:33322
+DEBUG: 2025/01/26 01:15:59 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:75: The RoleAdjusterMiddleware is started
+DEBUG: 2025/01/26 01:15:59 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:80: There is an error about getting the token from the cookie!!!
+INFO: 2025/01/26 01:15:59 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:82: There is no cookie in the request of the client
+DEBUG: 2025/01/26 01:15:59 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:165: The CSRFMiddleware is started
+DEBUG: 2025/01/26 01:15:59 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/login.go:27: The logIn handler is activated
+DEBUG: 2025/01/26 01:15:59 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/login.go:79: logIn's handler of POST request is activated
+INFO: 2025/01/26 01:16:00 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:59: The End of the client request, and its Duration:48.995676ms
+INFO: 2025/01/26 01:16:00 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:55: Method:[GET], URL_Path: /, Remote_Address: [::1]:33322
+DEBUG: 2025/01/26 01:16:00 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:75: The RoleAdjusterMiddleware is started
+DEBUG: 2025/01/26 01:16:00 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:135: Checking part of token's time
+DEBUG: 2025/01/26 01:16:00 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:165: The CSRFMiddleware is started
+DEBUG: 2025/01/26 01:16:00 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/homepage.go:14: homePage handler is activated
+INFO: 2025/01/26 01:16:00 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:59: The End of the client request, and its Duration:1.29718ms
+INFO: 2025/01/26 01:16:02 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:55: Method:[GET], URL_Path: /create/post, Remote_Address: [::1]:33322
+DEBUG: 2025/01/26 01:16:02 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:75: The RoleAdjusterMiddleware is started
+DEBUG: 2025/01/26 01:16:02 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:135: Checking part of token's time
+DEBUG: 2025/01/26 01:16:02 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:165: The CSRFMiddleware is started
+DEBUG: 2025/01/26 01:16:02 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/createpost.go:12: homePage handler is activated
+INFO: 2025/01/26 01:16:02 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:59: The End of the client request, and its Duration:691.312µs
+INFO: 2025/01/26 01:16:12 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:55: Method:[GET], URL_Path: /, Remote_Address: [::1]:42954
+DEBUG: 2025/01/26 01:16:12 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:75: The RoleAdjusterMiddleware is started
+DEBUG: 2025/01/26 01:16:12 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:135: Checking part of token's time
+DEBUG: 2025/01/26 01:16:12 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:165: The CSRFMiddleware is started
+DEBUG: 2025/01/26 01:16:12 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/homepage.go:14: homePage handler is activated
+INFO: 2025/01/26 01:16:12 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:59: The End of the client request, and its Duration:1.809827ms
+INFO: 2025/01/26 01:16:15 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:55: Method:[GET], URL_Path: /post/1, Remote_Address: [::1]:42954
+DEBUG: 2025/01/26 01:16:15 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:75: The RoleAdjusterMiddleware is started
+DEBUG: 2025/01/26 01:16:15 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:135: Checking part of token's time
+DEBUG: 2025/01/26 01:16:15 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:165: The CSRFMiddleware is started
+DEBUG: 2025/01/26 01:16:15 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/post.go:17: postPage handler is activated
+INFO: 2025/01/26 01:16:15 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:59: The End of the client request, and its Duration:2.530929ms
+INFO: 2025/01/26 01:16:21 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:55: Method:[POST], URL_Path: /post/1, Remote_Address: [::1]:42954
+DEBUG: 2025/01/26 01:16:21 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:75: The RoleAdjusterMiddleware is started
+DEBUG: 2025/01/26 01:16:21 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:135: Checking part of token's time
+DEBUG: 2025/01/26 01:16:21 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:165: The CSRFMiddleware is started
+DEBUG: 2025/01/26 01:16:21 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:170: inside of the CSRFMiddleware's Post method checking part 
+DEBUG: 2025/01/26 01:16:21 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:185: The CSRF checking part was good
+DEBUG: 2025/01/26 01:16:21 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/post.go:17: postPage handler is activated
+INFO: 2025/01/26 01:16:21 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:59: The End of the client request, and its Duration:29.396965ms
+INFO: 2025/01/26 01:16:21 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:55: Method:[GET], URL_Path: /post/1, Remote_Address: [::1]:42954
+DEBUG: 2025/01/26 01:16:21 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:75: The RoleAdjusterMiddleware is started
+DEBUG: 2025/01/26 01:16:21 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:135: Checking part of token's time
+DEBUG: 2025/01/26 01:16:21 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:165: The CSRFMiddleware is started
+DEBUG: 2025/01/26 01:16:21 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/post.go:17: postPage handler is activated
+INFO: 2025/01/26 01:16:21 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:59: The End of the client request, and its Duration:1.411621ms
+INFO: 2025/01/26 01:16:24 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:55: Method:[POST], URL_Path: /reaction, Remote_Address: [::1]:42954
+DEBUG: 2025/01/26 01:16:24 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:75: The RoleAdjusterMiddleware is started
+DEBUG: 2025/01/26 01:16:24 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:135: Checking part of token's time
+DEBUG: 2025/01/26 01:16:24 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:165: The CSRFMiddleware is started
+DEBUG: 2025/01/26 01:16:24 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:170: inside of the CSRFMiddleware's Post method checking part 
+DEBUG: 2025/01/26 01:16:24 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:185: The CSRF checking part was good
+INFO: 2025/01/26 01:16:24 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:59: The End of the client request, and its Duration:51.172013ms
+INFO: 2025/01/26 01:16:24 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:55: Method:[GET], URL_Path: /post/1, Remote_Address: [::1]:42954
+DEBUG: 2025/01/26 01:16:24 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:75: The RoleAdjusterMiddleware is started
+DEBUG: 2025/01/26 01:16:24 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:135: Checking part of token's time
+DEBUG: 2025/01/26 01:16:24 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:165: The CSRFMiddleware is started
+DEBUG: 2025/01/26 01:16:24 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/post.go:17: postPage handler is activated
+INFO: 2025/01/26 01:16:24 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:59: The End of the client request, and its Duration:2.471939ms
+INFO: 2025/01/26 01:16:27 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:55: Method:[POST], URL_Path: /reaction, Remote_Address: [::1]:42954
+DEBUG: 2025/01/26 01:16:27 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:75: The RoleAdjusterMiddleware is started
+DEBUG: 2025/01/26 01:16:27 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:135: Checking part of token's time
+DEBUG: 2025/01/26 01:16:27 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:165: The CSRFMiddleware is started
+DEBUG: 2025/01/26 01:16:27 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:170: inside of the CSRFMiddleware's Post method checking part 
+DEBUG: 2025/01/26 01:16:27 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:185: The CSRF checking part was good
+INFO: 2025/01/26 01:16:27 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:59: The End of the client request, and its Duration:54.853253ms
+INFO: 2025/01/26 01:16:27 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:55: Method:[GET], URL_Path: /post/1, Remote_Address: [::1]:42954
+DEBUG: 2025/01/26 01:16:27 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:75: The RoleAdjusterMiddleware is started
+DEBUG: 2025/01/26 01:16:27 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:135: Checking part of token's time
+DEBUG: 2025/01/26 01:16:27 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:165: The CSRFMiddleware is started
+DEBUG: 2025/01/26 01:16:27 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/post.go:17: postPage handler is activated
+INFO: 2025/01/26 01:16:27 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:59: The End of the client request, and its Duration:1.942191ms
+INFO: 2025/01/26 01:16:34 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:55: Method:[GET], URL_Path: /, Remote_Address: [::1]:42954
+DEBUG: 2025/01/26 01:16:34 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:75: The RoleAdjusterMiddleware is started
+DEBUG: 2025/01/26 01:16:34 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:135: Checking part of token's time
+DEBUG: 2025/01/26 01:16:34 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:165: The CSRFMiddleware is started
+DEBUG: 2025/01/26 01:16:34 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/homepage.go:14: homePage handler is activated
+INFO: 2025/01/26 01:16:34 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:59: The End of the client request, and its Duration:1.22536ms
+INFO: 2025/01/26 01:16:37 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:55: Method:[POST], URL_Path: /logout, Remote_Address: [::1]:42954
+DEBUG: 2025/01/26 01:16:37 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:75: The RoleAdjusterMiddleware is started
+DEBUG: 2025/01/26 01:16:37 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:135: Checking part of token's time
+DEBUG: 2025/01/26 01:16:37 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:165: The CSRFMiddleware is started
+DEBUG: 2025/01/26 01:16:37 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:170: inside of the CSRFMiddleware's Post method checking part 
+INFO: 2025/01/26 01:16:37 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:176: The CSRF attack is detected, its IP is: [::1]:42954
+INFO: 2025/01/26 01:16:37 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:59: The End of the client request, and its Duration:547.63µs
+INFO: 2025/01/26 01:16:37 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:55: Method:[GET], URL_Path: /auth/login, Remote_Address: [::1]:42954
+DEBUG: 2025/01/26 01:16:37 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:75: The RoleAdjusterMiddleware is started
+DEBUG: 2025/01/26 01:16:37 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:80: There is an error about getting the token from the cookie!!!
+INFO: 2025/01/26 01:16:37 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:82: There is no cookie in the request of the client
+DEBUG: 2025/01/26 01:16:37 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:165: The CSRFMiddleware is started
+DEBUG: 2025/01/26 01:16:37 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/login.go:27: The logIn handler is activated
+DEBUG: 2025/01/26 01:16:37 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/login.go:49: logIn's handler of GET request is activated
+INFO: 2025/01/26 01:16:37 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:59: The End of the client request, and its Duration:680.455µs
+INFO: 2025/01/26 01:16:48 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:55: Method:[POST], URL_Path: /auth/login, Remote_Address: [::1]:42954
+DEBUG: 2025/01/26 01:16:48 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:75: The RoleAdjusterMiddleware is started
+DEBUG: 2025/01/26 01:16:48 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:80: There is an error about getting the token from the cookie!!!
+INFO: 2025/01/26 01:16:48 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:82: There is no cookie in the request of the client
+DEBUG: 2025/01/26 01:16:48 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:165: The CSRFMiddleware is started
+DEBUG: 2025/01/26 01:16:48 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/login.go:27: The logIn handler is activated
+DEBUG: 2025/01/26 01:16:48 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/login.go:79: logIn's handler of POST request is activated
+INFO: 2025/01/26 01:16:48 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:59: The End of the client request, and its Duration:50.410185ms
+INFO: 2025/01/26 01:16:48 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:55: Method:[GET], URL_Path: /, Remote_Address: [::1]:42954
+DEBUG: 2025/01/26 01:16:48 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:75: The RoleAdjusterMiddleware is started
+DEBUG: 2025/01/26 01:16:48 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:135: Checking part of token's time
+DEBUG: 2025/01/26 01:16:48 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:165: The CSRFMiddleware is started
+DEBUG: 2025/01/26 01:16:48 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/homepage.go:14: homePage handler is activated
+INFO: 2025/01/26 01:16:48 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:59: The End of the client request, and its Duration:1.203739ms
+INFO: 2025/01/26 01:17:32 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:55: Method:[GET], URL_Path: /create/post, Remote_Address: [::1]:42954
+DEBUG: 2025/01/26 01:17:32 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:75: The RoleAdjusterMiddleware is started
+DEBUG: 2025/01/26 01:17:32 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:135: Checking part of token's time
+DEBUG: 2025/01/26 01:17:32 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:165: The CSRFMiddleware is started
+DEBUG: 2025/01/26 01:17:32 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/createpost.go:12: homePage handler is activated
+INFO: 2025/01/26 01:17:32 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:59: The End of the client request, and its Duration:637.795µs
+INFO: 2025/01/26 01:17:36 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:55: Method:[POST], URL_Path: /logout, Remote_Address: [::1]:42954
+DEBUG: 2025/01/26 01:17:36 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:75: The RoleAdjusterMiddleware is started
+DEBUG: 2025/01/26 01:17:36 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:135: Checking part of token's time
+DEBUG: 2025/01/26 01:17:36 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:165: The CSRFMiddleware is started
+DEBUG: 2025/01/26 01:17:36 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:170: inside of the CSRFMiddleware's Post method checking part 
+INFO: 2025/01/26 01:17:36 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:176: The CSRF attack is detected, its IP is: [::1]:42954
+INFO: 2025/01/26 01:17:36 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:59: The End of the client request, and its Duration:428.129µs
+INFO: 2025/01/26 01:17:36 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:55: Method:[GET], URL_Path: /auth/login, Remote_Address: [::1]:42954
+DEBUG: 2025/01/26 01:17:36 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:75: The RoleAdjusterMiddleware is started
+DEBUG: 2025/01/26 01:17:36 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:80: There is an error about getting the token from the cookie!!!
+INFO: 2025/01/26 01:17:36 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:82: There is no cookie in the request of the client
+DEBUG: 2025/01/26 01:17:36 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:165: The CSRFMiddleware is started
+DEBUG: 2025/01/26 01:17:36 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/login.go:27: The logIn handler is activated
+DEBUG: 2025/01/26 01:17:36 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/login.go:49: logIn's handler of GET request is activated
+INFO: 2025/01/26 01:17:36 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:59: The End of the client request, and its Duration:1.155887ms
+INFO: 2025/01/26 01:17:41 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:55: Method:[GET], URL_Path: /, Remote_Address: [::1]:42954
+DEBUG: 2025/01/26 01:17:41 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:75: The RoleAdjusterMiddleware is started
+DEBUG: 2025/01/26 01:17:41 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:80: There is an error about getting the token from the cookie!!!
+INFO: 2025/01/26 01:17:41 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:82: There is no cookie in the request of the client
+DEBUG: 2025/01/26 01:17:41 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:165: The CSRFMiddleware is started
+DEBUG: 2025/01/26 01:17:41 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/homepage.go:14: homePage handler is activated
+INFO: 2025/01/26 01:17:41 /home/eqthyrium/Documents/Adlet/Project/SimpleForum/internal/transport/customHttp/middleware.go:59: The End of the client request, and its Duration:1.173387ms

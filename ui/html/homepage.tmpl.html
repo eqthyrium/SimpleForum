@@ -122,6 +122,14 @@
         .reactions button {
             margin-right: 5px;
         }
+        .error-message {
+            background-color: #f8d7da;
+            color: #721c24;
+            padding: 12px;
+            border: 1px solid #f5c6cb;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
     </style>
 </head>
 <body>
@@ -172,6 +180,17 @@
 
 <div class="container">
 
+    {{block "homeroleforbidden" .}}
+    {{end}}
+
+
+
+    {{if ne $.Role "Guest"}}
+    <form action="/create/post" method="GET" class="inline-form">
+        <button type="submit">To Create Post</button>
+    </form>
+    {{end}}
+
 
     <h1>Select Categories</h1>
 
@@ -198,47 +217,54 @@
         {{if .Posts}}
         {{range .Posts}}
         <div class="post">
-            <h3><a href="http://localhost:8888/post/{{.PostId}}">{{.Title}}</a></h3>
+            <h3><a href="/post/{{.PostId}}">{{.Title}}</a></h3>
             <p>{{.Content}}</p>
 
             <div class="reactions">
-                <form action="http://localhost:8888/reaction" method="POST">
+                <form action="/reaction" method="POST">
                     <input type="hidden" name="postId" value="{{.PostId}}">
+                    <input type="hidden" name="csrf_text" value="{{$.CSRFText}}"> <!-- Access CSRF with $.Product.Csrf -->
                     <input type="hidden" name="like" value="true">
                     <button type="submit">Like ({{.LikeCount}})</button>
                 </form>
-                <form action="http://localhost:8888/reaction" method="POST">
+                <form action="/reaction" method="POST">
                     <input type="hidden" name="postId" value="{{.PostId}}">
+                    <input type="hidden" name="csrf_text" value="{{$.CSRFText}}"> <!-- Access CSRF with $.Product.Csrf -->
                     <input type="hidden" name="dislike" value="true">
                     <button type="submit">Dislike ({{.DislikeCount}})</button>
                 </form>
             </div>
 
             {{if eq .UserId $.UserIdentification}}
-            <form action="http://localhost:8888/{{.PostId}}" method="POST" class="inline-form">
+            <form action="/post/{{.PostId}}" method="POST" class="inline-form">
                 <input type="hidden" name="postId" value="{{.PostId}}">
+                <input type="hidden" name="csrf_text" value="{{$.CSRFText}}"> <!-- Access CSRF with $.Product.Csrf -->
                 <input type="hidden" name="delete" value="true">
                 <button type="submit">Delete</button>
             </form>
-            <form action="http://localhost:8888/{{.PostId}}" method="POST" class="inline-form">
+            <form action="/post/{{.PostId}}" method="POST" class="inline-form">
                 <input type="hidden" name="postId" value="{{.PostId}}">
+                <input type="hidden" name="csrf_text" value="{{$.CSRFText}}"> <!-- Access CSRF with $.Product.Csrf -->
                 <input type="hidden" name="edit" value="true">
                 <button type="submit">Edit</button>
             </form>
             {{else if eq $.Role "Admin"}}
-            <form action="http://localhost:8888/{{.PostId}}" method="POST" class="inline-form">
+            <form action="/post/{{.PostId}}" method="POST" class="inline-form">
                 <input type="hidden" name="postId" value="{{.PostId}}">
+                <input type="hidden" name="csrf_text" value="{{$.CSRFText}}"> <!-- Access CSRF with $.Product.Csrf -->
                 <input type="hidden" name="delete" value="true">
                 <button type="submit">Delete</button>
             </form>
             {{else if eq $.Role "Moderator"}}
-            <form action="http://localhost:8888/{{.PostId}}" method="POST" class="inline-form">
+            <form action="/post/{{.PostId}}" method="POST" class="inline-form">
                 <input type="hidden" name="postId" value="{{.PostId}}">
+                <input type="hidden" name="csrf_text" value="{{$.CSRFText}}"> <!-- Access CSRF with $.Product.Csrf -->
                 <input type="hidden" name="delete" value="true">
                 <button type="submit">Delete</button>
             </form>
-            <form action="http://localhost:8888/{{.PostId}}" method="POST" class="inline-form">
+            <form action="/post/{{.PostId}}" method="POST" class="inline-form">
                 <input type="hidden" name="postId" value="{{.PostId}}">
+                <input type="hidden" name="csrf_text" value="{{$.CSRFText}}"> <!-- Access CSRF with $.Product.Csrf -->
                 <input type="hidden" name="report" value="true">
                 <button type="submit">Report</button>
             </form>

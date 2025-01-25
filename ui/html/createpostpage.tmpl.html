@@ -1,0 +1,113 @@
+{{define "createpostpage"}}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{.PostContent.Title}}</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .header-title {
+            font-size: 24px;
+        }
+        .header-title a {
+            color: white;
+            text-decoration: none;
+        }
+        .header-title a:hover {
+            text-decoration: underline;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .form-group textarea {
+            resize: vertical;
+        }
+        .categories {
+            margin-bottom: 20px;
+        }
+        .categories label {
+            margin-right: 15px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <h1 class="header-title"><a href="/">Forum</a></h1>
+    {{if ne .Role "Guest"}}
+    <form action="/logout" method="POST" class="inline-form">
+        <button type="submit">Log Out</button>
+    </form>
+    {{end}}
+</header>
+<div class="container">
+    <h1>Create a New Post</h1>
+    {{block "notvalidcontent" .}}{{end}}
+    <form action="/create/post" method="POST">
+        <div class="form-group">
+            <label for="title">Title:</label>
+            <input type="text" id="title" name="title" required>
+        </div>
+        <div class="form-group">
+            <label for="content">Content:</label>
+            <textarea id="content" name="content" required></textarea>
+        </div>
+        <div class="categories">
+            {{range .Categories}}
+            <input type="checkbox" id="category{{.CategoryId}}" name="categories" value="{{.CategoryId}}">
+            <label for="category{{.CategoryId}}">{{.CategoryName}}</label>
+            <br>
+            {{end}}
+        </div>
+        <button type="submit">Create the Post</button>
+    </form>
+</div>
+</body>
+</html>
+{{end}}

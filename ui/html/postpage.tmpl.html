@@ -1,0 +1,198 @@
+{{define "homepage"}}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{.PostContent.Title}}</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .header-title a {
+            color: white;
+            text-decoration: none;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .post-content {
+            margin-bottom: 20px;
+        }
+        .reactions {
+            margin-top: 10px;
+        }
+        .comments {
+            margin-top: 30px;
+        }
+        .comment {
+            border-top: 1px solid #ddd;
+            padding: 10px 0;
+        }
+        .reactions button, .comment-actions button {
+            margin-right: 5px;
+        }
+        .comment-actions {
+            margin-top: 5px;
+        }
+        .error-message {
+            background-color: #f8d7da;
+            color: #721c24;
+            padding: 12px;
+            border: 1px solid #f5c6cb;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <h1 class="header-title"><a href="/">Forum</a></h1>
+    {{if ne .Role "Guest"}}
+    <form action="/logout" method="POST" class="inline-form">
+        <button type="submit">Log Out</button>
+    </form>
+    {{end}}
+</header>
+<div class="container">
+    {{block "notvalidcontent" .}}
+    {{end}}
+
+    <div class="post-content">
+        <h2>{{.PostContent.Title}}</h2>
+        <p>{{.PostContent.Content}}</p>
+
+        <div class="reactions">
+            <form action="/reaction" method="POST">
+                <input type="hidden" name="postId" value="{{.PostContent.PostId}}">
+                <input type="hidden" name="csrf_text" value="{{.CSRFText}}">
+                <input type="hidden" name="like" value="true">
+                <button type="submit">Like ({{.PostContent.LikeCount}})</button>
+            </form>
+            <form action="/reaction" method="POST">
+                <input type="hidden" name="postId" value="{{.PostContent.PostId}}">
+                <input type="hidden" name="csrf_text" value="{{.CSRFText}}">
+                <input type="hidden" name="dislike" value="true">
+                <button type="submit">Dislike ({{.PostContent.DislikeCount}})</button>
+            </form>
+        </div>
+
+        {{if eq .PostContent.UserId .UserIdentification}}
+        <form action="/post/{{.PostContent.PostId}}" method="POST">
+            <input type="hidden" name="csrf_text" value="{{.CSRFText}}">
+            <input type="hidden" name="edit" value="true">
+            <button type="submit">Edit</button>
+        </form>
+        <form action="/post/{{.PostContent.PostId}}" method="POST">
+            <input type="hidden" name="csrf_text" value="{{.CSRFText}}">
+            <input type="hidden" name="delete" value="true">
+            <button type="submit">Delete</button>
+        </form>
+        {{else if eq $.Role "Admin"}}
+        <form action="/post/{{.PostContent.PostId}}" method="POST">
+            <input type="hidden" name="csrf_text" value="{{.CSRFText}}">
+            <input type="hidden" name="delete" value="true">
+            <button type="submit">Delete</button>
+        </form>
+        {{else if eq $.Role "Moderator"}}
+        <form action="/post/{{.PostContent.PostId}}" method="POST">
+            <input type="hidden" name="csrf_text" value="{{.CSRFText}}">
+            <input type="hidden" name="delete" value="true">
+            <button type="submit">Delete</button>
+        </form>
+        <form action="/post/{{.PostContent.PostId}}" method="POST">
+            <input type="hidden" name="csrf_text" value="{{.CSRFText}}">
+            <input type="hidden" name="report" value="true">
+            <button type="submit">Report</button>
+        </form>
+        {{end}}
+    </div>
+
+    <div class="comments">
+        <h3>Comments</h3>
+        {{if .Commentaries}}
+        {{range .Commentaries}}
+        <div class="comment">
+            <p>{{.Content}}</p>
+
+            <div class="reactions">
+                <form action="/reaction" method="POST">
+                    <input type="hidden" name="commentId" value="{{.CommentId}}">
+                    <input type="hidden" name="csrf_text" value="{{$.CSRFText}}"> <!-- Access CSRF with $.Product.Csrf -->
+                    <input type="hidden" name="like" value="true">
+                    <button type="submit">Like ({{.LikeCount}})</button>
+                </form>
+                <form action="/reaction" method="POST">
+                    <input type="hidden" name="commentId" value="{{.CommentId}}">
+                    <input type="hidden" name="csrf_text" value="{{$.CSRFText}}"> <!-- Access CSRF with $.Product.Csrf -->
+                    <input type="hidden" name="dislike" value="true">
+                    <button type="submit">Dislike ({{.DislikeCount}})</button>
+                </form>
+            </div>
+
+
+<!--            I have to think about the endpoints for edit or delete operations on post or commentary-->
+            {{if eq .UserId $.UserIdentification}}
+            <div class="comment-actions">
+                <form action="/comment/{{.CommentId}}" method="POST">
+                    <input type="hidden" name="csrf_text" value="{{$.CSRFText}}">
+                    <input type="hidden" name="edit" value="true">
+                    <button type="submit">Edit</button>
+                </form>
+                <form action="/comment/{{.CommentId}}" method="POST">
+                    <input type="hidden" name="csrf_text" value="{{$.CSRFText}}">
+                    <input type="hidden" name="delete" value="true">
+                    <button type="submit">Delete</button>
+                </form>
+            </div>
+            {{else if eq $.Role "Admin"}}
+            <div class="comment-actions">
+                <form action="/comment/{{.CommentId}}" method="POST">
+                    <input type="hidden" name="csrf_text" value="{{$.CSRFText}}">
+                    <input type="hidden" name="delete" value="true">
+                    <button type="submit">Delete</button>
+                </form>
+            </div>
+            {{else if eq $.Role "Moderator"}}
+            <div class="comment-actions">
+                <form action="/comment/{{.CommentId}}" method="POST">
+                    <input type="hidden" name="csrf_text" value="{{$.CSRFText}}">
+                    <input type="hidden" name="delete" value="true">
+                    <button type="submit">Delete</button>
+                </form>
+            </div>
+            {{end}}
+        </div>
+        {{end}}
+        {{else}}
+        <p>No comments yet. Be the first to comment!</p>
+        {{end}}
+    </div>
+
+    {{if ne .Role "Guest"}}
+    <form action="/post/{{.PostContent.PostId}}" method="POST">
+        <input type="hidden" name="postId" value="{{.PostContent.PostId}}">
+        <input type="hidden" name="csrf_text" value="{{.CSRFText}}">
+        <input type="hidden" name="commentary" value="true">
+        <textarea name="commentText" rows="4" cols="50" placeholder="Write a comment..." required></textarea>
+        <button type="submit">Post Comment</button>
+    </form>
+    {{end}}
+</div>
+</body>
+</html>
+{{end}}

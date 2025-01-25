@@ -8,6 +8,7 @@ var (
 	ErrInvalidToken      = errors.New("invalid session token")
 	ErrInvalidCredential = errors.New("invalid credential")
 	ErrInvalidCSRFToken  = errors.New("invalid csrf token")
+	ErrNotValidContent   = errors.New("content is not valid")
 
 	// User
 	ErrInvalidUser = errors.New("invalid user")
@@ -16,5 +17,5 @@ var (
 	ErrPostNotFound = errors.New("post not found")
 
 	//Category
-	ErrCategoryNotFound = errors.New("category not found")
+	ErrNoCategories = errors.New("there is no categories")
 )

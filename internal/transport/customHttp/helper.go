@@ -32,6 +32,9 @@ func errorWebpage(w http.ResponseWriter, paths []string, status int, err error) 
 			base = "signup"
 			paths = append(paths, "../ui/html/error/signup.tmpl.html")
 
+		} else {
+			http.Error(w, "Bad request", http.StatusBadRequest)
+			return
 		}
 
 	}

@@ -5,7 +5,7 @@ import (
 	"SimpleForum/pkg/logger"
 )
 
-var customLogger = logger.NewLogger().GetLoggerObject("../logging/info.log", "../logging/error.log", "../logging/debug.log")
+var customLogger = logger.NewLogger().GetLoggerObject("../logging/logger.log", "../logging/logger.log", "../logging/logger.log")
 
 type HandlerHttp struct {
 	Service module.HttpModule
