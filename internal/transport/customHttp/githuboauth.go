@@ -51,7 +51,6 @@ func (handler *HandlerHttp) githubAuthentication(w http.ResponseWriter, r *http.
 }
 
 func (handler *HandlerHttp) githubCallback(w http.ResponseWriter, r *http.Request) {
-
 	if r.URL.Path != "/oauth2/github/callback" {
 		customLogger.InfoLogger.Println("incorrect request's endpoint")
 		clientError(w, nil, http.StatusNotFound, nil)

@@ -42,7 +42,6 @@ func (rp *Repository) GetLatestAllPosts(categories []string) ([]entity.Posts, er
 	if err != nil {
 		return nil, logger.ErrorWrapper("Repository", "GetLatestAllPosts", "Failed to execute query for posts", err)
 	}
-	defer rows.Close()
 
 	for rows.Next() {
 		post := entity.Posts{}
@@ -58,6 +57,9 @@ func (rp *Repository) GetLatestAllPosts(categories []string) ([]entity.Posts, er
 		return nil, logger.ErrorWrapper("Repository", "GetLatestAllPosts", "Error occurred during rows iteration", err)
 	}
 
+	if err := rows.Close(); err != nil {
+		return nil, logger.ErrorWrapper("Repository", "GetLatestAllPosts", "Failed to close the row of db", err)
+	}
 	return posts, nil
 }
 
@@ -73,7 +75,6 @@ func (rp *Repository) GetPostsByCertainUser(userId int) ([]entity.Posts, error) 
 	if err != nil {
 		return nil, logger.ErrorWrapper("Repository", "GetPostsByCertainUser", "The problem  in the getting  posts by certain user", err)
 	}
-	defer rows.Close()
 
 	for rows.Next() {
 		post := entity.Posts{}
@@ -82,6 +83,10 @@ func (rp *Repository) GetPostsByCertainUser(userId int) ([]entity.Posts, error) 
 			return nil, logger.ErrorWrapper("Repository", "GetPostsByCertainUser", "Failed to scan post row", err)
 		}
 		posts = append(posts, post)
+	}
+
+	if err := rows.Close(); err != nil {
+		return nil, logger.ErrorWrapper("Repository", "GetPostsByCertainUser", "Failed to close the row of db", err)
 	}
 	return posts, nil
 }

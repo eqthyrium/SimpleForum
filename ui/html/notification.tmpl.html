@@ -1,0 +1,86 @@
+{{define "notifications"}}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Notifications</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .header-title {
+            font-size: 24px;
+            margin: 0;
+        }
+        .header-title a {
+            color: white;
+            text-decoration: none;
+        }
+        .header-title a:hover {
+            text-decoration: underline;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #333;
+        }
+        .notification-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        .notification {
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            background-color: #f9f9f9;
+        }
+        .notification a {
+            color: #4CAF50;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .notification a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <h1 class="header-title"><a href="/">Forum</a></h1>
+</header>
+
+<div class="container">
+    <h1>Your Notifications</h1>
+    {{if .Notifications}}
+    <ul class="notification-list">
+        {{range .Notifications}}
+        <li class="notification">
+            <p>User <strong>{{.UserNickname}}</strong> {{.Action}} on post <a href="/post/{{.PostId}}">#{{.PostId}}</a>.</p>
+        </li>
+        {{end}}
+    </ul>
+    {{else}}
+    <p>No notifications available.</p>
+    {{end}}
+</div>
+
+</body>
+</html>
+{{end}}

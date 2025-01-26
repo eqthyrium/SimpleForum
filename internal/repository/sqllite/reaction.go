@@ -37,7 +37,6 @@ func (rp *Repository) GetReactedPostsByCertainUser(userId int, reaction string) 
 	if err != nil {
 		return nil, logger.ErrorWrapper("Repository", "GetReactedPostsByCertainUser", "The problem  in the getting  posts by certain user's liked reaction", err)
 	}
-	defer rows.Close()
 
 	for rows.Next() {
 		post := entity.Posts{}
@@ -47,10 +46,55 @@ func (rp *Repository) GetReactedPostsByCertainUser(userId int, reaction string) 
 		}
 		posts = append(posts, post)
 	}
+
+	if err := rows.Close(); err != nil {
+		return nil, logger.ErrorWrapper("Repository", "GetReactedPostsByCertainUser", "Failed to close the row of db", err)
+	}
+
 	return posts, nil
 
 }
 
+func (rp *Repository) GetReactionsNotificationOfPosts(userId int) ([]entity.Notifications, error) {
+
+	notifications := []entity.Notifications{}
+	statement := `
+	SELECT u.Nickname, sbqq.Action, sbqq.PostId
+	FROM (	
+		SELECT r.UserId, r.Action, r.PostId
+		FROM (
+			SELECT  PostId
+			FROM Posts
+			WHERE UserId = ?
+		) AS sbq
+		INNER JOIN Reactions AS r ON sbq.PostId = r.PostId
+		WHERE r.CommentId IS NULL AND r.UserId != ?
+		ORDER BY r.CreatedAt DESC
+		LIMIT 20
+	) AS sbqq 
+	INNER JOIN Users AS u ON sbqq.UserId = u.UserId
+`
+	rows, err := rp.DB.Query(statement, userId, userId)
+	if err != nil {
+		return nil, logger.ErrorWrapper("Repository", "GetReactionsNotificationOfPosts", "The problem  in the getting  notification for particular user", err)
+	}
+
+	for rows.Next() {
+		notification := entity.Notifications{}
+		err := rows.Scan(&notification.UserNickname, &notification.Action, &notification.PostId)
+		if err != nil {
+			return nil, logger.ErrorWrapper("Repository", "GetReactionsNotificationOfPosts", "Failed to scan post row", err)
+		}
+		notifications = append(notifications, notification)
+	}
+
+	if err := rows.Close(); err != nil {
+		return nil, logger.ErrorWrapper("Repository", "GetReactedPostsByCertainUser", "Failed to close the row of db", err)
+	}
+
+	return notifications, nil
+
+}
 func (rp *Repository) RetrieveExistenceOfReactionLD(userId int, identifier int, postOrComment string) (*entity.Reactions, error) {
 	var statement string
 	if postOrComment == "post" {
@@ -75,6 +119,7 @@ func (rp *Repository) RetrieveExistenceOfReactionLD(userId int, identifier int, 
 			)
 		}
 	}
+
 	return reaction, nil
 
 }

@@ -8,6 +8,7 @@ type HttpModule interface {
 	commentaries
 	categories
 	reactions
+	notifications
 }
 
 type authentication interface {
@@ -34,4 +35,8 @@ type categories interface {
 
 type reactions interface {
 	ExecutionOfReactionLD(userId, identifier int, postOrcomment, reactionLD string) error
+}
+
+type notifications interface {
+	GetNotifications(userId int) ([]entity.Notifications, error)
 }

@@ -24,7 +24,6 @@ func (rp *Repository) GetCertainPostsCommentaries(postId int) ([]entity.Commenta
 	if err != nil {
 		return nil, logger.ErrorWrapper("Repository", "GetCertainPostsCommentaries", "Failed to execute query for commentaries", err)
 	}
-	defer rows.Close()
 	var commentaries []entity.Commentaries
 
 	for rows.Next() {
@@ -41,6 +40,9 @@ func (rp *Repository) GetCertainPostsCommentaries(postId int) ([]entity.Commenta
 		return nil, logger.ErrorWrapper("Repository", "GetCertainPostsCommentaries", "Error occurred during rows iteration", err)
 	}
 
+	if err := rows.Close(); err != nil {
+		return nil, logger.ErrorWrapper("Repository", "GetCertainPostsCommentaries", "Failed to close the row of db", err)
+	}
 	return commentaries, nil
 }
 

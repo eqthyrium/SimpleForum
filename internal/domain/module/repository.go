@@ -29,7 +29,7 @@ type userRepository interface {
 type postRepository interface {
 	CreatePost(userId int, title, content string) (int, error)
 	GetLatestAllPosts(categories []string) ([]entity.Posts, error)
-	GetPostsByCertainUser(userId int) ([]entity.Posts, error) // Azamat
+	GetPostsByCertainUser(userId int) ([]entity.Posts, error)
 	GetCertainPostInfo(postId int) (*entity.Posts, error)
 	UpdateReactionOfPost(postId int, reaction, operation string) error
 }
@@ -50,6 +50,7 @@ type postCategoryRepository interface {
 
 type reactionRepository interface {
 	GetReactedPostsByCertainUser(userId int, reaction string) ([]entity.Posts, error) // Azamat
+	GetReactionsNotificationOfPosts(userId int) ([]entity.Notifications, error)
 	RetrieveExistenceOfReactionLD(userId int, identifier int, postOrComment string) (*entity.Reactions, error)
 	InsertReaction(userId, identifier int, postOrcomment, reaction string) error
 	DeleteReaction(userId, identifier int, postOrComment, reaction string) error

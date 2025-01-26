@@ -5,6 +5,7 @@ import (
 	"SimpleForum/internal/transport/session"
 	"SimpleForum/pkg/logger"
 	"bytes"
+	"context"
 	"errors"
 	"fmt"
 	"html/template"
@@ -103,7 +104,11 @@ func (handler *HandlerHttp) logIn(w http.ResponseWriter, r *http.Request) {
 
 		//Cookies
 		session.SetTokenToCookie(w, "auth_token", tokenSignature)
-		http.Redirect(w, r, "/", http.StatusSeeOther)
+		extractedToken, err := session.ExtractDataFromToken(tokenSignature)
+		ctx := context.WithValue(r.Context(), "UserId", extractedToken.UserId)
+		ctx = context.WithValue(r.Context(), "Role", extractedToken.Role)
+
+		http.Redirect(w, r.WithContext(ctx), "/", http.StatusSeeOther)
 
 	}
 }

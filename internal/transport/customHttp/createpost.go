@@ -1,9 +1,12 @@
 package customHttp
 
 import (
+	"SimpleForum/internal/domain"
 	"SimpleForum/internal/transport/session"
 	"SimpleForum/pkg/logger"
 	"bytes"
+	"errors"
+	"fmt"
 	"html/template"
 	"net/http"
 )
@@ -22,11 +25,6 @@ func (handler *HandlerHttp) createPost(w http.ResponseWriter, r *http.Request) {
 		clientError(w, nil, http.StatusMethodNotAllowed, nil)
 		return
 	}
-	if r.Method == http.MethodGet {
-		files := []string{"../ui/html/createpostpage.tmpl.html"}
-		handler.createPostPage(w, r, files)
-	}
-
 	role := r.Context().Value("Role").(string)
 
 	if role == "Guest" {
@@ -35,17 +33,31 @@ func (handler *HandlerHttp) createPost(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	if r.Method == http.MethodGet {
+		files := []string{"../ui/html/createpostpage.tmpl.html"}
+		handler.createPostPage(w, r, files)
+	}
+
 	if r.Method == http.MethodPost {
 		userId := r.Context().Value("UserId").(int)
 		title := r.FormValue("title")
 		content := r.FormValue("content")
-		requestedCategories := r.URL.Query()["categories"]
+		requestedCategories := r.Form["categories"]
 
 		err := handler.Service.CreatePost(userId, title, content, requestedCategories)
-		if err != nil {
-			customLogger.ErrorLogger.Println(err)
+
+		if errors.Is(err, domain.ErrNoCategories) {
+			fmt.Println("We are entered to errnocategories checking part")
+			files := []string{"../ui/html/createpostpage.tmpl.html"}
+			files = append(files, "../ui/html/error/nocategories.tmp.html")
+			handler.createPostPage(w, r, files)
+		} else if errors.Is(err, domain.ErrNotValidContent) {
+			files := []string{"../ui/html/createpostpage.tmpl.html"}
+			files = append(files, "../ui/html/error/postpagecontent.tmpl.html")
+			handler.createPostPage(w, r, files)
+		} else if err != nil {
+			customLogger.ErrorLogger.Println(logger.ErrorWrapper("Transport", "createPost", "Failed to create a post", err))
 			serverError(w)
-			return
 		}
 
 		http.Redirect(w, r, "/", http.StatusSeeOther)

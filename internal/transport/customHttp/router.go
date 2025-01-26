@@ -24,6 +24,7 @@ func (handler *HandlerHttp) Routering() http.Handler {
 	mux.Handle("/reaction", Middleware(handler.reaction))
 	mux.Handle("/post/", Middleware(handler.postPage))
 	mux.Handle("/create/post", Middleware(handler.createPost))
+	mux.Handle("/notification", Middleware(handler.notification))
 
 	return http.HandlerFunc(mux.ServeHTTP)
 }

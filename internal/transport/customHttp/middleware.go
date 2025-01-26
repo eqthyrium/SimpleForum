@@ -128,7 +128,7 @@ func RoleAdjusterMiddleware(next http.Handler) http.Handler {
 			customLogger.DebugLogger.Println("Entered into error handling of the check up of MappUUID")
 			customLogger.InfoLogger.Println("There is not current token for the client")
 			session2.DeleteSessionCookie(w, "auth_token")
-			delete(CSRFMap, session2.MapUUID[extractedToken.UserId])
+			//delete(CSRFMap, session2.MapUUID[extractedToken.UserId])
 			http.Redirect(w, r, "/auth/login", http.StatusSeeOther)
 			return
 		}
@@ -173,11 +173,14 @@ func CSRFMiddleware(next http.Handler) http.Handler {
 			userId := r.Context().Value("UserId").(int)
 
 			if formCSRFText != CSRFMap[session2.MapUUID[userId]] {
+				//fmt.Println("Fucking CSRF attack")
+				//fmt.Println("MapUUID[userId]:", session2.MapUUID[userId])
+				//fmt.Println("HTML formCSRFTEXT", formCSRFText, "\n", "Server Map:", CSRFMap[session2.MapUUID[userId]])
 				customLogger.InfoLogger.Println("The CSRF attack is detected, its IP is:", r.RemoteAddr)
-				if _, ok := CSRFMap[session2.MapUUID[userId]]; ok {
-					delete(CSRFMap, session2.MapUUID[userId])
-				}
-				delete(session2.MapUUID, userId)
+				//if _, ok := CSRFMap[session2.MapUUID[userId]]; ok {
+				//	delete(CSRFMap, session2.MapUUID[userId])
+				//}
+				//delete(session2.MapUUID, userId)
 				session2.DeleteSessionCookie(w, "auth_token")
 				http.Redirect(w, r, "/auth/login", http.StatusSeeOther)
 				return

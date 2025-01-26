@@ -29,10 +29,6 @@ func (handler *HandlerHttp) homePage(w http.ResponseWriter, r *http.Request) {
 		files := []string{"../ui/html/homepage.tmpl.html"}
 		handler.homePageGet(w, r, files)
 	}
-	// For like/dislike operation
-	if r.Method == http.MethodPost {
-
-	}
 
 }
 
@@ -101,6 +97,10 @@ func (handler *HandlerHttp) homePageGet(w http.ResponseWriter, r *http.Request, 
 		serverError(w)
 		return
 	}
+
+	//fmt.Println("Incoming userId:", userId, "\nIncoming role:", role)
+	//fmt.Println("Inserting csrfText:", csrfText)
+	//fmt.Println("And its map:", session.MapUUID[userId])
 
 	CSRFMap[session.MapUUID[userId]] = csrfText
 

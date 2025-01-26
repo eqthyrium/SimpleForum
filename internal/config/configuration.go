@@ -42,8 +42,8 @@ func NewConfiguration() *Configuration {
 		log.Fatalf("Error loading .env file, error message is:", err)
 	}
 
-	configObject.GithubOauth.ClientID = os.Getenv("GithubClientID")
-	configObject.GithubOauth.ClientSecret = os.Getenv("GithubClientSecret")
+	configObject.GithubOauth.ClientID = os.Getenv("GithubClient_ID")
+	configObject.GithubOauth.ClientSecret = os.Getenv("GithubSecretKey")
 	configObject.GithubOauth.RedirectURI = os.Getenv("GithubRedirectURI")
 
 	configObject.GoogleOauth.ClientID = os.Getenv("GoogleClientID")
