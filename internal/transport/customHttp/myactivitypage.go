@@ -2,6 +2,7 @@ package customHttp
 
 import (
 	"bytes"
+	"fmt"
 	"html/template"
 	"net/http"
 
@@ -40,6 +41,7 @@ func (handler *HandlerHttp) myActivityPage(w http.ResponseWriter, r *http.Reques
 		serverError(w)
 		return
 	}
+	fmt.Println("getAllMyPosts", getAllMyPosts)
 
 	getAllMyLikedPosts, err := handler.Service.GetMyLikedPosts(userId)
 	if err != nil {
@@ -54,17 +56,19 @@ func (handler *HandlerHttp) myActivityPage(w http.ResponseWriter, r *http.Reques
 		serverError(w)
 		return
 	}
-	var postId int
-	for _, r := range getCommentedPosts {
-		postId = r.PostId
-	}
 
-	getComments, err := handler.Service.GetCertainPostsCommentaries(postId)
+	// var postId int
+	// for _, r := range getCommentedPosts {
+	// 	postId = r.PostId
+	// }
+
+	getComments, err := handler.Service.GetCertainPostsCommentaries(userId)
 	if err != nil {
 		customLogger.ErrorLogger.Print(logger.ErrorWrapper("Transport", "myActivityPage", "There is a problem in the process of getting all categories", err))
 		serverError(w)
 		return
 	}
+	fmt.Println("getComments", getComments)
 
 	type Data struct {
 		Title   string
@@ -74,7 +78,7 @@ func (handler *HandlerHttp) myActivityPage(w http.ResponseWriter, r *http.Reques
 	var data Data
 	for _, post := range getCommentedPosts {
 		for _, comment := range getComments {
-			if post.PostId == comment.PostId {
+			if post.UserId == comment.UserId {
 
 				data.Title = post.Title
 				data.Content = post.Content
@@ -82,7 +86,7 @@ func (handler *HandlerHttp) myActivityPage(w http.ResponseWriter, r *http.Reques
 			}
 		}
 	}
-	// fmt.Println("commented posts:", getCommentedPosts)
+	fmt.Println("commented posts:", getCommentedPosts)
 
 	files := []string{"../ui/html/myactivity.html"}
 	tmpl, err := template.ParseFiles(files...)

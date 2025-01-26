@@ -169,9 +169,10 @@
     <div>
         <h2>My commented posts:</h2>
         <div class="post-item">
+            {{range .myCommentedPosts}}
             <h3>{{.Title}}</h3>
             <p>{{.Content}}</p>
-    
+            {{end}}
             <!-- Раздел с комментариями -->
             <div class="comment-section">
                 <h4>Comments:</h4>

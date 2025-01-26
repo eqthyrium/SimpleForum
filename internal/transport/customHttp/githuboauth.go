@@ -1,10 +1,6 @@
 package customHttp
 
 import (
-	"SimpleForum/internal/config"
-	"SimpleForum/internal/domain"
-	"SimpleForum/internal/transport/session"
-	"SimpleForum/pkg/logger"
 	"encoding/json"
 	"errors"
 	"fmt"
@@ -12,6 +8,11 @@ import (
 	"net/http"
 	"net/url"
 	"strings"
+
+	"SimpleForum/internal/config"
+	"SimpleForum/internal/domain"
+	"SimpleForum/internal/transport/session"
+	"SimpleForum/pkg/logger"
 )
 
 func (handler *HandlerHttp) githubAuthentication(w http.ResponseWriter, r *http.Request) {
@@ -47,7 +48,6 @@ func (handler *HandlerHttp) githubAuthentication(w http.ResponseWriter, r *http.
 	http.Redirect(w, r, fmt.Sprintf(
 		"https://github.com/login/oauth/authorize?client_id=%s&redirect_uri=%s&scope=user:email&state=%s\n",
 		config.Config.GithubOauth.ClientID, config.Config.GithubOauth.RedirectURI, state), http.StatusFound)
-
 }
 
 func (handler *HandlerHttp) githubCallback(w http.ResponseWriter, r *http.Request) {
@@ -176,7 +176,7 @@ func (handler *HandlerHttp) githubCallback(w http.ResponseWriter, r *http.Reques
 			return
 		}
 
-		//Cookies
+		// Cookies
 		session.SetTokenToCookie(w, "auth_token", tokenSignature)
 		http.Redirect(w, r, "/", http.StatusSeeOther)
 	} else if intent == "signup" {
@@ -194,5 +194,4 @@ func (handler *HandlerHttp) githubCallback(w http.ResponseWriter, r *http.Reques
 
 		http.Redirect(w, r, "/auth/login", http.StatusSeeOther)
 	}
-
 }
