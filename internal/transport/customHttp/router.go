@@ -5,7 +5,6 @@ import (
 )
 
 func (handler *HandlerHttp) Routering() http.Handler {
-
 	Middleware := func(next func(w http.ResponseWriter, r *http.Request)) http.Handler {
 		return LoggingMiddleware(SecurityMiddleware(PanicMiddleware(RoleAdjusterMiddleware(CSRFMiddleware((http.HandlerFunc(next)))))))
 	}
@@ -25,6 +24,7 @@ func (handler *HandlerHttp) Routering() http.Handler {
 	mux.Handle("/post/", Middleware(handler.postPage))
 	mux.Handle("/create/post", Middleware(handler.createPost))
 	mux.Handle("/notification", Middleware(handler.notification))
+	mux.Handle("/myactivity", Middleware(handler.myActivityPage))
 
 	return http.HandlerFunc(mux.ServeHTTP)
 }

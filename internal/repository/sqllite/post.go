@@ -1,17 +1,17 @@
 package sqllite
 
 import (
-	"SimpleForum/internal/domain"
-	"SimpleForum/internal/domain/entity"
-	"SimpleForum/pkg/logger"
 	"database/sql"
 	"errors"
 	"fmt"
 	"strings"
+
+	"SimpleForum/internal/domain"
+	"SimpleForum/internal/domain/entity"
+	"SimpleForum/pkg/logger"
 )
 
 func (rp *Repository) CreatePost(userId int, title, content string) (int, error) {
-
 	statement := `INSERT INTO Posts (UserId, Title, Content) VALUES(?,?,?)`
 	index, err := rp.DB.Exec(statement, userId, title, content)
 	if err != nil {
@@ -92,7 +92,6 @@ func (rp *Repository) GetPostsByCertainUser(userId int) ([]entity.Posts, error) 
 }
 
 func (rp *Repository) GetCertainPostInfo(postId int) (*entity.Posts, error) {
-
 	var statement string = `Select * FROM Posts WHERE PostId = ?`
 
 	row := rp.DB.QueryRow(statement, postId)
@@ -100,7 +99,6 @@ func (rp *Repository) GetCertainPostInfo(postId int) (*entity.Posts, error) {
 	post := &entity.Posts{}
 
 	err := row.Scan(&post.PostId, &post.UserId, &post.Title, &post.Content, &post.Image, &post.LikeCount, &post.DislikeCount, &post.CreatedAt)
-
 	if err != nil {
 		if errors.Is(err, sql.ErrNoRows) {
 			return nil, logger.ErrorWrapper("Repository", "GetCertainPostInfo", "There is no such  post in the db", domain.ErrPostNotFound)
@@ -113,7 +111,6 @@ func (rp *Repository) GetCertainPostInfo(postId int) (*entity.Posts, error) {
 }
 
 func (rp *Repository) UpdateReactionOfPost(postId int, reaction, operation string) error {
-
 	var statement string
 
 	if reaction == "like" {
@@ -141,4 +138,38 @@ func (rp *Repository) UpdateReactionOfPost(postId int, reaction, operation strin
 	}
 
 	return nil
+}
+
+func (rp *Repository) GetMyCommentedPosts(userId int) ([]entity.Posts, error) {
+	var posts []entity.Posts
+
+	// Запрос с JOIN для получения информации о постах, на которые пользователь оставил комментарии
+	stmt := `SELECT DISTINCT Posts.PostId, Posts.UserId, Posts.Title, Posts.Content, Posts.Image, Posts.LikeCount, Posts.DislikeCount, Posts.CreatedAt
+	FROM Commentaries
+	JOIN Posts ON Posts.PostId = Commentaries.PostId
+	WHERE Commentaries.UserId = ?`
+
+	// Выполнение запроса
+	rows, err := rp.DB.Query(stmt, userId)
+	if err != nil {
+		return nil, logger.ErrorWrapper("Repository", "GetMyCommentedPosts", "Problem getting posts commented by user", err)
+	}
+	defer rows.Close() // безопасное закрытие ресурсов
+
+	// Обработка результата запроса
+	for rows.Next() {
+		post := entity.Posts{}
+		err := rows.Scan(&post.PostId, &post.UserId, &post.Title, &post.Content, &post.Image, &post.LikeCount, &post.DislikeCount, &post.CreatedAt)
+		if err != nil {
+			return nil, logger.ErrorWrapper("Repository", "GetMyCommentedPosts", "Failed to scan post row", err)
+		}
+		posts = append(posts, post)
+	}
+
+	// Проверка на ошибки после завершения обработки строк
+	if err := rows.Err(); err != nil {
+		return nil, logger.ErrorWrapper("Repository", "GetMyCommentedPosts", "Error iterating over rows", err)
+	}
+
+	return posts, nil
 }

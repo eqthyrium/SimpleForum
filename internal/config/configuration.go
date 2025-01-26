@@ -2,9 +2,10 @@ package config
 
 import (
 	"flag"
-	"github.com/joho/godotenv"
 	"log"
 	"os"
+
+	"github.com/joho/godotenv"
 )
 
 var Config *Configuration
@@ -33,7 +34,7 @@ func NewConfiguration() *Configuration {
 		GithubOauth: new(Github),
 		GoogleOauth: new(Google),
 	}
-	configObject.Addr = flag.String("addr", ":8888", "customHttp listen port")
+	configObject.Addr = flag.String("addr", ":8889", "customHttp listen port")
 	configObject.Dsn = flag.String("dsn", "../mydb.db", "Sqllite3 data source name")
 	flag.Parse()
 

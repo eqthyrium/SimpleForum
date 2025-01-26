@@ -7,12 +7,10 @@ import (
 )
 
 func (app *Application) GetLatestCommentaries(postId int) ([]entity.Commentaries, error) {
-
 	return nil, nil
 }
 
 func (app *Application) CreateCommentary(userId, postId int, content string) error {
-
 	validation := checkContent(content)
 	if !validation {
 		return logger.ErrorWrapper("UseCase", "CreateCommentary", "The provided content is not correponding to the application logic", domain.ErrNotValidContent)
@@ -41,4 +39,12 @@ func checkContent(content string) bool {
 	}
 
 	return true
+}
+
+func (app *Application) GetCertainPostsCommentaries(posts int) ([]entity.Commentaries, error) {
+	comment, err := app.ServiceDB.GetCertainPostsCommentaries(posts)
+	if err != nil {
+		return nil, logger.ErrorWrapper("UseCase", "GetComments", "Failed to create commentary", err)
+	}
+	return comment, nil
 }

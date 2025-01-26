@@ -11,24 +11,24 @@ type DbModule interface {
 	categoryRepository
 	reactionRepository
 	postCategoryRepository
-	//PostCategoryRepository
-	//ReactionRepository
-	//NotificationRepository
-
+	// PostCategoryRepository
+	// ReactionRepository
+	// NotificationRepository
 }
 
 type userRepository interface {
 	CreateUser(user *entity.Users) error
 	UpdateUserPassword(user *entity.Users) error
-	//DeleteUser(userId int) error
-	//GetUserByID(userId int) (entity.User, error)
-	//CheckUserByEmail(email string) (bool, error)
+	// DeleteUser(userId int) error
+	// GetUserByID(userId int) (entity.User, error)
+	// CheckUserByEmail(email string) (bool, error)
 	GetUserByEmail(email string) (*entity.Users, error)
 }
 
 type postRepository interface {
 	CreatePost(userId int, title, content string) (int, error)
 	GetLatestAllPosts(categories []string) ([]entity.Posts, error)
+	GetMyCommentedPosts(userId int) ([]entity.Posts, error)
 	GetPostsByCertainUser(userId int) ([]entity.Posts, error)
 	GetCertainPostInfo(postId int) (*entity.Posts, error)
 	UpdateReactionOfPost(postId int, reaction, operation string) error

@@ -1,19 +1,19 @@
 package customHttp
 
 import (
-	"SimpleForum/internal/domain"
-	"SimpleForum/internal/transport/session"
-	"SimpleForum/pkg/logger"
 	"bytes"
 	"errors"
 	"html/template"
 	"net/http"
 	"strconv"
 	"strings"
+
+	"SimpleForum/internal/domain"
+	"SimpleForum/internal/transport/session"
+	"SimpleForum/pkg/logger"
 )
 
 func (handler *HandlerHttp) postPage(w http.ResponseWriter, r *http.Request) {
-
 	customLogger.DebugLogger.Println("postPage handler is activated")
 
 	path := r.URL.Path
@@ -101,7 +101,6 @@ func (handler *HandlerHttp) postPage(w http.ResponseWriter, r *http.Request) {
 }
 
 func (handler *HandlerHttp) postPageGet(w http.ResponseWriter, r *http.Request, files []string, number int) {
-
 	var userId int
 	role := r.Context().Value("Role").(string)
 	if role != "Guest" {
