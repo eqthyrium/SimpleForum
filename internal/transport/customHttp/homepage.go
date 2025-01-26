@@ -1,16 +1,16 @@
 package customHttp
 
 import (
-	"SimpleForum/internal/domain/entity"
-	"SimpleForum/internal/transport/session"
-	"SimpleForum/pkg/logger"
 	"bytes"
 	"html/template"
 	"net/http"
+
+	"SimpleForum/internal/domain/entity"
+	"SimpleForum/internal/transport/session"
+	"SimpleForum/pkg/logger"
 )
 
 func (handler *HandlerHttp) homePage(w http.ResponseWriter, r *http.Request) {
-
 	customLogger.DebugLogger.Println("homePage handler is activated")
 
 	if r.URL.Path != "/" {
@@ -31,13 +31,10 @@ func (handler *HandlerHttp) homePage(w http.ResponseWriter, r *http.Request) {
 	}
 	// For like/dislike operation
 	if r.Method == http.MethodPost {
-
 	}
-
 }
 
 func (handler *HandlerHttp) homePageGet(w http.ResponseWriter, r *http.Request, files []string) {
-
 	var userId int
 	role := r.Context().Value("Role").(string)
 	if role != "Guest" {
@@ -48,6 +45,7 @@ func (handler *HandlerHttp) homePageGet(w http.ResponseWriter, r *http.Request, 
 	requestedCategories := r.URL.Query()["categories"]
 	myposts := r.URL.Query().Get("myposts")
 	mylikeposts := r.URL.Query().Get("mylikedposts")
+	activity := r.URL.Query().Get("activity")
 
 	categories, err := handler.Service.GetAllCategories()
 	if err != nil {
@@ -60,8 +58,7 @@ func (handler *HandlerHttp) homePageGet(w http.ResponseWriter, r *http.Request, 
 
 	var posts []entity.Posts
 
-	if role != "Guest" && (myposts == "true" || mylikeposts == "true") {
-
+	if role != "Guest" && (myposts == "true" || mylikeposts == "true" || activity == "true") {
 		if myposts == "true" {
 			posts, err = handler.Service.GetMyCreatedPosts(userId)
 			if err != nil {
@@ -77,7 +74,6 @@ func (handler *HandlerHttp) homePageGet(w http.ResponseWriter, r *http.Request, 
 				return
 			}
 		}
-
 	} else {
 
 		posts, err = handler.Service.GetLatestPosts(requestedCategories)

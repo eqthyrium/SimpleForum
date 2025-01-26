@@ -1,0 +1,12 @@
+{
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "driver": "SQLite",
+            "database": "mydb.db",
+            "name": "forum",
+            "group": "forum"
+        }
+    ],
+    "sqltools.useNodeRuntime": true
+}

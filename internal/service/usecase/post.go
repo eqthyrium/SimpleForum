@@ -1,14 +1,15 @@
 package usecase
 
 import (
+	"fmt"
+	"strconv"
+
 	"SimpleForum/internal/domain"
 	"SimpleForum/internal/domain/entity"
 	"SimpleForum/pkg/logger"
-	"strconv"
 )
 
 func (app *Application) CreatePost(userId int, title, content string, categories []string) error {
-
 	titleValidation := checkContent(title)
 	contentValidation := checkContent(content)
 	if !(contentValidation && titleValidation) {
@@ -36,8 +37,8 @@ func (app *Application) CreatePost(userId int, title, content string, categories
 	}
 	return nil
 }
-func (app *Application) GetLatestPosts(requestedCategories []string) ([]entity.Posts, error) {
 
+func (app *Application) GetLatestPosts(requestedCategories []string) ([]entity.Posts, error) {
 	posts, err := app.ServiceDB.GetLatestAllPosts(requestedCategories)
 	if err != nil {
 		return nil, logger.ErrorWrapper("UseCase", "GetLatestPosts", "There is problem with getting all the recent posts from the db", err)
@@ -47,18 +48,16 @@ func (app *Application) GetLatestPosts(requestedCategories []string) ([]entity.P
 }
 
 func (app *Application) GetMyCreatedPosts(userId int) ([]entity.Posts, error) {
-
 	posts, err := app.ServiceDB.GetPostsByCertainUser(userId)
 	if err != nil {
 		return nil, logger.ErrorWrapper("UseCase", "GetMyCreatedPosts", "There is problem with getting all my created posts from the db", err)
 	}
+	fmt.Println("uscase GetMyCreatedPosts:", posts)
 
 	return posts, nil
-
 }
 
 func (app *Application) GetMyLikedPosts(userId int) ([]entity.Posts, error) {
-
 	posts, err := app.ServiceDB.GetReactedPostsByCertainUser(userId, "like")
 	if err != nil {
 		return nil, logger.ErrorWrapper("UseCase", "GetMyLikedPosts", "There is problem with getting all my liked posts from the db", err)
@@ -68,11 +67,9 @@ func (app *Application) GetMyLikedPosts(userId int) ([]entity.Posts, error) {
 }
 
 func (app *Application) GetCertainPostPage(postId int) (*entity.Posts, []entity.Commentaries, error) {
-
 	post, err := app.ServiceDB.GetCertainPostInfo(postId)
 	if err != nil {
 		return nil, nil, logger.ErrorWrapper("UseCase", "GetCertainPostPage", "There is problem with getting certain post's info from the db", err)
-
 	}
 	commentaries, err := app.ServiceDB.GetCertainPostsCommentaries(postId)
 	if err != nil {

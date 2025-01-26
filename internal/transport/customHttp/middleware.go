@@ -1,15 +1,16 @@
 package customHttp
 
 import (
-	"SimpleForum/internal/domain"
-	session2 "SimpleForum/internal/transport/session"
-	"SimpleForum/pkg/logger"
 	"context"
 	"errors"
 	"fmt"
 	"net/http"
 	"runtime/debug"
 	"time"
+
+	"SimpleForum/internal/domain"
+	session2 "SimpleForum/internal/transport/session"
+	"SimpleForum/pkg/logger"
 )
 
 /*
@@ -71,11 +72,9 @@ func SecurityMiddleware(next http.Handler) http.Handler {
 
 func RoleAdjusterMiddleware(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-
 		customLogger.DebugLogger.Println("The RoleAdjusterMiddleware is started")
 
 		tokenString, err := session2.GetTokenFromCookie(r, "auth_token")
-
 		if err != nil {
 			customLogger.DebugLogger.Println("There is an error about getting the token from the cookie!!!")
 			if errors.Is(err, http.ErrNoCookie) {
@@ -161,7 +160,6 @@ func RoleAdjusterMiddleware(next http.Handler) http.Handler {
 
 func CSRFMiddleware(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-
 		customLogger.DebugLogger.Println("The CSRFMiddleware is started")
 
 		role := r.Context().Value("Role").(string)
@@ -171,7 +169,7 @@ func CSRFMiddleware(next http.Handler) http.Handler {
 
 			formCSRFText := r.FormValue("csrf_text")
 			userId := r.Context().Value("UserId").(int)
-
+			fmt.Println("formCSRFText:%s", formCSRFText, "session:%s", CSRFMap[session2.MapUUID[userId]])
 			if formCSRFText != CSRFMap[session2.MapUUID[userId]] {
 				customLogger.InfoLogger.Println("The CSRF attack is detected, its IP is:", r.RemoteAddr)
 				if _, ok := CSRFMap[session2.MapUUID[userId]]; ok {
@@ -185,13 +183,13 @@ func CSRFMiddleware(next http.Handler) http.Handler {
 			customLogger.DebugLogger.Println("The CSRF checking part was good")
 
 		}
+		fmt.Println("is here")
 
 		next.ServeHTTP(w, r)
 	})
 }
 
 func PanicMiddleware(next http.Handler) http.Handler {
-
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		defer func() {
 			if err := recover(); err != nil {

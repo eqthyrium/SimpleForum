@@ -1,17 +1,17 @@
 package sqllite
 
 import (
-	"SimpleForum/internal/domain"
-	"SimpleForum/internal/domain/entity"
-	"SimpleForum/pkg/logger"
 	"database/sql"
 	"errors"
 	"fmt"
 	"strings"
+
+	"SimpleForum/internal/domain"
+	"SimpleForum/internal/domain/entity"
+	"SimpleForum/pkg/logger"
 )
 
 func (rp *Repository) CreatePost(userId int, title, content string) (int, error) {
-
 	statement := `INSERT INTO Posts (UserId, Title, Content) VALUES(?,?,?)`
 	index, err := rp.DB.Exec(statement, userId, title, content)
 	if err != nil {
@@ -83,11 +83,11 @@ func (rp *Repository) GetPostsByCertainUser(userId int) ([]entity.Posts, error) 
 		}
 		posts = append(posts, post)
 	}
+	// fmt.Println("repo GetPostsByCertainUser:", posts)
 	return posts, nil
 }
 
 func (rp *Repository) GetCertainPostInfo(postId int) (*entity.Posts, error) {
-
 	var statement string = `Select * FROM Posts WHERE PostId = ?`
 
 	row := rp.DB.QueryRow(statement, postId)
@@ -95,7 +95,6 @@ func (rp *Repository) GetCertainPostInfo(postId int) (*entity.Posts, error) {
 	post := &entity.Posts{}
 
 	err := row.Scan(&post.PostId, &post.UserId, &post.Title, &post.Content, &post.Image, &post.LikeCount, &post.DislikeCount, &post.CreatedAt)
-
 	if err != nil {
 		if errors.Is(err, sql.ErrNoRows) {
 			return nil, logger.ErrorWrapper("Repository", "GetCertainPostInfo", "There is no such  post in the db", domain.ErrPostNotFound)
@@ -108,7 +107,6 @@ func (rp *Repository) GetCertainPostInfo(postId int) (*entity.Posts, error) {
 }
 
 func (rp *Repository) UpdateReactionOfPost(postId int, reaction, operation string) error {
-
 	var statement string
 
 	if reaction == "like" {

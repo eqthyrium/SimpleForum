@@ -1,11 +1,13 @@
 package customHttp
 
 import (
-	"SimpleForum/internal/transport/session"
-	"SimpleForum/pkg/logger"
 	"bytes"
+	"fmt"
 	"html/template"
 	"net/http"
+
+	"SimpleForum/internal/transport/session"
+	"SimpleForum/pkg/logger"
 )
 
 func (handler *HandlerHttp) createPost(w http.ResponseWriter, r *http.Request) {
@@ -40,7 +42,7 @@ func (handler *HandlerHttp) createPost(w http.ResponseWriter, r *http.Request) {
 		title := r.FormValue("title")
 		content := r.FormValue("content")
 		requestedCategories := r.URL.Query()["categories"]
-
+		fmt.Println("content:", content)
 		err := handler.Service.CreatePost(userId, title, content, requestedCategories)
 		if err != nil {
 			customLogger.ErrorLogger.Println(err)
@@ -54,7 +56,6 @@ func (handler *HandlerHttp) createPost(w http.ResponseWriter, r *http.Request) {
 }
 
 func (handler *HandlerHttp) createPostPage(w http.ResponseWriter, r *http.Request, files []string) {
-
 	userId := r.Context().Value("UserId").(int)
 
 	categories, err := handler.Service.GetAllCategories()
@@ -101,5 +102,4 @@ func (handler *HandlerHttp) createPostPage(w http.ResponseWriter, r *http.Reques
 		serverError(w)
 		return
 	}
-
 }

@@ -1,4 +1,92 @@
-{{define "homepage"}}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Моя активность</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .post-list, .liked-post-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        .post-item, .liked-post-item {
+            background-color: #f9f9f9;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+        footer {
+            text-align: center;
+            padding: 10px 0;
+            background-color: #4CAF50;
+            color: white;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
 
+<header>
+    <h1>Моя активность</h1>
+</header>
 
-{{end}}
+<div class="container">
+    <!-- Выводим CSRF текст -->
+  
+
+    <!-- Выводим все посты -->
+    <div>
+        <h2>Мои посты:</h2>
+        <ul class="post-list">
+            {{range .PostContent}}
+                <li class="post-item">
+                    <h3>{{.Title}}</h3>
+                    <p>{{.Content}}</p>
+                </li>
+            {{end}}
+        </ul>
+    </div>
+
+    <!-- Выводим понравившиеся посты -->
+    <div>
+        <h2>Понравившиеся посты:</h2>
+        <ul class="liked-post-list">
+            {{range .likedPosts}}
+                <li class="liked-post-item">
+                    <h3>{{.Title}}</h3>
+                    <p>{{.Content}}</p>
+                </li>
+            {{end}}
+        </ul>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2025 Мой сайт</p>
+</footer>
+
+</body>
+</html>
