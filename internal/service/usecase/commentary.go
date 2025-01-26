@@ -48,3 +48,11 @@ func (app *Application) GetCertainPostsCommentaries(posts int) ([]entity.Comment
 	}
 	return comment, nil
 }
+
+func (app *Application) GetComments(userId int) ([]entity.Commentaries, error) {
+	comment, err := app.ServiceDB.GetComments(userId)
+	if err != nil {
+		return nil, logger.ErrorWrapper("UseCase", "GetComments", "Failed to create commentary", err)
+	}
+	return comment, nil
+}

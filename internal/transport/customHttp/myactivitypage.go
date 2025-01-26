@@ -2,7 +2,6 @@ package customHttp
 
 import (
 	"bytes"
-	"fmt"
 	"html/template"
 	"net/http"
 
@@ -41,7 +40,6 @@ func (handler *HandlerHttp) myActivityPage(w http.ResponseWriter, r *http.Reques
 		serverError(w)
 		return
 	}
-	fmt.Println("getAllMyPosts", getAllMyPosts)
 
 	getAllMyLikedPosts, err := handler.Service.GetMyLikedPosts(userId)
 	if err != nil {
@@ -62,31 +60,32 @@ func (handler *HandlerHttp) myActivityPage(w http.ResponseWriter, r *http.Reques
 	// 	postId = r.PostId
 	// }
 
-	getComments, err := handler.Service.GetCertainPostsCommentaries(userId)
+	getComments, err := handler.Service.GetComments(userId)
 	if err != nil {
 		customLogger.ErrorLogger.Print(logger.ErrorWrapper("Transport", "myActivityPage", "There is a problem in the process of getting all categories", err))
 		serverError(w)
 		return
 	}
-	fmt.Println("getComments", getComments)
-
-	type Data struct {
+	type Post struct {
+		PostId  int
 		Title   string
 		Content string
 		Comment string
 	}
-	var data Data
+	var postsWithComments []Post
+
 	for _, post := range getCommentedPosts {
 		for _, comment := range getComments {
-			if post.UserId == comment.UserId {
-
-				data.Title = post.Title
-				data.Content = post.Content
-				data.Comment = comment.Content
+			if post.PostId == comment.PostId {
+				postsWithComments = append(postsWithComments, Post{
+					PostId:  post.PostId,
+					Title:   post.Title,
+					Content: post.Content,
+					Comment: comment.Content, // Добавляем комментарий
+				})
 			}
 		}
 	}
-	fmt.Println("commented posts:", getCommentedPosts)
 
 	files := []string{"../ui/html/myactivity.html"}
 	tmpl, err := template.ParseFiles(files...)
@@ -110,10 +109,7 @@ func (handler *HandlerHttp) myActivityPage(w http.ResponseWriter, r *http.Reques
 	err = tmpl.ExecuteTemplate(&buf, "myactivity.html", map[string]interface{}{
 		"PostContent":      getAllMyPosts,
 		"likedPosts":       getAllMyLikedPosts,
-		"myCommentedPosts": getCommentedPosts,
-		"Title":            data.Title,
-		"Content":          data.Content,
-		"Comment":          data.Comment,
+		"myCommentedPosts": postsWithComments,
 	})
 	if err != nil {
 		customLogger.ErrorLogger.Print(logger.ErrorWrapper("Transport", "myActivityPage", "There is a problem in the process of rendering template to the buffer", err))

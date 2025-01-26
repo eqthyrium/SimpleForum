@@ -26,6 +26,7 @@ type posts interface {
 }
 
 type commentaries interface {
+	GetComments(UserId int) ([]entity.Commentaries, error)
 	GetLatestCommentaries(postId int) ([]entity.Commentaries, error)
 	CreateCommentary(userId, postId int, content string) error
 	GetCertainPostsCommentaries(postId int) ([]entity.Commentaries, error)

@@ -35,6 +35,7 @@ type postRepository interface {
 }
 
 type commentRepository interface {
+	GetComments(UserId int) ([]entity.Commentaries, error)
 	GetCertainPostsCommentaries(postId int) ([]entity.Commentaries, error)
 	CreateCommentary(userId, postId int, content string) error
 	UpdateReactionOfCommentary(commentId int, reaction, operation string) error

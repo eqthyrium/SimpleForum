@@ -6,7 +6,6 @@ import (
 )
 
 func (rp *Repository) CreateCommentary(userId, postId int, content string) error {
-
 	statement := `INSERT INTO Commentaries (UserId, PostId, Content) VALUES (?, ?,?)`
 	_, err := rp.DB.Exec(statement, userId, postId, content)
 	if err != nil {
@@ -16,11 +15,9 @@ func (rp *Repository) CreateCommentary(userId, postId int, content string) error
 }
 
 func (rp *Repository) GetCertainPostsCommentaries(postId int) ([]entity.Commentaries, error) {
-
 	statement := `SELECT * FROM Commentaries WHERE PostId = ? ORDER BY CreatedAt DESC`
 
 	rows, err := rp.DB.Query(statement, postId)
-
 	if err != nil {
 		return nil, logger.ErrorWrapper("Repository", "GetCertainPostsCommentaries", "Failed to execute query for commentaries", err)
 	}
@@ -47,7 +44,6 @@ func (rp *Repository) GetCertainPostsCommentaries(postId int) ([]entity.Commenta
 }
 
 func (rp *Repository) UpdateReactionOfCommentary(commentId int, reaction, operation string) error {
-
 	var statement string
 
 	if reaction == "like" {
@@ -75,5 +71,33 @@ func (rp *Repository) UpdateReactionOfCommentary(commentId int, reaction, operat
 	}
 
 	return nil
+}
 
+func (rp *Repository) GetComments(UserId int) ([]entity.Commentaries, error) {
+	stmt := `SELECT * FROM Commentaries WHERE UserId = ?`
+	rows, err := rp.DB.Query(stmt, UserId)
+	if err != nil {
+		return nil, logger.ErrorWrapper("Repository", "GetComments", "Failed to execute query for commentaries", err)
+	}
+	var commentaries []entity.Commentaries
+
+	for rows.Next() {
+		commentary := entity.Commentaries{}
+		err := rows.Scan(&commentary.CommentId, &commentary.PostId, &commentary.UserId, &commentary.Content, &commentary.LikeCount, &commentary.DislikeCount, &commentary.CreateAt)
+		if err != nil {
+			return nil, logger.ErrorWrapper("Repository", "GetCertainPostsGetCommentsCommentaries", "Failed to scan commentaries row", err)
+		}
+		commentaries = append(commentaries, commentary)
+	}
+
+	// Check for errors during iteration
+	if err := rows.Err(); err != nil {
+		return nil, logger.ErrorWrapper("Repository", "GetComments", "Error occurred during rows iteration", err)
+	}
+
+	if err := rows.Close(); err != nil {
+		return nil, logger.ErrorWrapper("Repository", "GetComments", "Failed to close the row of db", err)
+	}
+
+	return commentaries, nil
 }
