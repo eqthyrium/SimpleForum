@@ -1,33 +1,148 @@
-INFO: 2025/01/26 20:38:04 /home/student/SimpleForum/internal/transport/customHttp/middleware.go:55: Method:[GET], URL_Path: /, Remote_Address: 127.0.0.1:46470
-DEBUG: 2025/01/26 20:38:04 /home/student/SimpleForum/internal/transport/customHttp/middleware.go:75: The RoleAdjusterMiddleware is started
-DEBUG: 2025/01/26 20:38:04 /home/student/SimpleForum/internal/transport/customHttp/middleware.go:128: Entered into error handling of the check up of MappUUID
-INFO: 2025/01/26 20:38:04 /home/student/SimpleForum/internal/transport/customHttp/middleware.go:129: There is not current token for the client
-INFO: 2025/01/26 20:38:04 /home/student/SimpleForum/internal/transport/customHttp/middleware.go:59: The End of the client request, and its Duration:135.277µs
-INFO: 2025/01/26 20:38:04 /home/student/SimpleForum/internal/transport/customHttp/middleware.go:55: Method:[GET], URL_Path: /auth/login, Remote_Address: 127.0.0.1:46470
-DEBUG: 2025/01/26 20:38:04 /home/student/SimpleForum/internal/transport/customHttp/middleware.go:75: The RoleAdjusterMiddleware is started
-DEBUG: 2025/01/26 20:38:04 /home/student/SimpleForum/internal/transport/customHttp/middleware.go:80: There is an error about getting the token from the cookie!!!
-INFO: 2025/01/26 20:38:04 /home/student/SimpleForum/internal/transport/customHttp/middleware.go:82: There is no cookie in the request of the client
-DEBUG: 2025/01/26 20:38:04 /home/student/SimpleForum/internal/transport/customHttp/middleware.go:165: The CSRFMiddleware is started
-DEBUG: 2025/01/26 20:38:04 /home/student/SimpleForum/internal/transport/customHttp/login.go:28: The logIn handler is activated
-DEBUG: 2025/01/26 20:38:04 /home/student/SimpleForum/internal/transport/customHttp/login.go:50: logIn's handler of GET request is activated
-INFO: 2025/01/26 20:38:04 /home/student/SimpleForum/internal/transport/customHttp/middleware.go:59: The End of the client request, and its Duration:663.629µs
-INFO: 2025/01/26 20:38:05 /home/student/SimpleForum/internal/transport/customHttp/middleware.go:55: Method:[POST], URL_Path: /auth/login, Remote_Address: 127.0.0.1:46470
-DEBUG: 2025/01/26 20:38:05 /home/student/SimpleForum/internal/transport/customHttp/middleware.go:75: The RoleAdjusterMiddleware is started
-DEBUG: 2025/01/26 20:38:05 /home/student/SimpleForum/internal/transport/customHttp/middleware.go:80: There is an error about getting the token from the cookie!!!
-INFO: 2025/01/26 20:38:05 /home/student/SimpleForum/internal/transport/customHttp/middleware.go:82: There is no cookie in the request of the client
-DEBUG: 2025/01/26 20:38:05 /home/student/SimpleForum/internal/transport/customHttp/middleware.go:165: The CSRFMiddleware is started
-DEBUG: 2025/01/26 20:38:05 /home/student/SimpleForum/internal/transport/customHttp/login.go:28: The logIn handler is activated
-DEBUG: 2025/01/26 20:38:05 /home/student/SimpleForum/internal/transport/customHttp/login.go:80: logIn's handler of POST request is activated
-INFO: 2025/01/26 20:38:05 /home/student/SimpleForum/internal/transport/customHttp/middleware.go:59: The End of the client request, and its Duration:59.7506ms
-INFO: 2025/01/26 20:38:05 /home/student/SimpleForum/internal/transport/customHttp/middleware.go:55: Method:[GET], URL_Path: /, Remote_Address: 127.0.0.1:46470
-DEBUG: 2025/01/26 20:38:05 /home/student/SimpleForum/internal/transport/customHttp/middleware.go:75: The RoleAdjusterMiddleware is started
-DEBUG: 2025/01/26 20:38:05 /home/student/SimpleForum/internal/transport/customHttp/middleware.go:135: Checking part of token's time
-DEBUG: 2025/01/26 20:38:05 /home/student/SimpleForum/internal/transport/customHttp/middleware.go:165: The CSRFMiddleware is started
-DEBUG: 2025/01/26 20:38:05 /home/student/SimpleForum/internal/transport/customHttp/homepage.go:14: homePage handler is activated
-INFO: 2025/01/26 20:38:05 /home/student/SimpleForum/internal/transport/customHttp/middleware.go:59: The End of the client request, and its Duration:3.629567ms
-INFO: 2025/01/26 20:38:07 /home/student/SimpleForum/internal/transport/customHttp/middleware.go:55: Method:[GET], URL_Path: /myactivity, Remote_Address: 127.0.0.1:46470
-DEBUG: 2025/01/26 20:38:07 /home/student/SimpleForum/internal/transport/customHttp/middleware.go:75: The RoleAdjusterMiddleware is started
-DEBUG: 2025/01/26 20:38:07 /home/student/SimpleForum/internal/transport/customHttp/middleware.go:135: Checking part of token's time
-DEBUG: 2025/01/26 20:38:07 /home/student/SimpleForum/internal/transport/customHttp/middleware.go:165: The CSRFMiddleware is started
-DEBUG: 2025/01/26 20:38:07 /home/student/SimpleForum/internal/transport/customHttp/myactivitypage.go:14: myActivity page is activated
-INFO: 2025/01/26 20:38:07 /home/student/SimpleForum/internal/transport/customHttp/middleware.go:59: The End of the client request, and its Duration:1.88627ms
+INFO: 2025/01/27 03:17:46 /home/student/SimpleForum/internal/transport/customHttp/middleware.go:55: Method:[GET], URL_Path: /, Remote_Address: 127.0.0.1:58740
+DEBUG: 2025/01/27 03:17:46 /home/student/SimpleForum/internal/transport/customHttp/middleware.go:75: The RoleAdjusterMiddleware is started
+DEBUG: 2025/01/27 03:17:46 /home/student/SimpleForum/internal/transport/customHttp/middleware.go:128: Entered into error handling of the check up of MappUUID
+INFO: 2025/01/27 03:17:46 /home/student/SimpleForum/internal/transport/customHttp/middleware.go:129: There is not current token for the client
+INFO: 2025/01/27 03:17:46 /home/student/SimpleForum/internal/transport/customHttp/middleware.go:59: The End of the client request, and its Duration:125.176µs
+INFO: 2025/01/27 03:17:46 /home/student/SimpleForum/internal/transport/customHttp/middleware.go:55: Method:[GET], URL_Path: /auth/login, Remote_Address: 127.0.0.1:58740
+DEBUG: 2025/01/27 03:17:46 /home/student/SimpleForum/internal/transport/customHttp/middleware.go:75: The RoleAdjusterMiddleware is started
+DEBUG: 2025/01/27 03:17:46 /home/student/SimpleForum/internal/transport/customHttp/middleware.go:80: There is an error about getting the token from the cookie!!!
+INFO: 2025/01/27 03:17:46 /home/student/SimpleForum/internal/transport/customHttp/middleware.go:82: There is no cookie in the request of the client
+DEBUG: 2025/01/27 03:17:46 /home/student/SimpleForum/internal/transport/customHttp/middleware.go:165: The CSRFMiddleware is started
+DEBUG: 2025/01/27 03:17:46 /home/student/SimpleForum/internal/transport/customHttp/login.go:28: The logIn handler is activated
+DEBUG: 2025/01/27 03:17:46 /home/student/SimpleForum/internal/transport/customHttp/login.go:50: logIn's handler of GET request is activated
+INFO: 2025/01/27 03:17:46 /home/student/SimpleForum/internal/transport/customHttp/middleware.go:59: The End of the client request, and its Duration:229.712µs
+INFO: 2025/01/27 03:17:46 /home/student/SimpleForum/internal/transport/customHttp/middleware.go:55: Method:[GET], URL_Path: /favicon.ico, Remote_Address: 127.0.0.1:58740
+DEBUG: 2025/01/27 03:17:46 /home/student/SimpleForum/internal/transport/customHttp/middleware.go:75: The RoleAdjusterMiddleware is started
+DEBUG: 2025/01/27 03:17:46 /home/student/SimpleForum/internal/transport/customHttp/middleware.go:80: There is an error about getting the token from the cookie!!!
+INFO: 2025/01/27 03:17:46 /home/student/SimpleForum/internal/transport/customHttp/middleware.go:82: There is no cookie in the request of the client
+DEBUG: 2025/01/27 03:17:46 /home/student/SimpleForum/internal/transport/customHttp/middleware.go:165: The CSRFMiddleware is started
+DEBUG: 2025/01/27 03:17:46 /home/student/SimpleForum/internal/transport/customHttp/homepage.go:14: homePage handler is activated
+DEBUG: 2025/01/27 03:17:46 /home/student/SimpleForum/internal/transport/customHttp/helper.go:16: errorWebpage handler is activated
+INFO: 2025/01/27 03:17:46 /home/student/SimpleForum/internal/transport/customHttp/homepage.go:18: incorrect request's endpoint, it's requested endpoint is: /favicon.ico
+INFO: 2025/01/27 03:17:46 /home/student/SimpleForum/internal/transport/customHttp/middleware.go:59: The End of the client request, and its Duration:190.503µs
+INFO: 2025/01/27 03:17:48 /home/student/SimpleForum/internal/transport/customHttp/middleware.go:55: Method:[POST], URL_Path: /auth/login, Remote_Address: 127.0.0.1:58742
+DEBUG: 2025/01/27 03:17:48 /home/student/SimpleForum/internal/transport/customHttp/middleware.go:75: The RoleAdjusterMiddleware is started
+DEBUG: 2025/01/27 03:17:48 /home/student/SimpleForum/internal/transport/customHttp/middleware.go:80: There is an error about getting the token from the cookie!!!
+INFO: 2025/01/27 03:17:48 /home/student/SimpleForum/internal/transport/customHttp/middleware.go:82: There is no cookie in the request of the client
+DEBUG: 2025/01/27 03:17:48 /home/student/SimpleForum/internal/transport/customHttp/middleware.go:165: The CSRFMiddleware is started
+DEBUG: 2025/01/27 03:17:48 /home/student/SimpleForum/internal/transport/customHttp/login.go:28: The logIn handler is activated
+DEBUG: 2025/01/27 03:17:48 /home/student/SimpleForum/internal/transport/customHttp/login.go:80: logIn's handler of POST request is activated
+INFO: 2025/01/27 03:17:48 /home/student/SimpleForum/internal/transport/customHttp/middleware.go:59: The End of the client request, and its Duration:62.838431ms
+INFO: 2025/01/27 03:17:48 /home/student/SimpleForum/internal/transport/customHttp/middleware.go:55: Method:[GET], URL_Path: /, Remote_Address: 127.0.0.1:58742
+DEBUG: 2025/01/27 03:17:48 /home/student/SimpleForum/internal/transport/customHttp/middleware.go:75: The RoleAdjusterMiddleware is started
+DEBUG: 2025/01/27 03:17:48 /home/student/SimpleForum/internal/transport/customHttp/middleware.go:135: Checking part of token's time
+DEBUG: 2025/01/27 03:17:48 /home/student/SimpleForum/internal/transport/customHttp/middleware.go:165: The CSRFMiddleware is started
+DEBUG: 2025/01/27 03:17:48 /home/student/SimpleForum/internal/transport/customHttp/homepage.go:14: homePage handler is activated
+INFO: 2025/01/27 03:17:48 /home/student/SimpleForum/internal/transport/customHttp/middleware.go:59: The End of the client request, and its Duration:1.32835ms
+INFO: 2025/01/27 03:17:48 /home/student/SimpleForum/internal/transport/customHttp/middleware.go:55: Method:[GET], URL_Path: /favicon.ico, Remote_Address: 127.0.0.1:58742
+DEBUG: 2025/01/27 03:17:48 /home/student/SimpleForum/internal/transport/customHttp/middleware.go:75: The RoleAdjusterMiddleware is started
+DEBUG: 2025/01/27 03:17:48 /home/student/SimpleForum/internal/transport/customHttp/middleware.go:135: Checking part of token's time
+DEBUG: 2025/01/27 03:17:48 /home/student/SimpleForum/internal/transport/customHttp/middleware.go:165: The CSRFMiddleware is started
+DEBUG: 2025/01/27 03:17:48 /home/student/SimpleForum/internal/transport/customHttp/homepage.go:14: homePage handler is activated
+DEBUG: 2025/01/27 03:17:48 /home/student/SimpleForum/internal/transport/customHttp/helper.go:16: errorWebpage handler is activated
+INFO: 2025/01/27 03:17:48 /home/student/SimpleForum/internal/transport/customHttp/homepage.go:18: incorrect request's endpoint, it's requested endpoint is: /favicon.ico
+INFO: 2025/01/27 03:17:48 /home/student/SimpleForum/internal/transport/customHttp/middleware.go:59: The End of the client request, and its Duration:273.456µs
+INFO: 2025/01/27 03:17:49 /home/student/SimpleForum/internal/transport/customHttp/middleware.go:55: Method:[GET], URL_Path: /myactivity, Remote_Address: 127.0.0.1:58744
+DEBUG: 2025/01/27 03:17:49 /home/student/SimpleForum/internal/transport/customHttp/middleware.go:75: The RoleAdjusterMiddleware is started
+DEBUG: 2025/01/27 03:17:49 /home/student/SimpleForum/internal/transport/customHttp/middleware.go:135: Checking part of token's time
+DEBUG: 2025/01/27 03:17:49 /home/student/SimpleForum/internal/transport/customHttp/middleware.go:165: The CSRFMiddleware is started
+DEBUG: 2025/01/27 03:17:49 /home/student/SimpleForum/internal/transport/customHttp/myactivitypage.go:13: myActivity page is activated
+ERROR: 2025/01/27 03:17:49 /home/student/SimpleForum/internal/transport/customHttp/myactivitypage.go:115: [Layer:Transport,Function: myActivityPage,Context: There is a problem in the process of rendering template to the buffer]---> template: myactivity.html:96:37: executing "myactivity.html" at <.Comment>: can't evaluate field Comment in type entity.Posts
+DEBUG: 2025/01/27 03:17:49 /home/student/SimpleForum/internal/transport/customHttp/helper.go:16: errorWebpage handler is activated
+INFO: 2025/01/27 03:17:49 /home/student/SimpleForum/internal/transport/customHttp/middleware.go:59: The End of the client request, and its Duration:2.735374ms
+INFO: 2025/01/27 03:18:42 /home/student/SimpleForum/internal/transport/customHttp/middleware.go:55: Method:[GET], URL_Path: /, Remote_Address: 127.0.0.1:58744
+DEBUG: 2025/01/27 03:18:42 /home/student/SimpleForum/internal/transport/customHttp/middleware.go:75: The RoleAdjusterMiddleware is started
+DEBUG: 2025/01/27 03:18:42 /home/student/SimpleForum/internal/transport/customHttp/middleware.go:135: Checking part of token's time
+DEBUG: 2025/01/27 03:18:42 /home/student/SimpleForum/internal/transport/customHttp/middleware.go:165: The CSRFMiddleware is started
+DEBUG: 2025/01/27 03:18:42 /home/student/SimpleForum/internal/transport/customHttp/homepage.go:14: homePage handler is activated
+INFO: 2025/01/27 03:18:42 /home/student/SimpleForum/internal/transport/customHttp/middleware.go:59: The End of the client request, and its Duration:2.549416ms
+INFO: 2025/01/27 03:18:42 /home/student/SimpleForum/internal/transport/customHttp/middleware.go:55: Method:[GET], URL_Path: /favicon.ico, Remote_Address: 127.0.0.1:58744
+DEBUG: 2025/01/27 03:18:42 /home/student/SimpleForum/internal/transport/customHttp/middleware.go:75: The RoleAdjusterMiddleware is started
+DEBUG: 2025/01/27 03:18:42 /home/student/SimpleForum/internal/transport/customHttp/middleware.go:135: Checking part of token's time
+DEBUG: 2025/01/27 03:18:42 /home/student/SimpleForum/internal/transport/customHttp/middleware.go:165: The CSRFMiddleware is started
+DEBUG: 2025/01/27 03:18:42 /home/student/SimpleForum/internal/transport/customHttp/homepage.go:14: homePage handler is activated
+DEBUG: 2025/01/27 03:18:42 /home/student/SimpleForum/internal/transport/customHttp/helper.go:16: errorWebpage handler is activated
+INFO: 2025/01/27 03:18:42 /home/student/SimpleForum/internal/transport/customHttp/homepage.go:18: incorrect request's endpoint, it's requested endpoint is: /favicon.ico
+INFO: 2025/01/27 03:18:42 /home/student/SimpleForum/internal/transport/customHttp/middleware.go:59: The End of the client request, and its Duration:232.705µs
+INFO: 2025/01/27 03:18:43 /home/student/SimpleForum/internal/transport/customHttp/middleware.go:55: Method:[GET], URL_Path: /myactivity, Remote_Address: 127.0.0.1:58746
+DEBUG: 2025/01/27 03:18:43 /home/student/SimpleForum/internal/transport/customHttp/middleware.go:75: The RoleAdjusterMiddleware is started
+DEBUG: 2025/01/27 03:18:43 /home/student/SimpleForum/internal/transport/customHttp/middleware.go:135: Checking part of token's time
+DEBUG: 2025/01/27 03:18:43 /home/student/SimpleForum/internal/transport/customHttp/middleware.go:165: The CSRFMiddleware is started
+DEBUG: 2025/01/27 03:18:43 /home/student/SimpleForum/internal/transport/customHttp/myactivitypage.go:13: myActivity page is activated
+ERROR: 2025/01/27 03:18:43 /home/student/SimpleForum/internal/transport/customHttp/myactivitypage.go:90: [Layer:Transport,Function: myActivityPage,Context: There is a problem in the process of parsing the html files with template]---> template: myactivity.html:94: unexpected {{end}}
+DEBUG: 2025/01/27 03:18:43 /home/student/SimpleForum/internal/transport/customHttp/helper.go:16: errorWebpage handler is activated
+INFO: 2025/01/27 03:18:43 /home/student/SimpleForum/internal/transport/customHttp/middleware.go:59: The End of the client request, and its Duration:2.149378ms
+INFO: 2025/01/27 03:20:02 /home/student/SimpleForum/internal/transport/customHttp/middleware.go:55: Method:[GET], URL_Path: /, Remote_Address: 127.0.0.1:58746
+DEBUG: 2025/01/27 03:20:02 /home/student/SimpleForum/internal/transport/customHttp/middleware.go:75: The RoleAdjusterMiddleware is started
+DEBUG: 2025/01/27 03:20:02 /home/student/SimpleForum/internal/transport/customHttp/middleware.go:135: Checking part of token's time
+DEBUG: 2025/01/27 03:20:02 /home/student/SimpleForum/internal/transport/customHttp/middleware.go:165: The CSRFMiddleware is started
+DEBUG: 2025/01/27 03:20:02 /home/student/SimpleForum/internal/transport/customHttp/homepage.go:14: homePage handler is activated
+INFO: 2025/01/27 03:20:02 /home/student/SimpleForum/internal/transport/customHttp/middleware.go:59: The End of the client request, and its Duration:7.084449ms
+INFO: 2025/01/27 03:20:03 /home/student/SimpleForum/internal/transport/customHttp/middleware.go:55: Method:[GET], URL_Path: /favicon.ico, Remote_Address: 127.0.0.1:58746
+DEBUG: 2025/01/27 03:20:03 /home/student/SimpleForum/internal/transport/customHttp/middleware.go:75: The RoleAdjusterMiddleware is started
+DEBUG: 2025/01/27 03:20:03 /home/student/SimpleForum/internal/transport/customHttp/middleware.go:135: Checking part of token's time
+DEBUG: 2025/01/27 03:20:03 /home/student/SimpleForum/internal/transport/customHttp/middleware.go:165: The CSRFMiddleware is started
+DEBUG: 2025/01/27 03:20:03 /home/student/SimpleForum/internal/transport/customHttp/homepage.go:14: homePage handler is activated
+DEBUG: 2025/01/27 03:20:03 /home/student/SimpleForum/internal/transport/customHttp/helper.go:16: errorWebpage handler is activated
+INFO: 2025/01/27 03:20:03 /home/student/SimpleForum/internal/transport/customHttp/homepage.go:18: incorrect request's endpoint, it's requested endpoint is: /favicon.ico
+INFO: 2025/01/27 03:20:03 /home/student/SimpleForum/internal/transport/customHttp/middleware.go:59: The End of the client request, and its Duration:3.267306ms
+INFO: 2025/01/27 03:20:04 /home/student/SimpleForum/internal/transport/customHttp/middleware.go:55: Method:[GET], URL_Path: /myactivity, Remote_Address: 127.0.0.1:58748
+DEBUG: 2025/01/27 03:20:04 /home/student/SimpleForum/internal/transport/customHttp/middleware.go:75: The RoleAdjusterMiddleware is started
+DEBUG: 2025/01/27 03:20:04 /home/student/SimpleForum/internal/transport/customHttp/middleware.go:135: Checking part of token's time
+DEBUG: 2025/01/27 03:20:04 /home/student/SimpleForum/internal/transport/customHttp/middleware.go:165: The CSRFMiddleware is started
+DEBUG: 2025/01/27 03:20:04 /home/student/SimpleForum/internal/transport/customHttp/myactivitypage.go:13: myActivity page is activated
+INFO: 2025/01/27 03:20:04 /home/student/SimpleForum/internal/transport/customHttp/middleware.go:59: The End of the client request, and its Duration:2.35864ms
+INFO: 2025/01/27 03:20:04 /home/student/SimpleForum/internal/transport/customHttp/middleware.go:55: Method:[GET], URL_Path: /favicon.ico, Remote_Address: 127.0.0.1:58748
+DEBUG: 2025/01/27 03:20:04 /home/student/SimpleForum/internal/transport/customHttp/middleware.go:75: The RoleAdjusterMiddleware is started
+DEBUG: 2025/01/27 03:20:04 /home/student/SimpleForum/internal/transport/customHttp/middleware.go:135: Checking part of token's time
+DEBUG: 2025/01/27 03:20:04 /home/student/SimpleForum/internal/transport/customHttp/middleware.go:165: The CSRFMiddleware is started
+DEBUG: 2025/01/27 03:20:04 /home/student/SimpleForum/internal/transport/customHttp/homepage.go:14: homePage handler is activated
+DEBUG: 2025/01/27 03:20:04 /home/student/SimpleForum/internal/transport/customHttp/helper.go:16: errorWebpage handler is activated
+INFO: 2025/01/27 03:20:04 /home/student/SimpleForum/internal/transport/customHttp/homepage.go:18: incorrect request's endpoint, it's requested endpoint is: /favicon.ico
+INFO: 2025/01/27 03:20:04 /home/student/SimpleForum/internal/transport/customHttp/middleware.go:59: The End of the client request, and its Duration:216.064µs
+INFO: 2025/01/27 03:25:09 /home/student/SimpleForum/internal/transport/customHttp/middleware.go:55: Method:[GET], URL_Path: /, Remote_Address: 127.0.0.1:58750
+DEBUG: 2025/01/27 03:25:09 /home/student/SimpleForum/internal/transport/customHttp/middleware.go:75: The RoleAdjusterMiddleware is started
+DEBUG: 2025/01/27 03:25:09 /home/student/SimpleForum/internal/transport/customHttp/middleware.go:135: Checking part of token's time
+DEBUG: 2025/01/27 03:25:09 /home/student/SimpleForum/internal/transport/customHttp/middleware.go:165: The CSRFMiddleware is started
+DEBUG: 2025/01/27 03:25:09 /home/student/SimpleForum/internal/transport/customHttp/homepage.go:14: homePage handler is activated
+INFO: 2025/01/27 03:25:09 /home/student/SimpleForum/internal/transport/customHttp/middleware.go:59: The End of the client request, and its Duration:2.337516ms
+INFO: 2025/01/27 03:25:09 /home/student/SimpleForum/internal/transport/customHttp/middleware.go:55: Method:[GET], URL_Path: /favicon.ico, Remote_Address: 127.0.0.1:58750
+DEBUG: 2025/01/27 03:25:09 /home/student/SimpleForum/internal/transport/customHttp/middleware.go:75: The RoleAdjusterMiddleware is started
+DEBUG: 2025/01/27 03:25:09 /home/student/SimpleForum/internal/transport/customHttp/middleware.go:135: Checking part of token's time
+DEBUG: 2025/01/27 03:25:09 /home/student/SimpleForum/internal/transport/customHttp/middleware.go:165: The CSRFMiddleware is started
+DEBUG: 2025/01/27 03:25:09 /home/student/SimpleForum/internal/transport/customHttp/homepage.go:14: homePage handler is activated
+DEBUG: 2025/01/27 03:25:09 /home/student/SimpleForum/internal/transport/customHttp/helper.go:16: errorWebpage handler is activated
+INFO: 2025/01/27 03:25:09 /home/student/SimpleForum/internal/transport/customHttp/homepage.go:18: incorrect request's endpoint, it's requested endpoint is: /favicon.ico
+INFO: 2025/01/27 03:25:09 /home/student/SimpleForum/internal/transport/customHttp/middleware.go:59: The End of the client request, and its Duration:210.929µs
+INFO: 2025/01/27 03:25:13 /home/student/SimpleForum/internal/transport/customHttp/middleware.go:55: Method:[GET], URL_Path: /myactivity, Remote_Address: 127.0.0.1:58752
+DEBUG: 2025/01/27 03:25:13 /home/student/SimpleForum/internal/transport/customHttp/middleware.go:75: The RoleAdjusterMiddleware is started
+DEBUG: 2025/01/27 03:25:13 /home/student/SimpleForum/internal/transport/customHttp/middleware.go:135: Checking part of token's time
+DEBUG: 2025/01/27 03:25:13 /home/student/SimpleForum/internal/transport/customHttp/middleware.go:165: The CSRFMiddleware is started
+DEBUG: 2025/01/27 03:25:13 /home/student/SimpleForum/internal/transport/customHttp/myactivitypage.go:13: myActivity page is activated
+INFO: 2025/01/27 03:25:13 /home/student/SimpleForum/internal/transport/customHttp/middleware.go:59: The End of the client request, and its Duration:2.295707ms
+INFO: 2025/01/27 03:26:44 /home/student/SimpleForum/internal/transport/customHttp/middleware.go:55: Method:[GET], URL_Path: /, Remote_Address: 127.0.0.1:58752
+DEBUG: 2025/01/27 03:26:44 /home/student/SimpleForum/internal/transport/customHttp/middleware.go:75: The RoleAdjusterMiddleware is started
+DEBUG: 2025/01/27 03:26:44 /home/student/SimpleForum/internal/transport/customHttp/middleware.go:135: Checking part of token's time
+DEBUG: 2025/01/27 03:26:44 /home/student/SimpleForum/internal/transport/customHttp/middleware.go:165: The CSRFMiddleware is started
+DEBUG: 2025/01/27 03:26:44 /home/student/SimpleForum/internal/transport/customHttp/homepage.go:14: homePage handler is activated
+INFO: 2025/01/27 03:26:44 /home/student/SimpleForum/internal/transport/customHttp/middleware.go:59: The End of the client request, and its Duration:1.642081ms
+INFO: 2025/01/27 03:26:44 /home/student/SimpleForum/internal/transport/customHttp/middleware.go:55: Method:[GET], URL_Path: /favicon.ico, Remote_Address: 127.0.0.1:58752
+DEBUG: 2025/01/27 03:26:44 /home/student/SimpleForum/internal/transport/customHttp/middleware.go:75: The RoleAdjusterMiddleware is started
+DEBUG: 2025/01/27 03:26:44 /home/student/SimpleForum/internal/transport/customHttp/middleware.go:135: Checking part of token's time
+DEBUG: 2025/01/27 03:26:44 /home/student/SimpleForum/internal/transport/customHttp/middleware.go:165: The CSRFMiddleware is started
+DEBUG: 2025/01/27 03:26:44 /home/student/SimpleForum/internal/transport/customHttp/homepage.go:14: homePage handler is activated
+DEBUG: 2025/01/27 03:26:44 /home/student/SimpleForum/internal/transport/customHttp/helper.go:16: errorWebpage handler is activated
+INFO: 2025/01/27 03:26:44 /home/student/SimpleForum/internal/transport/customHttp/homepage.go:18: incorrect request's endpoint, it's requested endpoint is: /favicon.ico
+INFO: 2025/01/27 03:26:44 /home/student/SimpleForum/internal/transport/customHttp/middleware.go:59: The End of the client request, and its Duration:805.866µs
+INFO: 2025/01/27 03:26:45 /home/student/SimpleForum/internal/transport/customHttp/middleware.go:55: Method:[GET], URL_Path: /, Remote_Address: 127.0.0.1:58754
+DEBUG: 2025/01/27 03:26:45 /home/student/SimpleForum/internal/transport/customHttp/middleware.go:75: The RoleAdjusterMiddleware is started
+DEBUG: 2025/01/27 03:26:45 /home/student/SimpleForum/internal/transport/customHttp/middleware.go:135: Checking part of token's time
+DEBUG: 2025/01/27 03:26:45 /home/student/SimpleForum/internal/transport/customHttp/middleware.go:165: The CSRFMiddleware is started
+DEBUG: 2025/01/27 03:26:45 /home/student/SimpleForum/internal/transport/customHttp/homepage.go:14: homePage handler is activated
+INFO: 2025/01/27 03:26:45 /home/student/SimpleForum/internal/transport/customHttp/middleware.go:59: The End of the client request, and its Duration:1.215941ms
+INFO: 2025/01/27 03:26:47 /home/student/SimpleForum/internal/transport/customHttp/middleware.go:55: Method:[GET], URL_Path: /myactivity, Remote_Address: 127.0.0.1:58754
+DEBUG: 2025/01/27 03:26:47 /home/student/SimpleForum/internal/transport/customHttp/middleware.go:75: The RoleAdjusterMiddleware is started
+DEBUG: 2025/01/27 03:26:47 /home/student/SimpleForum/internal/transport/customHttp/middleware.go:135: Checking part of token's time
+DEBUG: 2025/01/27 03:26:47 /home/student/SimpleForum/internal/transport/customHttp/middleware.go:165: The CSRFMiddleware is started
+DEBUG: 2025/01/27 03:26:47 /home/student/SimpleForum/internal/transport/customHttp/myactivitypage.go:13: myActivity page is activated
+INFO: 2025/01/27 03:26:47 /home/student/SimpleForum/internal/transport/customHttp/middleware.go:59: The End of the client request, and its Duration:2.037071ms

@@ -10,32 +10,89 @@
             margin: 0;
             padding: 0;
             background-color: #f4f4f9;
+            color: #333;
         }
+
         header {
             background-color: #4CAF50;
             color: white;
             padding: 10px 0;
             text-align: center;
+            font-size: 1.6rem;
         }
+
         .container {
-            width: 80%;
-            margin: 20px auto;
+            width: 90%;
+            max-width: 960px;
+            margin: 30px auto;
             padding: 20px;
             background-color: white;
             border-radius: 8px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
+
+        h2 {
+            font-size: 1.4rem;
+            color: #4CAF50;
+            margin-bottom: 10px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #eee;
+        }
+
+        h3 {
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+            color: #333;
+        }
+
         .post-list, .liked-post-list {
             list-style-type: none;
             padding: 0;
         }
+
         .post-item, .liked-post-item {
+            background-color: #fff;
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 6px;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .post-item:hover, .liked-post-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        .post-item h3, .liked-post-item h3 {
+            margin-top: 0;
+            color: #4CAF50;
+        }
+
+        .post-item p, .liked-post-item p {
+            color: #555;
+            line-height: 1.4;
+        }
+
+        .comment-section {
+            margin-top: 15px;
+            padding-top: 8px;
+            border-top: 1px solid #eee;
+        }
+
+        .comment-item {
             background-color: #f9f9f9;
             padding: 10px;
-            margin: 10px 0;
-            border-radius: 5px;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            margin-top: 8px;
+            border-radius: 6px;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
         }
+
+        .comment-item p {
+            font-size: 1rem;
+            color: #333;
+        }
+
         footer {
             text-align: center;
             padding: 10px 0;
@@ -44,6 +101,32 @@
             position: fixed;
             bottom: 0;
             width: 100%;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                font-size: 1.4rem;
+            }
+
+            .container {
+                width: 95%;
+                padding: 15px;
+            }
+
+            .post-item, .liked-post-item {
+                padding: 10px;
+                margin: 8px 0;
+            }
+
+            h2 {
+                font-size: 1.2rem;
+            }
+
+            .comment-item {
+                padding: 8px;
+                margin-top: 6px;
+            }
         }
     </style>
 </head>
@@ -82,18 +165,21 @@
             {{end}}
         </ul>
     </div>
+    
     <div>
         <h2>My commented posts:</h2>
-        <ul class="commented-post-list">
-            {{range .myCommentedPosts}}
-                <li class="liked-post-item">
-                    <h3>{{.Title}}</h3>
-                    <p>{{.UserId}}</p>
-                    <p>{{.Content}}</p>
-                    <p>{{.Image}}</p>
-                </li>
-            {{end}}
-        </ul>
+        <div class="post-item">
+            <h3>{{.Title}}</h3>
+            <p>{{.Content}}</p>
+    
+            <!-- Раздел с комментариями -->
+            <div class="comment-section">
+                <h4>Comments:</h4>
+                <div class="comment-item">
+                    <p>{{.Comment}}</p>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 

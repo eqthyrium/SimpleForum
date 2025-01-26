@@ -65,6 +65,23 @@ func (handler *HandlerHttp) myActivityPage(w http.ResponseWriter, r *http.Reques
 		serverError(w)
 		return
 	}
+
+	type Data struct {
+		Title   string
+		Content string
+		Comment string
+	}
+	var data Data
+	for _, post := range getCommentedPosts {
+		for _, comment := range getComments {
+			if post.PostId == comment.PostId {
+
+				data.Title = post.Title
+				data.Content = post.Content
+				data.Comment = comment.Content
+			}
+		}
+	}
 	// fmt.Println("commented posts:", getCommentedPosts)
 
 	files := []string{"../ui/html/myactivity.html"}
@@ -90,6 +107,9 @@ func (handler *HandlerHttp) myActivityPage(w http.ResponseWriter, r *http.Reques
 		"PostContent":      getAllMyPosts,
 		"likedPosts":       getAllMyLikedPosts,
 		"myCommentedPosts": getCommentedPosts,
+		"Title":            data.Title,
+		"Content":          data.Content,
+		"Comment":          data.Comment,
 	})
 	if err != nil {
 		customLogger.ErrorLogger.Print(logger.ErrorWrapper("Transport", "myActivityPage", "There is a problem in the process of rendering template to the buffer", err))
