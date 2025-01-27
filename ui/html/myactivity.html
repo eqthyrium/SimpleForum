@@ -155,13 +155,13 @@
 
     <!-- Выводим понравившиеся посты -->
     <div>
-        <h2>My liked & Disliked posts :</h2>
+        <h2>My liked  posts :</h2>
         <ul class="liked-post-list">
             {{range .likedPosts}}
                 <li class="liked-post-item">
                     <h3>{{.Title}}</h3>
                     <p>{{.Content}}</p>
-                    <button type="submit">Dislike ({{.LikeCount}})</button>
+                    <button type="submit">Like ({{.LikeCount}})</button>
                 </li>
             {{end}}
         </ul>
