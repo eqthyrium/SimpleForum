@@ -48,6 +48,17 @@ func (handler *HandlerHttp) myActivityPage(w http.ResponseWriter, r *http.Reques
 		return
 	}
 
+	getDislikedPost, err := handler.Service.GetMyDislikedPosts(userId)
+	if err != nil {
+		customLogger.ErrorLogger.Print(logger.ErrorWrapper("Transport", "myActivityPage", "There is a problem in the process of getting all categories", err))
+		serverError(w)
+		return
+	}
+
+	// for _, r := range getDislikedPost{
+	// 	r.DislikeCount
+	// }
+
 	getCommentedPosts, err := handler.Service.GetMyCommentedPosts(userId)
 	if err != nil {
 		customLogger.ErrorLogger.Print(logger.ErrorWrapper("Transport", "myActivityPage", "There is a problem in the process of getting all categories", err))
@@ -109,6 +120,7 @@ func (handler *HandlerHttp) myActivityPage(w http.ResponseWriter, r *http.Reques
 	err = tmpl.ExecuteTemplate(&buf, "myactivity.html", map[string]interface{}{
 		"PostContent":      getAllMyPosts,
 		"likedPosts":       getAllMyLikedPosts,
+		"dislikedPosts":    getDislikedPost,
 		"myCommentedPosts": postsWithComments,
 	})
 	if err != nil {

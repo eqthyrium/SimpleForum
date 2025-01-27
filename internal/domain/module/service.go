@@ -21,6 +21,7 @@ type posts interface {
 	GetLatestPosts(requestedCategories []string) ([]entity.Posts, error)
 	GetMyCreatedPosts(userId int) ([]entity.Posts, error)
 	GetMyLikedPosts(userId int) ([]entity.Posts, error)
+	GetMyDislikedPosts(userId int) ([]entity.Posts, error)
 	GetMyCommentedPosts(userId int) ([]entity.Posts, error)
 	GetCertainPostPage(postId int) (*entity.Posts, []entity.Commentaries, error)
 }

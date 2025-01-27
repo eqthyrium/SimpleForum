@@ -155,13 +155,26 @@
 
     <!-- Выводим понравившиеся посты -->
     <div>
-        <h2>My liked posts:</h2>
+        <h2>My liked & Disliked posts :</h2>
         <ul class="liked-post-list">
             {{range .likedPosts}}
                 <li class="liked-post-item">
                     <h3>{{.Title}}</h3>
                     <p>{{.Content}}</p>
+                    <button type="submit">Dislike ({{.LikeCount}})</button>
                 </li>
+            {{end}}
+        </ul>
+    </div>
+    <div>
+        <h2>My Disliked posts :</h2>
+        <ul class="disliked-post-list">
+            {{range .dislikedPosts}}
+                <div class="liked-post-item">
+                    <h3>{{.Title}}</h3>
+                    <p>{{.Content}}</p>
+                    <button type="submit">Dislike ({{.DislikeCount}})</button>
+                </div>
             {{end}}
         </ul>
     </div>
@@ -173,7 +186,7 @@
             <div class="post">
                 <h3>{{.Title}}</h3>
                 <p>{{.Content}}</p>
-                    <h4>Комментарий:</h4>
+                    <h4>Comments:</h4>
                     <p>{{.Comment}}</p>
             </div>
         {{end}}
@@ -182,9 +195,7 @@
     </div>
 </div>
 
-<footer>
-    <p>&copy; 2025 Мой сайт</p>
-</footer>
+
 
 </body>
 </html>

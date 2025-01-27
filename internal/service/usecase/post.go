@@ -72,6 +72,15 @@ func (app *Application) GetMyLikedPosts(userId int) ([]entity.Posts, error) {
 	return posts, nil
 }
 
+func (app *Application) GetMyDislikedPosts(userId int) ([]entity.Posts, error) {
+	posts, err := app.ServiceDB.GetReactedPostsByCertainUser(userId, "dislike")
+	if err != nil {
+		return nil, logger.ErrorWrapper("UseCase", "GetMyLikedPosts", "There is problem with getting all my liked posts from the db", err)
+	}
+
+	return posts, nil
+}
+
 func (app *Application) GetCertainPostPage(postId int) (*entity.Posts, []entity.Commentaries, error) {
 	post, err := app.ServiceDB.GetCertainPostInfo(postId)
 	if err != nil {
