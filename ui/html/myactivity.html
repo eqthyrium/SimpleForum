@@ -16,32 +16,32 @@ body {
 header {
     background-color: #4CAF50;
     color: white;
-    padding: 10px 0;
+    padding: 8px 0; /* Уменьшены отступы */
     text-align: center;
-    font-size: 1.6rem;
+    font-size: 1.4rem; /* Уменьшен размер шрифта */
 }
 
 .container {
     width: 90%;
     max-width: 960px;
-    margin: 30px auto;
-    padding: 20px;
+    margin: 20px auto; /* Уменьшен отступ сверху */
+    padding: 15px; /* Уменьшен padding */
     background-color: white;
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 h2 {
-    font-size: 1.4rem;
+    font-size: 1.2rem; /* Уменьшен размер шрифта */
     color: #4CAF50;
-    margin-bottom: 10px;
-    padding-bottom: 10px;
-    border-bottom: 2px solid #4CAF50; /* Сделать линию чуть толще */
+    margin-bottom: 8px; /* Уменьшен нижний отступ */
+    padding-bottom: 8px; /* Уменьшен отступ снизу */
+    border-bottom: 1px solid #4CAF50; /* Линия стала чуть тоньше */
 }
 
 h3 {
-    font-size: 1.2rem;
-    margin-bottom: 10px;
+    font-size: 1rem; /* Уменьшен размер шрифта */
+    margin-bottom: 8px; /* Уменьшен отступ снизу */
     color: #333;
     border-bottom: 1px solid #eee; /* Легкая линия под заголовками */
 }
@@ -53,91 +53,118 @@ h3 {
 
 .post-item, .liked-post-item, .disliked-post-item {
     background-color: #fff;
-    padding: 15px;
-    margin: 10px 0;
+    padding: 10px 12px; /* Уменьшены отступы */
+    margin: 8px 0; /* Уменьшен внешний отступ */
     border-radius: 6px;
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
-    border-bottom: 1px solid #eee; /* Линия под каждым элементом */
+    border-bottom: 1px solid #eee; /* Линия под каждым элементом стала тоньше */
 }
 
-.post-item:hover, .liked-post-item:hover, .disliked-post-item:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+/* Уникальные стили для разных постов (можно генерировать случайно или вручную менять) */
+.post-item:nth-child(odd) {
+    background-color: #f0f8ff; /* Для нечётных постов - светло-голубой фон */
 }
 
+.post-item:nth-child(even) {
+    background-color: #fffaf0; /* Для чётных постов - светло-жёлтый фон */
+}
+
+.post-item:nth-child(odd):hover {
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1); /* Нечётные посты при наведении с более выраженной тенью */
+}
+
+.post-item:nth-child(even):hover {
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15); /* Чётные посты при наведении с другой тенью */
+}
+
+.post-item:hover {
+    transform: translateY(-2px); /* Лёгкое поднятие поста при наведении */
+}
+
+/* Заголовки постов */
 .post-item h3, .liked-post-item h3, .disliked-post-item h3 {
     margin-top: 0;
     color: #4CAF50;
+    font-size: 0.9rem; /* Миниатюрный размер шрифта для заголовков */
 }
 
+/* Контент поста */
 .post-item p, .liked-post-item p, .disliked-post-item p {
     color: #555;
-    line-height: 1.5; /* Чтобы текст был легче для восприятия */
+    line-height: 1.4; /* Немного сжимаем расстояние между строками */
+    font-size: 0.85rem; /* Уменьшен размер шрифта для контента */
 }
 
+/* Раздел комментариев */
 .comment-section {
-    margin-top: 20px;
+    margin-top: 15px;
     padding-top: 8px;
-    border-top: 2px solid #eee; /* Увеличена линия разделителя */
+    border-top: 1px solid #eee; /* Линия стала тоньше */
 }
 
+/* Комментарии */
 .comment-item {
     background-color: #f9f9f9;
-    padding: 12px;
-    margin-top: 8px;
+    padding: 8px 10px; /* Уменьшены отступы */
+    margin-top: 6px; /* Уменьшен верхний отступ */
     border-radius: 6px;
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
-    border-bottom: 1px solid #eee; /* Добавлена линия под каждым комментарием */
+    border-bottom: 1px solid #eee; /* Линия под комментарием стала тоньше */
 }
 
 .comment-item p {
-    font-size: 1rem;
+    font-size: 0.9rem; /* Уменьшен размер шрифта */
     color: #333;
 }
 
 footer {
     text-align: center;
-    padding: 10px 0;
+    padding: 8px 0; /* Уменьшены отступы */
     background-color: #4CAF50;
     color: white;
     position: fixed;
     bottom: 0;
     width: 100%;
-    font-size: 0.9rem;
+    font-size: 0.8rem; /* Уменьшен размер шрифта */
 }
 
 @media (max-width: 768px) {
     header {
-        font-size: 1.4rem;
+        font-size: 1.2rem; /* Уменьшен размер шрифта для мобильных устройств */
     }
 
     .container {
         width: 95%;
-        padding: 15px;
+        padding: 12px; /* Уменьшены отступы */
     }
 
     .post-item, .liked-post-item, .disliked-post-item {
-        padding: 12px;
-        margin: 8px 0;
+        padding: 8px 10px; /* Уменьшены отступы */
+        margin: 6px 0; /* Уменьшен внешний отступ */
     }
 
     h2 {
-        font-size: 1.2rem;
+        font-size: 1.1rem; /* Уменьшен размер шрифта */
     }
 
     .comment-item {
-        padding: 10px;
-        margin-top: 6px;
+        padding: 6px 8px; /* Уменьшены отступы */
+        margin-top: 4px; /* Уменьшен отступ сверху */
     }
 }
+
+
+
 
     </style>
 </head>
 <body>
 
 <header>
-    <h>My Activity</h>
+    <a href="/" style="text-decoration: none; color: white;">
+        <h>My Activity</h>
+    </a>
 </header>
 
 <div class="container">
@@ -188,13 +215,13 @@ footer {
         <div class="post-item">
             {{range .myCommentedPosts}}
             <div class="post">
-                <h3>{{.Title}}</h3>
-                <p>{{.Content}}</p>
-                    <h4>Comments:</h4>
-                    <p>{{.Comment}}</p>
+                <div><h3>{{.Title}}</h3></div>
+
+            
+                <div> <p> content:  {{.Content}}</p></div>
+                <p> comments:  {{.Comment}}</p>
             </div>
-        {{end}}
-            </div>
+            {{end}}
         </div>
     </div>
 </div>
