@@ -18,4 +18,7 @@ var (
 
 	//Category
 	ErrNoCategories = errors.New("there is no categories")
+
+	//Commentary
+	ErrCommentaryNotFound = errors.New("commentary not found")
 )

@@ -162,7 +162,7 @@
         <div class="dropdown-content">
             <a href="/?myposts=true">My Created Posts</a>
             <a href="/?mylikedposts=true">My Liked Posts</a>
-            <a href="/activity">My Activity</a>
+            <a href="/myactivity">My Activity</a>
             <a href="/notification">Notifications</a>
             {{if eq $.Role "User"}}
             <a href="/requestmoderation">To be Moderator</a>
@@ -237,33 +237,28 @@
 
             {{if eq .UserId $.UserIdentification}}
             <form action="/post/{{.PostId}}" method="POST" class="inline-form">
-                <input type="hidden" name="postId" value="{{.PostId}}">
                 <input type="hidden" name="csrf_text" value="{{$.CSRFText}}"> <!-- Access CSRF with $.Product.Csrf -->
                 <input type="hidden" name="delete" value="true">
                 <button type="submit">Delete</button>
             </form>
-            <form action="/post/{{.PostId}}" method="POST" class="inline-form">
-                <input type="hidden" name="postId" value="{{.PostId}}">
+            <form action="/editing" method="GET" class="inline-form">
                 <input type="hidden" name="csrf_text" value="{{$.CSRFText}}"> <!-- Access CSRF with $.Product.Csrf -->
-                <input type="hidden" name="edit" value="true">
+                <input type="hidden" name="postId" value="{{.PostId}}">
                 <button type="submit">Edit</button>
             </form>
             {{else if eq $.Role "Admin"}}
             <form action="/post/{{.PostId}}" method="POST" class="inline-form">
-                <input type="hidden" name="postId" value="{{.PostId}}">
                 <input type="hidden" name="csrf_text" value="{{$.CSRFText}}"> <!-- Access CSRF with $.Product.Csrf -->
                 <input type="hidden" name="delete" value="true">
                 <button type="submit">Delete</button>
             </form>
             {{else if eq $.Role "Moderator"}}
             <form action="/post/{{.PostId}}" method="POST" class="inline-form">
-                <input type="hidden" name="postId" value="{{.PostId}}">
                 <input type="hidden" name="csrf_text" value="{{$.CSRFText}}"> <!-- Access CSRF with $.Product.Csrf -->
                 <input type="hidden" name="delete" value="true">
                 <button type="submit">Delete</button>
             </form>
             <form action="/post/{{.PostId}}" method="POST" class="inline-form">
-                <input type="hidden" name="postId" value="{{.PostId}}">
                 <input type="hidden" name="csrf_text" value="{{$.CSRFText}}"> <!-- Access CSRF with $.Product.Csrf -->
                 <input type="hidden" name="report" value="true">
                 <button type="submit">Report</button>

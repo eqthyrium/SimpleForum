@@ -32,20 +32,35 @@ type postRepository interface {
 	GetPostsByCertainUser(userId int) ([]entity.Posts, error)
 	GetCertainPostInfo(postId int) (*entity.Posts, error)
 	UpdateReactionOfPost(postId int, reaction, operation string) error
+	UpdateEditedPost(userId, postId int, content string) error
+	DeleteCertainPost(postId int) error
+	ValidateOfExistenceCertainPost(userId, postId int) (bool, error)
+
+	GetMyCommentedPosts(userId int) ([]entity.Posts, error)
 }
 
 type commentRepository interface {
-	GetCertainPostsCommentaries(postId int) ([]entity.Commentaries, error)
 	CreateCommentary(userId, postId int, content string) error
+	GetCertainPostsCommentaries(postId int) ([]entity.Commentaries, error)
+	GetCertainCommentaryInfo(commentId int) (*entity.Commentaries, error)
 	UpdateReactionOfCommentary(commentId int, reaction, operation string) error
+	UpdateEditedCommentary(userId, commentId int, content string) error
+	DeleteCertainCommentary(commentId int) error
+	ValidateOfExistenceCertainCommentary(userId, commentId int) (bool, error)
+
+	GetComments(UserId int) ([]entity.Commentaries, error)
 }
 
 type categoryRepository interface {
 	GetAllCategories() ([]entity.Categories, error)
+	CreateCategory(categoryName string) error
+	DeleteCategory(categoryId int) error
 }
 
 type postCategoryRepository interface {
 	SetPostCategoryRelation(postId, categoryId int) error
+	GetPostIDsOfCertainCategory(categoryId int) ([]int, error)
+	GetCategoriesOfCertainPost(postId int) ([]int, error)
 }
 
 type reactionRepository interface {

@@ -1,14 +1,5 @@
 
 
--- DROP table if exists user;
--- DROP table if exists post;
--- DROP table if exists comment;
--- DROP table if exists category;
--- Drop table if exists post-category;
-
-
-
-
 CREATE TABLE   Users (
                          UserId INTEGER PRIMARY KEY AUTOINCREMENT,
                          Nickname varchar(50) Not null,
@@ -26,7 +17,7 @@ CREATE TABLE Posts
       LikeCount INT DEFAULT 0,
       DislikeCount INT DEFAULT 0,
       CreatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-      FOREIGN KEY (UserId) REFERENCES user(UserId) ON DELETE CASCADE
+      FOREIGN KEY (UserId) REFERENCES Users(UserId) ON DELETE CASCADE
 );
 
 CREATE TABLE Categories
@@ -39,8 +30,8 @@ CREATE TABLE PostCategories (
     CategoryId INT NOT NULL,
     PostId INT NOT NULL,
     PRIMARY KEY (CategoryId, PostId),
-    FOREIGN KEY (CategoryId) REFERENCES Categories(CategoryId) ON DELETE CASCADE ON UPDATE CASCADE,
-    FOREIGN KEY (PostId) REFERENCES Posts(PostId) ON DELETE CASCADE ON UPDATE CASCADE
+    FOREIGN KEY (CategoryId) REFERENCES Categories(CategoryId) ON DELETE CASCADE,
+    FOREIGN KEY (PostId) REFERENCES Posts(PostId) ON DELETE CASCADE
                             );
 
 CREATE TABLE Commentaries (
@@ -58,13 +49,13 @@ CREATE TABLE Reactions (
                            UserId INT NOT NULL,
                            PostId INT,
                            CommentId INT,
-                           Action CHAR(1) NOT NULL CHECK (Action IN ('L', 'D', 'C')), -- Action: 'L'ike, 'D'islike, 'C'omment
+                           Action CHAR(1) NOT NULL CHECK (Action IN ('L', 'D', 'C')),
     CreatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (UserId, PostId, CommentId)
     FOREIGN KEY (UserId) REFERENCES Users(UserId) ON DELETE CASCADE,
     FOREIGN KEY (PostId) REFERENCES Posts(PostId) ON DELETE CASCADE,
     FOREIGN KEY (CommentId) REFERENCES Commentaries(CommentId) ON DELETE CASCADE,
-    CONSTRAINT CK_PostOrComment CHECK (PostId IS NOT NULL OR CommentId IS NOT NULL),
-    PRIMARY KEY (UserId, PostId, CommentId)
+    CONSTRAINT CK_PostOrComment CHECK (PostId IS NOT NULL OR CommentId IS NOT NULL)
 );
 
 CREATE TABLE   Reports (

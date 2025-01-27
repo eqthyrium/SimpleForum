@@ -80,3 +80,70 @@ func (app *Application) GetCertainPostPage(postId int) (*entity.Posts, []entity.
 	}
 	return post, commentaries, nil
 }
+
+func (app *Application) GetCertainPostInfo(postId int) (*entity.Posts, error) {
+	post, err := app.ServiceDB.GetCertainPostInfo(postId)
+	if err != nil {
+		return nil, logger.ErrorWrapper("UseCase", "GetCertainPostInfo", "There is problem with getting certain post", err)
+	}
+	return post, nil
+}
+
+func (app *Application) DeleteCertainPost(userId, postId int, role string) error {
+	validation, err := app.ServiceDB.ValidateOfExistenceCertainPost(userId, postId)
+	if err != nil {
+		return logger.ErrorWrapper("UseCase", "DeleteCertainPost", "There is problem with validating certain post", err)
+	}
+	if !validation && role == "User" {
+		return logger.ErrorWrapper("UseCase", "DeleteCertainPost", "There is no such post of that user", domain.ErrPostNotFound)
+	}
+
+	err = app.ServiceDB.DeleteCertainPost(postId)
+	if err != nil {
+		return logger.ErrorWrapper("UseCase", "DeleteCertainPost", "There is problem with deleting certain post", err)
+	}
+
+	return nil
+
+}
+
+func (app *Application) EditCertainPost(userId, postId int, content string) error {
+
+	validation, err := app.ServiceDB.ValidateOfExistenceCertainPost(userId, postId)
+	if err != nil {
+		return logger.ErrorWrapper("UseCase", "EditCertainPost", "There is problem with validating certain post", err)
+	}
+	if !validation {
+		return logger.ErrorWrapper("UseCase", "EditCertainPost", "There is no such post of that user", domain.ErrPostNotFound)
+	}
+
+	validation = checkContent(content)
+	if !validation {
+		return logger.ErrorWrapper("UseCase", "EditCertainPost", "There is no content", domain.ErrNotValidContent)
+	}
+
+	err = app.ServiceDB.UpdateEditedPost(userId, postId, content)
+	if err != nil {
+		return logger.ErrorWrapper("UseCase", "EditedCertainPost", "Failed to update the content of the post", err)
+	}
+
+	return nil
+}
+
+// ------------------------- Asem code is started here below
+func (app *Application) GetMyDislikedPosts(userId int) ([]entity.Posts, error) {
+	posts, err := app.ServiceDB.GetReactedPostsByCertainUser(userId, "dislike")
+	if err != nil {
+		return nil, logger.ErrorWrapper("UseCase", "GetMyLikedPosts", "There is problem with getting all my liked posts from the db", err)
+	}
+
+	return posts, nil
+}
+
+func (app *Application) GetMyCommentedPosts(userId int) ([]entity.Posts, error) {
+	posts, err := app.ServiceDB.GetMyCommentedPosts(userId)
+	if err != nil {
+		return nil, logger.ErrorWrapper("UseCase", "GetLatestPosts", "There is problem with getting all the recent posts from the db", err)
+	}
+	return posts, nil
+}

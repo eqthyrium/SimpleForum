@@ -22,15 +22,28 @@ type posts interface {
 	GetMyCreatedPosts(userId int) ([]entity.Posts, error)
 	GetMyLikedPosts(userId int) ([]entity.Posts, error)
 	GetCertainPostPage(postId int) (*entity.Posts, []entity.Commentaries, error)
+	GetCertainPostInfo(postId int) (*entity.Posts, error)
+	DeleteCertainPost(userId, postId int, role string) error
+	EditCertainPost(userId, postId int, content string) error
+
+	GetMyDislikedPosts(userId int) ([]entity.Posts, error)
+	GetMyCommentedPosts(userId int) ([]entity.Posts, error)
 }
 
 type commentaries interface {
 	GetLatestCommentaries(postId int) ([]entity.Commentaries, error)
+	GetCertainCommentaryInfo(commentId int) (*entity.Commentaries, error)
 	CreateCommentary(userId, postId int, content string) error
+	EditCertainCommentary(userId, commentId int, content string) error
+	DeleteCertainCommentary(userId, commentId int, role string) error
+
+	GetComments(userId int) ([]entity.Commentaries, error)
 }
 
 type categories interface {
 	GetAllCategories() ([]entity.Categories, error)
+	CreateCategory(categoryName string) error
+	DeleteCategory(categoryId int) error
 }
 
 type reactions interface {

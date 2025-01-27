@@ -25,6 +25,9 @@ func (handler *HandlerHttp) Routering() http.Handler {
 	mux.Handle("/post/", Middleware(handler.postPage))
 	mux.Handle("/create/post", Middleware(handler.createPost))
 	mux.Handle("/notification", Middleware(handler.notification))
+	mux.Handle("/editing", Middleware(handler.editing))
+	mux.Handle("/myactivity", Middleware(handler.myActivityPage))
+	mux.Handle("/categorylist", Middleware(handler.categoryListPage))
 
 	return http.HandlerFunc(mux.ServeHTTP)
 }

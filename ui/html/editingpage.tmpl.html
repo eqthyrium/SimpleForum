@@ -1,0 +1,103 @@
+{{define "editingpage"}}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Edit Content</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f9;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 15px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .header-title a {
+      color: white;
+      text-decoration: none;
+    }
+    .container {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 20px;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    .form-group {
+      margin-bottom: 15px;
+    }
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+    .form-group textarea {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      resize: vertical;
+    }
+    .form-actions {
+      display: flex;
+      justify-content: flex-end;
+    }
+    .form-actions button {
+      margin-left: 10px;
+      padding: 10px 15px;
+      font-size: 16px;
+      color: white;
+      background-color: #4CAF50;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .form-actions button.cancel {
+      background-color: #f44336;
+    }
+    .error-message {
+      background-color: #f8d7da;
+      color: #721c24;
+      padding: 12px;
+      border: 1px solid #f5c6cb;
+      border-radius: 8px;
+      margin-bottom: 15px;
+    }
+  </style>
+</head>
+<body>
+<header>
+  <h1 class="header-title"><a href="/">Forum</a></h1>
+</header>
+<div class="container">
+  {{block "notvalidcontent" .}}
+  {{end}}
+  <h2>Edit Content</h2>
+  <form action="/editing" method="POST">
+    <input type="hidden" name="csrf_text" value="{{.CSRFText}}">
+    <input type="hidden" name="postId" value="{{.PostInfo.PostId}}">
+    <input type="hidden" name="commentId" value="{{.CommentInfo.CommentId}}">
+
+    <div class="form-group">
+      <label for="content">Content</label>
+      <textarea name="content" id="content" rows="10" required>{{if .PostInfo.Content}}{{.PostInfo.Content}}{{else}}{{.CommentInfo.Content}}{{end}}</textarea>
+    </div>
+
+    <div class="form-actions">
+      <button type="submit">Save</button>
+      <button type="button" class="cancel" onclick="window.location.href='/'">Cancel</button>
+    </div>
+  </form>
+</div>
+</body>
+</html>
+
+{{end}}

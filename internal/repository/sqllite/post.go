@@ -142,3 +142,95 @@ func (rp *Repository) UpdateReactionOfPost(postId int, reaction, operation strin
 
 	return nil
 }
+
+func (rp *Repository) UpdateEditedPost(userId, postId int, content string) error {
+	statement := `
+		UPDATE Posts
+		SET Content = ?
+		WHERE PostId = ? AND UserId = ?
+	`
+
+	result, err := rp.DB.Exec(statement, content, postId, userId)
+	if err != nil {
+		return logger.ErrorWrapper("Repository", "UpdateEditedPost", "Failed to update post:", err)
+	}
+
+	rowsAffected, err := result.RowsAffected()
+	if err != nil {
+		return logger.ErrorWrapper("Repository", "UpdateEditedPost", "Failed to retrieve affected rows:", err)
+
+	}
+	if rowsAffected == 0 {
+		return logger.ErrorWrapper("Repository", "UpdateEditedPost", "No rows were updated; post_id or user_id might not exist", err)
+	}
+
+	return nil
+}
+
+func (rp *Repository) DeleteCertainPost(postId int) error {
+
+	statement := `
+		PRAGMA foreign_keys = ON;	
+        DELETE FROM Posts WHERE PostId = ?;
+`
+
+	_, err := rp.DB.Exec(statement, postId)
+	if err != nil {
+		return logger.ErrorWrapper("Repository", "DeleteCertainPost", "The problem within the process of deleting of the post in db", err)
+	}
+	return nil
+}
+
+func (rp *Repository) ValidateOfExistenceCertainPost(userId, postId int) (bool, error) {
+	var exists bool
+
+	var statement string = `
+		SELECT EXISTS(
+			SELECT 1 FROM Posts WHERE PostId = ? AND UserId = ?
+		)
+	`
+
+	err := rp.DB.QueryRow(statement, postId, userId).Scan(&exists)
+
+	if err != nil {
+		return false, logger.ErrorWrapper("Repository", "ValidateOfExistenceCertainPost", "Error checking existence of the post", err)
+	}
+
+	return exists, nil
+}
+
+//--------------------
+
+func (rp *Repository) GetMyCommentedPosts(userId int) ([]entity.Posts, error) {
+	var posts []entity.Posts
+
+	// Запрос с JOIN для получения информации о постах, на которые пользователь оставил комментарии
+	stmt := `SELECT DISTINCT Posts.PostId, Posts.UserId, Posts.Title, Posts.Content, Posts.Image, Posts.LikeCount, Posts.DislikeCount, Posts.CreatedAt
+	FROM Commentaries
+	JOIN Posts ON Posts.PostId = Commentaries.PostId
+	WHERE Commentaries.UserId = ?`
+
+	// Выполнение запроса
+	rows, err := rp.DB.Query(stmt, userId)
+	if err != nil {
+		return nil, logger.ErrorWrapper("Repository", "GetMyCommentedPosts", "Problem getting posts commented by user", err)
+	}
+	defer rows.Close() // безопасное закрытие ресурсов
+
+	// Обработка результата запроса
+	for rows.Next() {
+		post := entity.Posts{}
+		err := rows.Scan(&post.PostId, &post.UserId, &post.Title, &post.Content, &post.Image, &post.LikeCount, &post.DislikeCount, &post.CreatedAt)
+		if err != nil {
+			return nil, logger.ErrorWrapper("Repository", "GetMyCommentedPosts", "Failed to scan post row", err)
+		}
+		posts = append(posts, post)
+	}
+
+	// Проверка на ошибки после завершения обработки строк
+	if err := rows.Err(); err != nil {
+		return nil, logger.ErrorWrapper("Repository", "GetMyCommentedPosts", "Error iterating over rows", err)
+	}
+
+	return posts, nil
+}

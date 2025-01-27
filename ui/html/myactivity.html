@@ -1,4 +1,232 @@
-{{define "homepage"}}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Моя активность</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 8px 0; /* Уменьшены отступы */
+            text-align: center;
+            font-size: 1.4rem; /* Уменьшен размер шрифта */
+        }
+
+        .container {
+            width: 90%;
+            max-width: 960px;
+            margin: 20px auto; /* Уменьшен отступ сверху */
+            padding: 15px; /* Уменьшен padding */
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            font-size: 1.2rem; /* Уменьшен размер шрифта */
+            color: #4CAF50;
+            margin-bottom: 8px; /* Уменьшен нижний отступ */
+            padding-bottom: 8px; /* Уменьшен отступ снизу */
+            border-bottom: 1px solid #4CAF50; /* Линия стала чуть тоньше */
+        }
+
+        h3 {
+            font-size: 1rem; /* Уменьшен размер шрифта */
+            margin-bottom: 8px; /* Уменьшен отступ снизу */
+            color: #333;
+            border-bottom: 1px solid #eee; /* Легкая линия под заголовками */
+        }
+
+        .post-list, .liked-post-list, .disliked-post-list {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .post-item, .liked-post-item, .disliked-post-item {
+            background-color: #fff;
+            padding: 10px 12px; /* Уменьшены отступы */
+            margin: 8px 0; /* Уменьшен внешний отступ */
+            border-radius: 6px;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border-bottom: 1px solid #eee; /* Линия под каждым элементом стала тоньше */
+        }
+
+        /* Уникальные стили для разных постов (можно генерировать случайно или вручную менять) */
+        .post-item:nth-child(odd) {
+            background-color: #f0f8ff; /* Для нечётных постов - светло-голубой фон */
+        }
+
+        .post-item:nth-child(even) {
+            background-color: #fffaf0; /* Для чётных постов - светло-жёлтый фон */
+        }
+
+        .post-item:nth-child(odd):hover {
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1); /* Нечётные посты при наведении с более выраженной тенью */
+        }
+
+        .post-item:nth-child(even):hover {
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15); /* Чётные посты при наведении с другой тенью */
+        }
+
+        .post-item:hover {
+            transform: translateY(-2px); /* Лёгкое поднятие поста при наведении */
+        }
+
+        /* Заголовки постов */
+        .post-item h3, .liked-post-item h3, .disliked-post-item h3 {
+            margin-top: 0;
+            color: #4CAF50;
+            font-size: 0.9rem; /* Миниатюрный размер шрифта для заголовков */
+        }
+
+        /* Контент поста */
+        .post-item p, .liked-post-item p, .disliked-post-item p {
+            color: #555;
+            line-height: 1.4; /* Немного сжимаем расстояние между строками */
+            font-size: 0.85rem; /* Уменьшен размер шрифта для контента */
+        }
+
+        /* Раздел комментариев */
+        .comment-section {
+            margin-top: 15px;
+            padding-top: 8px;
+            border-top: 1px solid #eee; /* Линия стала тоньше */
+        }
+
+        /* Комментарии */
+        .comment-item {
+            background-color: #f9f9f9;
+            padding: 8px 10px; /* Уменьшены отступы */
+            margin-top: 6px; /* Уменьшен верхний отступ */
+            border-radius: 6px;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+            border-bottom: 1px solid #eee; /* Линия под комментарием стала тоньше */
+        }
+
+        .comment-item p {
+            font-size: 0.9rem; /* Уменьшен размер шрифта */
+            color: #333;
+        }
+
+        footer {
+            text-align: center;
+            padding: 8px 0; /* Уменьшены отступы */
+            background-color: #4CAF50;
+            color: white;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            font-size: 0.8rem; /* Уменьшен размер шрифта */
+        }
+
+        @media (max-width: 768px) {
+            header {
+                font-size: 1.2rem; /* Уменьшен размер шрифта для мобильных устройств */
+            }
+
+            .container {
+                width: 95%;
+                padding: 12px; /* Уменьшены отступы */
+            }
+
+            .post-item, .liked-post-item, .disliked-post-item {
+                padding: 8px 10px; /* Уменьшены отступы */
+                margin: 6px 0; /* Уменьшен внешний отступ */
+            }
+
+            h2 {
+                font-size: 1.1rem; /* Уменьшен размер шрифта */
+            }
+
+            .comment-item {
+                padding: 6px 8px; /* Уменьшены отступы */
+                margin-top: 4px; /* Уменьшен отступ сверху */
+            }
+        }
 
 
-{{end}}
+
+
+    </style>
+</head>
+<body>
+
+<header>
+    <a href="/" style="text-decoration: none; color: white;">
+        <h>My Activity</h>
+    </a>
+</header>
+
+<div class="container">
+    <!-- Выводим CSRF текст -->
+
+
+    <!-- Выводим все посты -->
+    <div>
+        <h2>My created posts:</h2>
+        <ul class="post-list">
+            {{range .PostContent}}
+            <li class="post-item">
+                <h3>{{.Title}}</h3>
+                <p>{{.Content}}</p>
+            </li>
+            {{end}}
+        </ul>
+    </div>
+
+    <!-- Выводим понравившиеся посты -->
+    <div>
+        <h2>My liked  posts :</h2>
+        <ul class="liked-post-list">
+            {{range .likedPosts}}
+            <li class="liked-post-item">
+                <h3>{{.Title}}</h3>
+                <p>{{.Content}}</p>
+                <button type="submit">Like ({{.LikeCount}})</button>
+            </li>
+            {{end}}
+        </ul>
+    </div>
+    <div>
+        <h2>My disliked posts :</h2>
+        <ul class="disliked-post-list">
+            {{range .dislikedPosts}}
+            <div class="liked-post-item">
+                <h3>{{.Title}}</h3>
+                <p>{{.Content}}</p>
+                <button type="submit">Dislike ({{.DislikeCount}})</button>
+            </div>
+            {{end}}
+        </ul>
+    </div>
+
+    <div>
+        <h2>My commented posts:</h2>
+        <div class="post-item">
+            {{range .myCommentedPosts}}
+            <div class="post">
+                <div><h3>{{.Title}}</h3></div>
+
+
+                <div> <p> Post:  {{.Content}}</p></div>
+                <p> Comments:  {{.Comment}}</p>
+            </div>
+            {{end}}
+        </div>
+    </div>
+</div>
+
+
+
+</body>
+</html>

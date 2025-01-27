@@ -36,3 +36,28 @@ func (rp *Repository) GetAllCategories() ([]entity.Categories, error) {
 
 	return categories, nil
 }
+
+func (rp *Repository) CreateCategory(categoryName string) error {
+	statement := "INSERT INTO Categories (CategoryName) VALUES (?)"
+
+	_, err := rp.DB.Exec(statement, categoryName)
+	if err != nil {
+		return logger.ErrorWrapper("Repository", "AddCategory", "The problem within the process of creation of the category in db", err)
+	}
+	return nil
+
+}
+
+func (rp *Repository) DeleteCategory(categoryId int) error {
+
+	statement := `
+	PRAGMA foreign_keys = ON;
+ 	DELETE FROM Categories WHERE CategoryId = ?;
+ 	`
+	_, err := rp.DB.Exec(statement, categoryId)
+	if err != nil {
+		return logger.ErrorWrapper("Repository", "DeleteCertainPost", "The problem within the process of deleting of the post in db", err)
+	}
+
+	return nil
+}
