@@ -1,0 +1,118 @@
+{{define "categorylist"}}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Manage Categories</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+        form {
+            margin-top: 20px;
+        }
+        input[type="text"] {
+            width: calc(100% - 22px);
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .error-message {
+            color: red;
+            font-weight: bold;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <header>
+        <a href="/" style="text-decoration: none; color: white;">
+            <h1>Manage Categories</h1>
+        </a>
+    </header>
+  
+
+    {{if eq .Role "Admin"}}
+    {{if .Categories}}
+    <table>
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {{range .Categories}}
+        <tr>
+            <td>{{.CategoryName}}</td>
+            <td>
+                <form action="/categorylist" method="POST" style="display: inline;">
+                    <input type="hidden" name="csrf_text" value="{{$.CSRFText}}">
+                    <input type="hidden" name="categoryId" value="{{.CategoryId}}">
+                    <input type="hidden" name="action" value="delete">
+                    <button type="submit">Delete</button>
+                </form>
+            </td>
+        </tr>
+        {{end}}
+        </tbody>
+    </table>
+    {{else}}
+    <p>No categories available.</p>
+    {{end}}
+
+    <form action="/categorylist" method="POST">
+        <input type="text" name="categoryName" placeholder="New Category Name" required>
+        <input type="hidden" name="csrf_text" value="{{$.CSRFText}}">
+        <input type="hidden" name="action" value="add">
+        <button type="submit">Add Category</button>
+    </form>
+    {{else}}
+    <p class="error-message">Access Denied: Only Admins can manage categories.</p>
+    {{end}}
+
+</div>
+</body>
+</html>
+{{end}}

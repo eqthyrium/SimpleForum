@@ -42,6 +42,8 @@ type commentRepository interface {
 }
 
 type categoryRepository interface {
+	AddCategory(categoryName string)([]entity.Categories, error)
+	DeleteCategory(categoryId int)([]entity.Categories, error)
 	GetAllCategories() ([]entity.Categories, error)
 }
 

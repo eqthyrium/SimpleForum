@@ -34,6 +34,8 @@ type commentaries interface {
 }
 
 type categories interface {
+	AddCategory(categoryName string) ([]entity.Categories, error)
+	DeleteCategory(categoryId string) ([]entity.Categories, error)
 	GetAllCategories() ([]entity.Categories, error)
 }
 
