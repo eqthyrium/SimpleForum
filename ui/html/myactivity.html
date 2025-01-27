@@ -5,135 +5,139 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Моя активность</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f9;
-            color: #333;
-        }
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+    color: #333;
+}
 
-        header {
-            background-color: #4CAF50;
-            color: white;
-            padding: 10px 0;
-            text-align: center;
-            font-size: 1.6rem;
-        }
+header {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+    font-size: 1.6rem;
+}
 
-        .container {
-            width: 90%;
-            max-width: 960px;
-            margin: 30px auto;
-            padding: 20px;
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
+.container {
+    width: 90%;
+    max-width: 960px;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
 
-        h2 {
-            font-size: 1.4rem;
-            color: #4CAF50;
-            margin-bottom: 10px;
-            padding-bottom: 8px;
-            border-bottom: 1px solid #eee;
-        }
+h2 {
+    font-size: 1.4rem;
+    color: #4CAF50;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #4CAF50; /* Сделать линию чуть толще */
+}
 
-        h3 {
-            font-size: 1.2rem;
-            margin-bottom: 8px;
-            color: #333;
-        }
+h3 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    color: #333;
+    border-bottom: 1px solid #eee; /* Легкая линия под заголовками */
+}
 
-        .post-list, .liked-post-list {
-            list-style-type: none;
-            padding: 0;
-        }
+.post-list, .liked-post-list, .disliked-post-list {
+    list-style-type: none;
+    padding: 0;
+}
 
-        .post-item, .liked-post-item {
-            background-color: #fff;
-            padding: 12px;
-            margin: 10px 0;
-            border-radius: 6px;
-            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-        }
+.post-item, .liked-post-item, .disliked-post-item {
+    background-color: #fff;
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 6px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    border-bottom: 1px solid #eee; /* Линия под каждым элементом */
+}
 
-        .post-item:hover, .liked-post-item:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
-        }
+.post-item:hover, .liked-post-item:hover, .disliked-post-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+}
 
-        .post-item h3, .liked-post-item h3 {
-            margin-top: 0;
-            color: #4CAF50;
-        }
+.post-item h3, .liked-post-item h3, .disliked-post-item h3 {
+    margin-top: 0;
+    color: #4CAF50;
+}
 
-        .post-item p, .liked-post-item p {
-            color: #555;
-            line-height: 1.4;
-        }
+.post-item p, .liked-post-item p, .disliked-post-item p {
+    color: #555;
+    line-height: 1.5; /* Чтобы текст был легче для восприятия */
+}
 
-        .comment-section {
-            margin-top: 15px;
-            padding-top: 8px;
-            border-top: 1px solid #eee;
-        }
+.comment-section {
+    margin-top: 20px;
+    padding-top: 8px;
+    border-top: 2px solid #eee; /* Увеличена линия разделителя */
+}
 
-        .comment-item {
-            background-color: #f9f9f9;
-            padding: 10px;
-            margin-top: 8px;
-            border-radius: 6px;
-            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
-        }
+.comment-item {
+    background-color: #f9f9f9;
+    padding: 12px;
+    margin-top: 8px;
+    border-radius: 6px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid #eee; /* Добавлена линия под каждым комментарием */
+}
 
-        .comment-item p {
-            font-size: 1rem;
-            color: #333;
-        }
+.comment-item p {
+    font-size: 1rem;
+    color: #333;
+}
 
-        footer {
-            text-align: center;
-            padding: 10px 0;
-            background-color: #4CAF50;
-            color: white;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-            font-size: 0.9rem;
-        }
+footer {
+    text-align: center;
+    padding: 10px 0;
+    background-color: #4CAF50;
+    color: white;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    font-size: 0.9rem;
+}
 
-        @media (max-width: 768px) {
-            header {
-                font-size: 1.4rem;
-            }
+@media (max-width: 768px) {
+    header {
+        font-size: 1.4rem;
+    }
 
-            .container {
-                width: 95%;
-                padding: 15px;
-            }
+    .container {
+        width: 95%;
+        padding: 15px;
+    }
 
-            .post-item, .liked-post-item {
-                padding: 10px;
-                margin: 8px 0;
-            }
+    .post-item, .liked-post-item, .disliked-post-item {
+        padding: 12px;
+        margin: 8px 0;
+    }
 
-            h2 {
-                font-size: 1.2rem;
-            }
+    h2 {
+        font-size: 1.2rem;
+    }
 
-            .comment-item {
-                padding: 8px;
-                margin-top: 6px;
-            }
-        }
+    .comment-item {
+        padding: 10px;
+        margin-top: 6px;
+    }
+}
+
     </style>
 </head>
 <body>
 
 <header>
-    <h1>My Activity</h1>
+    <h>My Activity</h>
 </header>
 
 <div class="container">
@@ -167,7 +171,7 @@
         </ul>
     </div>
     <div>
-        <h2>My Disliked posts :</h2>
+        <h2>My disliked posts :</h2>
         <ul class="disliked-post-list">
             {{range .dislikedPosts}}
                 <div class="liked-post-item">
