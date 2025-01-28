@@ -1,0 +1,160 @@
+{{define "moderatormanagement"}}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Moderation List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            text-align: center;
+        }
+        .header-title a {
+            color: white;
+            text-decoration: none;
+        }
+        .container {
+            display: flex;
+            gap: 20px;
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .list {
+            flex: 1;
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            color: #333;
+            text-align: center;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        li {
+            margin-bottom: 15px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #fff;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button.reject {
+            background-color: #f44336;
+        }
+        button:hover {
+            opacity: 0.9;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <h1 class="header-title"><a href="/">Moderation Management</a></h1>
+</header>
+<div class="container">
+    <!-- Users List -->
+    <div class="list">
+        <h2>Users</h2>
+        <ul>
+            {{range .Users}}
+            <li>
+                <strong>Email:</strong> {{.Email}}<br>
+                <strong>Role:</strong> {{.Role}}
+                {{if eq .Role "User"}}
+                <form action="/moderationlist" method="POST" style="display: inline;">
+                    <input type="hidden" name="userId" value="{{.UserId}}">
+                    <input type="hidden" name="csrf_text" value="{{$.CSRFText}}">
+                    <input type="hidden" name="promote" value="true">
+                    <button type="submit">Promote</button>
+                </form>
+                {{end}}
+                {{if eq .Role "Moderator"}}
+                <form action="/moderationlist" method="POST" style="display: inline;">
+                    <input type="hidden" name="userId" value="{{.UserId}}">
+                    <input type="hidden" name="csrf_text" value="{{$.CSRFText}}">
+                    <input type="hidden" name="demote" value="true">
+                    <button type="submit">Demote</button>
+                </form>
+                {{end}}
+            </li>
+            {{end}}
+        </ul>
+    </div>
+
+    <!-- Reports List -->
+    <div class="list">
+        <h2>Reports</h2>
+        <ul>
+            {{range .Reports}}
+            <li>
+                <strong>Email:</strong> {{.Email}}<br>
+                <a href="/post/{{.PostId}}">Reports to this post</a><br>
+                <form action="/moderationlist" method="POST" style="display: inline;">
+                    <input type="hidden" name="userId" value="{{.UserId}}">
+                    <input type="hidden" name="postId" value="{{.PostId}}">
+                    <input type="hidden" name="csrf_text" value="{{$.CSRFText}}">
+                    <input type="hidden" name="delete" value="true">
+                    <button type="submit">Accept</button>
+                </form>
+                <form action="/moderationlist" method="POST" style="display: inline;">
+                    <input type="hidden" name="userId" value="{{.UserId}}">
+                    <input type="hidden" name="postId" value="{{.PostId}}">
+                    <input type="hidden" name="csrf_text" value="{{$.CSRFText}}">
+                    <input type="hidden" name="delete" value="false">
+                    <button type="submit" class="reject">Reject</button>
+                </form>
+            </li>
+            {{end}}
+        </ul>
+    </div>
+
+    <!-- Requests List -->
+    <div class="list">
+        <h2>Requests</h2>
+        <ul>
+            {{range .Requests}}
+            <li>
+                <strong>Email:</strong> {{.Email}}<br>
+                Wants to be a moderator
+                <form action="/moderationlist" method="POST" style="display: inline;">
+                    <input type="hidden" name="userId" value="{{.UserId}}">
+                    <input type="hidden" name="csrf_text" value="{{$.CSRFText}}">
+                    <input type="hidden" name="accept" value="true">
+                    <button type="submit">Accept</button>
+                </form>
+                <form action="/moderationlist" method="POST" style="display: inline;">
+                    <input type="hidden" name="userId" value="{{.UserId}}">
+                    <input type="hidden" name="csrf_text" value="{{$.CSRFText}}">
+                    <input type="hidden" name="accept" value="false">
+                    <button type="submit" class="reject">Reject</button>
+                </form>
+            </li>
+            {{end}}
+        </ul>
+    </div>
+</div>
+</body>
+</html>
+{{end}}

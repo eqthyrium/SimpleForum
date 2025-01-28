@@ -1,10 +1,12 @@
 package customHttp
 
 import (
+	"SimpleForum/internal/domain"
 	"SimpleForum/internal/domain/entity"
 	"SimpleForum/internal/transport/session"
 	"SimpleForum/pkg/logger"
 	"bytes"
+	"errors"
 	"html/template"
 	"net/http"
 )
@@ -25,10 +27,8 @@ func (handler *HandlerHttp) homePage(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	if r.Method == http.MethodGet {
-		files := []string{"../ui/html/homepage.tmpl.html"}
-		handler.homePageGet(w, r, files)
-	}
+	files := []string{"../ui/html/homepage.tmpl.html"}
+	handler.homePageGet(w, r, files)
 
 }
 
@@ -44,6 +44,8 @@ func (handler *HandlerHttp) homePageGet(w http.ResponseWriter, r *http.Request, 
 	requestedCategories := r.URL.Query()["categories"]
 	myposts := r.URL.Query().Get("myposts")
 	mylikeposts := r.URL.Query().Get("mylikedposts")
+	requestedmoderation := r.FormValue("requestmoderation")
+	//report := r.FormValue("report")
 
 	categories, err := handler.Service.GetAllCategories()
 	if err != nil {
@@ -51,6 +53,18 @@ func (handler *HandlerHttp) homePageGet(w http.ResponseWriter, r *http.Request, 
 		customLogger.ErrorLogger.Print(logger.ErrorWrapper("Transport", "homePageGet", "There is a problem in the process of getting all categories", err))
 		serverError(w)
 		return
+
+	}
+
+	if role == "User" && requestedmoderation == "true" {
+		err := handler.Service.RequestToBeModerator(userId)
+		if errors.Is(err, domain.ErrRepeatedRequest) {
+			files = append(files, "../ui/html/error/requestmoderation.tmpl.html")
+		} else if err != nil {
+			customLogger.ErrorLogger.Print(logger.ErrorWrapper("Transport", "homePageGet", "There is a problem in the process of requesting moderator", err))
+			serverError(w)
+			return
+		}
 
 	}
 
@@ -75,7 +89,6 @@ func (handler *HandlerHttp) homePageGet(w http.ResponseWriter, r *http.Request, 
 		}
 
 	} else {
-
 		posts, err = handler.Service.GetLatestPosts(requestedCategories)
 		if err != nil {
 			customLogger.ErrorLogger.Print(logger.ErrorWrapper("Transport", "homePageGet", "There is a problem in the process of getting latest posts", err))

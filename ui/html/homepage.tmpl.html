@@ -165,7 +165,11 @@
             <a href="/myactivity">My Activity</a>
             <a href="/notification">Notifications</a>
             {{if eq $.Role "User"}}
-            <a href="/requestmoderation">To be Moderator</a>
+            <form action="/" method="POST">
+                <input type="hidden" name="requestmoderation" value="true">
+                <input type="hidden" name="csrf_text" value="{{$.CSRFText}}">
+                <button type="submit">To be Moderator</button>
+            </form>
             {{end}}
             {{if eq $.Role "Admin"}}
             <a href="/moderationlist">Manage moderators</a>
@@ -181,6 +185,9 @@
 <div class="container">
 
     {{block "homeroleforbidden" .}}
+    {{end}}
+
+    {{block "requestmoderationerror" .}}
     {{end}}
 
 

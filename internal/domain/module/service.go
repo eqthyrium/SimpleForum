@@ -9,6 +9,9 @@ type HttpModule interface {
 	categories
 	reactions
 	notifications
+	request
+	report
+	user
 }
 
 type authentication interface {
@@ -52,4 +55,23 @@ type reactions interface {
 
 type notifications interface {
 	GetNotifications(userId int) ([]entity.Notifications, error)
+}
+
+type request interface {
+	RequestToBeModerator(userId int) error
+	GetAllRequests() ([]entity.ReportInfo, error)
+	AcceptRequestToBeModerator(userId int) error
+	DeclineRequestToBeModerator(userId int) error
+}
+
+type report interface {
+	ReportPost(userId, postId int) error
+	GetAllReports() ([]entity.ReportInfo, error)
+	AcceptCertainReport(userId, postId int) error
+	DeclineCertainReport(userId, postId int) error
+}
+
+type user interface {
+	GetCertainUsers() ([]entity.Users, error)
+	ChangeRole(userId int, action string) error
 }

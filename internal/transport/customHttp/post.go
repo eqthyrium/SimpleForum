@@ -1,6 +1,7 @@
 package customHttp
 
 import (
+	"SimpleForum/internal/config"
 	"SimpleForum/internal/domain"
 	"SimpleForum/internal/transport/session"
 	"SimpleForum/pkg/logger"
@@ -67,6 +68,7 @@ func (handler *HandlerHttp) postPage(w http.ResponseWriter, r *http.Request) {
 		commentText := r.FormValue("commentText")
 		commentId := r.FormValue("commentId")
 		deleting := r.FormValue("delete")
+		report := r.FormValue("report")
 
 		if !(commentaried == "true" && deleting == "true") && (commentaried == "true" || deleting == "true") { // like == true XOR dislike == true
 
@@ -111,14 +113,37 @@ func (handler *HandlerHttp) postPage(w http.ResponseWriter, r *http.Request) {
 				}
 			}
 		} else {
-			customLogger.InfoLogger.Println("The request's commentary parameter is incorrect")
-			clientError(w, nil, http.StatusBadRequest, nil)
-			return
+			if role == "Moderator" && report == "true" {
+
+				err := handler.Service.ReportPost(userId, postIdNumber)
+				if errors.Is(err, domain.ErrRepeatedRequest) {
+					referer := r.Header.Get("Referer")
+					path := strings.TrimPrefix(referer, "http://localhost:"+*config.Config.Addr+"/")
+					files := []string{"../ui/html/error/report.tmpl.html"}
+					if path == "" {
+						files = append(files, "../ui/html/homepage.tmpl.html")
+						handler.homePageGet(w, r, files)
+					} else {
+						files = append(files, "../ui/html/postpage.tmpl.html")
+						handler.postPageGet(w, r, files, postIdNumber)
+					}
+
+				} else if err != nil {
+					customLogger.ErrorLogger.Print(logger.ErrorWrapper("Transport", "homePageGet", "There is a problem in the process of requesting moderator", err))
+					serverError(w)
+					return
+				}
+			} else {
+
+				customLogger.InfoLogger.Println("The request's commentary parameter is incorrect")
+				clientError(w, nil, http.StatusBadRequest, nil)
+				return
+
+			}
 
 		}
 
 		referer := r.Header.Get("Referer")
-
 		if referer != "" && deleting != "true" {
 			http.Redirect(w, r, referer, http.StatusSeeOther)
 		} else {

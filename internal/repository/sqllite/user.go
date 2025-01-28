@@ -28,6 +28,61 @@ func (rp *Repository) UpdateUserPassword(user *entity.Users) error {
 	return nil
 }
 
+func (rp *Repository) GetCertainUsers() ([]entity.Users, error) {
+	statement :=
+		`
+		SELECT UserId,Email,  Role FROM Users WHERE Role = "User" OR Role = "Moderator";
+	    `
+
+	rows, err := rp.DB.Query(statement)
+	if err != nil {
+		return nil, logger.ErrorWrapper("Repository", "GetCertainUsers", "Failed to get certain type of users from db", err)
+	}
+	var users []entity.Users
+	for rows.Next() {
+		var user entity.Users
+		err := rows.Scan(&user.UserId, &user.Email, &user.Role)
+		if err != nil {
+			return nil, logger.ErrorWrapper("Repository", "GetCertainUsers", "Failed to scan through already got result in db", err)
+		}
+		users = append(users, user)
+	}
+	err = rows.Err()
+	if err != nil {
+		return nil, logger.ErrorWrapper("Repository", "GetCertainUsers", "There is an error of the row in db", err)
+	}
+	if err := rows.Close(); err != nil {
+		return nil, logger.ErrorWrapper("Repository", "GetCertainUsers", "Failed to close the row of db", err)
+	}
+
+	return users, nil
+}
+
+func (rp *Repository) GetUsersRole(userId int) (string, error) {
+	statement := `
+			SELECT Role FROM Users WHERE UserId = ?;
+`
+	row := rp.DB.QueryRow(statement, userId)
+	var role string
+	err := row.Scan(&role)
+	if err != nil {
+		if err == sql.ErrNoRows {
+			return "", domain.ErrUserNotFound
+		}
+		return "", logger.ErrorWrapper("Repository", "GetUsersRole", "Failed to get role of user", err)
+	}
+	return role, nil
+}
+
+func (rp *Repository) UpdateRoleOfUser(userId int, role string) error {
+	statement := `UPDATE Users SET Role = ? WHERE UserId = ?`
+	_, err := rp.DB.Exec(statement, role, userId)
+	if err != nil {
+		return logger.ErrorWrapper("Repository", "UpdateRoleOfUser", "The problem within the process of updating the role of the user in db", err)
+	}
+	return nil
+}
+
 //func (rp *Repository) UpdateUser(user *entity.User) error {
 //	return nil
 //}

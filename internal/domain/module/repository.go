@@ -11,6 +11,9 @@ type DbModule interface {
 	categoryRepository
 	reactionRepository
 	postCategoryRepository
+	requests
+	reports
+	users
 	//PostCategoryRepository
 	//ReactionRepository
 	//NotificationRepository
@@ -69,6 +72,27 @@ type reactionRepository interface {
 	RetrieveExistenceOfReactionLD(userId int, identifier int, postOrComment string) (*entity.Reactions, error)
 	InsertReaction(userId, identifier int, postOrcomment, reaction string) error
 	DeleteReaction(userId, identifier int, postOrComment, reaction string) error
+}
+
+type requests interface {
+	GetAllRequests() ([]entity.ReportInfo, error)
+	IsItRequestedToBeModerator(userId int) (bool, error)
+	CreateRequestToBeModerator(userId int, falseNumber int) error
+	DeleteRequestToBeModerator(userId, postId int) error
+}
+
+type reports interface {
+	GetAllReports() ([]entity.ReportInfo, error)
+	CheckExistenceOfSuchReport(userId, postId int) (bool, error)
+	CreateReport(userId int, postId int) error
+	DeleteCertainReport(userId, postId int) error
+	IsItReportedPost(userId, postId int) (bool, error)
+}
+
+type users interface {
+	GetCertainUsers() ([]entity.Users, error)
+	GetUsersRole(userId int) (string, error)
+	UpdateRoleOfUser(userId int, role string) error
 }
 
 //

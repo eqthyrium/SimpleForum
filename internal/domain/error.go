@@ -21,4 +21,8 @@ var (
 
 	//Commentary
 	ErrCommentaryNotFound = errors.New("commentary not found")
+	//Request to be moderator
+	ErrRepeatedRequest = errors.New("repeated request")
+	// Moderation
+	ErrInvalidOperation = errors.New("invalid operation")
 )
