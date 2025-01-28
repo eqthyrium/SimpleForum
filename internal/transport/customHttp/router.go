@@ -2,14 +2,15 @@ package customHttp
 
 import (
 	"net/http"
+	"time"
 )
 
 func (handler *HandlerHttp) Routering() http.Handler {
+	rateLimiter := RateLimiterMiddleware(5, 3*time.Second)
 
 	Middleware := func(next func(w http.ResponseWriter, r *http.Request)) http.Handler {
-		return LoggingMiddleware(SecurityMiddleware(PanicMiddleware(RoleAdjusterMiddleware(CSRFMiddleware((http.HandlerFunc(next)))))))
+		return rateLimiter(LoggingMiddleware(SecurityMiddleware(PanicMiddleware(RoleAdjusterMiddleware(CSRFMiddleware((http.HandlerFunc(next))))))))
 	}
-
 	mux := http.NewServeMux()
 	fileServer := http.FileServer(http.Dir("../ui/static"))
 	mux.Handle("/uploads/", http.StripPrefix("/uploads/", http.FileServer(http.Dir("../uploads"))))

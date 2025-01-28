@@ -82,6 +82,7 @@ func (handler *HandlerHttp) myActivityPage(w http.ResponseWriter, r *http.Reques
 		Title   string
 		Content string
 		Comment string
+		Image   string
 	}
 	var postsWithComments []Post
 
@@ -92,7 +93,8 @@ func (handler *HandlerHttp) myActivityPage(w http.ResponseWriter, r *http.Reques
 					PostId:  post.PostId,
 					Title:   post.Title,
 					Content: post.Content,
-					Comment: comment.Content, // Добавляем комментарий
+					Comment: comment.Content,
+					Image:   post.Image,
 				})
 			}
 		}

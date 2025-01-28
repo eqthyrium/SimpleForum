@@ -1,15 +1,18 @@
 package customHttp
 
 import (
-	"SimpleForum/internal/domain"
-	session2 "SimpleForum/internal/transport/session"
-	"SimpleForum/pkg/logger"
 	"context"
 	"errors"
 	"fmt"
+	"log"
 	"net/http"
 	"runtime/debug"
+	"sync"
 	"time"
+
+	"SimpleForum/internal/domain"
+	session2 "SimpleForum/internal/transport/session"
+	"SimpleForum/pkg/logger"
 )
 
 /*
@@ -71,11 +74,9 @@ func SecurityMiddleware(next http.Handler) http.Handler {
 
 func RoleAdjusterMiddleware(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-
 		customLogger.DebugLogger.Println("The RoleAdjusterMiddleware is started")
 
 		tokenString, err := session2.GetTokenFromCookie(r, "auth_token")
-
 		if err != nil {
 			customLogger.DebugLogger.Println("There is an error about getting the token from the cookie!!!")
 			if errors.Is(err, http.ErrNoCookie) {
@@ -128,7 +129,7 @@ func RoleAdjusterMiddleware(next http.Handler) http.Handler {
 			customLogger.DebugLogger.Println("Entered into error handling of the check up of MappUUID")
 			customLogger.InfoLogger.Println("There is not current token for the client")
 			session2.DeleteSessionCookie(w, "auth_token")
-			//delete(CSRFMap, session2.MapUUID[extractedToken.UserId])
+			// delete(CSRFMap, session2.MapUUID[extractedToken.UserId])
 			http.Redirect(w, r, "/auth/login", http.StatusSeeOther)
 			return
 		}
@@ -161,7 +162,6 @@ func RoleAdjusterMiddleware(next http.Handler) http.Handler {
 
 func CSRFMiddleware(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-
 		customLogger.DebugLogger.Println("The CSRFMiddleware is started")
 
 		role := r.Context().Value("Role").(string)
@@ -173,9 +173,9 @@ func CSRFMiddleware(next http.Handler) http.Handler {
 			userId := r.Context().Value("UserId").(int)
 
 			if formCSRFText != CSRFMap[session2.MapUUID[userId]] {
-				//fmt.Println("Fucking CSRF attack")
-				//fmt.Println("MapUUID[userId]:", session2.MapUUID[userId])
-				//fmt.Println("HTML formCSRFTEXT", formCSRFText, "\n", "Server Map:", CSRFMap[session2.MapUUID[userId]])
+				// fmt.Println("Fucking CSRF attack")
+				// fmt.Println("MapUUID[userId]:", session2.MapUUID[userId])
+				// fmt.Println("HTML formCSRFTEXT", formCSRFText, "\n", "Server Map:", CSRFMap[session2.MapUUID[userId]])
 				customLogger.InfoLogger.Println("The CSRF attack is detected, its IP is:", r.RemoteAddr)
 				//if _, ok := CSRFMap[session2.MapUUID[userId]]; ok {
 				//	delete(CSRFMap, session2.MapUUID[userId])
@@ -194,7 +194,6 @@ func CSRFMiddleware(next http.Handler) http.Handler {
 }
 
 func PanicMiddleware(next http.Handler) http.Handler {
-
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		defer func() {
 			if err := recover(); err != nil {
@@ -204,4 +203,34 @@ func PanicMiddleware(next http.Handler) http.Handler {
 		}()
 		next.ServeHTTP(w, r)
 	})
+}
+
+func RateLimiterMiddleware(limit int, window time.Duration) func(http.Handler) http.Handler {
+	tokens := limit
+	resetTime := time.Now().Add(window)
+	var mu sync.Mutex
+
+	return func(next http.Handler) http.Handler {
+		return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+			mu.Lock()
+			defer mu.Unlock()
+
+			log.Printf("Tokens left: %d, Reset time: %v\n", tokens, resetTime)
+
+			if time.Now().After(resetTime) {
+				tokens = limit
+				resetTime = time.Now().Add(window)
+				log.Println("Resetting tokens.")
+			}
+
+			if tokens <= 0 {
+				log.Println("Rate limit exceeded.")
+				http.Error(w, "Too Many Requests", http.StatusTooManyRequests)
+				return
+			}
+
+			tokens--
+			next.ServeHTTP(w, r)
+		})
+	}
 }

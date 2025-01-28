@@ -179,6 +179,10 @@
             <li class="post-item">
                 <h3>{{.Title}}</h3>
                 <p>{{.Content}}</p>
+                {{if .Image}}
+                <img src="/uploads/{{.Image}}" style="max-width: 600px;">
+                {{end}}
+    
             </li>
             {{end}}
         </ul>
@@ -189,9 +193,13 @@
         <h2>My liked  posts :</h2>
         <ul class="liked-post-list">
             {{range .likedPosts}}
+            
             <li class="liked-post-item">
                 <h3>{{.Title}}</h3>
                 <p>{{.Content}}</p>
+                {{if .Image}}
+                <img src="/uploads/{{.Image}}" style="max-width: 600px;">
+                {{end}}
                 <button type="submit">Like ({{.LikeCount}})</button>
             </li>
             {{end}}
@@ -201,9 +209,14 @@
         <h2>My disliked posts :</h2>
         <ul class="disliked-post-list">
             {{range .dislikedPosts}}
+            
             <div class="liked-post-item">
                 <h3>{{.Title}}</h3>
                 <p>{{.Content}}</p>
+                {{if .Image}}
+                <img src="/uploads/{{.Image}}" style="max-width: 600px;">
+                {{end}}
+    
                 <button type="submit">Dislike ({{.DislikeCount}})</button>
             </div>
             {{end}}
@@ -213,13 +226,19 @@
     <div>
         <h2>My commented posts:</h2>
         <div class="post-item">
+            
+           
             {{range .myCommentedPosts}}
             <div class="post">
                 <div><h3>{{.Title}}</h3></div>
 
 
                 <div> <p> Post:  {{.Content}}</p></div>
+                {{if .Image}}
+                <img src="/uploads/{{.Image}}" style="max-width: 600px;">
+                {{end}}
                 <p> Comments:  {{.Comment}}</p>
+             
             </div>
             {{end}}
         </div>
