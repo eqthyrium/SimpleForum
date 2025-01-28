@@ -1,13 +1,253 @@
-INFO: 2025/01/27 12:29:12 /Users/asemospanova/Documents/Adlet/SimpleForum/internal/transport/customHttp/middleware.go:55: Method:[GET], URL_Path: /, Remote_Address: [::1]:55066
-DEBUG: 2025/01/27 12:29:12 /Users/asemospanova/Documents/Adlet/SimpleForum/internal/transport/customHttp/middleware.go:75: The RoleAdjusterMiddleware is started
-DEBUG: 2025/01/27 12:29:12 /Users/asemospanova/Documents/Adlet/SimpleForum/internal/transport/customHttp/middleware.go:128: Entered into error handling of the check up of MappUUID
-INFO: 2025/01/27 12:29:12 /Users/asemospanova/Documents/Adlet/SimpleForum/internal/transport/customHttp/middleware.go:129: There is not current token for the client
-INFO: 2025/01/27 12:29:12 /Users/asemospanova/Documents/Adlet/SimpleForum/internal/transport/customHttp/middleware.go:59: The End of the client request, and its Duration:2.59461ms
-INFO: 2025/01/27 12:29:12 /Users/asemospanova/Documents/Adlet/SimpleForum/internal/transport/customHttp/middleware.go:55: Method:[GET], URL_Path: /auth/login, Remote_Address: [::1]:55066
-DEBUG: 2025/01/27 12:29:12 /Users/asemospanova/Documents/Adlet/SimpleForum/internal/transport/customHttp/middleware.go:75: The RoleAdjusterMiddleware is started
-DEBUG: 2025/01/27 12:29:12 /Users/asemospanova/Documents/Adlet/SimpleForum/internal/transport/customHttp/middleware.go:80: There is an error about getting the token from the cookie!!!
-INFO: 2025/01/27 12:29:12 /Users/asemospanova/Documents/Adlet/SimpleForum/internal/transport/customHttp/middleware.go:82: There is no cookie in the request of the client
-DEBUG: 2025/01/27 12:29:12 /Users/asemospanova/Documents/Adlet/SimpleForum/internal/transport/customHttp/middleware.go:165: The CSRFMiddleware is started
-DEBUG: 2025/01/27 12:29:12 /Users/asemospanova/Documents/Adlet/SimpleForum/internal/transport/customHttp/login.go:28: The logIn handler is activated
-DEBUG: 2025/01/27 12:29:12 /Users/asemospanova/Documents/Adlet/SimpleForum/internal/transport/customHttp/login.go:50: logIn's handler of GET request is activated
-INFO: 2025/01/27 12:29:13 /Users/asemospanova/Documents/Adlet/SimpleForum/internal/transport/customHttp/middleware.go:59: The End of the client request, and its Duration:354.1432ms
+INFO: 2025/01/29 01:38:06 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:57: Method:[GET], URL_Path: /, Remote_Address: [::1]:62697
+DEBUG: 2025/01/29 01:38:06 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:77: The RoleAdjusterMiddleware is started
+DEBUG: 2025/01/29 01:38:06 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:130: Entered into error handling of the check up of MappUUID
+INFO: 2025/01/29 01:38:06 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:131: There is not current token for the client
+INFO: 2025/01/29 01:38:06 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:61: The End of the client request, and its Duration:1.200825ms
+INFO: 2025/01/29 01:38:06 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:57: Method:[GET], URL_Path: /auth/login, Remote_Address: [::1]:62697
+DEBUG: 2025/01/29 01:38:06 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:77: The RoleAdjusterMiddleware is started
+DEBUG: 2025/01/29 01:38:06 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:82: There is an error about getting the token from the cookie!!!
+INFO: 2025/01/29 01:38:06 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:84: There is no cookie in the request of the client
+DEBUG: 2025/01/29 01:38:06 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:167: The CSRFMiddleware is started
+DEBUG: 2025/01/29 01:38:06 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/login.go:28: The logIn handler is activated
+DEBUG: 2025/01/29 01:38:06 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/login.go:50: logIn's handler of GET request is activated
+INFO: 2025/01/29 01:38:06 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:61: The End of the client request, and its Duration:26.679203ms
+INFO: 2025/01/29 01:38:20 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:57: Method:[POST], URL_Path: /auth/login, Remote_Address: [::1]:62697
+DEBUG: 2025/01/29 01:38:20 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:77: The RoleAdjusterMiddleware is started
+DEBUG: 2025/01/29 01:38:20 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:82: There is an error about getting the token from the cookie!!!
+INFO: 2025/01/29 01:38:20 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:84: There is no cookie in the request of the client
+DEBUG: 2025/01/29 01:38:20 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:167: The CSRFMiddleware is started
+DEBUG: 2025/01/29 01:38:20 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/login.go:28: The logIn handler is activated
+DEBUG: 2025/01/29 01:38:20 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/login.go:80: logIn's handler of POST request is activated
+INFO: 2025/01/29 01:38:20 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:61: The End of the client request, and its Duration:163.640664ms
+INFO: 2025/01/29 01:38:20 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:57: Method:[GET], URL_Path: /, Remote_Address: [::1]:62697
+DEBUG: 2025/01/29 01:38:20 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:77: The RoleAdjusterMiddleware is started
+DEBUG: 2025/01/29 01:38:20 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:137: Checking part of token's time
+DEBUG: 2025/01/29 01:38:20 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:167: The CSRFMiddleware is started
+DEBUG: 2025/01/29 01:38:20 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/homepage.go:14: homePage handler is activated
+INFO: 2025/01/29 01:38:20 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:61: The End of the client request, and its Duration:3.907739ms
+INFO: 2025/01/29 01:38:22 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:57: Method:[POST], URL_Path: /reaction, Remote_Address: [::1]:62697
+DEBUG: 2025/01/29 01:38:22 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:77: The RoleAdjusterMiddleware is started
+DEBUG: 2025/01/29 01:38:22 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:137: Checking part of token's time
+DEBUG: 2025/01/29 01:38:22 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:167: The CSRFMiddleware is started
+DEBUG: 2025/01/29 01:38:22 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:172: inside of the CSRFMiddleware's Post method checking part 
+DEBUG: 2025/01/29 01:38:22 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:190: The CSRF checking part was good
+INFO: 2025/01/29 01:38:22 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:61: The End of the client request, and its Duration:22.216522ms
+INFO: 2025/01/29 01:38:22 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:57: Method:[GET], URL_Path: /, Remote_Address: [::1]:62697
+DEBUG: 2025/01/29 01:38:22 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:77: The RoleAdjusterMiddleware is started
+DEBUG: 2025/01/29 01:38:22 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:137: Checking part of token's time
+DEBUG: 2025/01/29 01:38:22 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:167: The CSRFMiddleware is started
+DEBUG: 2025/01/29 01:38:22 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/homepage.go:14: homePage handler is activated
+INFO: 2025/01/29 01:38:22 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:61: The End of the client request, and its Duration:4.392996ms
+INFO: 2025/01/29 01:38:23 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:57: Method:[POST], URL_Path: /reaction, Remote_Address: [::1]:62697
+DEBUG: 2025/01/29 01:38:23 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:77: The RoleAdjusterMiddleware is started
+DEBUG: 2025/01/29 01:38:23 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:137: Checking part of token's time
+DEBUG: 2025/01/29 01:38:23 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:167: The CSRFMiddleware is started
+DEBUG: 2025/01/29 01:38:23 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:172: inside of the CSRFMiddleware's Post method checking part 
+DEBUG: 2025/01/29 01:38:23 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:190: The CSRF checking part was good
+INFO: 2025/01/29 01:38:23 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:61: The End of the client request, and its Duration:21.269392ms
+INFO: 2025/01/29 01:38:23 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:57: Method:[GET], URL_Path: /, Remote_Address: [::1]:62697
+DEBUG: 2025/01/29 01:38:23 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:77: The RoleAdjusterMiddleware is started
+DEBUG: 2025/01/29 01:38:23 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:137: Checking part of token's time
+DEBUG: 2025/01/29 01:38:23 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:167: The CSRFMiddleware is started
+DEBUG: 2025/01/29 01:38:23 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/homepage.go:14: homePage handler is activated
+INFO: 2025/01/29 01:38:23 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:61: The End of the client request, and its Duration:10.85566ms
+INFO: 2025/01/29 01:38:26 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:57: Method:[POST], URL_Path: /post/24, Remote_Address: [::1]:62697
+DEBUG: 2025/01/29 01:38:26 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:77: The RoleAdjusterMiddleware is started
+DEBUG: 2025/01/29 01:38:26 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:137: Checking part of token's time
+DEBUG: 2025/01/29 01:38:26 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:167: The CSRFMiddleware is started
+DEBUG: 2025/01/29 01:38:26 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:172: inside of the CSRFMiddleware's Post method checking part 
+DEBUG: 2025/01/29 01:38:26 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:190: The CSRF checking part was good
+DEBUG: 2025/01/29 01:38:26 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/post.go:17: postPage handler is activated
+INFO: 2025/01/29 01:38:26 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/post.go:90: The request's commentary parameter is incorrect
+DEBUG: 2025/01/29 01:38:26 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/helper.go:16: errorWebpage handler is activated
+DEBUG: 2025/01/29 01:38:26 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/helper.go:23: Bad Requested error handling part is opened
+INFO: 2025/01/29 01:38:26 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:61: The End of the client request, and its Duration:2.045205ms
+INFO: 2025/01/29 01:38:33 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:57: Method:[POST], URL_Path: /reaction, Remote_Address: [::1]:62697
+DEBUG: 2025/01/29 01:38:33 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:77: The RoleAdjusterMiddleware is started
+DEBUG: 2025/01/29 01:38:33 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:137: Checking part of token's time
+DEBUG: 2025/01/29 01:38:33 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:167: The CSRFMiddleware is started
+DEBUG: 2025/01/29 01:38:33 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:172: inside of the CSRFMiddleware's Post method checking part 
+DEBUG: 2025/01/29 01:38:33 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:190: The CSRF checking part was good
+INFO: 2025/01/29 01:38:33 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:61: The End of the client request, and its Duration:14.953144ms
+INFO: 2025/01/29 01:38:33 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:57: Method:[GET], URL_Path: /, Remote_Address: [::1]:62697
+DEBUG: 2025/01/29 01:38:33 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:77: The RoleAdjusterMiddleware is started
+DEBUG: 2025/01/29 01:38:33 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:137: Checking part of token's time
+DEBUG: 2025/01/29 01:38:33 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:167: The CSRFMiddleware is started
+DEBUG: 2025/01/29 01:38:33 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/homepage.go:14: homePage handler is activated
+INFO: 2025/01/29 01:38:33 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:61: The End of the client request, and its Duration:4.969072ms
+INFO: 2025/01/29 01:38:35 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:57: Method:[POST], URL_Path: /reaction, Remote_Address: [::1]:62697
+DEBUG: 2025/01/29 01:38:35 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:77: The RoleAdjusterMiddleware is started
+DEBUG: 2025/01/29 01:38:35 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:137: Checking part of token's time
+DEBUG: 2025/01/29 01:38:35 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:167: The CSRFMiddleware is started
+DEBUG: 2025/01/29 01:38:35 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:172: inside of the CSRFMiddleware's Post method checking part 
+DEBUG: 2025/01/29 01:38:35 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:190: The CSRF checking part was good
+INFO: 2025/01/29 01:38:35 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:61: The End of the client request, and its Duration:6.582516ms
+INFO: 2025/01/29 01:38:35 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:57: Method:[GET], URL_Path: /, Remote_Address: [::1]:62697
+DEBUG: 2025/01/29 01:38:35 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:77: The RoleAdjusterMiddleware is started
+DEBUG: 2025/01/29 01:38:35 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:137: Checking part of token's time
+DEBUG: 2025/01/29 01:38:35 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:167: The CSRFMiddleware is started
+DEBUG: 2025/01/29 01:38:35 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/homepage.go:14: homePage handler is activated
+INFO: 2025/01/29 01:38:35 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:61: The End of the client request, and its Duration:5.033291ms
+INFO: 2025/01/29 01:38:37 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:57: Method:[GET], URL_Path: /create/post, Remote_Address: [::1]:62697
+DEBUG: 2025/01/29 01:38:37 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:77: The RoleAdjusterMiddleware is started
+DEBUG: 2025/01/29 01:38:37 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:137: Checking part of token's time
+DEBUG: 2025/01/29 01:38:37 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:167: The CSRFMiddleware is started
+DEBUG: 2025/01/29 01:38:37 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/createpost.go:15: homePage handler is activated
+INFO: 2025/01/29 01:38:37 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:61: The End of the client request, and its Duration:8.09024ms
+INFO: 2025/01/29 01:38:44 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:57: Method:[POST], URL_Path: /create/post, Remote_Address: [::1]:62697
+DEBUG: 2025/01/29 01:38:44 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:77: The RoleAdjusterMiddleware is started
+DEBUG: 2025/01/29 01:38:44 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:137: Checking part of token's time
+DEBUG: 2025/01/29 01:38:44 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:167: The CSRFMiddleware is started
+DEBUG: 2025/01/29 01:38:44 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:172: inside of the CSRFMiddleware's Post method checking part 
+DEBUG: 2025/01/29 01:38:44 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:190: The CSRF checking part was good
+DEBUG: 2025/01/29 01:38:44 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/createpost.go:15: homePage handler is activated
+INFO: 2025/01/29 01:38:44 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:61: The End of the client request, and its Duration:9.698377ms
+INFO: 2025/01/29 01:38:44 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:57: Method:[GET], URL_Path: /, Remote_Address: [::1]:62697
+DEBUG: 2025/01/29 01:38:44 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:77: The RoleAdjusterMiddleware is started
+DEBUG: 2025/01/29 01:38:44 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:137: Checking part of token's time
+DEBUG: 2025/01/29 01:38:44 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:167: The CSRFMiddleware is started
+DEBUG: 2025/01/29 01:38:44 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/homepage.go:14: homePage handler is activated
+INFO: 2025/01/29 01:38:44 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:61: The End of the client request, and its Duration:5.054004ms
+INFO: 2025/01/29 01:38:49 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:57: Method:[GET], URL_Path: /, Remote_Address: [::1]:62697
+DEBUG: 2025/01/29 01:38:49 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:77: The RoleAdjusterMiddleware is started
+DEBUG: 2025/01/29 01:38:49 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:137: Checking part of token's time
+DEBUG: 2025/01/29 01:38:49 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:167: The CSRFMiddleware is started
+DEBUG: 2025/01/29 01:38:49 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/homepage.go:14: homePage handler is activated
+INFO: 2025/01/29 01:38:49 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:61: The End of the client request, and its Duration:10.122115ms
+INFO: 2025/01/29 01:38:53 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:57: Method:[GET], URL_Path: /, Remote_Address: [::1]:62697
+DEBUG: 2025/01/29 01:38:53 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:77: The RoleAdjusterMiddleware is started
+DEBUG: 2025/01/29 01:38:53 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:137: Checking part of token's time
+DEBUG: 2025/01/29 01:38:53 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:167: The CSRFMiddleware is started
+DEBUG: 2025/01/29 01:38:53 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/homepage.go:14: homePage handler is activated
+INFO: 2025/01/29 01:38:53 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:61: The End of the client request, and its Duration:5.708925ms
+INFO: 2025/01/29 01:38:53 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:57: Method:[GET], URL_Path: /, Remote_Address: [::1]:62697
+DEBUG: 2025/01/29 01:38:53 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:77: The RoleAdjusterMiddleware is started
+DEBUG: 2025/01/29 01:38:53 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:137: Checking part of token's time
+DEBUG: 2025/01/29 01:38:53 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:167: The CSRFMiddleware is started
+DEBUG: 2025/01/29 01:38:53 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/homepage.go:14: homePage handler is activated
+INFO: 2025/01/29 01:38:53 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:61: The End of the client request, and its Duration:8.385047ms
+INFO: 2025/01/29 01:38:53 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:57: Method:[GET], URL_Path: /, Remote_Address: [::1]:62697
+DEBUG: 2025/01/29 01:38:53 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:77: The RoleAdjusterMiddleware is started
+DEBUG: 2025/01/29 01:38:53 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:137: Checking part of token's time
+DEBUG: 2025/01/29 01:38:53 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:167: The CSRFMiddleware is started
+DEBUG: 2025/01/29 01:38:53 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/homepage.go:14: homePage handler is activated
+INFO: 2025/01/29 01:38:53 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:61: The End of the client request, and its Duration:5.255216ms
+INFO: 2025/01/29 01:38:53 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:57: Method:[GET], URL_Path: /, Remote_Address: [::1]:62697
+DEBUG: 2025/01/29 01:38:53 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:77: The RoleAdjusterMiddleware is started
+DEBUG: 2025/01/29 01:38:53 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:137: Checking part of token's time
+DEBUG: 2025/01/29 01:38:53 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:167: The CSRFMiddleware is started
+DEBUG: 2025/01/29 01:38:53 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/homepage.go:14: homePage handler is activated
+INFO: 2025/01/29 01:38:53 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:61: The End of the client request, and its Duration:3.566728ms
+INFO: 2025/01/29 01:38:53 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:57: Method:[GET], URL_Path: /, Remote_Address: [::1]:62697
+DEBUG: 2025/01/29 01:38:53 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:77: The RoleAdjusterMiddleware is started
+DEBUG: 2025/01/29 01:38:53 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:137: Checking part of token's time
+DEBUG: 2025/01/29 01:38:53 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:167: The CSRFMiddleware is started
+DEBUG: 2025/01/29 01:38:53 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/homepage.go:14: homePage handler is activated
+INFO: 2025/01/29 01:38:53 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:61: The End of the client request, and its Duration:11.19816ms
+INFO: 2025/01/29 01:39:00 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:57: Method:[GET], URL_Path: /, Remote_Address: [::1]:62697
+DEBUG: 2025/01/29 01:39:00 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:77: The RoleAdjusterMiddleware is started
+DEBUG: 2025/01/29 01:39:00 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:137: Checking part of token's time
+DEBUG: 2025/01/29 01:39:00 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:167: The CSRFMiddleware is started
+DEBUG: 2025/01/29 01:39:00 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/homepage.go:14: homePage handler is activated
+INFO: 2025/01/29 01:39:00 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:61: The End of the client request, and its Duration:6.730463ms
+INFO: 2025/01/29 01:39:13 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:57: Method:[POST], URL_Path: /reaction, Remote_Address: [::1]:62697
+DEBUG: 2025/01/29 01:39:13 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:77: The RoleAdjusterMiddleware is started
+DEBUG: 2025/01/29 01:39:13 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:137: Checking part of token's time
+DEBUG: 2025/01/29 01:39:13 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:167: The CSRFMiddleware is started
+DEBUG: 2025/01/29 01:39:13 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:172: inside of the CSRFMiddleware's Post method checking part 
+DEBUG: 2025/01/29 01:39:13 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:190: The CSRF checking part was good
+INFO: 2025/01/29 01:39:13 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:61: The End of the client request, and its Duration:4.838338ms
+INFO: 2025/01/29 01:39:13 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:57: Method:[GET], URL_Path: /, Remote_Address: [::1]:62697
+DEBUG: 2025/01/29 01:39:13 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:77: The RoleAdjusterMiddleware is started
+DEBUG: 2025/01/29 01:39:13 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:137: Checking part of token's time
+DEBUG: 2025/01/29 01:39:13 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:167: The CSRFMiddleware is started
+DEBUG: 2025/01/29 01:39:13 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/homepage.go:14: homePage handler is activated
+INFO: 2025/01/29 01:39:13 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:61: The End of the client request, and its Duration:6.124122ms
+INFO: 2025/01/29 01:39:14 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:57: Method:[POST], URL_Path: /reaction, Remote_Address: [::1]:62697
+DEBUG: 2025/01/29 01:39:14 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:77: The RoleAdjusterMiddleware is started
+DEBUG: 2025/01/29 01:39:14 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:137: Checking part of token's time
+DEBUG: 2025/01/29 01:39:14 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:167: The CSRFMiddleware is started
+DEBUG: 2025/01/29 01:39:14 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:172: inside of the CSRFMiddleware's Post method checking part 
+DEBUG: 2025/01/29 01:39:14 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:190: The CSRF checking part was good
+INFO: 2025/01/29 01:39:14 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:61: The End of the client request, and its Duration:14.60462ms
+INFO: 2025/01/29 01:39:14 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:57: Method:[GET], URL_Path: /, Remote_Address: [::1]:62697
+DEBUG: 2025/01/29 01:39:14 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:77: The RoleAdjusterMiddleware is started
+DEBUG: 2025/01/29 01:39:14 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:137: Checking part of token's time
+DEBUG: 2025/01/29 01:39:14 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:167: The CSRFMiddleware is started
+DEBUG: 2025/01/29 01:39:14 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/homepage.go:14: homePage handler is activated
+INFO: 2025/01/29 01:39:14 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:61: The End of the client request, and its Duration:4.427331ms
+INFO: 2025/01/29 01:39:16 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:57: Method:[POST], URL_Path: /reaction, Remote_Address: [::1]:62697
+DEBUG: 2025/01/29 01:39:16 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:77: The RoleAdjusterMiddleware is started
+DEBUG: 2025/01/29 01:39:16 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:137: Checking part of token's time
+DEBUG: 2025/01/29 01:39:16 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:167: The CSRFMiddleware is started
+DEBUG: 2025/01/29 01:39:16 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:172: inside of the CSRFMiddleware's Post method checking part 
+DEBUG: 2025/01/29 01:39:16 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:190: The CSRF checking part was good
+INFO: 2025/01/29 01:39:16 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:61: The End of the client request, and its Duration:14.657979ms
+INFO: 2025/01/29 01:39:16 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:57: Method:[GET], URL_Path: /, Remote_Address: [::1]:62697
+DEBUG: 2025/01/29 01:39:16 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:77: The RoleAdjusterMiddleware is started
+DEBUG: 2025/01/29 01:39:16 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:137: Checking part of token's time
+DEBUG: 2025/01/29 01:39:16 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:167: The CSRFMiddleware is started
+DEBUG: 2025/01/29 01:39:16 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/homepage.go:14: homePage handler is activated
+INFO: 2025/01/29 01:39:16 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:61: The End of the client request, and its Duration:3.874138ms
+INFO: 2025/01/29 01:39:20 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:57: Method:[GET], URL_Path: /, Remote_Address: [::1]:62697
+DEBUG: 2025/01/29 01:39:20 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:77: The RoleAdjusterMiddleware is started
+DEBUG: 2025/01/29 01:39:20 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:137: Checking part of token's time
+DEBUG: 2025/01/29 01:39:20 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:167: The CSRFMiddleware is started
+DEBUG: 2025/01/29 01:39:20 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/homepage.go:14: homePage handler is activated
+INFO: 2025/01/29 01:39:20 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:61: The End of the client request, and its Duration:9.517453ms
+INFO: 2025/01/29 01:39:21 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:57: Method:[GET], URL_Path: /create/post, Remote_Address: [::1]:62697
+DEBUG: 2025/01/29 01:39:21 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:77: The RoleAdjusterMiddleware is started
+DEBUG: 2025/01/29 01:39:21 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:137: Checking part of token's time
+DEBUG: 2025/01/29 01:39:21 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:167: The CSRFMiddleware is started
+DEBUG: 2025/01/29 01:39:21 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/createpost.go:15: homePage handler is activated
+INFO: 2025/01/29 01:39:21 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:61: The End of the client request, and its Duration:1.668681ms
+INFO: 2025/01/29 01:39:28 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:57: Method:[POST], URL_Path: /create/post, Remote_Address: [::1]:62697
+DEBUG: 2025/01/29 01:39:28 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:77: The RoleAdjusterMiddleware is started
+DEBUG: 2025/01/29 01:39:28 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:137: Checking part of token's time
+DEBUG: 2025/01/29 01:39:28 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:167: The CSRFMiddleware is started
+DEBUG: 2025/01/29 01:39:28 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:172: inside of the CSRFMiddleware's Post method checking part 
+DEBUG: 2025/01/29 01:39:28 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:190: The CSRF checking part was good
+DEBUG: 2025/01/29 01:39:28 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/createpost.go:15: homePage handler is activated
+INFO: 2025/01/29 01:39:28 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:61: The End of the client request, and its Duration:9.464967ms
+INFO: 2025/01/29 01:39:28 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:57: Method:[GET], URL_Path: /, Remote_Address: [::1]:62697
+DEBUG: 2025/01/29 01:39:28 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:77: The RoleAdjusterMiddleware is started
+DEBUG: 2025/01/29 01:39:28 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:137: Checking part of token's time
+DEBUG: 2025/01/29 01:39:28 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:167: The CSRFMiddleware is started
+DEBUG: 2025/01/29 01:39:28 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/homepage.go:14: homePage handler is activated
+INFO: 2025/01/29 01:39:28 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:61: The End of the client request, and its Duration:3.591041ms
+INFO: 2025/01/29 01:39:30 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:57: Method:[GET], URL_Path: /myactivity, Remote_Address: [::1]:62697
+DEBUG: 2025/01/29 01:39:30 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:77: The RoleAdjusterMiddleware is started
+DEBUG: 2025/01/29 01:39:30 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:137: Checking part of token's time
+DEBUG: 2025/01/29 01:39:30 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:167: The CSRFMiddleware is started
+DEBUG: 2025/01/29 01:39:30 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/myactivitypage.go:13: myActivity page is activated
+INFO: 2025/01/29 01:39:30 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:61: The End of the client request, and its Duration:12.711419ms
+INFO: 2025/01/29 01:39:35 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:57: Method:[GET], URL_Path: /, Remote_Address: [::1]:62697
+DEBUG: 2025/01/29 01:39:35 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:77: The RoleAdjusterMiddleware is started
+DEBUG: 2025/01/29 01:39:35 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:137: Checking part of token's time
+DEBUG: 2025/01/29 01:39:35 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:167: The CSRFMiddleware is started
+DEBUG: 2025/01/29 01:39:35 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/homepage.go:14: homePage handler is activated
+INFO: 2025/01/29 01:39:35 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:61: The End of the client request, and its Duration:9.886875ms
+INFO: 2025/01/29 01:39:36 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:57: Method:[GET], URL_Path: /, Remote_Address: [::1]:62697
+DEBUG: 2025/01/29 01:39:36 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:77: The RoleAdjusterMiddleware is started
+DEBUG: 2025/01/29 01:39:36 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:137: Checking part of token's time
+DEBUG: 2025/01/29 01:39:36 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:167: The CSRFMiddleware is started
+DEBUG: 2025/01/29 01:39:36 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/homepage.go:14: homePage handler is activated
+INFO: 2025/01/29 01:39:36 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:61: The End of the client request, and its Duration:7.832554ms
+INFO: 2025/01/29 01:39:37 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:57: Method:[GET], URL_Path: /, Remote_Address: [::1]:62697
+DEBUG: 2025/01/29 01:39:37 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:77: The RoleAdjusterMiddleware is started
+DEBUG: 2025/01/29 01:39:37 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:137: Checking part of token's time
+DEBUG: 2025/01/29 01:39:37 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:167: The CSRFMiddleware is started
+DEBUG: 2025/01/29 01:39:37 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/homepage.go:14: homePage handler is activated
+INFO: 2025/01/29 01:39:37 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:61: The End of the client request, and its Duration:7.503147ms
+INFO: 2025/01/29 01:39:37 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:57: Method:[GET], URL_Path: /, Remote_Address: [::1]:62697
+DEBUG: 2025/01/29 01:39:37 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:77: The RoleAdjusterMiddleware is started
+DEBUG: 2025/01/29 01:39:37 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:137: Checking part of token's time
+DEBUG: 2025/01/29 01:39:37 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:167: The CSRFMiddleware is started
+DEBUG: 2025/01/29 01:39:37 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/homepage.go:14: homePage handler is activated
+INFO: 2025/01/29 01:39:37 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:61: The End of the client request, and its Duration:6.834102ms
+INFO: 2025/01/29 01:39:37 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:57: Method:[GET], URL_Path: /, Remote_Address: [::1]:62697
+DEBUG: 2025/01/29 01:39:37 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:77: The RoleAdjusterMiddleware is started
+DEBUG: 2025/01/29 01:39:37 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:137: Checking part of token's time
+DEBUG: 2025/01/29 01:39:37 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:167: The CSRFMiddleware is started
+DEBUG: 2025/01/29 01:39:37 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/homepage.go:14: homePage handler is activated
+INFO: 2025/01/29 01:39:37 /Users/asemospanova/Documents/17.01/SimpleForum/internal/transport/customHttp/middleware.go:61: The End of the client request, and its Duration:5.941458ms

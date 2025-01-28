@@ -7,8 +7,10 @@ import (
 	"context"
 	"errors"
 	"fmt"
+	"log"
 	"net/http"
 	"runtime/debug"
+	"sync"
 	"time"
 )
 
@@ -204,4 +206,33 @@ func PanicMiddleware(next http.Handler) http.Handler {
 		}()
 		next.ServeHTTP(w, r)
 	})
+}
+func RateLimiterMiddleware(limit int, window time.Duration) func(http.Handler) http.Handler {
+	var tokens = limit
+	var resetTime = time.Now().Add(window)
+	var mu sync.Mutex
+
+	return func(next http.Handler) http.Handler {
+		return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+			mu.Lock()
+			defer mu.Unlock()
+
+			log.Printf("Tokens left: %d, Reset time: %v\n", tokens, resetTime)
+
+			if time.Now().After(resetTime) {
+				tokens = limit
+				resetTime = time.Now().Add(window)
+				log.Println("Resetting tokens.")
+			}
+
+			if tokens <= 0 {
+				log.Println("Rate limit exceeded.")
+				http.Error(w, "Too Many Requests", http.StatusTooManyRequests)
+				return
+			}
+
+			tokens--
+			next.ServeHTTP(w, r)
+		})
+	}
 }

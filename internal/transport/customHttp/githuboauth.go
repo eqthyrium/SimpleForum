@@ -133,7 +133,7 @@ func (handler *HandlerHttp) githubCallback(w http.ResponseWriter, r *http.Reques
 	}
 
 	emailBody, _ := ioutil.ReadAll(emailResp.Body)
-	customLogger.DebugLogger.Print(fmt.Sprintf("Emails Response Body:", string(emailBody)))
+	customLogger.DebugLogger.Print(fmt.Sprintf("Emails Response Body:%s", string(emailBody)))
 
 	var emails []map[string]interface{}
 	if err := json.Unmarshal(emailBody, &emails); err != nil {
