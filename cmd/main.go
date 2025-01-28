@@ -7,9 +7,10 @@ import (
 	"SimpleForum/internal/transport/customHttp"
 	"database/sql"
 	"fmt"
-	_ "github.com/mattn/go-sqlite3"
 	"log"
 	"net/http"
+
+	_ "github.com/mattn/go-sqlite3"
 )
 
 func main() {
@@ -29,7 +30,13 @@ func main() {
 	router := httpTransport.Routering()
 	message := fmt.Sprintf("The server is running at: http://localhost%s/\n", *config.Config.Addr)
 	log.Print(message)
-	log.Fatalln(http.ListenAndServe(*config.Config.Addr, router))
+
+	ch := make(chan int)
+	go func() {
+		log.Fatalln(http.ListenAndServe(*config.Config.Addr, router))
+		ch <- 1
+	}()
+	<-ch
 
 }
 
