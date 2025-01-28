@@ -7,6 +7,16 @@ import (
 	"os"
 )
 
+const (
+	MaxImageSize = 20 * 1024 * 1024 // 20 MB
+	UploadDir    = "../uploads/"    // Directory to store images
+)
+
+var AllowedImageTypes = map[string]bool{
+	"image/jpeg": true,
+	"image/png":  true,
+	"image/gif":  true,
+}
 var Config *Configuration
 
 type Configuration struct {

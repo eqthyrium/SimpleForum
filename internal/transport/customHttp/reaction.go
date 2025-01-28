@@ -82,8 +82,6 @@ func (handler *HandlerHttp) reaction(w http.ResponseWriter, r *http.Request) {
 			http.Redirect(w, r, "/", http.StatusSeeOther) // Fallback to homepage
 		}
 
-	} else if commented != "" && (like == "" && dislike == "") {
-		// Here i have to write the logic where the client writes comment for a particular post
 	} else {
 		// We have to output the error message that there is no corresponding body message from the client request
 		clientError(w, nil, http.StatusBadRequest, nil)

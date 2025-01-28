@@ -12,6 +12,7 @@ func (handler *HandlerHttp) Routering() http.Handler {
 
 	mux := http.NewServeMux()
 	fileServer := http.FileServer(http.Dir("../ui/static"))
+	mux.Handle("/uploads/", http.StripPrefix("/uploads/", http.FileServer(http.Dir("../uploads"))))
 	mux.Handle("/static/", http.StripPrefix("/static/", fileServer))
 	mux.Handle("/auth/login", Middleware(handler.logIn))
 	mux.Handle("/auth/signup", Middleware(handler.signUp))
@@ -29,6 +30,6 @@ func (handler *HandlerHttp) Routering() http.Handler {
 	mux.Handle("/myactivity", Middleware(handler.myActivityPage))
 	mux.Handle("/categorylist", Middleware(handler.categoryListPage))
 	mux.Handle("/moderationlist", Middleware(handler.moderationList))
-	
+
 	return http.HandlerFunc(mux.ServeHTTP)
 }

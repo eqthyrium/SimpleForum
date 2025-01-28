@@ -96,10 +96,18 @@
 </header>
 <div class="container">
     <h1>Create a New Post</h1>
+
+
+    {{block "imagesizeerror" .}}
+    {{end}}
+
+    {{block "imagetypeerror" .}}
+    {{end}}
+
     {{block "notvalidcontent" .}}{{end}}
 
     {{block "nocategories" .}}{{end}}
-    <form action="/create/post" method="POST">
+    <form action="/create/post" method="POST" enctype="multipart/form-data">
         <input type="hidden" name="csrf_text" value="{{$.CSRFText}}">
 
         <div class="form-group">
@@ -117,7 +125,7 @@
             <br>
             {{end}}
         </div>
-
+        <input type="file" name="image" accept="image/jpeg, image/png, image/gif"><br>
         <button type="submit">Create the Post</button>
     </form>
 </div>

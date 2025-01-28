@@ -118,7 +118,8 @@ func (handler *HandlerHttp) postPage(w http.ResponseWriter, r *http.Request) {
 				err := handler.Service.ReportPost(userId, postIdNumber)
 				if errors.Is(err, domain.ErrRepeatedRequest) {
 					referer := r.Header.Get("Referer")
-					path := strings.TrimPrefix(referer, "http://localhost:"+*config.Config.Addr+"/")
+					_, path, _ := strings.Cut(referer, "http://localhost"+*config.Config.Addr+"/")
+
 					files := []string{"../ui/html/error/report.tmpl.html"}
 					if path == "" {
 						files = append(files, "../ui/html/homepage.tmpl.html")

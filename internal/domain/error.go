@@ -25,4 +25,8 @@ var (
 	ErrRepeatedRequest = errors.New("repeated request")
 	// Moderation
 	ErrInvalidOperation = errors.New("invalid operation")
+
+	//Image
+	ErrLargeImageSize   = errors.New("large image size")
+	ErrInvalidImageType = errors.New("invalid image type")
 )

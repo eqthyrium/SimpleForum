@@ -30,7 +30,7 @@ type userRepository interface {
 }
 
 type postRepository interface {
-	CreatePost(userId int, title, content string) (int, error)
+	CreatePost(userId int, title, content, imageURL string) (int, error)
 	GetLatestAllPosts(categories []string) ([]entity.Posts, error)
 	GetPostsByCertainUser(userId int) ([]entity.Posts, error)
 	GetCertainPostInfo(postId int) (*entity.Posts, error)

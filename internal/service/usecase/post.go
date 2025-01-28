@@ -1,16 +1,23 @@
 package usecase
 
 import (
+	"SimpleForum/internal/config"
 	"SimpleForum/internal/domain"
 	"SimpleForum/internal/domain/entity"
 	"SimpleForum/pkg/logger"
+	"fmt"
+	"os"
+	"path/filepath"
 	"strconv"
+	"strings"
+	"time"
 )
 
-func (app *Application) CreatePost(userId int, title, content string, categories []string) error {
-
+func (app *Application) CreatePost(userId int, title, content string, categories []string, myFile *entity.MyFile) error {
+	var imageURL string
 	titleValidation := checkContent(title)
 	contentValidation := checkContent(content)
+
 	if !(contentValidation && titleValidation) {
 		return logger.ErrorWrapper("UseCase", "CreatePost", "The inserted title or content is not valid", domain.ErrNotValidContent)
 	}
@@ -19,11 +26,50 @@ func (app *Application) CreatePost(userId int, title, content string, categories
 		return logger.ErrorWrapper("UseCase", "CreatePost", "The Creating post cannot be created without categories", domain.ErrNoCategories)
 	}
 
-	postID, err := app.ServiceDB.CreatePost(userId, title, content)
+	if myFile != nil {
+		// Check file size
+		if myFile.FileHeader.Size > config.MaxImageSize {
+			return logger.ErrorWrapper("UseCase", "CreatePost", "Image is too large (max 20MB)", domain.ErrLargeImageSize)
+
+		}
+
+		// Validate file type
+		fileType := myFile.FileHeader.Header.Get("Content-Type")
+
+		if !config.AllowedImageTypes[fileType] {
+			return logger.ErrorWrapper("UseCase", "CreatePost", "Invalid file type. Only JPEG, PNG, and GIF are allowed.", domain.ErrInvalidImageType)
+		}
+
+		// Create the uploads directory if it doesn't exist
+		if _, err := os.Stat(config.UploadDir); os.IsNotExist(err) {
+			err := os.MkdirAll(config.UploadDir, os.ModePerm)
+			if err != nil {
+				return logger.ErrorWrapper("UseCase", "CreatePost", "Failed to create upload directory", err)
+			}
+		}
+
+		// Save the file
+		fileName := fmt.Sprintf("%d_%s", time.Now().UnixNano(), filepath.Base(myFile.FileHeader.Filename))
+		filePath := filepath.Join(config.UploadDir, fileName)
+		destFile, err := os.Create(filePath)
+		if err != nil {
+			return logger.ErrorWrapper("UseCase", "CreatePost", "Failed to save the file", err)
+		}
+		defer destFile.Close()
+
+		_, err = destFile.ReadFrom(myFile.FileContent)
+		if err != nil {
+			return logger.ErrorWrapper("UseCase", "CreatePost", "Failed to save the file", err)
+		}
+
+		imageURL = strings.TrimPrefix(filePath, "../uploads/")
+
+	}
+
+	postID, err := app.ServiceDB.CreatePost(userId, title, content, imageURL)
 	if err != nil {
 		return logger.ErrorWrapper("UseCase", "CreatePost", "Failed to create a post", err)
 	}
-
 	for i := 0; i < len(categories); i++ {
 		number, err := strconv.Atoi(categories[i])
 		if err != nil {

@@ -40,9 +40,15 @@ func (rp *Repository) GetReactedPostsByCertainUser(userId int, reaction string) 
 
 	for rows.Next() {
 		post := entity.Posts{}
-		err := rows.Scan(&post.PostId, &post.UserId, &post.Title, &post.Content, &post.Image, &post.LikeCount, &post.DislikeCount, &post.CreatedAt)
+		var image sql.NullString
+		err := rows.Scan(&post.PostId, &post.UserId, &post.Title, &post.Content, &image, &post.LikeCount, &post.DislikeCount, &post.CreatedAt)
 		if err != nil {
 			return nil, logger.ErrorWrapper("Repository", "GetReactedPostsByCertainUser", "Failed to scan post row", err)
+		}
+		if image.Valid {
+			post.Image = image.String
+		} else {
+			post.Image = ""
 		}
 		posts = append(posts, post)
 	}

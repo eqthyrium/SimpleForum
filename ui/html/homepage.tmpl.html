@@ -191,6 +191,10 @@
     {{end}}
 
 
+    {{block "reporterror" .}}
+    {{end}}
+
+
 
     {{if ne $.Role "Guest"}}
     <form action="/create/post" method="GET" class="inline-form">
@@ -227,8 +231,13 @@
             <h3><a href="/post/{{.PostId}}">{{.Title}}</a></h3>
             <p>{{.Content}}</p>
 
+            {{if .Image}}
+            <img src="/uploads/{{.Image}}" style="max-width: 600px;">
+            {{end}}
+
             <div class="reactions">
                 <form action="/reaction" method="POST">
+                    <input type="hidden" name="image" value="{{.Image}}">
                     <input type="hidden" name="postId" value="{{.PostId}}">
                     <input type="hidden" name="csrf_text" value="{{$.CSRFText}}"> <!-- Access CSRF with $.Product.Csrf -->
                     <input type="hidden" name="like" value="true">
@@ -271,6 +280,8 @@
                 <button type="submit">Report</button>
             </form>
             {{end}}
+
+
         </div>
         {{end}}
         {{else}}
@@ -281,3 +292,4 @@
 </body>
 </html>
 {{end}}
+

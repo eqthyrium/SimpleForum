@@ -45,7 +45,6 @@ func (handler *HandlerHttp) homePageGet(w http.ResponseWriter, r *http.Request, 
 	myposts := r.URL.Query().Get("myposts")
 	mylikeposts := r.URL.Query().Get("mylikedposts")
 	requestedmoderation := r.FormValue("requestmoderation")
-	//report := r.FormValue("report")
 
 	categories, err := handler.Service.GetAllCategories()
 	if err != nil {

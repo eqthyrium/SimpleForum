@@ -10,17 +10,33 @@ import (
 	"strings"
 )
 
-func (rp *Repository) CreatePost(userId int, title, content string) (int, error) {
+func (rp *Repository) CreatePost(userId int, title, content, imageURL string) (int, error) {
 
-	statement := `INSERT INTO Posts (UserId, Title, Content) VALUES(?,?,?)`
-	index, err := rp.DB.Exec(statement, userId, title, content)
-	if err != nil {
-		return -1, logger.ErrorWrapper("Repository", "CreatePost", "The problem within the process of creation of the user in db", err)
+	var postId int64
+	if imageURL == "" {
+		statement := `INSERT INTO Posts (UserId, Title, Content) VALUES(?,?,?)`
+		index, err := rp.DB.Exec(statement, userId, title, content)
+
+		if err != nil {
+			return -1, logger.ErrorWrapper("Repository", "CreatePost", "The problem within the process of creation of the user in db", err)
+		}
+		postId, err = index.LastInsertId()
+		if err != nil {
+			return -1, logger.ErrorWrapper("Repository", "CreatePost", "The problem within the process of getting the last ID of Posts table  in db", err)
+		}
+	} else {
+		statement := `INSERT INTO Posts (UserId, Title, Content,Image) VALUES(?,?,?,?)`
+		index, err := rp.DB.Exec(statement, userId, title, content, imageURL)
+
+		if err != nil {
+			return -1, logger.ErrorWrapper("Repository", "CreatePost", "The problem within the process of creation of the user in db", err)
+		}
+		postId, err = index.LastInsertId()
+		if err != nil {
+			return -1, logger.ErrorWrapper("Repository", "CreatePost", "The problem within the process of getting the last ID of Posts table  in db", err)
+		}
 	}
-	postId, err := index.LastInsertId()
-	if err != nil {
-		return -1, logger.ErrorWrapper("Repository", "CreatePost", "The problem within the process of getting the last ID of Posts table  in db", err)
-	}
+
 	return int(postId), nil
 }
 
@@ -45,10 +61,19 @@ func (rp *Repository) GetLatestAllPosts(categories []string) ([]entity.Posts, er
 
 	for rows.Next() {
 		post := entity.Posts{}
-		err := rows.Scan(&post.PostId, &post.UserId, &post.Title, &post.Content, &post.Image, &post.LikeCount, &post.DislikeCount, &post.CreatedAt)
+		var image sql.NullString
+
+		err := rows.Scan(&post.PostId, &post.UserId, &post.Title, &post.Content, &image, &post.LikeCount, &post.DislikeCount, &post.CreatedAt)
 		if err != nil {
 			return nil, logger.ErrorWrapper("Repository", "GetLatestAllPosts", "Failed to scan post row", err)
 		}
+
+		if image.Valid {
+			post.Image = image.String
+		} else {
+			post.Image = ""
+		}
+
 		posts = append(posts, post)
 	}
 
@@ -78,9 +103,15 @@ func (rp *Repository) GetPostsByCertainUser(userId int) ([]entity.Posts, error) 
 
 	for rows.Next() {
 		post := entity.Posts{}
-		err := rows.Scan(&post.PostId, &post.UserId, &post.Title, &post.Content, &post.Image, &post.LikeCount, &post.DislikeCount, &post.CreatedAt)
+		var image sql.NullString
+		err := rows.Scan(&post.PostId, &post.UserId, &post.Title, &post.Content, &image, &post.LikeCount, &post.DislikeCount, &post.CreatedAt)
 		if err != nil {
 			return nil, logger.ErrorWrapper("Repository", "GetPostsByCertainUser", "Failed to scan post row", err)
+		}
+		if image.Valid {
+			post.Image = image.String
+		} else {
+			post.Image = ""
 		}
 		posts = append(posts, post)
 	}
@@ -98,8 +129,9 @@ func (rp *Repository) GetCertainPostInfo(postId int) (*entity.Posts, error) {
 	row := rp.DB.QueryRow(statement, postId)
 
 	post := &entity.Posts{}
+	var image sql.NullString
 
-	err := row.Scan(&post.PostId, &post.UserId, &post.Title, &post.Content, &post.Image, &post.LikeCount, &post.DislikeCount, &post.CreatedAt)
+	err := row.Scan(&post.PostId, &post.UserId, &post.Title, &post.Content, &image, &post.LikeCount, &post.DislikeCount, &post.CreatedAt)
 
 	if err != nil {
 		if errors.Is(err, sql.ErrNoRows) {
@@ -107,6 +139,12 @@ func (rp *Repository) GetCertainPostInfo(postId int) (*entity.Posts, error) {
 		} else {
 			return nil, logger.ErrorWrapper("Repository", "GetCertainPostInfo", "The problem within the process of getting of the particular post by its postId in db", err)
 		}
+	}
+
+	if image.Valid {
+		post.Image = image.String
+	} else {
+		post.Image = ""
 	}
 
 	return post, nil
@@ -220,9 +258,15 @@ func (rp *Repository) GetMyCommentedPosts(userId int) ([]entity.Posts, error) {
 	// Обработка результата запроса
 	for rows.Next() {
 		post := entity.Posts{}
-		err := rows.Scan(&post.PostId, &post.UserId, &post.Title, &post.Content, &post.Image, &post.LikeCount, &post.DislikeCount, &post.CreatedAt)
+		var image sql.NullString
+		err := rows.Scan(&post.PostId, &post.UserId, &post.Title, &post.Content, &image, &post.LikeCount, &post.DislikeCount, &post.CreatedAt)
 		if err != nil {
 			return nil, logger.ErrorWrapper("Repository", "GetMyCommentedPosts", "Failed to scan post row", err)
+		}
+		if image.Valid {
+			post.Image = image.String
+		} else {
+			post.Image = ""
 		}
 		posts = append(posts, post)
 	}

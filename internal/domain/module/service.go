@@ -20,7 +20,7 @@ type authentication interface {
 }
 
 type posts interface {
-	CreatePost(userId int, title, content string, categories []string) error
+	CreatePost(userId int, title, content string, categories []string, file *entity.MyFile) error
 	GetLatestPosts(requestedCategories []string) ([]entity.Posts, error)
 	GetMyCreatedPosts(userId int) ([]entity.Posts, error)
 	GetMyLikedPosts(userId int) ([]entity.Posts, error)

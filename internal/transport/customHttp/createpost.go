@@ -1,12 +1,13 @@
 package customHttp
 
 import (
+	"SimpleForum/internal/config"
 	"SimpleForum/internal/domain"
+	"SimpleForum/internal/domain/entity"
 	"SimpleForum/internal/transport/session"
 	"SimpleForum/pkg/logger"
 	"bytes"
 	"errors"
-	"fmt"
 	"html/template"
 	"net/http"
 )
@@ -44,25 +45,65 @@ func (handler *HandlerHttp) createPost(w http.ResponseWriter, r *http.Request) {
 		content := r.FormValue("content")
 		requestedCategories := r.Form["categories"]
 
-		err := handler.Service.CreatePost(userId, title, content, requestedCategories)
+		err := r.ParseMultipartForm(config.MaxImageSize)
+		if err != nil {
+			customLogger.InfoLogger.Println(logger.ErrorWrapper("UseCase", "createPost", "Failed to parse the multipart form", err))
+			clientError(w, nil, http.StatusBadRequest, nil)
+			return
+		}
+
+		var myfile *entity.MyFile
+		// Retrieve the file
+		file, header, err := r.FormFile("image")
+
+		if errors.Is(err, http.ErrMissingFile) { // No image uploaded
+			myfile = nil
+		} else if err != nil {
+			customLogger.InfoLogger.Println(logger.ErrorWrapper("UseCase", "createPost", "Failed to retrieve the image file", err))
+			clientError(w, nil, http.StatusBadRequest, nil)
+			return
+		} else {
+			myfile = &entity.MyFile{
+				FileContent: file,
+				FileHeader:  header,
+			}
+		}
+
+		err = handler.Service.CreatePost(userId, title, content, requestedCategories, myfile)
+		files := []string{"../ui/html/createpostpage.tmpl.html"}
 
 		if errors.Is(err, domain.ErrNoCategories) {
-			fmt.Println("We are entered to errnocategories checking part")
-			files := []string{"../ui/html/createpostpage.tmpl.html"}
 			files = append(files, "../ui/html/error/nocategories.tmp.html")
 			handler.createPostPage(w, r, files)
+			return
 		} else if errors.Is(err, domain.ErrNotValidContent) {
-			files := []string{"../ui/html/createpostpage.tmpl.html"}
 			files = append(files, "../ui/html/error/postpagecontent.tmpl.html")
 			handler.createPostPage(w, r, files)
+			return
+		} else if errors.Is(err, domain.ErrLargeImageSize) {
+			files = append(files, "../ui/html/error/imagesize.tmpl.html")
+			handler.createPostPage(w, r, files)
+			return
+		} else if errors.Is(err, domain.ErrInvalidImageType) {
+			files = append(files, "../ui/html/error/imagetype.tmpl.html")
+			handler.createPostPage(w, r, files)
+			return
 		} else if err != nil {
 			customLogger.ErrorLogger.Println(logger.ErrorWrapper("Transport", "createPost", "Failed to create a post", err))
 			serverError(w)
+			return
 		}
 
 		http.Redirect(w, r, "/", http.StatusSeeOther)
+		err = file.Close()
+		if err != nil {
+			customLogger.ErrorLogger.Println(logger.ErrorWrapper("Transport", "createPost", "Failed to close the file", err))
+			serverError(w)
+			return
+		}
 
 	}
+
 }
 
 func (handler *HandlerHttp) createPostPage(w http.ResponseWriter, r *http.Request, files []string) {
