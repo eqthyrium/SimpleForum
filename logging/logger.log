@@ -1,174 +1,212 @@
-INFO: 2025/01/29 14:02:27 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:217: Tokens left: %d, Reset time: %v
- 5 2025-01-29 14:02:10.73185821 +0500 +05 m=+3.001084233
-INFO: 2025/01/29 14:02:27 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:222: Resetting tokens.
-INFO: 2025/01/29 14:02:27 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:57: Method:[GET], URL_Path: /, Remote_Address: [::1]:54496
-DEBUG: 2025/01/29 14:02:27 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:76: The RoleAdjusterMiddleware is started
-DEBUG: 2025/01/29 14:02:27 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:80: There is an error about getting the token from the cookie!!!
-INFO: 2025/01/29 14:02:27 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:82: There is no cookie in the request of the client
-DEBUG: 2025/01/29 14:02:27 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:164: The CSRFMiddleware is started
-DEBUG: 2025/01/29 14:02:27 /home/eqthyrium/SimpleForum/internal/transport/customHttp/homepage.go:16: homePage handler is activated
-INFO: 2025/01/29 14:02:27 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:61: The End of the client request, and its Duration:1.220669ms
-INFO: 2025/01/29 14:02:27 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:217: Tokens left: %d, Reset time: %v
- 4 2025-01-29 14:02:30.948148444 +0500 +05 m=+23.217374467
-INFO: 2025/01/29 14:02:27 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:57: Method:[GET], URL_Path: /favicon.ico, Remote_Address: [::1]:54496
-DEBUG: 2025/01/29 14:02:27 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:76: The RoleAdjusterMiddleware is started
-DEBUG: 2025/01/29 14:02:27 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:80: There is an error about getting the token from the cookie!!!
-INFO: 2025/01/29 14:02:27 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:82: There is no cookie in the request of the client
-DEBUG: 2025/01/29 14:02:27 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:164: The CSRFMiddleware is started
-DEBUG: 2025/01/29 14:02:27 /home/eqthyrium/SimpleForum/internal/transport/customHttp/homepage.go:16: homePage handler is activated
-DEBUG: 2025/01/29 14:02:27 /home/eqthyrium/SimpleForum/internal/transport/customHttp/helper.go:16: errorWebpage handler is activated
-INFO: 2025/01/29 14:02:27 /home/eqthyrium/SimpleForum/internal/transport/customHttp/homepage.go:20: incorrect request's endpoint, it's requested endpoint is: /favicon.ico
-INFO: 2025/01/29 14:02:27 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:61: The End of the client request, and its Duration:155.465µs
-INFO: 2025/01/29 14:02:29 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:217: Tokens left: %d, Reset time: %v
- 3 2025-01-29 14:02:30.948148444 +0500 +05 m=+23.217374467
-INFO: 2025/01/29 14:02:29 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:57: Method:[GET], URL_Path: /auth/signup, Remote_Address: [::1]:54496
-DEBUG: 2025/01/29 14:02:29 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:76: The RoleAdjusterMiddleware is started
-DEBUG: 2025/01/29 14:02:29 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:80: There is an error about getting the token from the cookie!!!
-INFO: 2025/01/29 14:02:29 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:82: There is no cookie in the request of the client
-DEBUG: 2025/01/29 14:02:29 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:164: The CSRFMiddleware is started
-DEBUG: 2025/01/29 14:02:29 /home/eqthyrium/SimpleForum/internal/transport/customHttp/signup.go:14: The signup handler is activated
-DEBUG: 2025/01/29 14:02:29 /home/eqthyrium/SimpleForum/internal/transport/customHttp/signup.go:35: The signup handler's GET request handler is activated
-INFO: 2025/01/29 14:02:29 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:61: The End of the client request, and its Duration:256.478µs
-INFO: 2025/01/29 14:02:31 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:217: Tokens left: %d, Reset time: %v
- 2 2025-01-29 14:02:30.948148444 +0500 +05 m=+23.217374467
-INFO: 2025/01/29 14:02:31 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:222: Resetting tokens.
-INFO: 2025/01/29 14:02:31 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:57: Method:[POST], URL_Path: /oauth2/github, Remote_Address: [::1]:54496
-DEBUG: 2025/01/29 14:02:31 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:76: The RoleAdjusterMiddleware is started
-DEBUG: 2025/01/29 14:02:31 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:80: There is an error about getting the token from the cookie!!!
-INFO: 2025/01/29 14:02:31 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:82: There is no cookie in the request of the client
-DEBUG: 2025/01/29 14:02:31 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:164: The CSRFMiddleware is started
-DEBUG: 2025/01/29 14:02:31 /home/eqthyrium/SimpleForum/internal/transport/customHttp/githuboauth.go:18: githubAuthentication handler is activated
-DEBUG: 2025/01/29 14:02:31 /home/eqthyrium/SimpleForum/internal/transport/customHttp/githuboauth.go:50: Redirecting user to: https://github.com/login/oauth/authorize?client_id=Ov23liVaXvr3BSu4lODH&redirect_uri=https://localhost:8888/oauth2/github/callback&scope=user:email&state=HJUoXaxpAO4Y3GxZ_oE585DlW-TWmCysfoWphmgzKUk=|signup&prompt=login
-INFO: 2025/01/29 14:02:31 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:61: The End of the client request, and its Duration:107.386µs
-INFO: 2025/01/29 14:03:05 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:217: Tokens left: %d, Reset time: %v
- 4 2025-01-29 14:02:34.289732186 +0500 +05 m=+26.558958210
-INFO: 2025/01/29 14:03:05 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:222: Resetting tokens.
-INFO: 2025/01/29 14:03:05 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:57: Method:[GET], URL_Path: /oauth2/github/callback, Remote_Address: [::1]:54496
-DEBUG: 2025/01/29 14:03:05 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:76: The RoleAdjusterMiddleware is started
-DEBUG: 2025/01/29 14:03:05 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:80: There is an error about getting the token from the cookie!!!
-INFO: 2025/01/29 14:03:05 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:82: There is no cookie in the request of the client
-DEBUG: 2025/01/29 14:03:05 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:164: The CSRFMiddleware is started
-DEBUG: 2025/01/29 14:03:09 /home/eqthyrium/SimpleForum/internal/transport/customHttp/githuboauth.go:137: Emails Response Body:%!(EXTRA string=[{"email":"eqthyrium@gmail.com","primary":true,"verified":true,"visibility":"private"},{"email":"80863003+eqthyrium@users.noreply.github.com","primary":false,"verified":true,"visibility":null}])
-DEBUG: 2025/01/29 14:03:09 /home/eqthyrium/SimpleForum/internal/transport/customHttp/githuboauth.go:187: There is invalid entered Credentials
-DEBUG: 2025/01/29 14:03:09 /home/eqthyrium/SimpleForum/internal/transport/customHttp/helper.go:16: errorWebpage handler is activated
-DEBUG: 2025/01/29 14:03:09 /home/eqthyrium/SimpleForum/internal/transport/customHttp/helper.go:23: Bad Requested error handling part is opened
-DEBUG: 2025/01/29 14:03:09 /home/eqthyrium/SimpleForum/internal/transport/customHttp/helper.go:31: ErrInvalidCredential in the errorWebpage
-INFO: 2025/01/29 14:03:09 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:61: The End of the client request, and its Duration:4.43668391s
-INFO: 2025/01/29 14:03:12 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:217: Tokens left: %d, Reset time: %v
- 4 2025-01-29 14:03:08.206954112 +0500 +05 m=+60.476180135
-INFO: 2025/01/29 14:03:12 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:222: Resetting tokens.
-INFO: 2025/01/29 14:03:12 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:57: Method:[POST], URL_Path: /oauth2/github, Remote_Address: [::1]:48162
-DEBUG: 2025/01/29 14:03:12 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:76: The RoleAdjusterMiddleware is started
-DEBUG: 2025/01/29 14:03:12 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:80: There is an error about getting the token from the cookie!!!
-INFO: 2025/01/29 14:03:12 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:82: There is no cookie in the request of the client
-DEBUG: 2025/01/29 14:03:12 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:164: The CSRFMiddleware is started
-DEBUG: 2025/01/29 14:03:12 /home/eqthyrium/SimpleForum/internal/transport/customHttp/githuboauth.go:18: githubAuthentication handler is activated
-DEBUG: 2025/01/29 14:03:12 /home/eqthyrium/SimpleForum/internal/transport/customHttp/githuboauth.go:50: Redirecting user to: https://github.com/login/oauth/authorize?client_id=Ov23liVaXvr3BSu4lODH&redirect_uri=https://localhost:8888/oauth2/github/callback&scope=user:email&state=iX6hGaQgbCLA7xiFztLdPACpT7-AAEQephA5kiPypDk=|signup&prompt=login
-INFO: 2025/01/29 14:03:12 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:61: The End of the client request, and its Duration:108.058µs
-INFO: 2025/01/29 14:03:13 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:217: Tokens left: %d, Reset time: %v
- 4 2025-01-29 14:03:15.2900828 +0500 +05 m=+67.559308844
-INFO: 2025/01/29 14:03:13 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:57: Method:[GET], URL_Path: /oauth2/github/callback, Remote_Address: [::1]:48162
-DEBUG: 2025/01/29 14:03:13 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:76: The RoleAdjusterMiddleware is started
-DEBUG: 2025/01/29 14:03:13 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:80: There is an error about getting the token from the cookie!!!
-INFO: 2025/01/29 14:03:13 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:82: There is no cookie in the request of the client
-DEBUG: 2025/01/29 14:03:13 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:164: The CSRFMiddleware is started
-DEBUG: 2025/01/29 14:03:19 /home/eqthyrium/SimpleForum/internal/transport/customHttp/githuboauth.go:137: Emails Response Body:%!(EXTRA string=[{"email":"eqthyrium@gmail.com","primary":true,"verified":true,"visibility":"private"},{"email":"80863003+eqthyrium@users.noreply.github.com","primary":false,"verified":true,"visibility":null}])
-DEBUG: 2025/01/29 14:03:19 /home/eqthyrium/SimpleForum/internal/transport/customHttp/githuboauth.go:187: There is invalid entered Credentials
-DEBUG: 2025/01/29 14:03:19 /home/eqthyrium/SimpleForum/internal/transport/customHttp/helper.go:16: errorWebpage handler is activated
-DEBUG: 2025/01/29 14:03:19 /home/eqthyrium/SimpleForum/internal/transport/customHttp/helper.go:23: Bad Requested error handling part is opened
-DEBUG: 2025/01/29 14:03:19 /home/eqthyrium/SimpleForum/internal/transport/customHttp/helper.go:31: ErrInvalidCredential in the errorWebpage
-INFO: 2025/01/29 14:03:19 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:61: The End of the client request, and its Duration:5.964375667s
-INFO: 2025/01/29 14:03:21 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:217: Tokens left: %d, Reset time: %v
- 3 2025-01-29 14:03:15.2900828 +0500 +05 m=+67.559308844
-INFO: 2025/01/29 14:03:21 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:222: Resetting tokens.
-INFO: 2025/01/29 14:03:21 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:57: Method:[GET], URL_Path: /auth/login, Remote_Address: [::1]:48162
-DEBUG: 2025/01/29 14:03:21 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:76: The RoleAdjusterMiddleware is started
-DEBUG: 2025/01/29 14:03:21 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:80: There is an error about getting the token from the cookie!!!
-INFO: 2025/01/29 14:03:21 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:82: There is no cookie in the request of the client
-DEBUG: 2025/01/29 14:03:21 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:164: The CSRFMiddleware is started
-DEBUG: 2025/01/29 14:03:21 /home/eqthyrium/SimpleForum/internal/transport/customHttp/login.go:28: The logIn handler is activated
-DEBUG: 2025/01/29 14:03:21 /home/eqthyrium/SimpleForum/internal/transport/customHttp/login.go:50: logIn's handler of GET request is activated
-INFO: 2025/01/29 14:03:21 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:61: The End of the client request, and its Duration:195.156µs
-INFO: 2025/01/29 14:03:22 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:217: Tokens left: %d, Reset time: %v
- 4 2025-01-29 14:03:24.19523356 +0500 +05 m=+76.464459583
-INFO: 2025/01/29 14:03:22 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:57: Method:[POST], URL_Path: /oauth2/github, Remote_Address: [::1]:48162
-DEBUG: 2025/01/29 14:03:22 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:76: The RoleAdjusterMiddleware is started
-DEBUG: 2025/01/29 14:03:22 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:80: There is an error about getting the token from the cookie!!!
-INFO: 2025/01/29 14:03:22 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:82: There is no cookie in the request of the client
-DEBUG: 2025/01/29 14:03:22 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:164: The CSRFMiddleware is started
-DEBUG: 2025/01/29 14:03:22 /home/eqthyrium/SimpleForum/internal/transport/customHttp/githuboauth.go:18: githubAuthentication handler is activated
-DEBUG: 2025/01/29 14:03:22 /home/eqthyrium/SimpleForum/internal/transport/customHttp/githuboauth.go:50: Redirecting user to: https://github.com/login/oauth/authorize?client_id=Ov23liVaXvr3BSu4lODH&redirect_uri=https://localhost:8888/oauth2/github/callback&scope=user:email&state=ElYRO20Bgx5tBQFmOCBzstkMDUPF_mOofYEwxskIs3g=|login&prompt=login
-INFO: 2025/01/29 14:03:22 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:61: The End of the client request, and its Duration:77.782µs
-INFO: 2025/01/29 14:03:22 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:217: Tokens left: %d, Reset time: %v
- 3 2025-01-29 14:03:24.19523356 +0500 +05 m=+76.464459583
-INFO: 2025/01/29 14:03:22 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:57: Method:[GET], URL_Path: /oauth2/github/callback, Remote_Address: [::1]:48162
-DEBUG: 2025/01/29 14:03:22 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:76: The RoleAdjusterMiddleware is started
-DEBUG: 2025/01/29 14:03:22 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:80: There is an error about getting the token from the cookie!!!
-INFO: 2025/01/29 14:03:22 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:82: There is no cookie in the request of the client
-DEBUG: 2025/01/29 14:03:22 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:164: The CSRFMiddleware is started
-DEBUG: 2025/01/29 14:03:25 /home/eqthyrium/SimpleForum/internal/transport/customHttp/githuboauth.go:137: Emails Response Body:%!(EXTRA string=[{"email":"eqthyrium@gmail.com","primary":true,"verified":true,"visibility":"private"},{"email":"80863003+eqthyrium@users.noreply.github.com","primary":false,"verified":true,"visibility":null}])
-INFO: 2025/01/29 14:03:25 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:61: The End of the client request, and its Duration:2.664546611s
-INFO: 2025/01/29 14:03:25 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:217: Tokens left: %d, Reset time: %v
- 2 2025-01-29 14:03:24.19523356 +0500 +05 m=+76.464459583
-INFO: 2025/01/29 14:03:25 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:222: Resetting tokens.
-INFO: 2025/01/29 14:03:25 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:57: Method:[GET], URL_Path: /, Remote_Address: [::1]:48162
-DEBUG: 2025/01/29 14:03:25 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:76: The RoleAdjusterMiddleware is started
-DEBUG: 2025/01/29 14:03:25 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:135: Checking part of token's time
-DEBUG: 2025/01/29 14:03:25 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:164: The CSRFMiddleware is started
-DEBUG: 2025/01/29 14:03:25 /home/eqthyrium/SimpleForum/internal/transport/customHttp/homepage.go:16: homePage handler is activated
-INFO: 2025/01/29 14:03:25 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:61: The End of the client request, and its Duration:844.167µs
-INFO: 2025/01/29 14:03:27 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:217: Tokens left: %d, Reset time: %v
- 4 2025-01-29 14:03:28.512074366 +0500 +05 m=+80.781300389
-INFO: 2025/01/29 14:03:27 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:57: Method:[POST], URL_Path: /logout, Remote_Address: [::1]:48162
-DEBUG: 2025/01/29 14:03:27 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:76: The RoleAdjusterMiddleware is started
-DEBUG: 2025/01/29 14:03:27 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:135: Checking part of token's time
-DEBUG: 2025/01/29 14:03:27 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:164: The CSRFMiddleware is started
-DEBUG: 2025/01/29 14:03:27 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:169: inside of the CSRFMiddleware's Post method checking part 
-INFO: 2025/01/29 14:03:27 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:178: The CSRF attack is detected, its IP is: [::1]:48162
-INFO: 2025/01/29 14:03:27 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:61: The End of the client request, and its Duration:83.168µs
-INFO: 2025/01/29 14:03:27 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:217: Tokens left: %d, Reset time: %v
- 3 2025-01-29 14:03:28.512074366 +0500 +05 m=+80.781300389
-INFO: 2025/01/29 14:03:27 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:57: Method:[GET], URL_Path: /auth/login, Remote_Address: [::1]:48162
-DEBUG: 2025/01/29 14:03:27 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:76: The RoleAdjusterMiddleware is started
-DEBUG: 2025/01/29 14:03:27 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:80: There is an error about getting the token from the cookie!!!
-INFO: 2025/01/29 14:03:27 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:82: There is no cookie in the request of the client
-DEBUG: 2025/01/29 14:03:27 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:164: The CSRFMiddleware is started
-DEBUG: 2025/01/29 14:03:27 /home/eqthyrium/SimpleForum/internal/transport/customHttp/login.go:28: The logIn handler is activated
-DEBUG: 2025/01/29 14:03:27 /home/eqthyrium/SimpleForum/internal/transport/customHttp/login.go:50: logIn's handler of GET request is activated
-INFO: 2025/01/29 14:03:27 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:61: The End of the client request, and its Duration:242.998µs
-INFO: 2025/01/29 14:03:29 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:217: Tokens left: %d, Reset time: %v
- 2 2025-01-29 14:03:28.512074366 +0500 +05 m=+80.781300389
-INFO: 2025/01/29 14:03:29 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:222: Resetting tokens.
-INFO: 2025/01/29 14:03:29 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:57: Method:[GET], URL_Path: /auth/signup, Remote_Address: [::1]:48162
-DEBUG: 2025/01/29 14:03:29 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:76: The RoleAdjusterMiddleware is started
-DEBUG: 2025/01/29 14:03:29 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:80: There is an error about getting the token from the cookie!!!
-INFO: 2025/01/29 14:03:29 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:82: There is no cookie in the request of the client
-DEBUG: 2025/01/29 14:03:29 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:164: The CSRFMiddleware is started
-DEBUG: 2025/01/29 14:03:29 /home/eqthyrium/SimpleForum/internal/transport/customHttp/signup.go:14: The signup handler is activated
-DEBUG: 2025/01/29 14:03:29 /home/eqthyrium/SimpleForum/internal/transport/customHttp/signup.go:35: The signup handler's GET request handler is activated
-INFO: 2025/01/29 14:03:29 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:61: The End of the client request, and its Duration:173.23µs
-INFO: 2025/01/29 14:03:33 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:217: Tokens left: %d, Reset time: %v
- 4 2025-01-29 14:03:32.181048436 +0500 +05 m=+84.450274469
-INFO: 2025/01/29 14:03:33 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:222: Resetting tokens.
-INFO: 2025/01/29 14:03:33 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:57: Method:[POST], URL_Path: /oauth2/github, Remote_Address: [::1]:48162
-DEBUG: 2025/01/29 14:03:33 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:76: The RoleAdjusterMiddleware is started
-DEBUG: 2025/01/29 14:03:33 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:80: There is an error about getting the token from the cookie!!!
-INFO: 2025/01/29 14:03:33 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:82: There is no cookie in the request of the client
-DEBUG: 2025/01/29 14:03:33 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:164: The CSRFMiddleware is started
-DEBUG: 2025/01/29 14:03:33 /home/eqthyrium/SimpleForum/internal/transport/customHttp/githuboauth.go:18: githubAuthentication handler is activated
-DEBUG: 2025/01/29 14:03:33 /home/eqthyrium/SimpleForum/internal/transport/customHttp/githuboauth.go:50: Redirecting user to: https://github.com/login/oauth/authorize?client_id=Ov23liVaXvr3BSu4lODH&redirect_uri=https://localhost:8888/oauth2/github/callback&scope=user:email&state=JNGky8SxquoWwwXLWWXbKBcwYQoh505vXO_ygCnFjmI=|signup&prompt=login
-INFO: 2025/01/29 14:03:33 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:61: The End of the client request, and its Duration:91.683µs
-INFO: 2025/01/29 14:03:43 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:217: Tokens left: %d, Reset time: %v
- 4 2025-01-29 14:03:36.837159226 +0500 +05 m=+89.106385249
-INFO: 2025/01/29 14:03:43 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:222: Resetting tokens.
-INFO: 2025/01/29 14:03:43 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:57: Method:[GET], URL_Path: /oauth2/github/callback, Remote_Address: [::1]:48162
-DEBUG: 2025/01/29 14:03:43 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:76: The RoleAdjusterMiddleware is started
-DEBUG: 2025/01/29 14:03:43 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:80: There is an error about getting the token from the cookie!!!
-INFO: 2025/01/29 14:03:43 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:82: There is no cookie in the request of the client
-DEBUG: 2025/01/29 14:03:43 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:164: The CSRFMiddleware is started
-DEBUG: 2025/01/29 14:03:58 /home/eqthyrium/SimpleForum/internal/transport/customHttp/githuboauth.go:137: Emails Response Body:%!(EXTRA string=[{"email":"eqthyrium@gmail.com","primary":true,"verified":true,"visibility":"private"},{"email":"80863003+eqthyrium@users.noreply.github.com","primary":false,"verified":true,"visibility":null}])
-DEBUG: 2025/01/29 14:03:58 /home/eqthyrium/SimpleForum/internal/transport/customHttp/githuboauth.go:187: There is invalid entered Credentials
-DEBUG: 2025/01/29 14:03:58 /home/eqthyrium/SimpleForum/internal/transport/customHttp/helper.go:16: errorWebpage handler is activated
-DEBUG: 2025/01/29 14:03:58 /home/eqthyrium/SimpleForum/internal/transport/customHttp/helper.go:23: Bad Requested error handling part is opened
-DEBUG: 2025/01/29 14:03:58 /home/eqthyrium/SimpleForum/internal/transport/customHttp/helper.go:31: ErrInvalidCredential in the errorWebpage
-INFO: 2025/01/29 14:03:58 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:61: The End of the client request, and its Duration:15.007351103s
+INFO: 2025/01/29 16:45:22 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:217: Tokens left: %d, Reset time: %v
+ 5 2025-01-29 16:45:05.598531346 +0500 +05 m=+3.001383218
+INFO: 2025/01/29 16:45:22 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:222: Resetting tokens.
+INFO: 2025/01/29 16:45:22 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:57: Method:[GET], URL_Path: /, Remote_Address: [::1]:34480
+DEBUG: 2025/01/29 16:45:22 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:76: The RoleAdjusterMiddleware is started
+DEBUG: 2025/01/29 16:45:22 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:80: There is an error about getting the token from the cookie!!!
+INFO: 2025/01/29 16:45:22 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:82: There is no cookie in the request of the client
+DEBUG: 2025/01/29 16:45:22 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:164: The CSRFMiddleware is started
+DEBUG: 2025/01/29 16:45:22 /home/eqthyrium/SimpleForum/internal/transport/customHttp/homepage.go:16: homePage handler is activated
+INFO: 2025/01/29 16:45:22 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:61: The End of the client request, and its Duration:2.047009ms
+INFO: 2025/01/29 16:45:22 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:217: Tokens left: %d, Reset time: %v
+ 4 2025-01-29 16:45:25.306196385 +0500 +05 m=+22.709048267
+INFO: 2025/01/29 16:45:22 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:57: Method:[GET], URL_Path: /favicon.ico, Remote_Address: [::1]:34480
+DEBUG: 2025/01/29 16:45:22 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:76: The RoleAdjusterMiddleware is started
+DEBUG: 2025/01/29 16:45:22 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:80: There is an error about getting the token from the cookie!!!
+INFO: 2025/01/29 16:45:22 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:82: There is no cookie in the request of the client
+DEBUG: 2025/01/29 16:45:22 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:164: The CSRFMiddleware is started
+DEBUG: 2025/01/29 16:45:22 /home/eqthyrium/SimpleForum/internal/transport/customHttp/homepage.go:16: homePage handler is activated
+DEBUG: 2025/01/29 16:45:22 /home/eqthyrium/SimpleForum/internal/transport/customHttp/helper.go:16: errorWebpage handler is activated
+INFO: 2025/01/29 16:45:22 /home/eqthyrium/SimpleForum/internal/transport/customHttp/homepage.go:20: incorrect request's endpoint, it's requested endpoint is: /favicon.ico
+INFO: 2025/01/29 16:45:22 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:61: The End of the client request, and its Duration:288.025µs
+INFO: 2025/01/29 16:45:23 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:217: Tokens left: %d, Reset time: %v
+ 3 2025-01-29 16:45:25.306196385 +0500 +05 m=+22.709048267
+INFO: 2025/01/29 16:45:23 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:57: Method:[GET], URL_Path: /auth/login, Remote_Address: [::1]:34480
+DEBUG: 2025/01/29 16:45:23 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:76: The RoleAdjusterMiddleware is started
+DEBUG: 2025/01/29 16:45:23 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:80: There is an error about getting the token from the cookie!!!
+INFO: 2025/01/29 16:45:23 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:82: There is no cookie in the request of the client
+DEBUG: 2025/01/29 16:45:23 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:164: The CSRFMiddleware is started
+DEBUG: 2025/01/29 16:45:23 /home/eqthyrium/SimpleForum/internal/transport/customHttp/login.go:28: The logIn handler is activated
+DEBUG: 2025/01/29 16:45:23 /home/eqthyrium/SimpleForum/internal/transport/customHttp/login.go:50: logIn's handler of GET request is activated
+INFO: 2025/01/29 16:45:23 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:61: The End of the client request, and its Duration:261.655µs
+INFO: 2025/01/29 16:45:32 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:217: Tokens left: %d, Reset time: %v
+ 2 2025-01-29 16:45:25.306196385 +0500 +05 m=+22.709048267
+INFO: 2025/01/29 16:45:32 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:222: Resetting tokens.
+INFO: 2025/01/29 16:45:32 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:57: Method:[POST], URL_Path: /auth/login, Remote_Address: [::1]:34480
+DEBUG: 2025/01/29 16:45:32 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:76: The RoleAdjusterMiddleware is started
+DEBUG: 2025/01/29 16:45:32 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:80: There is an error about getting the token from the cookie!!!
+INFO: 2025/01/29 16:45:32 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:82: There is no cookie in the request of the client
+DEBUG: 2025/01/29 16:45:32 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:164: The CSRFMiddleware is started
+DEBUG: 2025/01/29 16:45:32 /home/eqthyrium/SimpleForum/internal/transport/customHttp/login.go:28: The logIn handler is activated
+DEBUG: 2025/01/29 16:45:32 /home/eqthyrium/SimpleForum/internal/transport/customHttp/login.go:80: logIn's handler of POST request is activated
+INFO: 2025/01/29 16:45:32 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:61: The End of the client request, and its Duration:53.107941ms
+INFO: 2025/01/29 16:45:32 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:217: Tokens left: %d, Reset time: %v
+ 4 2025-01-29 16:45:35.379734822 +0500 +05 m=+32.782586704
+INFO: 2025/01/29 16:45:32 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:57: Method:[GET], URL_Path: /, Remote_Address: [::1]:34480
+DEBUG: 2025/01/29 16:45:32 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:76: The RoleAdjusterMiddleware is started
+DEBUG: 2025/01/29 16:45:32 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:135: Checking part of token's time
+DEBUG: 2025/01/29 16:45:32 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:164: The CSRFMiddleware is started
+DEBUG: 2025/01/29 16:45:32 /home/eqthyrium/SimpleForum/internal/transport/customHttp/homepage.go:16: homePage handler is activated
+INFO: 2025/01/29 16:45:32 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:61: The End of the client request, and its Duration:4.06724ms
+INFO: 2025/01/29 16:45:36 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:217: Tokens left: %d, Reset time: %v
+ 3 2025-01-29 16:45:35.379734822 +0500 +05 m=+32.782586704
+INFO: 2025/01/29 16:45:36 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:222: Resetting tokens.
+INFO: 2025/01/29 16:45:36 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:57: Method:[POST], URL_Path: /, Remote_Address: [::1]:34480
+DEBUG: 2025/01/29 16:45:36 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:76: The RoleAdjusterMiddleware is started
+DEBUG: 2025/01/29 16:45:36 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:135: Checking part of token's time
+DEBUG: 2025/01/29 16:45:36 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:164: The CSRFMiddleware is started
+DEBUG: 2025/01/29 16:45:36 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:169: inside of the CSRFMiddleware's Post method checking part 
+DEBUG: 2025/01/29 16:45:36 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:187: The CSRF checking part was good
+DEBUG: 2025/01/29 16:45:36 /home/eqthyrium/SimpleForum/internal/transport/customHttp/homepage.go:16: homePage handler is activated
+INFO: 2025/01/29 16:45:36 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:61: The End of the client request, and its Duration:31.990567ms
+INFO: 2025/01/29 16:45:39 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:217: Tokens left: %d, Reset time: %v
+ 4 2025-01-29 16:45:39.324279809 +0500 +05 m=+36.727131731
+INFO: 2025/01/29 16:45:39 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:222: Resetting tokens.
+INFO: 2025/01/29 16:45:39 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:57: Method:[POST], URL_Path: /logout, Remote_Address: [::1]:34480
+DEBUG: 2025/01/29 16:45:39 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:76: The RoleAdjusterMiddleware is started
+DEBUG: 2025/01/29 16:45:39 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:135: Checking part of token's time
+DEBUG: 2025/01/29 16:45:39 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:164: The CSRFMiddleware is started
+DEBUG: 2025/01/29 16:45:39 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:169: inside of the CSRFMiddleware's Post method checking part 
+INFO: 2025/01/29 16:45:39 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:178: The CSRF attack is detected, its IP is: [::1]:34480
+INFO: 2025/01/29 16:45:39 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:61: The End of the client request, and its Duration:126.93µs
+INFO: 2025/01/29 16:45:39 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:217: Tokens left: %d, Reset time: %v
+ 4 2025-01-29 16:45:42.732428306 +0500 +05 m=+40.135280188
+INFO: 2025/01/29 16:45:39 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:57: Method:[GET], URL_Path: /auth/login, Remote_Address: [::1]:34480
+DEBUG: 2025/01/29 16:45:39 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:76: The RoleAdjusterMiddleware is started
+DEBUG: 2025/01/29 16:45:39 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:80: There is an error about getting the token from the cookie!!!
+INFO: 2025/01/29 16:45:39 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:82: There is no cookie in the request of the client
+DEBUG: 2025/01/29 16:45:39 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:164: The CSRFMiddleware is started
+DEBUG: 2025/01/29 16:45:39 /home/eqthyrium/SimpleForum/internal/transport/customHttp/login.go:28: The logIn handler is activated
+DEBUG: 2025/01/29 16:45:39 /home/eqthyrium/SimpleForum/internal/transport/customHttp/login.go:50: logIn's handler of GET request is activated
+INFO: 2025/01/29 16:45:39 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:61: The End of the client request, and its Duration:263.458µs
+INFO: 2025/01/29 16:45:47 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:217: Tokens left: %d, Reset time: %v
+ 3 2025-01-29 16:45:42.732428306 +0500 +05 m=+40.135280188
+INFO: 2025/01/29 16:45:47 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:222: Resetting tokens.
+INFO: 2025/01/29 16:45:47 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:57: Method:[POST], URL_Path: /auth/login, Remote_Address: [::1]:34480
+DEBUG: 2025/01/29 16:45:47 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:76: The RoleAdjusterMiddleware is started
+DEBUG: 2025/01/29 16:45:47 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:80: There is an error about getting the token from the cookie!!!
+INFO: 2025/01/29 16:45:47 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:82: There is no cookie in the request of the client
+DEBUG: 2025/01/29 16:45:47 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:164: The CSRFMiddleware is started
+DEBUG: 2025/01/29 16:45:47 /home/eqthyrium/SimpleForum/internal/transport/customHttp/login.go:28: The logIn handler is activated
+DEBUG: 2025/01/29 16:45:47 /home/eqthyrium/SimpleForum/internal/transport/customHttp/login.go:80: logIn's handler of POST request is activated
+INFO: 2025/01/29 16:45:47 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:61: The End of the client request, and its Duration:50.06213ms
+INFO: 2025/01/29 16:45:47 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:217: Tokens left: %d, Reset time: %v
+ 4 2025-01-29 16:45:50.313011432 +0500 +05 m=+47.715863314
+INFO: 2025/01/29 16:45:47 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:57: Method:[GET], URL_Path: /, Remote_Address: [::1]:34480
+DEBUG: 2025/01/29 16:45:47 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:76: The RoleAdjusterMiddleware is started
+DEBUG: 2025/01/29 16:45:47 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:135: Checking part of token's time
+DEBUG: 2025/01/29 16:45:47 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:164: The CSRFMiddleware is started
+DEBUG: 2025/01/29 16:45:47 /home/eqthyrium/SimpleForum/internal/transport/customHttp/homepage.go:16: homePage handler is activated
+INFO: 2025/01/29 16:45:47 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:61: The End of the client request, and its Duration:2.268961ms
+INFO: 2025/01/29 16:45:50 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:217: Tokens left: %d, Reset time: %v
+ 3 2025-01-29 16:45:50.313011432 +0500 +05 m=+47.715863314
+INFO: 2025/01/29 16:45:50 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:222: Resetting tokens.
+INFO: 2025/01/29 16:45:50 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:57: Method:[GET], URL_Path: /moderationlist, Remote_Address: [::1]:34480
+DEBUG: 2025/01/29 16:45:50 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:76: The RoleAdjusterMiddleware is started
+DEBUG: 2025/01/29 16:45:50 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:135: Checking part of token's time
+DEBUG: 2025/01/29 16:45:50 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:164: The CSRFMiddleware is started
+DEBUG: 2025/01/29 16:45:50 /home/eqthyrium/SimpleForum/internal/transport/customHttp/moderationlist.go:16: moderationList handler is activated
+INFO: 2025/01/29 16:45:50 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:61: The End of the client request, and its Duration:878.268µs
+INFO: 2025/01/29 16:45:53 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:217: Tokens left: %d, Reset time: %v
+ 4 2025-01-29 16:45:53.552224081 +0500 +05 m=+50.955075953
+INFO: 2025/01/29 16:45:53 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:57: Method:[POST], URL_Path: /moderationlist, Remote_Address: [::1]:34480
+DEBUG: 2025/01/29 16:45:53 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:76: The RoleAdjusterMiddleware is started
+DEBUG: 2025/01/29 16:45:53 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:135: Checking part of token's time
+DEBUG: 2025/01/29 16:45:53 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:164: The CSRFMiddleware is started
+DEBUG: 2025/01/29 16:45:53 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:169: inside of the CSRFMiddleware's Post method checking part 
+DEBUG: 2025/01/29 16:45:53 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:187: The CSRF checking part was good
+DEBUG: 2025/01/29 16:45:53 /home/eqthyrium/SimpleForum/internal/transport/customHttp/moderationlist.go:16: moderationList handler is activated
+INFO: 2025/01/29 16:45:53 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:61: The End of the client request, and its Duration:35.616624ms
+INFO: 2025/01/29 16:45:53 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:217: Tokens left: %d, Reset time: %v
+ 3 2025-01-29 16:45:53.552224081 +0500 +05 m=+50.955075953
+INFO: 2025/01/29 16:45:53 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:222: Resetting tokens.
+INFO: 2025/01/29 16:45:53 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:57: Method:[GET], URL_Path: /moderationlist, Remote_Address: [::1]:34480
+DEBUG: 2025/01/29 16:45:53 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:76: The RoleAdjusterMiddleware is started
+DEBUG: 2025/01/29 16:45:53 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:135: Checking part of token's time
+DEBUG: 2025/01/29 16:45:53 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:164: The CSRFMiddleware is started
+DEBUG: 2025/01/29 16:45:53 /home/eqthyrium/SimpleForum/internal/transport/customHttp/moderationlist.go:16: moderationList handler is activated
+INFO: 2025/01/29 16:45:53 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:61: The End of the client request, and its Duration:1.375829ms
+INFO: 2025/01/29 16:45:55 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:217: Tokens left: %d, Reset time: %v
+ 4 2025-01-29 16:45:56.587792961 +0500 +05 m=+53.990644883
+INFO: 2025/01/29 16:45:55 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:57: Method:[POST], URL_Path: /moderationlist, Remote_Address: [::1]:34480
+DEBUG: 2025/01/29 16:45:55 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:76: The RoleAdjusterMiddleware is started
+DEBUG: 2025/01/29 16:45:55 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:135: Checking part of token's time
+DEBUG: 2025/01/29 16:45:55 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:164: The CSRFMiddleware is started
+DEBUG: 2025/01/29 16:45:55 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:169: inside of the CSRFMiddleware's Post method checking part 
+DEBUG: 2025/01/29 16:45:55 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:187: The CSRF checking part was good
+DEBUG: 2025/01/29 16:45:55 /home/eqthyrium/SimpleForum/internal/transport/customHttp/moderationlist.go:16: moderationList handler is activated
+INFO: 2025/01/29 16:45:55 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:61: The End of the client request, and its Duration:28.516257ms
+INFO: 2025/01/29 16:45:55 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:217: Tokens left: %d, Reset time: %v
+ 3 2025-01-29 16:45:56.587792961 +0500 +05 m=+53.990644883
+INFO: 2025/01/29 16:45:55 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:57: Method:[GET], URL_Path: /moderationlist, Remote_Address: [::1]:34480
+DEBUG: 2025/01/29 16:45:55 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:76: The RoleAdjusterMiddleware is started
+DEBUG: 2025/01/29 16:45:55 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:135: Checking part of token's time
+DEBUG: 2025/01/29 16:45:55 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:164: The CSRFMiddleware is started
+DEBUG: 2025/01/29 16:45:55 /home/eqthyrium/SimpleForum/internal/transport/customHttp/moderationlist.go:16: moderationList handler is activated
+INFO: 2025/01/29 16:45:55 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:61: The End of the client request, and its Duration:1.874518ms
+INFO: 2025/01/29 16:45:56 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:217: Tokens left: %d, Reset time: %v
+ 2 2025-01-29 16:45:56.587792961 +0500 +05 m=+53.990644883
+INFO: 2025/01/29 16:45:56 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:57: Method:[POST], URL_Path: /moderationlist, Remote_Address: [::1]:34480
+DEBUG: 2025/01/29 16:45:56 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:76: The RoleAdjusterMiddleware is started
+DEBUG: 2025/01/29 16:45:56 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:135: Checking part of token's time
+DEBUG: 2025/01/29 16:45:56 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:164: The CSRFMiddleware is started
+DEBUG: 2025/01/29 16:45:56 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:169: inside of the CSRFMiddleware's Post method checking part 
+DEBUG: 2025/01/29 16:45:56 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:187: The CSRF checking part was good
+DEBUG: 2025/01/29 16:45:56 /home/eqthyrium/SimpleForum/internal/transport/customHttp/moderationlist.go:16: moderationList handler is activated
+INFO: 2025/01/29 16:45:56 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:61: The End of the client request, and its Duration:19.228894ms
+INFO: 2025/01/29 16:45:56 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:217: Tokens left: %d, Reset time: %v
+ 1 2025-01-29 16:45:56.587792961 +0500 +05 m=+53.990644883
+INFO: 2025/01/29 16:45:56 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:57: Method:[GET], URL_Path: /moderationlist, Remote_Address: [::1]:34480
+DEBUG: 2025/01/29 16:45:56 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:76: The RoleAdjusterMiddleware is started
+DEBUG: 2025/01/29 16:45:56 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:135: Checking part of token's time
+DEBUG: 2025/01/29 16:45:56 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:164: The CSRFMiddleware is started
+DEBUG: 2025/01/29 16:45:56 /home/eqthyrium/SimpleForum/internal/transport/customHttp/moderationlist.go:16: moderationList handler is activated
+INFO: 2025/01/29 16:45:56 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:61: The End of the client request, and its Duration:1.672066ms
+INFO: 2025/01/29 16:45:57 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:217: Tokens left: %d, Reset time: %v
+ 0 2025-01-29 16:45:56.587792961 +0500 +05 m=+53.990644883
+INFO: 2025/01/29 16:45:57 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:222: Resetting tokens.
+INFO: 2025/01/29 16:45:57 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:57: Method:[POST], URL_Path: /moderationlist, Remote_Address: [::1]:34480
+DEBUG: 2025/01/29 16:45:57 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:76: The RoleAdjusterMiddleware is started
+DEBUG: 2025/01/29 16:45:57 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:135: Checking part of token's time
+DEBUG: 2025/01/29 16:45:57 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:164: The CSRFMiddleware is started
+DEBUG: 2025/01/29 16:45:57 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:169: inside of the CSRFMiddleware's Post method checking part 
+DEBUG: 2025/01/29 16:45:57 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:187: The CSRF checking part was good
+DEBUG: 2025/01/29 16:45:57 /home/eqthyrium/SimpleForum/internal/transport/customHttp/moderationlist.go:16: moderationList handler is activated
+INFO: 2025/01/29 16:45:57 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:61: The End of the client request, and its Duration:25.467066ms
+INFO: 2025/01/29 16:45:57 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:217: Tokens left: %d, Reset time: %v
+ 4 2025-01-29 16:46:00.175955955 +0500 +05 m=+57.578807827
+INFO: 2025/01/29 16:45:57 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:57: Method:[GET], URL_Path: /moderationlist, Remote_Address: [::1]:34480
+DEBUG: 2025/01/29 16:45:57 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:76: The RoleAdjusterMiddleware is started
+DEBUG: 2025/01/29 16:45:57 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:135: Checking part of token's time
+DEBUG: 2025/01/29 16:45:57 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:164: The CSRFMiddleware is started
+DEBUG: 2025/01/29 16:45:57 /home/eqthyrium/SimpleForum/internal/transport/customHttp/moderationlist.go:16: moderationList handler is activated
+INFO: 2025/01/29 16:45:57 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:61: The End of the client request, and its Duration:2.192587ms
+INFO: 2025/01/29 16:46:00 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:217: Tokens left: %d, Reset time: %v
+ 3 2025-01-29 16:46:00.175955955 +0500 +05 m=+57.578807827
+INFO: 2025/01/29 16:46:00 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:222: Resetting tokens.
+INFO: 2025/01/29 16:46:00 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:57: Method:[GET], URL_Path: /, Remote_Address: [::1]:34480
+DEBUG: 2025/01/29 16:46:00 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:76: The RoleAdjusterMiddleware is started
+DEBUG: 2025/01/29 16:46:00 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:135: Checking part of token's time
+DEBUG: 2025/01/29 16:46:00 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:164: The CSRFMiddleware is started
+DEBUG: 2025/01/29 16:46:00 /home/eqthyrium/SimpleForum/internal/transport/customHttp/homepage.go:16: homePage handler is activated
+INFO: 2025/01/29 16:46:00 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:61: The End of the client request, and its Duration:4.515439ms
+INFO: 2025/01/29 16:46:03 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:217: Tokens left: %d, Reset time: %v
+ 4 2025-01-29 16:46:03.535261545 +0500 +05 m=+60.938113467
+INFO: 2025/01/29 16:46:03 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:222: Resetting tokens.
+INFO: 2025/01/29 16:46:03 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:57: Method:[POST], URL_Path: /logout, Remote_Address: [::1]:34480
+DEBUG: 2025/01/29 16:46:03 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:76: The RoleAdjusterMiddleware is started
+DEBUG: 2025/01/29 16:46:03 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:135: Checking part of token's time
+DEBUG: 2025/01/29 16:46:03 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:164: The CSRFMiddleware is started
+DEBUG: 2025/01/29 16:46:03 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:169: inside of the CSRFMiddleware's Post method checking part 
+INFO: 2025/01/29 16:46:03 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:178: The CSRF attack is detected, its IP is: [::1]:34480
+INFO: 2025/01/29 16:46:03 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:61: The End of the client request, and its Duration:215.272µs
+INFO: 2025/01/29 16:46:03 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:217: Tokens left: %d, Reset time: %v
+ 4 2025-01-29 16:46:06.765976384 +0500 +05 m=+64.168828306
+INFO: 2025/01/29 16:46:03 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:57: Method:[GET], URL_Path: /auth/login, Remote_Address: [::1]:34480
+DEBUG: 2025/01/29 16:46:03 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:76: The RoleAdjusterMiddleware is started
+DEBUG: 2025/01/29 16:46:03 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:80: There is an error about getting the token from the cookie!!!
+INFO: 2025/01/29 16:46:03 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:82: There is no cookie in the request of the client
+DEBUG: 2025/01/29 16:46:03 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:164: The CSRFMiddleware is started
+DEBUG: 2025/01/29 16:46:03 /home/eqthyrium/SimpleForum/internal/transport/customHttp/login.go:28: The logIn handler is activated
+DEBUG: 2025/01/29 16:46:03 /home/eqthyrium/SimpleForum/internal/transport/customHttp/login.go:50: logIn's handler of GET request is activated
+INFO: 2025/01/29 16:46:03 /home/eqthyrium/SimpleForum/internal/transport/customHttp/middleware.go:61: The End of the client request, and its Duration:713.595µs
