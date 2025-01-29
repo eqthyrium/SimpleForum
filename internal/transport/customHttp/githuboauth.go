@@ -44,10 +44,11 @@ func (handler *HandlerHttp) githubAuthentication(w http.ResponseWriter, r *http.
 	}
 	state := fmt.Sprintf("%s|%s", oauthStateString, intent)
 	oauthState[state] = true
-	http.Redirect(w, r, fmt.Sprintf(
-		"https://github.com/login/oauth/authorize?client_id=%s&redirect_uri=%s&scope=user:email&state=%s\n",
-		config.Config.GithubOauth.ClientID, config.Config.GithubOauth.RedirectURI, state), http.StatusFound)
-
+	url := fmt.Sprintf(
+		"https://github.com/login/oauth/authorize?client_id=%s&redirect_uri=%s&scope=user:email&state=%s&prompt=login",
+		config.Config.GithubOauth.ClientID, config.Config.GithubOauth.RedirectURI, state)
+	customLogger.DebugLogger.Println("Redirecting user to:", url)
+	http.Redirect(w, r, url, http.StatusSeeOther)
 }
 
 func (handler *HandlerHttp) githubCallback(w http.ResponseWriter, r *http.Request) {

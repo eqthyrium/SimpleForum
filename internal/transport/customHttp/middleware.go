@@ -4,7 +4,6 @@ import (
 	"context"
 	"errors"
 	"fmt"
-	"log"
 	"net/http"
 	"runtime/debug"
 	"sync"
@@ -215,16 +214,17 @@ func RateLimiterMiddleware(limit int, window time.Duration) func(http.Handler) h
 			mu.Lock()
 			defer mu.Unlock()
 
-			log.Printf("Tokens left: %d, Reset time: %v\n", tokens, resetTime)
+			customLogger.InfoLogger.Println("Tokens left: %d, Reset time: %v\n", tokens, resetTime)
 
 			if time.Now().After(resetTime) {
 				tokens = limit
 				resetTime = time.Now().Add(window)
-				log.Println("Resetting tokens.")
+				customLogger.InfoLogger.Println("Resetting tokens.")
+
 			}
 
 			if tokens <= 0 {
-				log.Println("Rate limit exceeded.")
+				customLogger.ErrorLogger.Println("Rate limit exceeded.")
 				http.Error(w, "Too Many Requests", http.StatusTooManyRequests)
 				return
 			}
