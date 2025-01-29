@@ -18,7 +18,6 @@ func NewLogger() *CustomLogger {
 }
 
 func (LoggerObject *CustomLogger) GetLoggerObject(infoFilePath, errorFilePath, debugFilePath string) *CustomLogger {
-
 	option := os.O_CREATE | os.O_TRUNC | os.O_RDWR | os.O_APPEND
 
 	file, err := os.OpenFile(infoFilePath, option, 0666)
@@ -40,7 +39,6 @@ func (LoggerObject *CustomLogger) GetLoggerObject(infoFilePath, errorFilePath, d
 	LoggerObject.DebugLogger = log.New(file, "DEBUG: ", log.Ldate|log.Ltime|log.Llongfile)
 
 	return LoggerObject
-
 }
 
 func ErrorWrapper(layer, functionName, context string, err error) error {

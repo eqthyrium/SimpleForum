@@ -1,18 +1,18 @@
 package customHttp
 
 import (
-	"SimpleForum/internal/domain"
-	"SimpleForum/internal/domain/entity"
-	"SimpleForum/internal/transport/session"
-	"SimpleForum/pkg/logger"
 	"bytes"
 	"errors"
 	"html/template"
 	"net/http"
+
+	"SimpleForum/internal/domain"
+	"SimpleForum/internal/domain/entity"
+	"SimpleForum/internal/transport/session"
+	"SimpleForum/pkg/logger"
 )
 
 func (handler *HandlerHttp) homePage(w http.ResponseWriter, r *http.Request) {
-
 	customLogger.DebugLogger.Println("homePage handler is activated")
 
 	if r.URL.Path != "/" {
@@ -27,13 +27,11 @@ func (handler *HandlerHttp) homePage(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	files := []string{"../ui/html/homepage.tmpl.html"}
+	files := []string{"./ui/html/homepage.tmpl.html"}
 	handler.homePageGet(w, r, files)
-
 }
 
 func (handler *HandlerHttp) homePageGet(w http.ResponseWriter, r *http.Request, files []string) {
-
 	var userId int
 	role := r.Context().Value("Role").(string)
 	if role != "Guest" {
@@ -58,7 +56,7 @@ func (handler *HandlerHttp) homePageGet(w http.ResponseWriter, r *http.Request, 
 	if role == "User" && requestedmoderation == "true" {
 		err := handler.Service.RequestToBeModerator(userId)
 		if errors.Is(err, domain.ErrRepeatedRequest) {
-			files = append(files, "../ui/html/error/requestmoderation.tmpl.html")
+			files = append(files, "./ui/html/error/requestmoderation.tmpl.html")
 		} else if err != nil {
 			customLogger.ErrorLogger.Print(logger.ErrorWrapper("Transport", "homePageGet", "There is a problem in the process of requesting moderator", err))
 			serverError(w)
@@ -70,7 +68,6 @@ func (handler *HandlerHttp) homePageGet(w http.ResponseWriter, r *http.Request, 
 	var posts []entity.Posts
 
 	if role != "Guest" && (myposts == "true" || mylikeposts == "true") {
-
 		if myposts == "true" {
 			posts, err = handler.Service.GetMyCreatedPosts(userId)
 			if err != nil {
@@ -86,7 +83,6 @@ func (handler *HandlerHttp) homePageGet(w http.ResponseWriter, r *http.Request, 
 				return
 			}
 		}
-
 	} else {
 		posts, err = handler.Service.GetLatestPosts(requestedCategories)
 		if err != nil {
@@ -110,9 +106,9 @@ func (handler *HandlerHttp) homePageGet(w http.ResponseWriter, r *http.Request, 
 		return
 	}
 
-	//fmt.Println("Incoming userId:", userId, "\nIncoming role:", role)
-	//fmt.Println("Inserting csrfText:", csrfText)
-	//fmt.Println("And its map:", session.MapUUID[userId])
+	// fmt.Println("Incoming userId:", userId, "\nIncoming role:", role)
+	// fmt.Println("Inserting csrfText:", csrfText)
+	// fmt.Println("And its map:", session.MapUUID[userId])
 
 	CSRFMap[session.MapUUID[userId]] = csrfText
 

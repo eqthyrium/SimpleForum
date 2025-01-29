@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"os"
 
 	"SimpleForum/internal/config"
 	"SimpleForum/internal/repository/sqllite"
@@ -15,6 +16,13 @@ import (
 )
 
 func main() {
+	dir, err := os.Getwd()
+	if err != nil {
+		fmt.Println("Error:", err)
+		return
+	}
+	fmt.Println("You are in the directory:", dir)
+
 	config.Config = config.NewConfiguration()
 
 	db, err := openDb(*config.Config.Dsn)
@@ -34,7 +42,7 @@ func main() {
 
 	ch := make(chan int)
 	go func() {
-		log.Fatalln(http.ListenAndServeTLS(*config.Config.Addr, "../tls/cert.pem", "../tls/key.pem", router))
+		log.Fatalln(http.ListenAndServeTLS(*config.Config.Addr, "./tls/cert.pem", "./tls/key.pem", router))
 		ch <- 1
 	}()
 	<-ch

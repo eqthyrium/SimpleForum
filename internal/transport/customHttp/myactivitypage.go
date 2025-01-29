@@ -100,7 +100,7 @@ func (handler *HandlerHttp) myActivityPage(w http.ResponseWriter, r *http.Reques
 		}
 	}
 
-	files := []string{"../ui/html/myactivity.html"}
+	files := []string{"./ui/html/myactivity.html"}
 	tmpl, err := template.ParseFiles(files...)
 	if err != nil {
 		customLogger.ErrorLogger.Print(logger.ErrorWrapper("Transport", "myActivityPage", "There is a problem in the process of parsing the html files with template", err))

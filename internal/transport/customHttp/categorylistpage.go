@@ -1,16 +1,16 @@
 package customHttp
 
 import (
-	"SimpleForum/internal/transport/session"
-	"SimpleForum/pkg/logger"
 	"bytes"
 	"html/template"
 	"net/http"
 	"strconv"
+
+	"SimpleForum/internal/transport/session"
+	"SimpleForum/pkg/logger"
 )
 
 func (handler *HandlerHttp) categoryListPage(w http.ResponseWriter, r *http.Request) {
-
 	customLogger.DebugLogger.Println("categoryListPage handler is activated")
 
 	if r.URL.Path != "/categorylist" {
@@ -89,7 +89,7 @@ func (handler *HandlerHttp) categoryListPage(w http.ResponseWriter, r *http.Requ
 			return
 		}
 
-		files := []string{"../ui/html/categorylist.tmpl.html"}
+		files := []string{"./ui/html/categorylist.tmpl.html"}
 		tmpl, err := template.ParseFiles(files...)
 		if err != nil {
 			customLogger.ErrorLogger.Print(logger.ErrorWrapper("Transport", "categoryListPage", "Error parsing the HTML template files", err))
@@ -128,5 +128,4 @@ func (handler *HandlerHttp) categoryListPage(w http.ResponseWriter, r *http.Requ
 			return
 		}
 	}
-
 }

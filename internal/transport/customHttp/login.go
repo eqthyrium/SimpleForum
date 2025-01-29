@@ -1,15 +1,16 @@
 package customHttp
 
 import (
-	"SimpleForum/internal/domain"
-	"SimpleForum/internal/transport/session"
-	"SimpleForum/pkg/logger"
 	"bytes"
 	"context"
 	"errors"
 	"fmt"
 	"html/template"
 	"net/http"
+
+	"SimpleForum/internal/domain"
+	"SimpleForum/internal/transport/session"
+	"SimpleForum/pkg/logger"
 )
 
 /*
@@ -49,7 +50,7 @@ func (handler *HandlerHttp) logIn(w http.ResponseWriter, r *http.Request) {
 	if r.Method == http.MethodGet {
 		customLogger.DebugLogger.Println("logIn's handler of GET request is activated")
 		files := []string{
-			"../ui/html/login.tmpl.html",
+			"./ui/html/login.tmpl.html",
 		}
 
 		tmpl, err := template.ParseFiles(files...)
@@ -94,7 +95,7 @@ func (handler *HandlerHttp) logIn(w http.ResponseWriter, r *http.Request) {
 		if err != nil {
 			if errors.Is(err, domain.ErrUserNotFound) {
 				customLogger.DebugLogger.Println(fmt.Errorf("Function \"logIn\": %w", err))
-				clientError(w, []string{"../ui/html/login.tmpl.html"}, http.StatusBadRequest, domain.ErrUserNotFound)
+				clientError(w, []string{"./ui/html/login.tmpl.html"}, http.StatusBadRequest, domain.ErrUserNotFound)
 			} else {
 				customLogger.ErrorLogger.Print(logger.ErrorWrapper("Transport", "logIn", "There is a problem in the process of giving the tokenSignature", err))
 				serverError(w)
@@ -102,7 +103,7 @@ func (handler *HandlerHttp) logIn(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 
-		//Cookies
+		// Cookies
 		session.SetTokenToCookie(w, "auth_token", tokenSignature)
 		extractedToken, err := session.ExtractDataFromToken(tokenSignature)
 		ctx := context.WithValue(r.Context(), "UserId", extractedToken.UserId)

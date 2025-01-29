@@ -2,14 +2,15 @@ package config
 
 import (
 	"flag"
-	"github.com/joho/godotenv"
 	"log"
 	"os"
+
+	"github.com/joho/godotenv"
 )
 
 const (
 	MaxImageSize = 20 * 1024 * 1024 // 20 MB
-	UploadDir    = "../uploads/"    // Directory to store images
+	UploadDir    = "uploads/"    // Directory to store images
 )
 
 var AllowedImageTypes = map[string]bool{
@@ -44,10 +45,10 @@ func NewConfiguration() *Configuration {
 		GoogleOauth: new(Google),
 	}
 	configObject.Addr = flag.String("addr", ":8888", "customHttp listen port")
-	configObject.Dsn = flag.String("dsn", "../mydb.db", "Sqllite3 data source name")
+	configObject.Dsn = flag.String("dsn", "./mydb.db", "Sqllite3 data source name")
 	flag.Parse()
 
-	err := godotenv.Load("../.env")
+	err := godotenv.Load(".env")
 	if err != nil {
 		log.Fatalf("Error loading .env file, error message is:", err)
 	}

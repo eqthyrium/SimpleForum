@@ -1,20 +1,20 @@
 package customHttp
 
 import (
-	"SimpleForum/internal/config"
-	"SimpleForum/internal/domain"
-	"SimpleForum/internal/transport/session"
-	"SimpleForum/pkg/logger"
 	"bytes"
 	"errors"
 	"html/template"
 	"net/http"
 	"strconv"
 	"strings"
+
+	"SimpleForum/internal/config"
+	"SimpleForum/internal/domain"
+	"SimpleForum/internal/transport/session"
+	"SimpleForum/pkg/logger"
 )
 
 func (handler *HandlerHttp) postPage(w http.ResponseWriter, r *http.Request) {
-
 	customLogger.DebugLogger.Println("postPage handler is activated")
 
 	path := r.URL.Path
@@ -48,7 +48,7 @@ func (handler *HandlerHttp) postPage(w http.ResponseWriter, r *http.Request) {
 	}
 
 	if r.Method == http.MethodGet {
-		files := []string{"../ui/html/postpage.tmpl.html"}
+		files := []string{"./ui/html/postpage.tmpl.html"}
 		handler.postPageGet(w, r, files, postIdNumber)
 	}
 
@@ -77,8 +77,8 @@ func (handler *HandlerHttp) postPage(w http.ResponseWriter, r *http.Request) {
 
 				if errors.Is(err, domain.ErrNotValidContent) {
 					var files []string
-					files = append(files, "../ui/html/postpage.tmpl.html")
-					files = append(files, "../ui/html/error/postpagecontent.tmpl.html")
+					files = append(files, "./ui/html/postpage.tmpl.html")
+					files = append(files, "./ui/html/error/postpagecontent.tmpl.html")
 					handler.postPageGet(w, r, files, postIdNumber)
 					return
 
@@ -120,12 +120,12 @@ func (handler *HandlerHttp) postPage(w http.ResponseWriter, r *http.Request) {
 					referer := r.Header.Get("Referer")
 					_, path, _ := strings.Cut(referer, "http://localhost"+*config.Config.Addr+"/")
 
-					files := []string{"../ui/html/error/report.tmpl.html"}
+					files := []string{"./ui/html/error/report.tmpl.html"}
 					if path == "" {
-						files = append(files, "../ui/html/homepage.tmpl.html")
+						files = append(files, "./ui/html/homepage.tmpl.html")
 						handler.homePageGet(w, r, files)
 					} else {
-						files = append(files, "../ui/html/postpage.tmpl.html")
+						files = append(files, "./ui/html/postpage.tmpl.html")
 						handler.postPageGet(w, r, files, postIdNumber)
 					}
 
@@ -141,7 +141,6 @@ func (handler *HandlerHttp) postPage(w http.ResponseWriter, r *http.Request) {
 				return
 
 			}
-
 		}
 
 		referer := r.Header.Get("Referer")
@@ -155,7 +154,6 @@ func (handler *HandlerHttp) postPage(w http.ResponseWriter, r *http.Request) {
 }
 
 func (handler *HandlerHttp) postPageGet(w http.ResponseWriter, r *http.Request, files []string, number int) {
-
 	var userId int
 	role := r.Context().Value("Role").(string)
 	if role != "Guest" {

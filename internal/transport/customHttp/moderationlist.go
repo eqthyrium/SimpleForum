@@ -1,18 +1,18 @@
 package customHttp
 
 import (
-	"SimpleForum/internal/domain"
-	"SimpleForum/internal/transport/session"
-	"SimpleForum/pkg/logger"
 	"bytes"
 	"errors"
 	"html/template"
 	"net/http"
 	"strconv"
+
+	"SimpleForum/internal/domain"
+	"SimpleForum/internal/transport/session"
+	"SimpleForum/pkg/logger"
 )
 
 func (handler *HandlerHttp) moderationList(w http.ResponseWriter, r *http.Request) {
-
 	customLogger.DebugLogger.Println("moderationList handler is activated")
 
 	if r.URL.Path != "/moderationlist" {
@@ -32,7 +32,7 @@ func (handler *HandlerHttp) moderationList(w http.ResponseWriter, r *http.Reques
 		http.Redirect(w, r, "/", http.StatusUnauthorized)
 		return
 	}
-	files := []string{"../ui/html/moderatormanagement.tmpl.html"}
+	files := []string{"./ui/html/moderatormanagement.tmpl.html"}
 	if r.Method == http.MethodGet {
 		userId := r.Context().Value("UserId").(int)
 
@@ -174,7 +174,6 @@ func (handler *HandlerHttp) moderationList(w http.ResponseWriter, r *http.Reques
 			}
 
 		} else if accept == "true" || accept == "false" {
-
 			if accept == "true" {
 				err := handler.Service.AcceptRequestToBeModerator(secondUserIdNumber)
 				if errors.Is(err, domain.ErrInvalidOperation) {
@@ -198,7 +197,6 @@ func (handler *HandlerHttp) moderationList(w http.ResponseWriter, r *http.Reques
 					return
 				}
 			}
-
 		} else {
 			customLogger.InfoLogger.Print(logger.ErrorWrapper("UseCase", "moderationList", "Incoming request's userId is not corresponding to the application logic", err))
 			clientError(w, nil, http.StatusBadRequest, nil)
@@ -213,5 +211,4 @@ func (handler *HandlerHttp) moderationList(w http.ResponseWriter, r *http.Reques
 		}
 
 	}
-
 }

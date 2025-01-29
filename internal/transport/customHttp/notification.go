@@ -1,14 +1,14 @@
 package customHttp
 
 import (
-	"SimpleForum/pkg/logger"
 	"bytes"
 	"html/template"
 	"net/http"
+
+	"SimpleForum/pkg/logger"
 )
 
 func (handler *HandlerHttp) notification(w http.ResponseWriter, r *http.Request) {
-
 	customLogger.DebugLogger.Println("homePage handler is activated")
 
 	if r.URL.Path != "/notification" {
@@ -40,7 +40,7 @@ func (handler *HandlerHttp) notification(w http.ResponseWriter, r *http.Request)
 			return
 		}
 
-		files := []string{"../ui/html/notification.tmpl.html"}
+		files := []string{"./ui/html/notification.tmpl.html"}
 
 		tmpl, err := template.ParseFiles(files...)
 		if err != nil {

@@ -1,13 +1,13 @@
 package customHttp
 
 import (
-	"SimpleForum/pkg/logger"
 	"net/http"
 	"strconv"
+
+	"SimpleForum/pkg/logger"
 )
 
 func (handler *HandlerHttp) reaction(w http.ResponseWriter, r *http.Request) {
-
 	if r.URL.Path != "/reaction" {
 		clientError(w, nil, http.StatusNotFound, nil)
 		customLogger.InfoLogger.Println("incorrect request's endpoint, it's requested endpoint is:", r.URL.Path)
@@ -23,8 +23,8 @@ func (handler *HandlerHttp) reaction(w http.ResponseWriter, r *http.Request) {
 	var files []string
 	role := r.Context().Value("Role").(string)
 	if role == "Guest" {
-		files = append(files, "../ui/html/homepage.tmpl.html")
-		files = append(files, "../ui/html/error/homeroleforbidden.tmpl.html")
+		files = append(files, "./ui/html/homepage.tmpl.html")
+		files = append(files, "./ui/html/error/homeroleforbidden.tmpl.html")
 		handler.homePageGet(w, r, files)
 		return
 	}
@@ -87,5 +87,4 @@ func (handler *HandlerHttp) reaction(w http.ResponseWriter, r *http.Request) {
 		clientError(w, nil, http.StatusBadRequest, nil)
 		return
 	}
-
 }

@@ -1,10 +1,6 @@
 package customHttp
 
 import (
-	"SimpleForum/internal/config"
-	"SimpleForum/internal/domain"
-	"SimpleForum/internal/transport/session"
-	"SimpleForum/pkg/logger"
 	"encoding/json"
 	"errors"
 	"fmt"
@@ -12,6 +8,11 @@ import (
 	"net/http"
 	"net/url"
 	"strings"
+
+	"SimpleForum/internal/config"
+	"SimpleForum/internal/domain"
+	"SimpleForum/internal/transport/session"
+	"SimpleForum/pkg/logger"
 )
 
 func (handler *HandlerHttp) githubAuthentication(w http.ResponseWriter, r *http.Request) {
@@ -169,7 +170,7 @@ func (handler *HandlerHttp) githubCallback(w http.ResponseWriter, r *http.Reques
 		if err != nil {
 			if errors.Is(err, domain.ErrUserNotFound) {
 				customLogger.DebugLogger.Println(fmt.Errorf("Function \"logIn\": %w", err))
-				clientError(w, []string{"../ui/html/login.tmpl.html"}, http.StatusBadRequest, domain.ErrUserNotFound)
+				clientError(w, []string{"./ui/html/login.tmpl.html"}, http.StatusBadRequest, domain.ErrUserNotFound)
 			} else {
 				customLogger.ErrorLogger.Print(logger.ErrorWrapper("Transport", "googleCallback", "There is a problem in the process of giving the tokenSignature", err))
 				serverError(w)
@@ -177,7 +178,7 @@ func (handler *HandlerHttp) githubCallback(w http.ResponseWriter, r *http.Reques
 			return
 		}
 
-		//Cookies
+		// Cookies
 		session.SetTokenToCookie(w, "auth_token", tokenSignature)
 		http.Redirect(w, r, "/", http.StatusSeeOther)
 	} else if intent == "signup" {
@@ -185,7 +186,7 @@ func (handler *HandlerHttp) githubCallback(w http.ResponseWriter, r *http.Reques
 		if err != nil {
 			if errors.Is(err, domain.ErrInvalidCredential) {
 				customLogger.DebugLogger.Println("There is invalid entered Credentials")
-				clientError(w, []string{"../ui/html/signup.tmpl.html"}, http.StatusBadRequest, err)
+				clientError(w, []string{"./ui/html/signup.tmpl.html"}, http.StatusBadRequest, err)
 			} else {
 				customLogger.ErrorLogger.Print(logger.ErrorWrapper("Transport", "googleCallback", "Failed  Sign up operation", err))
 				serverError(w)
@@ -195,5 +196,4 @@ func (handler *HandlerHttp) githubCallback(w http.ResponseWriter, r *http.Reques
 
 		http.Redirect(w, r, "/auth/login", http.StatusSeeOther)
 	}
-
 }

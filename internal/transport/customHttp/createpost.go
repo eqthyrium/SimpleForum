@@ -1,15 +1,16 @@
 package customHttp
 
 import (
+	"bytes"
+	"errors"
+	"html/template"
+	"net/http"
+
 	"SimpleForum/internal/config"
 	"SimpleForum/internal/domain"
 	"SimpleForum/internal/domain/entity"
 	"SimpleForum/internal/transport/session"
 	"SimpleForum/pkg/logger"
-	"bytes"
-	"errors"
-	"html/template"
-	"net/http"
 )
 
 func (handler *HandlerHttp) createPost(w http.ResponseWriter, r *http.Request) {
@@ -35,7 +36,7 @@ func (handler *HandlerHttp) createPost(w http.ResponseWriter, r *http.Request) {
 	}
 
 	if r.Method == http.MethodGet {
-		files := []string{"../ui/html/createpostpage.tmpl.html"}
+		files := []string{"./ui/html/createpostpage.tmpl.html"}
 		handler.createPostPage(w, r, files)
 	}
 
@@ -70,22 +71,22 @@ func (handler *HandlerHttp) createPost(w http.ResponseWriter, r *http.Request) {
 		}
 
 		err = handler.Service.CreatePost(userId, title, content, requestedCategories, myfile)
-		files := []string{"../ui/html/createpostpage.tmpl.html"}
+		files := []string{"./ui/html/createpostpage.tmpl.html"}
 
 		if errors.Is(err, domain.ErrNoCategories) {
-			files = append(files, "../ui/html/error/nocategories.tmp.html")
+			files = append(files, "./ui/html/error/nocategories.tmp.html")
 			handler.createPostPage(w, r, files)
 			return
 		} else if errors.Is(err, domain.ErrNotValidContent) {
-			files = append(files, "../ui/html/error/postpagecontent.tmpl.html")
+			files = append(files, "./ui/html/error/postpagecontent.tmpl.html")
 			handler.createPostPage(w, r, files)
 			return
 		} else if errors.Is(err, domain.ErrLargeImageSize) {
-			files = append(files, "../ui/html/error/imagesize.tmpl.html")
+			files = append(files, "./ui/html/error/imagesize.tmpl.html")
 			handler.createPostPage(w, r, files)
 			return
 		} else if errors.Is(err, domain.ErrInvalidImageType) {
-			files = append(files, "../ui/html/error/imagetype.tmpl.html")
+			files = append(files, "./ui/html/error/imagetype.tmpl.html")
 			handler.createPostPage(w, r, files)
 			return
 		} else if err != nil {
@@ -103,11 +104,9 @@ func (handler *HandlerHttp) createPost(w http.ResponseWriter, r *http.Request) {
 		}
 
 	}
-
 }
 
 func (handler *HandlerHttp) createPostPage(w http.ResponseWriter, r *http.Request, files []string) {
-
 	userId := r.Context().Value("UserId").(int)
 
 	categories, err := handler.Service.GetAllCategories()
@@ -154,5 +153,4 @@ func (handler *HandlerHttp) createPostPage(w http.ResponseWriter, r *http.Reques
 		serverError(w)
 		return
 	}
-
 }

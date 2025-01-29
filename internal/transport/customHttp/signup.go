@@ -1,16 +1,16 @@
 package customHttp
 
 import (
-	"SimpleForum/internal/domain"
-	"SimpleForum/pkg/logger"
 	"bytes"
 	"errors"
 	"html/template"
 	"net/http"
+
+	"SimpleForum/internal/domain"
+	"SimpleForum/pkg/logger"
 )
 
 func (handler *HandlerHttp) signUp(w http.ResponseWriter, r *http.Request) {
-
 	customLogger.DebugLogger.Println("The signup handler is activated")
 	if r.URL.Path != "/auth/signup" {
 		// Think about error handling, and logging it properly
@@ -34,7 +34,7 @@ func (handler *HandlerHttp) signUp(w http.ResponseWriter, r *http.Request) {
 	if r.Method == http.MethodGet {
 		customLogger.DebugLogger.Println("The signup handler's GET request handler is activated")
 		files := []string{
-			"../ui/html/signup.tmpl.html",
+			"./ui/html/signup.tmpl.html",
 		}
 
 		tmpl, err := template.ParseFiles(files...)
@@ -78,7 +78,7 @@ func (handler *HandlerHttp) signUp(w http.ResponseWriter, r *http.Request) {
 		if err != nil {
 			if errors.Is(err, domain.ErrInvalidCredential) {
 				customLogger.DebugLogger.Println("There is invalid entered Credentials")
-				clientError(w, []string{"../ui/html/signup.tmpl.html"}, http.StatusBadRequest, err)
+				clientError(w, []string{"./ui/html/signup.tmpl.html"}, http.StatusBadRequest, err)
 			} else {
 				customLogger.ErrorLogger.Print(logger.ErrorWrapper("Transport", "signUp", "Failed  Sign up operation", err))
 				serverError(w)

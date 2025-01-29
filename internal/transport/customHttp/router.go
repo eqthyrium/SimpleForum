@@ -12,8 +12,8 @@ func (handler *HandlerHttp) Routering() http.Handler {
 		return rateLimiter(LoggingMiddleware(SecurityMiddleware(PanicMiddleware(RoleAdjusterMiddleware(CSRFMiddleware((http.HandlerFunc(next))))))))
 	}
 	mux := http.NewServeMux()
-	fileServer := http.FileServer(http.Dir("../ui/static"))
-	mux.Handle("/uploads/", http.StripPrefix("/uploads/", http.FileServer(http.Dir("../uploads"))))
+	fileServer := http.FileServer(http.Dir("./ui/static"))
+	mux.Handle("/uploads/", http.StripPrefix("/uploads/", http.FileServer(http.Dir("./uploads"))))
 	mux.Handle("/static/", http.StripPrefix("/static/", fileServer))
 	mux.Handle("/auth/login", Middleware(handler.logIn))
 	mux.Handle("/auth/signup", Middleware(handler.signUp))

@@ -1,22 +1,22 @@
 package customHttp
 
 import (
-	"SimpleForum/internal/domain"
-	"SimpleForum/pkg/logger"
 	"errors"
+	"fmt"
 	"html/template"
 	"net/http"
+
+	"SimpleForum/internal/domain"
+	"SimpleForum/pkg/logger"
 )
 
 // Remind: After calling this kind of function, you have to return in handler immediately
-//var customLoggerError *logger.CustomLogger = logger.NewLogger().GetLoggerObject("../logging/info.log", "../logging/error.log", "../logging/debug.log", "ErrorHandling")
-
+// var customLoggerError *logger.CustomLogger = logger.NewLogger().GetLoggerObject("../logging/info.log", "../logging/error.log", "../logging/debug.log", "ErrorHandling")
 func errorWebpage(w http.ResponseWriter, paths []string, status int, err error) {
-
 	customLogger.DebugLogger.Println("errorWebpage handler is activated")
 	var base string
 	if status == http.StatusInternalServerError || status == http.StatusNotFound {
-		paths = append(paths, "../ui/html/error/standard.html")
+		paths = append(paths, "./ui/html/error/standard.html")
 	}
 
 	if status == http.StatusBadRequest {
@@ -25,12 +25,12 @@ func errorWebpage(w http.ResponseWriter, paths []string, status int, err error) 
 		if errors.Is(err, domain.ErrUserNotFound) {
 			customLogger.DebugLogger.Println("ErrUserNotFound part of the code in the errorWebpage")
 			base = "login"
-			paths = append(paths, "../ui/html/error/login.tmpl.html")
+			paths = append(paths, "./ui/html/error/login.tmpl.html")
 
 		} else if errors.Is(err, domain.ErrInvalidCredential) {
 			customLogger.DebugLogger.Println("ErrInvalidCredential in the errorWebpage")
 			base = "signup"
-			paths = append(paths, "../ui/html/error/signup.tmpl.html")
+			paths = append(paths, "./ui/html/error/signup.tmpl.html")
 
 		} else {
 			http.Error(w, "Bad request", http.StatusBadRequest)
@@ -41,7 +41,7 @@ func errorWebpage(w http.ResponseWriter, paths []string, status int, err error) 
 
 	tmpl, err := template.ParseFiles(paths...)
 	if err != nil {
-		customLogger.ErrorLogger.Print(logger.ErrorWrapper("Transport", "ErrorWebpage", "There is a problem in parsing the html files with template function", err))
+		fmt.Println("Transport", "ErrorWebpage", "There is a problem in parsing the html files with template function", err)
 		http.Error(w, http.StatusText(http.StatusInternalServerError), http.StatusInternalServerError)
 		return
 	}
@@ -72,14 +72,11 @@ func errorWebpage(w http.ResponseWriter, paths []string, status int, err error) 
 }
 
 func serverError(w http.ResponseWriter) {
-
 	w.WriteHeader(http.StatusInternalServerError)
 	errorWebpage(w, []string{}, http.StatusInternalServerError, nil)
-
 }
 
 func clientError(w http.ResponseWriter, paths []string, statusCode int, err error) {
-
 	w.WriteHeader(statusCode)
 
 	if http.StatusNotFound == statusCode {

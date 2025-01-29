@@ -1,18 +1,18 @@
 package customHttp
 
 import (
-	"SimpleForum/internal/domain"
-	"SimpleForum/internal/transport/session"
-	"SimpleForum/pkg/logger"
 	"bytes"
 	"errors"
 	"html/template"
 	"net/http"
 	"strconv"
+
+	"SimpleForum/internal/domain"
+	"SimpleForum/internal/transport/session"
+	"SimpleForum/pkg/logger"
 )
 
 func (handler *HandlerHttp) editing(w http.ResponseWriter, r *http.Request) {
-
 	customLogger.DebugLogger.Println("editing handler is activated")
 
 	if r.URL.Path != "/editing" {
@@ -35,7 +35,7 @@ func (handler *HandlerHttp) editing(w http.ResponseWriter, r *http.Request) {
 	}
 
 	if r.Method == http.MethodGet {
-		files := []string{"../ui/html/editingpage.tmpl.html"}
+		files := []string{"./ui/html/editingpage.tmpl.html"}
 		handler.editingGet(w, r, files)
 		return
 	}
@@ -45,7 +45,6 @@ func (handler *HandlerHttp) editing(w http.ResponseWriter, r *http.Request) {
 	userId := r.Context().Value("UserId").(int)
 
 	if r.Method == http.MethodPost {
-
 		if !(commentId != "" && postId != "") && (commentId != "" || postId != "") { // commentId != ""XOR postId != ""
 			if postId != "" {
 				postNumber, err := strconv.Atoi(postId)
@@ -65,8 +64,8 @@ func (handler *HandlerHttp) editing(w http.ResponseWriter, r *http.Request) {
 					http.Redirect(w, r, "/", http.StatusSeeOther)
 
 				} else if errors.Is(err, domain.ErrNotValidContent) {
-					files := []string{"../ui/html/editingpage.tmpl.html"}
-					files = append(files, "../ui/html/error/postpagecontent.tmpl.html")
+					files := []string{"./ui/html/editingpage.tmpl.html"}
+					files = append(files, "./ui/html/error/postpagecontent.tmpl.html")
 					handler.editingGet(w, r, files)
 
 				} else if err != nil {
@@ -93,8 +92,8 @@ func (handler *HandlerHttp) editing(w http.ResponseWriter, r *http.Request) {
 					http.Redirect(w, r, "/", http.StatusSeeOther)
 
 				} else if errors.Is(err, domain.ErrNotValidContent) {
-					files := []string{"../ui/html/editingpage.tmpl.html"}
-					files = append(files, "../ui/html/error/postpagecontent.tmpl.html")
+					files := []string{"./ui/html/editingpage.tmpl.html"}
+					files = append(files, "./ui/html/error/postpagecontent.tmpl.html")
 					handler.editingGet(w, r, files)
 
 				} else if err != nil {
@@ -111,12 +110,10 @@ func (handler *HandlerHttp) editing(w http.ResponseWriter, r *http.Request) {
 			clientError(w, nil, http.StatusBadRequest, nil)
 			return
 		}
-
 	}
 }
 
 func (handler *HandlerHttp) editingGet(w http.ResponseWriter, r *http.Request, files []string) {
-
 	userId := r.Context().Value("UserId").(int)
 
 	tmpl, err := template.ParseFiles(files...)
@@ -222,7 +219,6 @@ func (handler *HandlerHttp) editingGet(w http.ResponseWriter, r *http.Request, f
 			}
 
 		}
-
 	} else {
 		customLogger.InfoLogger.Println("Incoming request's body data is not correct to the logic of the application")
 		clientError(w, nil, http.StatusBadRequest, nil)
@@ -236,5 +232,4 @@ func (handler *HandlerHttp) editingGet(w http.ResponseWriter, r *http.Request, f
 		serverError(w)
 		return
 	}
-
 }
